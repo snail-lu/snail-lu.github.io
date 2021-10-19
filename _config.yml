@@ -103,4 +103,5 @@ theme: matery
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: ''
+  repo: git@github.com:Snail-Lu/Snail-Lu.github.io.git
+  branch: gh-pages
