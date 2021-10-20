@@ -27,3 +27,5 @@ $ hexo clean && hexo deploy
 
 ### 相关文档
 [1. hexo文档](https://hexo.io/zh-cn/docs/commands)
+[2. hexo-theme-matery文档](https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md)
+[2. fontawesome图标](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
