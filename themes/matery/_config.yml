@@ -80,7 +80,7 @@ music:
   server: netease   #require	music platform: netease, tencent, kugou, xiami, baidu
   type: playlist    #require song, playlist, album, search, artist
   id: 367468866     #require	song id / playlist id / album id / search keyword
-  fixed: false       # 开启吸底模式
+  fixed: true       # 开启吸底模式
   autoplay: true    # 是否自动播放
   theme: '#42b983'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
@@ -566,8 +566,8 @@ subtitle:
   startDelay: 300 # 开始延迟
   typeSpeed: 100 # 打字速度
   backSpeed: 50 # 删除速度
-  sub1: 从来没有真正的绝境, 只有心灵的迷途
-  sub2: Never really desperate, only the lost of the soul
+  sub1: 道阻且长，行则将至
+  sub2: Though the road ahead is dangerous and difficult, we can only achieve our goals with constant efforts.
 
 # 手机二级菜单.
 navMenu:
