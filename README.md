@@ -26,6 +26,6 @@ $ hexo clean && hexo deploy
 `main`分支为项目主分支，该分支上的代码无法直接部署到`Github Pages`上。`gh-pages`分支为站点分支，该分支上的代码即为`Github Pages`站点上的静态文件。由`main`分支执行`hexo deploy`而来。
 
 ### 相关文档
-[1. hexo文档](https://hexo.io/zh-cn/docs/commands)
-[2. hexo-theme-matery文档](https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md)
-[2. fontawesome图标](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
+[1. hexo文档](https://hexo.io/zh-cn/docs/commands)  
+[2. hexo-theme-matery文档](https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md)  
+[2. fontawesome图标](https://fontawesome.com/v5.15/icons?d=gallery&p=2)  
