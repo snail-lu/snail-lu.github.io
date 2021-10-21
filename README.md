@@ -20,7 +20,14 @@ $ hexo deploy
 ```bash
 $ hexo clean && hexo deploy
 ```
-
+- 创建文章(post)/页面(page)/草稿(draft)
+```bash
+$ hexo new [layout] <filename>
+```
+- 发布草稿
+```bash
+$ hexo publish draft <filename>
+```
 
 ### 分支管理
 `main`分支为项目主分支，该分支上的代码无法直接部署到`Github Pages`上。`gh-pages`分支为站点分支，该分支上的代码即为`Github Pages`站点上的静态文件。由`main`分支执行`hexo deploy`而来。
