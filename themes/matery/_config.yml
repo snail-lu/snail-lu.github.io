@@ -1,28 +1,22 @@
 # main menu navigation url and icon
 # 配置菜单导航的名称、路径和图标icon.
 menu:
-# Index:
-  主页:
+  Index:
     url: /
     icon: fas fa-home
-# Tags:
-  标签:
-    url: /tags
-    icon: fas fa-tags
-# Categories:
-  分类:
+  Categories:
     url: /categories
     icon: fas fa-bars
-# Archives:
-  归档:
+  Archives:
     url: /archives
     icon: fas fa-folder
-# About:
-  关于:
+  Tags:
+    url: /tags
+    icon: fas fa-tags
+  About:
     url: /about
     icon: fas fa-user-circle
-# Contact:
-  联系:
+  Contact:
     url: /contact
     icon: fas fa-comments
 # Friends:
@@ -70,8 +64,8 @@ cover:
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
-  enable: true
-  showTitle: true
+  enable: false
+  showTitle: false
   title: 我的梦想
   text: 不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
 
@@ -81,18 +75,18 @@ music:
   enable: true
   title: #非吸底模式有效
     enable: true
-    show: 听听音乐
+    show: 好好听歌
   autoHide: true    # hide automaticaly
   server: netease   #require	music platform: netease, tencent, kugou, xiami, baidu
   type: playlist    #require song, playlist, album, search, artist
-  id: 503838841     #require	song id / playlist id / album id / search keyword
-  fixed: true       # 开启吸底模式
-  autoplay: false   # 是否自动播放
+  id: 367468866     #require	song id / playlist id / album id / search keyword
+  fixed: false       # 开启吸底模式
+  autoplay: true    # 是否自动播放
   theme: '#42b983'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
   order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
   preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
-  volume: 0.7       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  volume: 0.3       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
   listFolded: true  # 列表默认折叠
   hideLrc: true     # 隐藏歌词
 
@@ -129,10 +123,10 @@ logo: /medias/logo.png
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
 # 首页 banner 中的第二个按钮的配置，包括按钮的显示名称、font awesome图标和按钮的超链接.
 indexbtn:
-  enable: true
+  enable: false
   name: Github
   icon: fab fa-github-alt
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/snail-lu
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
@@ -386,7 +380,7 @@ changyan:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/Snail-Lu/Snail-Lu.github.io.git
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,
