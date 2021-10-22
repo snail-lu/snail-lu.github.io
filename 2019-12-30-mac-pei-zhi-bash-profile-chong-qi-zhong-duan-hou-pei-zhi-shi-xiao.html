@@ -485,7 +485,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在Mac中使用mongodb，一般都要在.bash_profile中配置一下环境变量，后面使用会比较方便一点。<br>遇到的问题状况是：配置.bash_profile后，source了一下，然后启动了mongodb，这时又新建了一个终端窗口去连接数据库，去执行mongo命令，提示:<br><img src="https://img2018.cnblogs.com/i-beta/1610029/201912/1610029-20191210130742610-1488085198.png" alt="图片"></p>
+                <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在Mac中使用mongodb，一般都要在.bash_profile中配置一下环境变量，后面使用会比较方便一点。<br>遇到的问题状况是：配置.bash_profile后，source了一下，然后启动了mongodb，这时又新建了一个终端窗口去连接数据库，去执行mongo命令，提示:<br><img src="/images/mac-bash/1610029-20191210130742610-1488085198.png"></p>
 <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>使用的终端是<code>zsh</code>，zsh加载的是<code> ~/.zshrc</code>文件，而<code>.zshrc</code>文件中并没有定义任务环境变量</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ol>
 <li>终端中执行命令，打开<code>.zshrc</code>文件：</li>
@@ -502,7 +502,7 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/.zshrc <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>4、新建窗口，测试：</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1610029/201912/1610029-20191210132653687-1027904723.png" alt="测试"></p>
+<p><img src="/images/mac-bash/1610029-20191210132653687-1027904723.png"></p>
 <p>PS:</p>
 <blockquote>
 <p>profile（/etc/profile），用于设置系统级的环境变量和启动程序，在这个文件下配置会对所有用户生效。当用户登录（login）时，文件会被执行，并从/etc/profile.d目录的配置文件中查找shell设置。<br>一般不建议在/etc/profile文件中添加环境变量，因为在这个文件中添加的设置会对所有用户起作用。<br>bash_profile只有单一用户有效，文件存储位于~/.bash_profile，该文件是一个用户级的设置，可以理解为某一个用户的profile目录下。这个文件同样也可以用于配置环境变量和启动程序，但只针对单个用户有效。<br>和profile文件类似，bash_profile也会在用户登录（login）时生效，也可以用于设置环境变理。但与profile不同，bash_profile只会对当前用户生效。</p>
