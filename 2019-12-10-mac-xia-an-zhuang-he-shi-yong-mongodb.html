@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-22
+                    2021-10-25
                 </div>
                 
 
@@ -485,7 +485,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1.下载安装"></a>1.下载安装</h3><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">MongoDB Download Center | Community</a>. community版本可以免费使用<br><img src="/images/mac-mongo/1610029-20191210171351285-1426673461.png"></p>
+                <h3 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1.下载安装"></a>1.下载安装</h3><p>官网下载地址：<a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">MongoDB Download Center | Community</a>. community版本可以免费使用<br><img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/mac-mongo/1610029-20191210171351285-1426673461.png?raw=true"></p>
 <p>下载完成后，将其解压后拷贝至<code>/usr/local</code>目录下。</p>
 <blockquote>
 <p>Tips：如何进入<code>/usr/local</code>目录？<br>打开<code>Finder</code>，快捷键<code>command+shift+G</code>，弹出弹窗，输入<code>/usr/local</code>，回车即可</p>
@@ -499,7 +499,7 @@
 <li>弹出文本编辑窗口后，在<code>.bash_profile</code>中配置<code>MongoDB</code>的环境变量</li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/mac-mongo/1610029-20191210170148044-650070565.png"></p>
+<p><img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/mac-mongo/1610029-20191210170148044-650070565.png?raw=true"></p>
 <ul>
 <li>保存后关闭窗口，使用命令使配置生效</li>
 </ul>
@@ -509,7 +509,7 @@
 <li>使用命令测试配置是否成功</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mongod -version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/images/mac-mongo/1610029-20191210164738218-1960826067.png"><br>成功输出版本号，说明以上步骤成功完成。如果出现<code>command not found</code>，证明配置失败，解决办法见<a target="_blank" rel="noopener" href="http://localhost:4000/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html">Mac配置.bash_profile失效</a>。</p>
+<p><img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/mac-mongo/1610029-20191210164738218-1960826067.png?raw=true"><br>成功输出版本号，说明以上步骤成功完成。如果出现<code>command not found</code>，证明配置失败，解决办法见<a target="_blank" rel="noopener" href="http://localhost:4000/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html">Mac配置.bash_profile失效</a>。</p>
 <h3 id="3-运行MongoDB"><a href="#3-运行MongoDB" class="headerlink" title="3.运行MongoDB"></a>3.运行MongoDB</h3><ul>
 <li>在根目录下创建数据库文件夹和日志文件夹</li>
 </ul>
@@ -563,7 +563,7 @@ net:
 <span class="token builtin class-name">cd</span> /usr/local/xxx/bin   //xxx是mongodb安装包的文件夹名
 <span class="token function">sudo</span> ./mongo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>出现以下内容，证明成功连接到了数据库<br><img src="/images/mac-mongo/1610029-20191210170708483-925727845.png"></p>
+<p>出现以下内容，证明成功连接到了数据库<br><img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/mac-mongo/1610029-20191210170708483-925727845.png?raw=true"></p>
 <p>如果出现<code>command not found</code>，证明配置失败，解决办法见<a target="_blank" rel="noopener" href="http://localhost:4000/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html">Mac配置.bash_profile失效</a>。</p>
 <h3 id="6-断开与数据库的连接及关闭MongoDB服务"><a href="#6-断开与数据库的连接及关闭MongoDB服务" class="headerlink" title="6.断开与数据库的连接及关闭MongoDB服务"></a>6.断开与数据库的连接及关闭MongoDB服务</h3><p>在连接数据库和启动MongoDB服务的终端窗口中按下<code>Ctrl+C</code>即可断开数据库连接及关闭MongoDB服务。</p>
 
