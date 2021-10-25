@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用http-server启动本地服务开发静态页面, Snail-Lu">
+    <meta name="keywords" content="element-ui中el-tree组件节点全展开与全收缩功能实现, Snail-Lu">
     <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用http-server启动本地服务开发静态页面 | Snail-Lu</title>
+    <title>element-ui中el-tree组件节点全展开与全收缩功能实现 | Snail-Lu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用http-server启动本地服务开发静态页面</h1>
+                    <h1 class="description center-align post-title">element-ui中el-tree组件节点全展开与全收缩功能实现</h1>
                 </div>
             </div>
         </div>
@@ -409,12 +409,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/http-server/">
-                                <span class="chip bg-color">http-server</span>
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
-                            <a href="/tags/Node/">
-                                <span class="chip bg-color">Node</span>
+                            <a href="/tags/element-ui/">
+                                <span class="chip bg-color">element-ui</span>
+                            </a>
+                        
+                            <a href="/tags/el-tree/">
+                                <span class="chip bg-color">el-tree</span>
                             </a>
                         
                     </div>
@@ -433,8 +437,8 @@
                                 前端
                             </a>
                         
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/" class="post-category">
-                                开发配置
+                            <a href="/categories/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="post-category">
+                                功能实现
                             </a>
                         
                     </div>
@@ -446,21 +450,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-02
+                    2020-05-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-22
+                    2021-10-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    280
+                    396
                 </div>
                 
 
@@ -485,31 +489,81 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-安装http-server"><a href="#1-安装http-server" class="headerlink" title="1. 安装http-server"></a>1. 安装<code>http-server</code></h3><p>打开cmd(我自己使用的是git bash)，输入命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> http-server -g  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h3 id="一、功能描述"><a href="#一、功能描述" class="headerlink" title="一、功能描述"></a>一、功能描述</h3><ul>
+<li><strong>实现</strong>： element-ui中el-tree组件全部节点的展开与收缩功能。</li>
+<li><strong>版本</strong>： “element-ui”: “^2.3.7”。</li>
+</ul>
+<h3 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h3><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;tree-container&quot;&gt;
+    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;onExpand&quot;&gt;&#123;&#123;this.expandAll?&#39;收缩&#39;:&#39;展开&#39;&#125;&#125;所有节点&lt;&#x2F;el-button&gt;
+    &lt;el-tree :data&#x3D;&quot;data&quot; ref&#x3D;&quot;tree&quot;&gt;&lt;&#x2F;el-tree&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
 
-<h3 id="2-进入项目根目录"><a href="#2-进入项目根目录" class="headerlink" title="2. 进入项目根目录"></a>2. 进入项目根目录</h3><p>这里是通过命令行进入到项目文件夹中，windows中也可以在资源管理器中直接进入到项目文件夹后，使用<code>shift+&quot;鼠标右键&quot;</code>,选择<code>在此处打开命令行（PowerShell）窗口</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /d/document/projects/wxCoupon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="3-启动http-server"><a href="#3-启动http-server" class="headerlink" title="3. 启动http-server"></a>3. 启动<code>http-server</code></h3><p>在命令行中，接着输入以下命令，启动<code>http-server</code>服务器，默认端口号为<code>8080</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hs -o 
-或 
-http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="4-查看效果"><a href="#4-查看效果" class="headerlink" title="4. 查看效果"></a>4. 查看效果</h3><p>正常启动后，会出现以下信息：<br><img src="/images/http-server/1610029-20200502203732756-1328964473.png"></p>
-<p>此时，在浏览器中访问开发的页面<code>http://127.0.0.1:8080/index.html</code>，同时打开浏览器的开发者工具即可看到浏览器端模拟的开发效果。</p>
-<div align="center">
-<img src="/images/http-server/1610029-20200502203847409-524718308.png" width="40%" />
-</div>
-
-<p>使用手机（需要和电脑处于同一局域网中）访问<code>http://192.168.31.231:8080/index.html</code>，即可实现真机查看开发效果：</p>
-<div align="center">
-<img src="/images/http-server/1610029-20200502204015576-714963078.png" width="40%" />
-</div>
-
-<blockquote>
-<p>Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将防火墙关闭即可。</p>
-</blockquote>
+&lt;script&gt;
+  export default &#123;
+    data() &#123;
+      return &#123;  
+        expandAll: false,
+        data: [&#123;
+          label: &#39;一级 1&#39;,
+          children: [&#123;
+            label: &#39;二级 1-1&#39;,
+            children: [&#123;
+              label: &#39;三级 1-1-1&#39;
+            &#125;]
+          &#125;]
+        &#125;, &#123;
+          label: &#39;一级 2&#39;,
+          children: [&#123;
+            label: &#39;二级 2-1&#39;,
+            children: [&#123;
+              label: &#39;三级 2-1-1&#39;
+            &#125;]
+          &#125;, &#123;
+            label: &#39;二级 2-2&#39;,
+            children: [&#123;
+              label: &#39;三级 2-2-1&#39;
+            &#125;]
+          &#125;]
+        &#125;]
+      &#125;;
+    &#125;,
+    methods: &#123;
+      &#x2F;&#x2F; 节点展开
+      async onExpand () &#123;
+        try &#123;
+          await this.$confirm(&#39;确认要展开所有节点?&#39;, &#39;提示&#39;, &#123;
+            confirmButtonText: &#39;确定&#39;,
+            cancelButtonText: &#39;取消&#39;,
+            type: &#39;warning&#39;
+          &#125;)
+          this.expandAll &#x3D; !this.expandAll
+          &#x2F;&#x2F; 改变每个节点的状态
+          this.changeTreeNodeStatus(this.$refs.tree.store.root)
+        &#125; catch (e) &#123;
+          this.$message(&#123;
+            type: &#39;info&#39;,
+            message: e &#x3D;&#x3D;&#x3D; &#39;cancel&#39; ? &#39;取消操作&#39; : &#39;操作失败&#39;
+          &#125;)
+        &#125;
+      &#125;,
+      &#x2F;&#x2F; 改变节点的状态
+      changeTreeNodeStatus (node) &#123;
+        node.expanded &#x3D; this.expandAll
+        for (let i &#x3D; 0; i &lt; node.childNodes.length; i++) &#123;
+          &#x2F;&#x2F; 改变节点的自身expanded状态
+          node.childNodes[i].expanded &#x3D; this.expandAll
+          &#x2F;&#x2F; 遍历子节点
+          if (node.childNodes[i].childNodes.length &gt; 0) &#123;
+            this.changeTreeNodeStatus(node.childNodes[i])
+          &#125;
+        &#125;
+      &#125;
+    &#125;
+  &#125;;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三、最终效果"><a href="#三、最终效果" class="headerlink" title="三、最终效果"></a>三、最终效果</h3><p><a target="_blank" rel="noopener" href="https://www.yes-i-do.cn/home/example/tree">demo地址</a></p>
 
                 
             </div>
@@ -536,7 +590,7 @@ http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Snail-Lu.github.io/2020-05-02-shi-yong-http-server-da-jian-ben-di-fu-wu-qi-kai-fa-jing-tai-ye-mian.html">https://Snail-Lu.github.io/2020-05-02-shi-yong-http-server-da-jian-ben-di-fu-wu-qi-kai-fa-jing-tai-ye-mian.html</a>
+                    <a href="https://Snail-Lu.github.io/2020-05-05-element-ui-zhong-el-tree-zu-jian-jie-dian-quan-zhan-kai-yu-quan-shou-suo-gong-neng-shi-xian.html">https://Snail-Lu.github.io/2020-05-05-element-ui-zhong-el-tree-zu-jian-jie-dian-quan-zhan-kai-yu-quan-shou-suo-gong-neng-shi-xian.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -574,12 +628,16 @@ http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/http-server/">
-                                    <span class="chip bg-color">http-server</span>
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
-                                <a href="/tags/Node/">
-                                    <span class="chip bg-color">Node</span>
+                                <a href="/tags/element-ui/">
+                                    <span class="chip bg-color">element-ui</span>
+                                </a>
+                            
+                                <a href="/tags/el-tree/">
+                                    <span class="chip bg-color">el-tree</span>
                                 </a>
                             
                         </div>
@@ -627,6 +685,63 @@ http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020-06-03-scss-chang-yong-yu-fa-zong-jie.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="SCSS常用语法总结">
+                        
+                        <span class="card-title">SCSS常用语法总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SCSS基本语法。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                    <a href="/tags/SCSS/">
+                        <span class="chip bg-color">SCSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020-05-02-wei-xin-xiao-cheng-xu-ye-mian-tiao-zhuan-guo-cheng-de-can-shu-chuan-di.html">
                     <div class="card-image">
                         
@@ -643,9 +758,9 @@ http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></sp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -671,71 +786,6 @@ http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></sp
                     
                     <a href="/tags/mini-program/">
                         <span class="chip bg-color">mini-program</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020-05-02-react-webpack-xiang-mu-zhong-shi-yong-iconfont-zi-ti-tu-biao.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="React+Webpack项目中使用Iconfont字体图标">
-                        
-                        <span class="card-title">React+Webpack项目中使用Iconfont字体图标</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            React项目中如何配置及使用iconfont图标
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
-                                </a>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/" class="post-category">
-                                    开发配置
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
-                    </a>
-                    
-                    <a href="/tags/Iconfont/">
-                        <span class="chip bg-color">Iconfont</span>
                     </a>
                     
                 </div>
