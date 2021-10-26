@@ -1,7 +1,7 @@
 ---
 title: Nginx配置---启用gzip压缩
 date: 2020-12-13 21:17:32
-summary: Nginx配置开启Gzip压缩功能， 可以使网站的css、js 、xml、html 等文件在传输时进行压缩，提高访问速度。
+summary: Nginx配置开启Gzip压缩，提高网站访问速度。
 tags:
 - Nginx
 - Gzip

@@ -2,7 +2,6 @@
 title: ES6常用特性总结
 date: 2019-10-30 15:40:00
 summary: ES6常用语法总结及代码示例。
-top: true
 categories:
 - [随笔]
 - [前端]
