@@ -36,16 +36,16 @@ http-server -open
 
 ### 4. 查看效果
 正常启动后，会出现以下信息：
-![](https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/http-server/1610029-20200502203732756-1328964473.png?raw=true)
+![](https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/http-server/1610029-20200502203732756-1328964473.png)
 
 此时，在浏览器中访问开发的页面`http://127.0.0.1:8080/index.html`，同时打开浏览器的开发者工具即可看到浏览器端模拟的开发效果。
 <div align="center">
-<img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/http-server/1610029-20200502203847409-524718308.png?raw=true" width="40%" />
+<img src="https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/http-server/1610029-20200502203847409-524718308.png" width="40%" />
 </div>
 
 使用手机（需要和电脑处于同一局域网中）访问`http://192.168.31.231:8080/index.html`，即可实现真机查看开发效果：
 <div align="center">
-<img src="https://github.com/Snail-Lu/imageGalleries/blob/main/gh-pages/2021-10/http-server/1610029-20200502204015576-714963078.png?raw=true" width="40%" />
+<img src="https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/http-server/1610029-20200502204015576-714963078.png" width="40%" />
 </div>
 
 > Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将防火墙关闭即可。
