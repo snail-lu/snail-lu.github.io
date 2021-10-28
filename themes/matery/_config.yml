@@ -7,12 +7,12 @@ menu:
   Categories:
     url: /categories
     icon: fas fa-bars
-  Archives:
-    url: /archives
-    icon: fas fa-folder
   Tags:
     url: /tags
     icon: fas fa-tags
+  Archives:
+    url: /archives
+    icon: fas fa-folder
   About:
     url: /about
     icon: fas fa-user-circle
