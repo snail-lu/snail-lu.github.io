@@ -75,5 +75,3 @@ categories:
         }
     }
 ```
-### 三、最终效果
-[demo地址](https://www.yes-i-do.cn/example)

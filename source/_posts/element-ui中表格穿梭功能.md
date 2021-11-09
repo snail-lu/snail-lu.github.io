@@ -184,4 +184,4 @@ tags:
 ```
 
 ### 三、最终效果
-[demo地址](https://www.yes-i-do.cn/home/example/tabletransfer)
+[demo地址](https://snail-lu.github.io/vue-demo/#/example/tabletransfer)

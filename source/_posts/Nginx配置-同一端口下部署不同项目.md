@@ -178,7 +178,3 @@ module.exports = {
                 rewrite ^.*$ /home/index.html last;
         }
 ```
-
-### 四、最终效果
-[vue项目](https://www.yes-i-do.cn)  
-[react项目](https://www.yes-i-do.cn/portfolio)
