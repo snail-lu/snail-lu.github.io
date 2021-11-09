@@ -75,22 +75,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-folder" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>标签</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="/archives" class="waves-effect waves-light">
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-folder" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>归档</span>
     </a>
     
   </li>
@@ -156,22 +156,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/archives" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-folder"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			归档
+			标签
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
+		<a href="/archives" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-tags"></i>
+			    <i class="fa-fw fas fa-folder"></i>
 			
-			标签
+			归档
 		</a>
           
         </li>
@@ -320,21 +320,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">15</a></span>
+    <span class="count"><a href="/">20</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">6</a></span>
+    <span class="count"><a href="/categories">7</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">28</a></span>
+    <span class="count"><a href="/tags">35</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -343,28 +343,28 @@
                     <div class="col s12 m12 l4">
                         <div class="profile center-align">
                             <div class="avatar">
-                                <img src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/avatar.jpg" alt="Snail-Lu"
+                                <img src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/avatar.png" alt="Snail-Lu"
                                      class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">15</a></span>
+    <span class="count"><a href="/">20</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">6</a></span>
+    <span class="count"><a href="/categories">7</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">28</a></span>
+    <span class="count"><a href="/tags">35</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -490,7 +490,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10"]
+            data: ["2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11"]
         },
         yAxis: {
             type: 'value',
@@ -500,7 +500,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,4,0,0,0,0,0,0,0,0,0,0],
+                data: [0,4,0,0,0,0,0,0,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -542,7 +542,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"随笔","value":14},{"name":"开发配置","value":8},{"name":"前端","value":11},{"name":"数据库","value":1},{"name":"网站搭建","value":1},{"name":"功能实现","value":1}],
+                data: [{"name":"随笔","value":19},{"name":"前端","value":13},{"name":"开发配置","value":8},{"name":"数据库","value":1},{"name":"功能实现","value":3},{"name":"网站搭建","value":1},{"name":"Linux","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -566,7 +566,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["React","Vue","JavaScript","CSS","Mac","Nginx","Create React App","CSS Modules","ES","Emmet"]
+                data: ["Vue","React","element-ui","JavaScript","CSS","Mac","Node","Nginx","el-table","ES"]
             }
         ],
         yAxis: [
@@ -579,7 +579,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [3,3,2,2,2,2,1,1,1,1],
+                data: [5,3,3,2,2,2,2,2,2,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -716,24 +716,6 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/React/">
-                <span class="chip center-align waves-effect waves-light chip-default">React</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Create-React-App/">
-                <span class="chip center-align waves-effect waves-light chip-default">Create React App</span>
-            </a>
-            
-            
-            
-            <a href="/tags/CSS-Modules/">
-                <span class="chip center-align waves-effect waves-light chip-default">CSS Modules</span>
-            </a>
-            
-            
-            
             <a href="/tags/ES/">
                 <span class="chip center-align waves-effect waves-light chip-default">ES</span>
             </a>
@@ -742,34 +724,22 @@
             
             
             
-            <a href="/tags/Emmet/">
-                <span class="chip center-align waves-effect waves-light chip-default">Emmet</span>
+            <a href="/tags/markdown/">
+                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
             </a>
             
             
             
-            <a href="/tags/HTML/">
-                <span class="chip center-align waves-effect waves-light chip-default">HTML</span>
+            
+            
+            <a href="/tags/SCSS/">
+                <span class="chip center-align waves-effect waves-light chip-default">SCSS</span>
             </a>
-            
-            
             
             
             
             <a href="/tags/Mac/">
                 <span class="chip center-align waves-effect waves-light chip-default">Mac</span>
-            </a>
-            
-            
-            
-            <a href="/tags/MongoDB/">
-                <span class="chip center-align waves-effect waves-light chip-default">MongoDB</span>
-            </a>
-            
-            
-            
-            <a href="/tags/markdown/">
-                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
             </a>
             
             
@@ -786,26 +756,14 @@
             
             
             
-            <a href="/tags/Nginx/">
-                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
+            <a href="/tags/MongoDB/">
+                <span class="chip center-align waves-effect waves-light chip-default">MongoDB</span>
             </a>
             
             
             
-            <a href="/tags/Vue/">
-                <span class="chip center-align waves-effect waves-light chip-default">Vue</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Gzip/">
-                <span class="chip center-align waves-effect waves-light chip-default">Gzip</span>
-            </a>
-            
-            
-            
-            <a href="/tags/History/">
-                <span class="chip center-align waves-effect waves-light chip-default">History</span>
+            <a href="/tags/React/">
+                <span class="chip center-align waves-effect waves-light chip-default">React</span>
             </a>
             
             
@@ -822,8 +780,20 @@
             
             
             
-            <a href="/tags/SCSS/">
-                <span class="chip center-align waves-effect waves-light chip-default">SCSS</span>
+            <a href="/tags/http-server/">
+                <span class="chip center-align waves-effect waves-light chip-default">http-server</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Node/">
+                <span class="chip center-align waves-effect waves-light chip-default">Node</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Vue/">
+                <span class="chip center-align waves-effect waves-light chip-default">Vue</span>
             </a>
             
             
@@ -836,6 +806,30 @@
             
             <a href="/tags/el-tree/">
                 <span class="chip center-align waves-effect waves-light chip-default">el-tree</span>
+            </a>
+            
+            
+            
+            <a href="/tags/mini-program/">
+                <span class="chip center-align waves-effect waves-light chip-default">mini-program</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Nginx/">
+                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Gzip/">
+                <span class="chip center-align waves-effect waves-light chip-default">Gzip</span>
+            </a>
+            
+            
+            
+            <a href="/tags/History/">
+                <span class="chip center-align waves-effect waves-light chip-default">History</span>
             </a>
             
             
@@ -858,20 +852,68 @@
             
             
             
-            <a href="/tags/http-server/">
-                <span class="chip center-align waves-effect waves-light chip-default">http-server</span>
+            <a href="/tags/CSS-Modules/">
+                <span class="chip center-align waves-effect waves-light chip-default">CSS Modules</span>
             </a>
             
             
             
-            <a href="/tags/Node/">
-                <span class="chip center-align waves-effect waves-light chip-default">Node</span>
+            <a href="/tags/Create-React-App/">
+                <span class="chip center-align waves-effect waves-light chip-default">Create React App</span>
             </a>
             
             
             
-            <a href="/tags/mini-program/">
-                <span class="chip center-align waves-effect waves-light chip-default">mini-program</span>
+            <a href="/tags/Emmet/">
+                <span class="chip center-align waves-effect waves-light chip-default">Emmet</span>
+            </a>
+            
+            
+            
+            <a href="/tags/HTML/">
+                <span class="chip center-align waves-effect waves-light chip-default">HTML</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Github/">
+                <span class="chip center-align waves-effect waves-light chip-default">Github</span>
+            </a>
+            
+            
+            
+            <a href="/tags/el-table/">
+                <span class="chip center-align waves-effect waves-light chip-default">el-table</span>
+            </a>
+            
+            
+            
+            <a href="/tags/npm/">
+                <span class="chip center-align waves-effect waves-light chip-default">npm</span>
+            </a>
+            
+            
+            
+            <a href="/tags/CentOS/">
+                <span class="chip center-align waves-effect waves-light chip-default">CentOS</span>
+            </a>
+            
+            
+            
+            <a href="/tags/SSH/">
+                <span class="chip center-align waves-effect waves-light chip-default">SSH</span>
+            </a>
+            
+            
+            
+            <a href="/tags/VMvare/">
+                <span class="chip center-align waves-effect waves-light chip-default">VMvare</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Linux/">
+                <span class="chip center-align waves-effect waves-light chip-default">Linux</span>
             </a>
             
             
@@ -951,7 +993,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">10k</span>&nbsp;字
+                class="white-color">13.1k</span>&nbsp;字
             
             
             
