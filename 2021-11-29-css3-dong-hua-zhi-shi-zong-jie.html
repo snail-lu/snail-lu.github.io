@@ -1,0 +1,1346 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="CSS3动画知识总结, Snail-Lu">
+    <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>CSS3动画知识总结 | Snail-Lu</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aos/aos.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/css/matery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/css/my.min.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Snail-Lu</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bars" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-folder" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Snail-Lu</div>
+        <div class="logo-desc">
+            
+            基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bars"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-folder"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">CSS3动画知识总结</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/tocbot/tocbot.min.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
+                            </a>
+                        
+                            <a href="/tags/Animation/">
+                                <span class="chip bg-color">Animation</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                随笔
+                            </a>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-11-29
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-11-29
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.8k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="一、基本用法"><a href="#一、基本用法" class="headerlink" title="一、基本用法"></a>一、基本用法</h3><h4 id="1-使用keyframes定义动画关键帧"><a href="#1-使用keyframes定义动画关键帧" class="headerlink" title="1.使用keyframes定义动画关键帧"></a>1.使用keyframes定义动画关键帧</h4><p>使用<code>@keyframes</code>在动画序列中定义关键帧的样式来控制CSS动画序列中的中间步骤。<br>使用示例：  </p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">// <span class="token property">示例1</span><span class="token punctuation">:</span> 仅定义起始帧和结束帧
+<span class="token atrule"><span class="token rule">@keyframes</span> my-first-animation</span> <span class="token punctuation">&#123;</span>
+    <span class="token selector">// form 等价于0%
+    from</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">// to 等价于100%
+    to</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+// <span class="token property">示例2</span><span class="token punctuation">:</span> 定义多个关键帧
+<span class="token atrule"><span class="token rule">@keyframes</span> my-second-animation</span> <span class="token punctuation">&#123;</span>
+    <span class="token selector">0%</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token selector">20%</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token selector">75%</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token selector">100%</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-使用animation配置动画属性"><a href="#2-使用animation配置动画属性" class="headerlink" title="2.使用animation配置动画属性"></a>2.使用animation配置动画属性</h4><p><code>animation</code>是8个动画属性的简写。这8个动画属性为：  </p>
+<ul>
+<li>animation-name 设置要使用的@keyframes动画的名称</li>
+<li>animation-duration 设置动画一个周期的时长</li>
+<li>animation-delay 设置延时，即设置元素加载完成后多久开始执行动画</li>
+<li>animation-direction 设置动画每次运行完后是反向运行还是重新回到开始位置重复运行</li>
+<li>animation-timing-function 设置动画的速度曲线</li>
+<li>animation-iteration-count 设置动画播放次数</li>
+<li>animation-fill-mode 设置动画执行前后如何为目标元素应用样式</li>
+<li>animation-play-state 设置动画播放状态，正在运行或暂停<br>使用示例：  <pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> my-first-animation</span> <span class="token punctuation">&#123;</span>
+    <span class="token selector">from</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">to</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token selector">div</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> my-first-animation 2s<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p>可以用于动画效果的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">属性清单</a></p>
+<h3 id="二、animation属性详解"><a href="#二、animation属性详解" class="headerlink" title="二、animation属性详解"></a>二、animation属性详解</h3><h4 id="1-animation-delay"><a href="#1-animation-delay" class="headerlink" title="1.animation-delay"></a>1.animation-delay</h4><p>定义动画于何时开始，即从动画应用在元素上到动画开始的这段时间的长度。<br>示例代码：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.ani--first</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">animation-name</span><span class="token punctuation">:</span> aniFirst<span class="token punctuation">;</span>
+    <span class="token property">animation-duration</span><span class="token punctuation">:</span> 2s<span class="token punctuation">;</span>
+    <span class="token property">animation-delay</span><span class="token punctuation">:</span> 0s<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.ani--second</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">animation-name</span><span class="token punctuation">:</span> aniSecond<span class="token punctuation">;</span>
+    <span class="token property">animation-duration</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+    <span class="token property">animation-delay</span><span class="token punctuation">:</span> 2s<span class="token punctuation">;</span> <span class="token comment">/* aniSecond 延迟 2s 执行*/</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-11/animation-delay-timeline.png" alt="image"></p>
+<h4 id="2-animation-direction"><a href="#2-animation-direction" class="headerlink" title="2.animation-direction"></a>2.animation-direction</h4><p>指示动画是否反向播放</p>
+<ul>
+<li><strong>normal</strong> 每个循环内动画向前循环，换言之，每个动画循环结束，动画重置到起点重新开始，这是默认属性。</li>
+<li><strong>alternate</strong> 动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代</li>
+<li><strong>reverse</strong> 反向运行动画，每周期结束动画由尾到头运行。</li>
+<li><strong>alternate-reverse</strong> 反向交替，反向开始交替。动画第一次运行时是反向的，然后下一次是正向，后面依次循环。决定奇数次或偶数次的计数从1开始。</li>
+</ul>
+<p>  <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/rNOzvWE">animation-direction演示示例</a></p>
+<h4 id="3-animation-timing-function"><a href="#3-animation-timing-function" class="headerlink" title="3.animation-timing-function"></a>3.animation-timing-function</h4><p>用于定义动画的速度曲线，常用值<code>linear</code>、<code>ease</code>、<code>ease-in</code>、<code>ease-out</code>、<code>ease-in-out</code>。这些值其实都是 <code>cubic-bezier(n,n,n,n)</code>的特例。它们被称为贝塞尔曲线。<br>除此之外还有阶梯函数<code>steps(number_of_steps, direction)</code><br>    - <code>number_of_steps</code>：阶梯数（必须是一个正整数），他将动画的总时长按照阶梯数等距划分<br>    - <code>direction</code> ：可选值为<code>start</code>或<code>end</code>，默认end，也可以不写；start表示动画的第一帧会被立即执行,直接从第二帧开始，然后以第一帧结束；end则表示动画从第一帧开始到正常结束；  </p>
+<pre><code>[animation-timing-function演示示例](https://codepen.io/snaillu/pen/MWJERNa)
+</code></pre>
+<h4 id="4-animation-fill-mode"><a href="#4-animation-fill-mode" class="headerlink" title="4.animation-fill-mode"></a>4.animation-fill-mode</h4><p>设置CSS动画在执行之前和之后如何将样式应用于其目标。</p>
+<ul>
+<li><code>none</code>，默认值，当动画未执行时，动画将不会将任何样式应用于目标，而是已经赋予给该元素的CSS规则来显示该元素。 </li>
+<li><code>forwards</code>，动画完成后，元素状态保持为最后一帧的状态。</li>
+<li><code>backwards</code>，动画将在应用于目标时立即应用第一个关键帧中定义的值，并在animation-delay期间保留此值。</li>
+<li><code>both</code>，上述二者效果都有。  </li>
+</ul>
+<p>  <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/rNOzvWE">animation-fill-mode演示示例</a></p>
+<h4 id="5-animation-play-state"><a href="#5-animation-play-state" class="headerlink" title="5.animation-play-state"></a>5.animation-play-state</h4><p>一个动画是否运行或者暂停。可以通过查询它来确定动画是否正在运行。另外，它的值可以被设置为暂停和恢复的动画的重放。<br>    - paused 暂停动画<br>    - running 运行动画  </p>
+<p>  <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/LYxOmeR">animation-play-state演示示例</a></p>
+<h4 id="6-animation-iteration-count"><a href="#6-animation-iteration-count" class="headerlink" title="6.animation-iteration-count"></a>6.animation-iteration-count</h4><p>动画结束前运行的次数。可取值<code>infinite</code>、<code>&lt;number&gt;</code>。</p>
+<h3 id="三、进阶用法"><a href="#三、进阶用法" class="headerlink" title="三、进阶用法"></a>三、进阶用法</h3><h4 id="1-利用animation-delay实现简单轮播"><a href="#1-利用animation-delay实现简单轮播" class="headerlink" title="1.利用animation-delay实现简单轮播"></a>1.利用animation-delay实现简单轮播</h4><pre class="line-numbers language-scss" data-language="scss"><code class="language-scss"><span class="token selector">.slider__item </span><span class="token punctuation">&#123;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> ani 6s infinite linear both<span class="token punctuation">;</span>
+    
+    <span class="token keyword">@for</span> <span class="token variable">$i</span> <span class="token keyword">from</span> <span class="token selector">1 to 4 </span><span class="token punctuation">&#123;</span>
+      &amp;<span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span><span class="token variable">#&#123;$i&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">animation-delay</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>-1+<span class="token variable">$i</span><span class="token punctuation">)</span>*2s<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> ani</span> <span class="token punctuation">&#123;</span>
+  <span class="token selector">0%, 33.33% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span> 
+    <span class="token property">visibility</span><span class="token punctuation">:</span> visible<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">33.34%, 100% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> 
+    <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>DEMO: <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/MWJvMQz">https://codepen.io/snaillu/pen/MWJvMQz</a></p>
+<h4 id="2-序列动画"><a href="#2-序列动画" class="headerlink" title="2.序列动画"></a>2.序列动画</h4><p>多个元素使用相同的动画效果时，将动画执行时机依次错开，可形成整齐有序的序列动画效果。</p>
+<pre class="line-numbers language-scss" data-language="scss"><code class="language-scss"><span class="token keyword">@for</span> <span class="token variable">$i</span> <span class="token keyword">from</span> <span class="token selector">1 to 6 </span><span class="token punctuation">&#123;</span>
+  .<span class="token property">list__item</span><span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span><span class="token variable">#&#123;$i&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">animation-delay</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>-1+<span class="token variable">$i</span><span class="token punctuation">)</span>*0.1s<span class="token punctuation">;</span> <span class="token comment">/*设置每个元素的 animation-delay */</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> listAni</span> <span class="token punctuation">&#123;</span>
+  <span class="token selector">0% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">100% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>DEMO: <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/vYyqjpm">https://codepen.io/snaillu/pen/vYyqjpm</a></p>
+<p><code>animation-delay</code> 为负值会让动画从它的动画序列中某位置立即开始。 </p>
+<p>如若上述的序列动画要进行无限循环，单纯将<code>animation-iteration-count</code> 设置为 <code>infinite</code>，动画开始时会有延迟。此时，将 <code>animation-delay</code> 设置为负值，提前动画开始执行的时机，当用户看到动画时，动画便已经处于进行中的状态。</p>
+<pre class="line-numbers language-scss" data-language="scss"><code class="language-scss"><span class="token keyword">@for</span> <span class="token variable">$i</span> <span class="token keyword">from</span> <span class="token selector">1 to 6 </span><span class="token punctuation">&#123;</span>
+  .<span class="token property">list__item</span><span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span><span class="token variable">#&#123;$i&#125;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">animation-delay</span><span class="token punctuation">:</span> -<span class="token variable">$i</span>*0.1s<span class="token punctuation">;</span> <span class="token comment">/* 设置animation-delay 为负值*/</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-动态图标"><a href="#3-动态图标" class="headerlink" title="3.动态图标"></a>3.动态图标</h4><p>配合<code>transform</code>来实现图标变化效果。<br>transform中的常用函数：</p>
+<ul>
+<li>平移函数：translateX、translateY、translateZ、translate、translate3d</li>
+<li>缩放函数：scaleX、scaleY、scaleZ、scale、scale3d( number, number, number )</li>
+<li>旋转函数：rotateX、rotateY、rotateZ、rotate、rotate3d( number, number, number, angle)</li>
+<li>倾斜函数：skewX、skewY、skew</li>
+<li>视域：perspective( length )<pre class="line-numbers language-scss" data-language="scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@keyframes</span> spin1</span> <span class="token punctuation">&#123;</span>
+  <span class="token selector">0%,
+  15% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>-15px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">20%,
+  25% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">35%,
+  50% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">60%,
+  75% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>135deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">85%,
+  100% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>135deg<span class="token punctuation">)</span> <span class="token function">translateY</span><span class="token punctuation">(</span>15px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> bgchange</span> <span class="token punctuation">&#123;</span>
+  <span class="token selector">0%,
+  50% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">35%,
+  50% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #42cf69<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">60%,
+  75% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #cf4242<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token selector">85%,
+  100% </span><span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #dba528<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+图标变换DEMO: <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/MWJEWdR">https://codepen.io/snaillu/pen/MWJEWdR</a><br>loading图标DEMO: <a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/JjYyvWY">https://codepen.io/snaillu/pen/JjYyvWY</a></li>
+</ul>
+<h3 id="四、CSS动画库"><a href="#四、CSS动画库" class="headerlink" title="四、CSS动画库"></a>四、CSS动画库</h3><h4 id="1-Animista"><a href="#1-Animista" class="headerlink" title="1.Animista"></a>1.Animista</h4><ol>
+<li><p>选择不同的动画<br>我们可以选择想要的动画类型（例如entrance/exist），除了可以选择某个动画（例如，scale-in）外，甚至还可以为该动画选择不同的展示效果（例如： scale-in-right）。</p>
+</li>
+<li><p>定制<br>Animista还提供了一个功能，允许我们定制动画的某些部分，比如</p>
+</li>
+</ol>
+<ul>
+<li>duration</li>
+<li>delay</li>
+<li>direction</li>
+</ul>
+<ol start="3">
+<li><p>生成css代码<br>选择适合自己需要的动画后，我们可以直接从网站上获取代码，甚者可以进行压缩：</p>
+</li>
+<li><p>下载代码<br>另一个好用的功能是，可以把自己收藏自己喜欢的动画，然后一起下载下来， 或者，我们也可以选择将这些动画的代码复制到一起。</p>
+</li>
+</ol>
+<h4 id="2-Animate-css"><a href="#2-Animate-css" class="headerlink" title="2.Animate.css"></a>2.Animate.css</h4><ol>
+<li>使用npm安装或者CDN引入；<pre class="line-numbers language-none"><code class="language-none">npm install animate.css --save
+
+&lt;head&gt;
+  &lt;link
+    rel&#x3D;&quot;stylesheet&quot;
+    href&#x3D;&quot;https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;animate.css&#x2F;4.1.1&#x2F;animate.min.css&quot;
+  &#x2F;&gt;
+&lt;&#x2F;head&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>标签上使用类名<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animate__animated animate__bounce<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>An animated element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-Vivify"><a href="#3-Vivify" class="headerlink" title="3.Vivify"></a>3.Vivify</h4></li>
+<li>下载Vivify.min.css</li>
+<li>引入</li>
+<li>元素上添加类名</li>
+</ol>
+<h3 id="五、参考文档"><a href="#五、参考文档" class="headerlink" title="五、参考文档"></a>五、参考文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">CSS3动画|菜鸟教程</a>   </li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@keyframes">@keyframes|MDN</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903845470945294">2019年了，你还不会CSS动画？</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://aotu.io/notes/2016/11/28/css3-animation-properties/index.html">css3 animation 属性众妙</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_animated_properties">css可动画属性</a></li>
+<li><a target="_blank" rel="noopener" href="https://cubic-bezier.com/">贝塞尔曲线在线调试</a></li>
+<li><a target="_blank" rel="noopener" href="https://animate.style/">Animate.css文档</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Snail-Lu</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Snail-Lu.github.io/2021-11-29-css3-dong-hua-zhi-shi-zong-jie.html">https://Snail-Lu.github.io/2021-11-29-css3-dong-hua-zhi-shi-zong-jie.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Snail-Lu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
+                                </a>
+                            
+                                <a href="/tags/Animation/">
+                                    <span class="chip bg-color">Animation</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021-11-29-css3-dong-hua-zhi-shi-zong-jie.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/12.jpg" class="responsive-img" alt="CSS3动画知识总结">
+                        
+                        <span class="card-title">CSS3动画知识总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Animation动画用法及常见动画库。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                    <a href="/tags/Animation/">
+                        <span class="chip bg-color">Animation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021-11-11-element-ui-zhong-el-table-fan-ye-duo-xuan-shi-xian.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/21.jpg" class="responsive-img" alt="element-ui中el-table翻页多选实现">
+                        
+                        <span class="card-title">element-ui中el-table翻页多选实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            element-ui中el-table翻页多选实现
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            <a href="/categories/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="post-category">
+                                    功能实现
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/element-ui/">
+                        <span class="chip bg-color">element-ui</span>
+                    </a>
+                    
+                    <a href="/tags/el-table/">
+                        <span class="chip bg-color">el-table</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Snail-Lu<br />'
+            + '文章作者: Snail-Lu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="song"
+                   id="213673"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Snail-Lu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">16k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "10";
+                    var startDate = "20";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/snail-lu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:snaillu@yeah.net" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1349157806" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1349157806" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aos/aos.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/js/matery.min.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/background/ribbon-dynamic.min.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/instantpage/instantpage.min.js" type="module"></script>
+    
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+
+</html>
