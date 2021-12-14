@@ -51,4 +51,5 @@ https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/logo/avatar.png
 ### 相关文档
 [1. hexo文档](https://hexo.io/zh-cn/docs/commands)  
 [2. hexo-theme-matery文档](https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md)  
-[2. fontawesome图标](https://fontawesome.com/v5.15/icons?d=gallery&p=2)  
+[3. fontawesome图标](https://fontawesome.com/v5.15/icons?d=gallery&p=2)  
+[4. 流程图插件hexo-filter-mermaid-diagrams](https://github.com/webappdevelp/hexo-filter-mermaid-diagrams)  
