@@ -1,0 +1,61 @@
+---
+title: CSS常用实现总结
+date: 2021-12-15 21:41:11
+tags:
+- CSS
+categories:
+- [随笔]
+- [前端]
+---
+
+### 一、文本超长省略
+溢出的前提条件是宽度超出了，所以要确保元素有宽度确定，这样才能配合下列代码实现溢出效果。
+```css
+/* 单行溢出 */
+.oneline-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 多行溢出 */
+.multiline-overflow{
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    /* 设置行数 */
+    -webkit-line-clamp: 2;
+}
+```
+
+### 二、浏览器12px以下字号设置
+大部分常用浏览器上显示字体最小为`12px`，css设置小于`12px`，显示的时候还是`12px`大小，可以利用css中的`transform`或者`zoom`来缩小：
+```css
+.small-font{
+    font-size: 20px;                 /* 以此为基准进行缩放 */
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform-origin: left;          /* 设置缩放起始位置 */
+    
+    /* 利用transform: scale()缩小字体，虽然字体会变小，但是该元素所占的空间不会跟着缩放, 可以配合maring来调整位置 */
+    margin: -10px; 
+
+    /* 如果不想要上述效果，可以使用zoom进行缩放 */
+    zoom: 0.5;
+}
+
+/* 浏览器兼容处理 */
+/* IE、FF没有字体最小限制，可以直接设置字体大小 */
+.small-font-fix {
+    font-size: 20*0.5px;        
+}
+```
+
+### 三、隐藏滚动条
+```css
+.box1::-webkit-scrollbar {
+    display:none
+}
+```
