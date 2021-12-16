@@ -85,80 +85,73 @@ Code | 代码类型
 Regular expression | 正则表达式类型
 
 ### 四、基本语法
-**创建数据库**   
-语法：
+#### 创建数据库
 ```
 use testdb
 ```
 
-**删除数据库**  
-语法：
-```
-//先查看数据库列表
+#### 删除数据库
+``` bash
+// 先查看数据库列表
 show dbs 
 
-//再连接要删除的数据库
+// 再连接要删除的数据库
 use testdb
 
-//删除该数据库
+// 删除该数据库
 db.dropDatabase()
 ```
 
-**创建集合**  
-语法：
-```
+#### 创建集合
+``` bash
 db.createCollection(name,options)
 ```
 参数：  
 * name：要创建的集合名称
 * options：可选参数，指定内存大小及索引  
 
-tips:
-MongoDB中不需要创建集合，当插入文档时，会自动创建集合。
+> Tip: MongoDB中不需要创建集合，当插入文档时，会自动创建集合。
 
-**查看集合列表**  
-语法： 
-
+#### 查看集合列表 
 ```
 show collections
 ```
 
-**删除集合**  
-语法：  
+#### 删除集合
+
 ```
 db.COLLECTION_NAME.drop()
 ```
-注：COLLECTION_NAME为要删除的集合名称
+> 注：COLLECTION_NAME为要删除的集合名称
 
-**插入文档**  
-语法：  
+#### 插入文档
+ 
 ```
 db.COLLECTION_NAME.insertOne(document)
 db.COLLECTION_NAME.inserMany(document)
 ```
 
-**更新文档**  
-语法：  
+#### 更新文档 
 ```
 db.COLLECTION_NAME.updateOne()
 db.COLLECTION_NAME.updateMany()
 db.COLLECTION_NAME.replaceOne()
 ```
 
-**删除文档**  
-语法：  
+#### 删除文档
+  
 ```
 db.COLLECTION_NAME.deleteMany()
 db.COLLECTION_NAME.deleteOne()
 ```
 
-**查找文档**  
-语法：  
+#### 查找文档
+  
 ```
 db.COLLECTION_NAME.find()
 ```
 
-**条件操作符**  
+#### 条件操作符
 * $gt   ---  大于
 * $lt   ---  小于
 * $gte  ---  大于等于
@@ -168,15 +161,14 @@ db.COLLECTION_NAME.find()
 * $type ---  数据类型
 示例：  
 ```
-//在blogs集合中查找likes属性值大于100的文档
+// 在blogs集合中查找likes属性值大于100的文档
 db.blogs.find({"likes": {$gt: 100}});
 
-//查找title属性的值为string类型的文档
+// 查找title属性的值为string类型的文档
 db.blogs.find({"title": {$type: 'string'}})
 ```
 
-**Limit和Skip**  
-语法：  
+#### Limit和Skip  
 ```
 //最多返回NUMBER个查找结果
 db.COLLECTION_NAME.find().limit(NUMBER)
@@ -185,31 +177,29 @@ db.COLLECTION_NAME.find().limit(NUMBER)
 db.COLLECTION_NAME.find().limit(NUMBER1).skip(NUMBER2)
 ```
 
-**排序**  
-语法：  
+#### 排序
+ 
 ```
 //按照KEY的值对查找结果进行排序，1为升序，-1为降序
 db.COLLECTION_NAME.find().sort({KEY: 1})
 ```
 
-**索引**  
-语法：  
+#### 索引 
 ```
-//keys为索引参数对象，键为要创建的索引字段，键值设为1为升序，-1为降序
-//options为可选参数，可取值有background/name/unique等，详见mongoDB文档
+// keys为索引参数对象，键为要创建的索引字段，键值设为1为升序，-1为降序
+// options为可选参数，可取值有background/name/unique等，详见mongoDB文档
 db.COLLECTION_NAME.createIndex(keys, options)
 
-//示例
-//1为升序，-1为降序，options
+// 示例
+// 1为升序，-1为降序，options
 db.values.createIndex({open: 1, close: 1}, {background: true})
 ```
 
-**聚合/管道**  
-语法：  
+#### 聚合/管道
 ```
 db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
 
-//示例
+// 示例
 db.articles.aggregate([
     { $match : { score : { $gt : 70, $lte : 90 } } },
     { $group: { _id: null, count: { $sum: 1 } } }
@@ -236,7 +226,7 @@ db.articles.aggregate([
 * $last: 最后一个文档
 
 
-**复制（副本集）**  
+#### 复制（副本集） 
 mongoDB的复制至少需要两个节点，其中一个是主节点，负责处理客户端需求，其余的都是从节点，负责复制主节点上的数据。     
 MongoDB各个节点常见的搭配方式为：一主一从、一主多从。  
 主节点记录在其上的所有操作oplog，从节点定期轮询主节点获取这些操作，然后对自己的数据副本执行这些操作，从而保证从节点的数据与主节点一致。    
@@ -263,11 +253,11 @@ rs.status()
 rs.add(HOST_NAME:PORT)
 ```
 
-**分片**  
+#### 分片
 通过在多台机器上分割数据，使得数据库能存储和处理更多的数据。
 
 
-**备份与恢复**  
+#### 备份与恢复
 语法：  
 ```
 //备份
@@ -281,7 +271,7 @@ mongorestore -h hostname:port -d dbname dbdirectory
 * -o: 备份的数据库存放地址
 
 
-**监控**  
+#### 监控
 使用mongostat和mongotop两个命令来监控MongoDB的运行情况。  
 ```
 //进入MongoDB安装目录下的bin目录下，运行
@@ -292,7 +282,7 @@ mongotop --locks
 ```
 
 ### 六、高级教程
-**文档之间的关系**
+#### 文档之间的关系
 * 嵌入式关系
 * 引用式关系
 ```
@@ -347,7 +337,7 @@ mongotop --locks
 }
 ```
 
-**DBRefs引用**
+#### DBRefs引用
 当从不同集合中引用文档时，应该使用DBRefs引用。
 语法：  
 ```
@@ -373,17 +363,17 @@ mongotop --locks
 }
 ```
 
-**覆盖索引查询**  
+#### 覆盖索引查询
 覆盖查询是以下的查询：  
 * 所有的查询字段是索引的一部分
 * 所有的查询返回字段在同一个索引中  
 
 由于所有出现在查询中的字段是索引的一部分，MongoDB无需再整个数据文档中检索匹配查询条件和返回使用相同索引的查询结果。因为索引存在于RAM中，从索引中获取数据比通过扫描文档读取数据要快得多。  
 
-**查询分析**  
+#### 查询分析
 explain()和hint()
 
-**原子操作**  
+#### 原子操作 
 不会被线程调度机打断的操作。例如MongoDB保存文档，要么成功保存到了MongoDB,要么没有保存到MongoDB,不会出现没有保存完整的情况。  
 常用命令：  
 ```
