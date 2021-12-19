@@ -4,6 +4,7 @@ date: 2021-12-18 00:02:00
 tags:
 - JavaScript
 categories:
+- [前端]
 - [读书笔记]
 ---
 ## 第一部分 作用域和闭包
