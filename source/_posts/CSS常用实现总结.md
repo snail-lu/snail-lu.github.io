@@ -59,3 +59,42 @@ categories:
     display:none
 }
 ```
+
+### 四、三角形符号
+```css
+/* 向上的三角形 */
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+}
+
+/* 向右的三角形 */
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 100px solid red;
+}
+
+/* 向右上的三角形 */
+.triangle-top-right {
+    width: 0;
+    height: 0;
+    border-top: 50px solid red;
+    border-left: 50px solid transparent;
+}
+
+/* 向左下的三角形 */
+.triangle-top-right {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid red;
+    border-right: 50px solid transparent;
+}
+
+/* 其他方向类推即可 */
+```
