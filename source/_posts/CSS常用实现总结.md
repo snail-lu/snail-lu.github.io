@@ -98,3 +98,24 @@ categories:
 
 /* 其他方向类推即可 */
 ```
+
+### 五、解决图片底部存在间隙问题
+出现间隙的原因：图片文字等inline元素默许是跟父级元素的baseline对齐，而baseline又和底边有一定间距。
+解决方法：
+```css
+/* 设置图片元素的垂直对齐方式 */
+.img {
+    vertical-align: bottom;
+}
+
+/* 设为块级元素 */
+.img {
+    display: block;
+}
+
+/* 父元素中没有别的元素时，可以设置父元素行高为0 */
+.img-box {
+    line-height: 0;
+}
+
+```
