@@ -109,25 +109,30 @@ let a = 10,
 console.log(result);
 ```
 ### 第三章 函数
-#### 函数参数默认值
+#### ES6中的函数参数默认值
+ES6中的函数参数默认值，只有在未传递或者指定为`undefined`时才会被使用，即使是传入`null`也会被认为是有效的从而不使用默认值。
 ```js
-// ES6之前
-function makeRequest(url,timeout,callback){
-    timeout = timeout || 2000;  //当传入的timeout为0时，就会产生偏差
-    callback = callback || function(){};
-    
+function makeRequest(url, timeout = 2000, callback = function(){}) {  
     // 函数的其余部分
 }
 
+// 使用默认的 timeout 与 callback
+makeRequest('/api/getGoodsList');
 
-// ES6
-function makeRequest(url, timeout=2000, callback=function(){}) {  
-    // 函数的其余部分
-}
+// 使用默认的 callback
+makeRequest('/api/getGoodsList', 500);
+
+// 使用默认的 callback
+makeRequest('/api/getGoodsList', null);
+
+// 不使用默认值
+makeRequest('/api/getGoodsList', 500， function(body) {
+    console.log(body);
+});
 ```
-上例中，会在未传递第二个参数或明确指定第二个参数为`undefined`时，`timeout`的默认值才会被使用。
 
-#### 参数默认值如何影响arguments对象
+#### 参数默认值与arguments对象
+ES5非严格模式下，`arguments`对象总是会被更新以反映出具名参数的变化。
 ```js
 function mixArgs(first, second){
     console.log(first === arguments[0]);  
@@ -140,25 +145,27 @@ function mixArgs(first, second){
 
 mixArgs("a","b");
 
-// ES5非严格模式下，arguments对象总是会被更新以反映出具名参数的变化。
 // 输出结果为： 
 true 
 true 
 true 
 true
-
-// ES5严格模式下，arguments对象不再反映出具名参数的变化。
+```
+ES5严格模式下，arguments对象不再反映出具名参数的变化。
+```js
 // 输出结果为： 
 true 
 true  
 false 
 false
+```
 
-// 在ES6中（无论是否是严格模式），arguments对象的表现与ES5的严格模式一致
-function mixArgs(first, second="b"){
+在ES6中（无论是否是严格模式），`arguments`对象的表现与ES5的严格模式下一致，`arguments`的值始终与实参保持一致。
+```js
+function mixArgs(first, second = "b"){
     console.log(arguments.length);
     console.log(first === arguments[0]);  
-    console.log(second === arguments[1]); //arguments[1]=undefined
+    console.log(second === arguments[1]); // arguments[1] === undefined
     first = "c";
     second = "d";
     console.log(first === arguments[0]);  
@@ -182,13 +189,13 @@ function getValue() {
     return value++;
 }
 
-function add(first,second=getValue()) {
+function add(first, second = getValue()) {
     return first + second;
 }
 
-console.log(add(1,1)); //2
-console.log(add(1));  //6
-console.log(add(1));  //7
+console.log(add(1, 1)); // 2
+console.log(add(1));  // 6
+console.log(add(1));  // 7
 ```
 
 可以将前面的参数作为后面参数的默认值
@@ -198,17 +205,21 @@ function add(first, second = first) {
     return first + second;
 }
 
-//Error
-//不可以使用后面的参数作为前面参数的默认值
-//因为后面的参数还未定义，不可直接使用
-function add(first=second, second) {
+console.log(add(1)); // 2
+```
+
+不可以使用后面的参数作为前面参数的默认值，因为后面的参数还未定义，不可直接使用
+```js
+function add(first = second, second) {
     return first + second;
 }
+
+console.log(add(undefined, 1)); // Uncaught ReferenceError: Cannot access 'second' before initialization
 ```
 
 #### 参数默认值的暂时性死区
-函数参数与let声明的变量相似，在声明之前存在暂时性死区，在其初始化之前不允许被访问。  
-函数参数拥有各自的作用域和暂时性死区，与函数体的作用域相分离。这意味着参数的默认值不允许访问在函数体内部声明的任意变量。
+函数参数与`let`声明的变量相似，在声明之前存在暂时性死区，在其初始化之前不允许被访问。  
+> 函数参数拥有各自的作用域和暂时性死区，与函数体的作用域相分离。这意味着参数的默认值不允许访问在函数体内部声明的任意变量。
 
 #### 剩余参数
 剩余参数由三个点（`...`）与一个紧跟着的具名参数决定，它是包含传递给函数的其余参数的一个数组。
