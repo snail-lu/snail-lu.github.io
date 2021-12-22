@@ -25,6 +25,48 @@ categories:
 2. 不会变量提升，存在TDZ（暂时性死区），为了在整个代码块内可用，需要手动将声明置顶；
 3. 禁止重复声明同名变量；
 4. const声明的变量只可在声明时被赋值，对该变量成员（属性）的修改不受限制。
+5. 在全局作用域中使用let、const声明变量，变量不会被绑定到`window`对象上。
+
+循环中使用let、const时，在每次迭代中，都会创建一个新的同名变量并对其进行初始化。
+```js
+var funcs = []
+// 使用let声明i
+for (let i = 0; i < 10; i++) {
+    funcs.push(function() {
+        console.log(i);
+    })
+}
+
+funcs.forEach(function(fun) {
+    func(); // 从0到9依次输出
+})
+
+// 使用const声明i，在执行i++时会抛出错误
+for (const i = 0; i < 10; i++) {
+    funcs.push(function() {
+        console.log(i);
+    })
+}
+
+// 可以在`for-in`或`for-of`中使用，效果与let一致，因为这两种循环，没有试图改变i的值。
+var funcs = [],
+    obj = {
+        a: true,
+        b: true,
+        c: true
+    };
+
+// 以下两种写法效果相同
+for (let key in obj) {
+    funcs.push(function() {
+    console.log(key);
+})
+
+for (const key in obj) {
+    funcs.push(function() {
+    console.log(key);
+})
+```
 
 ### 第三章 函数
 #### 函数参数默认值
