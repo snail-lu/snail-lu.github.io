@@ -1,6 +1,7 @@
 ---
 title: 深入理解ES6读书笔记
 date: 2021-12-19 20:24:34
+summary: 《深入理解ES6》读书笔记
 tags:
 - JavaScript
 - ES6
@@ -68,6 +69,45 @@ for (const key in obj) {
 })
 ```
 
+### 第二章 字符串与正则表达式
+这一章节涉及到字符集内容，可先阅读阮一峰老师的文章[Unicode与JavaScript详解](http://www.ruanyifeng.com/blog/2014/12/unicode.html)补充下相关知识。
+#### 新增字符串方法
+- String.fromCodePoint(): 从Unicode码点返回对应字符
+- String.prototype.codePointAt(): 从位置返回对应的码点
+- String.prototype.normalize(): 按照指定形式将字符串标准化，便于字符串比较
+- String.prototype.includes(): 当前字符串中是否包含另一个给定字符串
+- String.prototype.startsWith(): 当前字符串是否以另外一个给定的子字符串开头
+- String.prototype.endsWith(): 当前字符串是否以另外一个给定的子字符串结尾
+- String.prototype.repeat(): 返回重复构造后的新字符串
+
+#### 正则表达式改动
+- 新增了u修饰符，对正则表达式添加4字节码点的支持
+- 新增了y修饰符，影响正则表达式搜索时的粘连（sticky）属性，表示从正则表达式的`lastIndex`属性值的位置开始检索字符串中的匹配字符
+- 新增了`flags`属性，返回正则表达式中所有标志组成的字符串形式
+
+#### 模板字符串
+```js
+// 单行字符串
+let message1 = `Hello World!`;
+console.log(message1); // "Hello World!"
+
+// 多行字符串
+let message2 = `Hello 
+World!`;
+console.log(message2);
+// "Hello"
+// "World!"
+
+// 制造替换位
+let name = "Mike";
+console.log(`Hello ${name}`); // "Hello Mike"
+
+// 替换位中进行计算、函数调用等
+let a = 10,
+    b = 0.035,
+    result = `${a} multiplied by ${b} is ${(a * b).toFixed(2)}`;
+console.log(result);
+```
 ### 第三章 函数
 #### 函数参数默认值
 ```js
