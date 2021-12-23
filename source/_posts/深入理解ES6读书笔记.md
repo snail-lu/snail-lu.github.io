@@ -160,7 +160,7 @@ false
 false
 ```
 
-在ES6中（无论是否是严格模式），`arguments`对象的表现与ES5的严格模式下一致，`arguments`的值始终与实参保持一致。
+在ES6中（无论是否是严格模式），`arguments`对象的表现与ES5的严格模式下一致，即`arguments`的值始终与实参保持一致，函数体内对函数形参的修改，不会影响到`arguments`。
 ```js
 function mixArgs(first, second = "b"){
     console.log(arguments.length);
@@ -198,7 +198,7 @@ console.log(add(1));  // 6
 console.log(add(1));  // 7
 ```
 
-可以将前面的参数作为后面参数的默认值
+可以将前面的参数作为后面参数的默认值。
 ```js
 //OK
 function add(first, second = first) { 
@@ -208,7 +208,7 @@ function add(first, second = first) {
 console.log(add(1)); // 2
 ```
 
-不可以使用后面的参数作为前面参数的默认值，因为后面的参数还未定义，不可直接使用
+不可以使用后面的参数作为前面参数的默认值，因为后面的参数还未定义，不可直接使用。
 ```js
 function add(first = second, second) {
     return first + second;
@@ -222,23 +222,42 @@ console.log(add(undefined, 1)); // Uncaught ReferenceError: Cannot access 'secon
 > 函数参数拥有各自的作用域和暂时性死区，与函数体的作用域相分离。这意味着参数的默认值不允许访问在函数体内部声明的任意变量。
 
 #### 剩余参数
+
 剩余参数由三个点（`...`）与一个紧跟着的具名参数决定，它是包含传递给函数的其余参数的一个数组。
 ```js
-// keys是一个包含所有在object之后的参数的剩余参数数组。
+// keys是一个在object之后的所有参数组成的数组。
 function pick(object, ...keys){
     let result = Object.create(null);
     
-    for(let i=0, len=keys.length;i<len;i++){
+    for (let i = 0, len = keys.length; i < len; i++){
         result[keys[i]] = object[keys[i]];
     }
     
     return result;
 }
 ```
-> 剩余参数的两点限制条件：  
-> 1、一个函数只能有一个剩余参数，并且必须放在最后。  
-> 2、剩余参数不能在对象字面量的setter属性中使用。（原因是对象字面量的setter被限定只能使用单个参数）
+剩余参数的两点限制条件：  
+1. 一个函数只能有一个剩余参数，并且必须放在最后。  
+2. 剩余参数不能在对象字面量的`setter`属性中使用。（原因是对象字面量的setter被限定只能使用单个参数）
+```js
+// SyntaxError: Rest parameter must be last formal parameter
+function pick(object, ...keys, last) {
+    let result = Object.create(null);
+    
+    for (let i = 0, len = keys.length; i < len; i++){
+        result[keys[i]] = object[keys[i]];
+    }
+    
+    return result;
+}
 
+// SyntaxError: Setter function argument must not be a rest parameter
+let object = {
+    set name(...value) {
+        // 一些操作
+    }
+};
+```
 
 #### 扩展运算符
 剩余参数允许我们把多个独立的参数合并到一个数组中，而扩展运算符则允许将一个数组分割，并将各个项作为分离的参数传给函数。在大部分场景中，扩展运算符都是`apply()`方法的合适替代品。
@@ -250,35 +269,38 @@ console.log(Math.max(25, 50, 75, 100)); // 100
 
 // 给数组中各个值比较时需要借助apply
 let values = [25, 50, 75, 100];
-console.log(Math.max.apply(Math,values));   //100
+console.log(Math.max.apply(Math, values));   // 100
 
 // ES6
-console.log(Math.max(...values));   //100
+console.log(Math.max(...values));   // 100
 ```
 
-#### ES6的名称属性
+#### 名称属性
 ES6给所有的函数添加了name属性。
 ```js
 // 函数自身具有函数名
 function function1() {
     // 函数内容
 }
-console.log(function1.name); //"function1"
+console.log(function1.name); // "function1"
 
 // 函数表达式
 var function2 = function() {
     // 函数内容
 }
 console.log(function2.name); // "function2"
+```
 
-// 自身带有函数名的函数表达式
-// 自身函数名的优先级高于赋值目标
+自身函数名的优先级高于赋值目标
+```js
 var function3 = function function4() {
     // 函数内容
 }
 console.log(function3.name); // "function4"
+```
 
-// 对象的getter及方法
+对象的`getter`及方法的名称
+```js
 let person = {
     get firstName() {
         return "Nicholas"
@@ -292,7 +314,16 @@ let descriptor = Object.getOwnPropertyDescriptor(person, 'firstName');
 console.log(descriptor.get.name); // "get firstName"
 ```
 
-#### 明确函数的双重用途
+使用`bind()`创建的函数及`Function`构造器构造的函数
+```js
+var doSomething = function () {
+    // 函数内容
+}
+console.log(doSomething.bind().name); // "bound doSomethind"
+console.log((new Function().name);  // "anonymous"
+```
+
+#### 函数的双重用途
 JS为函数提供了两个不同的内部方法：`[[Call]]`和`[[Construct]]`。
 - 当函数未使用new进行调用时，`[[Call]]`方法会被调用，运行代码中显示的函数体。
 - 当函数使用new进行调用时，`[[Construct]]`方法会被执行，负责创建一个被称为新目标的新的对象，并且使用该新目标作为this去执行函数体，最后将该对象作为函数的返回值。
@@ -304,11 +335,11 @@ function Person(name){
 var person = new Person("Nicholas");
 var notAPerson = Person("Nicholas");
 
-console.log(person); //[Object,Object]
-console.log(notAPerson); //undefined
+console.log(person); // "[Object,Object]"
+console.log(notAPerson); // "undefined"
 ```
 #### new.target
-ES6引入了`new.target`元属性。`元属性`指的是“非对象”上的一个属性，并提供关联到它的目标的附加因袭。当函数的`[[Construct]`方法被调用时，`new.target`会被填入`new`运算符的作用目标（构造器）中。而`[[Call]]`被执行，`new.target`的值则会是`undefined`。
+ES6引入了`new.target`元属性。`元属性`指的是“非对象”上的一个属性，并提供关联到它的目标的附加信息。当函数的`[[Construct]`方法被调用时，`new.target`会被填入`new`运算符的作用目标（构造器）。而`[[Call]]`被执行，`new.target`的值则会是`undefined`。
 ```js
 function Person(name) {
     if(new.target === Person) {
@@ -321,32 +352,30 @@ let person = new Person("Jack"); // ok
 let anotherPerson = Person('Bob'); // Error "You must use new width Person."
 ```
 #### 块级函数
-块级函数：在代码块中声明函数。
-严格模式下
+块级函数是指在代码块中声明函数。
+严格模式下，ES5中会抛出语法错误。ES6会将该函数视为块级声明，并将其声明提升至代码块顶部，允许它在块内部被访问，块外部无法访问到。
 ```js
 "use strict"
 if (true) {  
-    //ES5中会抛出语法错误
-    //ES6会将该函数视为块级声明，并将其声明提升至代码块顶部，允许它在块内部被访问
-    fucntion doSomething() {
+    function doSomething() {
         // 函数体
     }
 }
 
-console.log(typeof doSomething); //undefined
+// 代码块外部无法访问到该函数
+console.log(typeof doSomething); // "undefined"
 ```
-非严格模式下
+非严格模式下，ES6会将该函数声明提升至所在函数或全局环境的顶部，而不是代码块的顶部。
 ```js
 if (true) { 
-    
-    console.log(typeof doSomething); //"function"
-    //ES6会将该函数声明提升至所在函数或全局环境的顶部，而不是代码块的顶部
-    fucntion doSomething() {
+    console.log(typeof doSomething); // "function"
+
+    function doSomething() {
         // 函数体
     }
 }
 
-console.log(typeof doSomething);  //"function"
+console.log(typeof doSomething);  // "function"
 ```
 
 #### 箭头函数
@@ -355,7 +384,7 @@ console.log(typeof doSomething);  //"function"
 - 不能被使用`new`调用；
 - 没有原型；
 - 不能更改`this`；
-- 不允许重复的具名参数；
+- 不允许重复的具名参数，传统的函数中参数可以重名。
 
 语法形式：
 ```js
@@ -377,7 +406,7 @@ var sum = （value1, value2) => {
 }
 ```
 
-#### 创建立即调用函数表达式（IIFE）
+#### 立即调用函数表达式（IIFE）
 ```js
 // 传统写法
 let person = function(name) {
@@ -402,7 +431,7 @@ console.log(person.getName()); // "Jack"
 
 #### 尾调用优化
 **尾调用**：函数的最后一步（不一定非在函数尾部）是调用另一个函数。  
-ES5引擎中实现的尾调用，其处理就像其他函数一样：一个新的帧栈被创建并推到调用栈之上，用于表示该次函数调用，这意味着之前每次帧栈都保留在内存中，当调用栈太大时会出现问题。  
+ES5引擎中实现的尾调用，其处理就像其他函数一样：一个新的帧栈被创建并推到调用栈之上，用于表示该次函数调用，这意味着之前每次帧栈都保留在内存中，当调用栈太大时会出现超出报错，进行尾调用优化可以大大节省内存。  
 ES6严格模式下，同时满足以下条件时，ES6引擎会自动进行尾调用优化（清除当前帧栈并在此利用它，而不是为尾调用创建新的帧栈）：
 - 尾调用不能引用当前帧栈中的变量（意味着该函数不能是闭包）；
 - 进行尾调用的函数在尾调用返回结果后不能做额外操作；
