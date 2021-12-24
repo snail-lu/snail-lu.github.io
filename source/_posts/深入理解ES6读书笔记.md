@@ -488,7 +488,7 @@ ES6规范明确的对象类别包括：
 - 内置对象：在脚本开始运行时由JS运行环境提供的对象。所有的标准对象都是内置对象。
 
 #### 属性简写
-属性名与要赋值的变量名同名时，可以简写。
+属性名与赋值变量名同名时，可以简写。
 ```js
 function createPerson(name, age) {
     return {
@@ -521,7 +521,9 @@ let person = {
 #### 计算属性名
 ES5及之前，对象实例上才能使用`计算属性名`。
 ```js
-let person = {}, firstName = "first name";
+let person = {}, 
+    firstName = "first name";
+
 person[firstName] = "Jack";
 
 console.log(person[firstName]); //Jack
@@ -557,6 +559,7 @@ console.log(Object.is(5, "5")); // false
 用于将所有可枚举属性的值从一个或多个源对象分配到目标对象，并返回目标对象。  
 
 如果目标对象中的属性具有相同的键，则属性将被源对象中的属性覆盖。后面的源对象的属性将类似地覆盖前面的源对象的属性。
+值得注意的是，使用`Object.assign()`会将源对象上的访问器属性（如果有的话）转变为目标对象上的数据属性，所以有访问器属性的源对象使用`Object.assign()`时要谨慎。
 
 ```js
 const target = { a: 1, b: 2 };
@@ -574,26 +577,26 @@ console.log(returnedTarget);
 #### 自有属性的枚举顺序
 
 ES6严格定义了对象自有属性在被枚举时返回的顺序。自有枚举属性枚举时基本顺序如下：
-
 1. 所有的数字类型键，按升序排列。
 2. 所有的字符串类型键，按被添加到对象的顺序排列。
 3. 所有的符号类型键，也按添加顺序排列。
 
+这个规则对`Object.getOwnPorpertyNames()`、`Reflct.ownKeys`及`Object.assign()`方法有影响，`for-in`、`Object.keys()`循环的枚举顺序
+仍未被明确规定，可能因JS引擎而异。
 ```js
-􏴌􏱂􏳎var obj = {
-	a: 1,
-  0: 1,
-  c: 1,
-  2: 1,
-  b: 1,
-  1: 1
+var obj = {
+    a: 1,
+    0: 1,
+    c: 1,
+    2: 1,
+    b: 1,
+    1: 1
 };
 obj.d = 1;
-console.log(Object.getOwnPropertyNames(obj).join(""));
-// "012acbd"
+console.log(Object.getOwnPropertyNames(obj).join("")); // "012acbd"
 ```
 
-#### `Object.setPropertyOf()`修改对象的原型
+#### `Object.setPrototypeOf()`修改对象的原型
 
 此方法允许你修改任意指定对象的原型，接受两个参数：需要被修改原型的对象，以及将会成为前者原型的对象。
 
@@ -620,7 +623,7 @@ console.log(friend.getGreeting()); // "Woof"
 console.log(Object.getPrototypeOf(friend) === dog); // true
 ```
 
-#### <span id="super">使用`super`引用的简单原型访问</span>
+#### <span id="super">使用`super`访问原型</span>
 
 `super`是指向当前对象的原型的一个指针，实际上就是`Object.getPrototypeOf(this)`的值。
 
@@ -635,7 +638,7 @@ let friend = {
   
   // 非简写语法会报错
   getGreeting: function() {
-    return super.getGreeting() + ", Nice to meet you!"; // SyntaxError
+    return super.getGreeting() + ", Nice to meet you!"; // SyntaxError: 'super' keyword unexpected here
   }
 }
 ```
