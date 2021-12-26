@@ -677,7 +677,7 @@ let { type, name } = node;
 // 变量声明之后使用解构赋值，要使用()包裹，否则{}会被认为是代码块而报错
 let type = "Literal";
 let name = 5;
-({type, name} = node);
+({ type, name } = node);
 
 console.log(type); // "Identifier"
 console.log(name); // "foo"
@@ -709,8 +709,8 @@ let node = {
   type: "Identifier",
   name: 'foo'
 };
-// 将node上的type、name、value分别解构赋值给localType、localType、localValue
-let { type: localType, name: localType, value: localValue = true } = node;
+// 将node上的type、name、value分别解构赋值给localType、localName、localValue
+let { type: localType, name: localName, value: localValue = true } = node;
 
 console.log(localType); // "Identifier"
 console.log(localName); // "foo"
@@ -751,15 +751,18 @@ console.log(secondColor); // 'green'
 console.log(thirdColor); // 'blue'
 ```
 
-特殊用例：交换两个变量的值
+数组解构巧用：交换变量的值
 
 ```js
-let a = 1, b = 2;
+let a = 1, 
+    b = 2, 
+    c = 3;
 
-[a,b] = [b,a];
+[a, b, c] = [c, a, b];
 
-console.log(a); // 2
+console.log(a); // 3
 console.log(b); // 1
+console.log(c); // 2
 ```
 
 ##### 默认值
@@ -853,7 +856,7 @@ setCookie('type', 'js', {
 
 ##### 参数解构的默认值
 
-上述示例中， 若不传递第三个参数，函数调用会因为解构出错而报错，若要解雇的参数是非必选参数，可以通过给解构的参数提供默认值来解决这个问题。
+上述示例中， 若不传递第三个参数，函数调用会因为解构出错而报错，若要解构的参数是非必选参数，可以通过给解构的参数提供默认值来解决这个问题。
 
 ```js
 // 解构参数设置默认值
