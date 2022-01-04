@@ -878,7 +878,7 @@ function setCookie(name, value, {
 ### 第六章 符号与符号属性
 JS已有的基本类型： `string`、`number`、`boolean`、`null`、`undefined`
 
-ES6中新增的基本类型：符号（ `Symbol`） 
+ES6中新增的基本类型：`Symbol`（符号） 
 
 #### 创建符号值
 
@@ -889,10 +889,7 @@ let firstName = Symbol();  // 因为是基本类型，不能使用new关键字�
 let person = {}; 
 person[firstName] = "Nicholas";  
 
-console.log(person[firstName]); // "Nicholas 
-
-// 识别符号值，优先使用typeof运算符 
-console.log(typeof firstName);  // "symbol"
+console.log(person[firstName]); // "Nicholas"
 ```
 
 `Symbol`接受一个额外的参数用于描述符号值，描述信息存储在内部属性`[[Description]]`中，当符号的`toString()`方法被显式或隐式调用时，该属性会被读取。该描述不能用来访问对应属性，但能用于调试。
@@ -904,6 +901,9 @@ person[firstName] = "Nicholas";
 
 console.log(person[firstName]); // "Nicholas 
 console.log(firstName); // "Symbol(first name)"
+
+// 识别符号值，优先使用typeof运算符 
+console.log(typeof firstName);  // "symbol"
 ```
 
 #### 使用符号值
@@ -935,7 +935,7 @@ console.log(person[lastName]);  // "Zakas"
 
 #### 共享符号值
 
-ES6提供了“全局符号注册表”，可以跨越文件或代码来追踪符号值。
+ES6提供了`全局符号注册表`，可以跨越文件或代码来追踪符号值。
 
 `全局符号注册表`类似于全局作用域，是一个共享环境，这意味着你不应当假设某些值是否已存在于其中。
 
@@ -959,7 +959,7 @@ console.log(object[uid2]); // "12345"
 console.log(uid2); // "Symbol(uid)"
 ```
 
-可以使用 **Symbol.keyFor()** 方法在全局符号注册表中根据符号值检索出对应的键值
+可以使用 `Symbol.keyFor()` 方法在全局符号注册表中根据符号值检索出对应的键值
 
 ```js
 let uid = Symbol.for("uid");  
@@ -1012,25 +1012,17 @@ console.log(object[symbols[0]]); // "12345"
 
 ES6定义了“知名符号”来代表 JS 中一些公共行为，而这些行为此前被认为只能是内部操作。每一个知名符号都对应全局 Symbol 对象的一个属性，这些知名符号是：
 
-- Symbol.hasInstance：供instanceof 运算符使用的一个方法，用于判断对象继承关 系。
-- Symbol.isConcatSpreadable：一个布尔类型值，在集合对象作为参数传递给Array.prototype.concat() 方法时，指示是否要将该集合的元素扁平化。
--  Symbol.iterator：返回迭代器(参阅第七章)的一个方法。
-- Symbol.match：供 String.prototype.match() 函数使用的一个方法，用于比较字符串。
-- Symbol.replace：供 String.prototype.replace() 函数使用的一个方法，用于替换子字
-
-符串。
-
-- Symbol.search：供 String.prototype.search() 函数使用的一个方法，用于定位子字符串。
-- Symbol.species：用于产生派生对象(参阅第八章)的构造器。
-- Symbol.split：供String.prototype.split() 函数使用的一个方法，用于分割字符串。
-- Symbol.toPrimitive：返回对象所对应的基本类型值的一个方法。
-- Symbol.toStringTag：供 String.prototype.toString() 函数使用的一个方法，用于创建
-
-对象的描述信息。
-
-- Symbol.unscopables：一个对象，该对象的属性指示了哪些属性名不允许被包含在 with 语句中。
-
-
+- `Symbol.hasInstance`：供instanceof 运算符使用的一个方法，用于判断对象继承关 系。
+- `Symbol.isConcatSpreadable`：一个布尔类型值，在集合对象作为参数传递给Array.prototype.concat() 方法时，指示是否要将该集合的元素扁平化。
+- `Symbol.iterator`：返回迭代器(参阅第七章)的一个方法。
+- `Symbol.match`：供 String.prototype.match() 函数使用的一个方法，用于比较字符串。
+- `Symbol.replace`：供 String.prototype.replace() 函数使用的一个方法，用于替换子字符串。
+- `Symbol.search`：供 String.prototype.search() 函数使用的一个方法，用于定位子字符串。
+- `Symbol.species`：用于产生派生对象(参阅第八章)的构造器。
+- `Symbol.split`：供String.prototype.split() 函数使用的一个方法，用于分割字符串。
+- `Symbol.toPrimitive`：返回对象所对应的基本类型值的一个方法。
+- `Symbol.toStringTag`：供 String.prototype.toString() 函数使用的一个方法，用于创建对象的描述信息。
+- `Symbol.unscopables`：一个对象，该对象的属性指示了哪些属性名不允许被包含在 with 语句中。
 
 ### 第七章 Set和Map
 #### 1. Set
