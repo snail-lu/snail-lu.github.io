@@ -1,7 +1,8 @@
 ---
 title: 前端常用js工具函数
 date: 2022-01-12 13:54:40
-tags: 前端常用js工具函数汇总
+summary: 前端常用js工具函数汇总
+tags: 
 - JavaScript
 categories:
 - [随笔]
