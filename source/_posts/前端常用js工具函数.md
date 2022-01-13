@@ -11,6 +11,12 @@ categories:
 
 ### 日期格式化（简易版）
 ```js
+/**
+ *
+ * @fmt : 输出格式
+ * @date : 日期
+ *
+ */
 function dateFormat(fmt, date) {
 	let ret;
 	const opt = {
@@ -39,7 +45,7 @@ console.log(today); // "2021-01-12 14:25:43"
 
 ### 日期格式化（全能版）
 ``` js
-/*
+/**
  * Date Format 1.2.3
  * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
  * MIT license
@@ -171,4 +177,43 @@ Date.prototype.format = function (mask, utc) {
 console.log(dateFormat(new Date(), 'dS mmm. yyyy HH:MM:ss')); // "12th Jan. 2021 14:28:09"
 console.log(dateFormat(new Date(), 'shortDate')); // "1/12/21"
 console.log(dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss')); // "2022-01-12 14:32:13"
+```
+
+### 防抖函数（简易版）
+事件持续触发不执行，停止触发指定时间之后才执行一次。
+```js
+/**
+ * @fn : 要执行的函数
+ * @delay : 执行函数的时间间隔（毫秒）
+ */ 
+ 
+function debounce(fn, delay) {
+    let timer;
+    return function(...args) {    
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay)
+    }
+}
+```
+
+### 节流函数（简易版）
+事件重复触发，不会每次都执行，每间隔一段时间执行一次。
+```js
+/**
+ * @fn : 要执行的函数
+ * @delay : 每次函数的时间间隔
+ */  
+function throttle(fn, delay) {
+    let timer;    // 定时器
+ 
+    return function(...args) {
+        if(timer) return;
+        timer = setTimeout(() => {
+            timer = null;
+            fn.apply(this, args);
+        }, delay);
+    }
+}
 ```
