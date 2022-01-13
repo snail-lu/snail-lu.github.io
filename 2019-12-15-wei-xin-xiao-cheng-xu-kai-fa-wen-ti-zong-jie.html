@@ -360,14 +360,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-16
+                    2021-12-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    169
+                    264
                 </div>
                 
 
@@ -418,7 +418,11 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
     <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>suitGoodsList<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-
+<h3 id="input高度设置小于45prx时无效"><a href="#input高度设置小于45prx时无效" class="headerlink" title="input高度设置小于45prx时无效"></a>input高度设置小于45prx时无效</h3><p>在调试购物车商品数量框时，发现中间输入框与左右两侧数量增减框高度不一致，CSS中调小输入框高度仍无效，在微信开发者工具中调节输入框高度值，发现小于<code>45rpx</code>时，高度不再变化。<br>解决：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.input</span> <span class="token punctuation">&#123;</span>
+    height： 40rpx<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 40rpx<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -861,7 +865,7 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">Snail-Lu</a>
@@ -870,7 +874,7 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.4k</span>&nbsp;字
+                class="white-color">39.8k</span>&nbsp;字
             
             
             
@@ -1101,6 +1105,16 @@ $(function () {
     <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/js/matery.min.js"></script>
 
     <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3ee696b85b0bb417437de1bab78784ee";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
     <!-- Baidu Push -->
 
