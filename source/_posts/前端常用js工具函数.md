@@ -217,3 +217,4 @@ function throttle(fn, delay) {
     }
 }
 ```
+[debounce和throttle可视化比较](http://demo.nimius.net/debounce_throttle/)
