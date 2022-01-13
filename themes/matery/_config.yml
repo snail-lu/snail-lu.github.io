@@ -405,8 +405,8 @@ baiduAnalytics:
   enable: true
   id: 3ee696b85b0bb417437de1bab78784ee
 
-# 百度搜索资源平台提交链接
-baiduPush: true
+# 百度搜索资源平台提交链接（自动推送，百度已关闭自动推送）
+baiduPush: false
 
 # The used front-end library can be replaced with the corresponding CDN address as needed,
 # If the specific version is not specified below, you can use the latest version.
