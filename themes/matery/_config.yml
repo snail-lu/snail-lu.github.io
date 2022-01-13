@@ -217,7 +217,7 @@ myProjects:
     portfolio:
       icon: fas fa-file-alt
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://snail-lu.github.io/portfolio
+      url: http://snail-lu.github.io/portfolio-vue
       desc: 个人作品集
     uni-app-mall:
         icon: fas fa-database
@@ -402,8 +402,8 @@ googleAnalytics:
 # Add baidu analytics configuration
 # 添加 baidu Analytics 配置
 baiduAnalytics:
-  enable: false
-  id:
+  enable: true
+  id: 3ee696b85b0bb417437de1bab78784ee
 
 # 百度搜索资源平台提交链接
 baiduPush: true
