@@ -48,6 +48,13 @@ https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/logo/avatar.png
 
 ```
 
+### SEO
+站点已经被`Google`收录，但是`百度`没有收录，而且以往使用的百度自动推送也已经被禁，所以打算改用主动推送，但是目前存在以下问题，有待解决。
+- `Google`搜索部分文章无法找到
+- `主动推送`插件已安装，但是没有启用，因为本博客源码及`github pages`是同一个公开仓库的不同分支，存在泄漏`主动推送秘钥`的问题
+- 本站点已经在[百度搜索资源平台](https://ziyuan.baidu.com/linksubmit/index)提交收录申请，但是还是无法检索到站点
+- 已经启用了`百度统计`，但是查看不到统计数据
+
 ### 相关文档
 [1. hexo文档](https://hexo.io/zh-cn/docs/commands)  
 [2. hexo-theme-matery文档](https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md)  
