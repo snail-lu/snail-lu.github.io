@@ -1185,11 +1185,57 @@ element.parentNode.removeChild(element);
 element = null;          // weakMap中对应的数据也会被移除    
 ```
 
-##### 4.2 与Map的差异
+##### 与Map的差异
 - Weak Map只接受非空对象作为键值
 - 不可迭代和枚举
-- 没有size属性和clear()方法
+- 没有`size`属性和`clear()`方法
 
+### 第八章 迭代器和生成器
+#### 何为迭代器
+迭代器是被设计专用于迭代的对象，带有特定接口。所有的迭代器对象都拥有`next()`方法，会返回一个`结果对象`。该`结果对象`有两个属性：
+- `value`: 下一个值
+- `done`: 是否迭代完成
+`ES5`中迭代器简易实现：
+```js
+function createIterator(items) {
+    var i = 0;
+    return {
+        next: function() {
+            var done = (i >= items.length);
+            var value = !done ? items[i++] : undefined;
+            return {
+                done: done,
+                value: value
+            };
+        }
+    };
+}
+
+// 生成迭代器
+var iterator = createIterator([1, 2, 3]);
+
+console.log(iterator.next()) // {done: false, value: 1}
+console.log(iterator.next()) // {done: false, value: 2}
+console.log(iterator.next()) // {done: false, value: 3}
+console.log(iterator.next()) // {done: true, value: undefined}
+```
+
+#### 何为生成器
+生成器是能返回一个迭代器的函数。生成器函数由放在`function`关键字之后的一个星号`*`来表示，并能使用新的关键字`yield`。
+```js
+// 生成器
+function *createIterator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+let iterator = createIterator();
+console.log(iterator.next()); // {done: false, value: 1}
+console.log(iterator.next()); // {done: false, value: 2}
+console.log(iterator.next()); // {done: false, value: 3}
+console.log(iterator.next()); // {done: true, value: undefined}
+```
 
 ### 第九章 JS的类
 #### ES5的仿类结构
