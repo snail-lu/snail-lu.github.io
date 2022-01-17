@@ -1222,6 +1222,7 @@ console.log(iterator.next()) // {done: true, value: undefined}
 
 #### 何为生成器
 生成器是能返回一个迭代器的函数。生成器函数由放在`function`关键字之后的一个星号`*`来表示，并能使用新的关键字`yield`。
+> `yield`关键字只能用在生成器内部，用于其他位置会被认为是语法错误。
 ```js
 // 生成器
 function *createIterator() {
@@ -1236,6 +1237,100 @@ console.log(iterator.next()); // {done: false, value: 2}
 console.log(iterator.next()); // {done: false, value: 3}
 console.log(iterator.next()); // {done: true, value: undefined}
 ```
+> 可以创建生成器函数表达式，不可以使用箭头函数。
+```js
+const createIterator = function *(items) {
+    for (let i = 0; i < items.length; i++) {
+        yield items[i]
+    }
+}
+
+let iterator = createIterator([1, 2, 3]);
+console.log(iterator.next()); // {done: false, value: 1}
+// ...
+```
+
+#### 访问默认迭代器
+可迭代对象是包含`Symbol.iterator`属性的对象。`for-of`只可用在可迭代对象上。常用的`数组`、`Set`、`Map`以及`字符串`都是可迭代对象，用户自定义创建的对象默认不是可迭代对象。    
+`Symbol.iterator`定义了为指定对象返回迭代器的函数，可以使用`Symbol.iterator`来访问对象上的默认迭代器。
+```js
+let values = [1, 2, 3];
+let iterator = values[Symbol.iterator]();
+
+console.log(iterator.next()); // {done: false, value: 1}
+// ...
+```
+可以使用`Symbol.iterator`来检测一个对象是否能进行迭代。
+```js
+function isIterable(object) {
+    return typeof object[Symbol.iterator] === 'function';
+}
+```
+
+#### 创建可迭代对象
+为自定义的对象添加`Symbol.iterator`属性，可以使其成为可迭代对象。
+```js
+let o = {
+    a: 1,
+    b: 2,
+    *[Symbol.iterator]() {
+        for (let key in this) {
+            yield this[key];
+        }
+    }
+}
+
+for (let item of o) {
+    console.log(item) // 1 2
+}
+```
+
+#### 集合的迭代器
+ES6中的三种集合对象类型（数组、`Map`和`Set`），都拥有如下迭代器：
+- `entries()`：返回一个包含键值对的迭代器；
+- `values()`：返回一个包含集合中的值的迭代器；
+- `keys()`：返回一个包含集合中的建的迭代器。
+`values()`是数组与`Set`的默认迭代器，`entries()`是`Map`的默认迭代器。
+
+#### 字符串的迭代器
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 第九章 JS的类
 #### ES5的仿类结构
