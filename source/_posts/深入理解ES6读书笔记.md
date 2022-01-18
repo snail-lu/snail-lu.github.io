@@ -1292,24 +1292,127 @@ ES6中的三种集合对象类型（数组、`Map`和`Set`），都拥有如下�
 - `keys()`：返回一个包含集合中的建的迭代器。
 `values()`是数组与`Set`的默认迭代器，`entries()`是`Map`的默认迭代器。
 
-#### 字符串的迭代器
+#### 扩展运算符与非数组的可迭代对象
+扩展运算符能作用域所有可迭代对象，并且会使用默认迭代器来判断需要使用哪些值。  
+作用于`Set`：
+```js
+let set = new Set([1, 2, 3, 3, 4, 4, 5]),
+    array = [...set];
 
+console.log(array); // [1, 2, 3, 4, 5]
+```
+作用于`Map`：
+```js
+let map = new Map(["name", "Nicholas"], ["age", 25]),
+    array = [...map];
 
+console.log(array); // [ ["name", "Nicholas"], ["age", 25]]
+```
+作用于字符串：
+```js
+let str = "hello world",
+    array = [...str];
 
+console.log(array); // ["h","e","l","l","o"," ","w","o","r","l","d"]
+```
 
+#### 传递参数给迭代器
+可以通过`next()`方法向迭代器传递参数，该参数会成为生成器内部`yield`语句的值。
+> 注：`yield语句`是指上次生成器中断执行出得语句。
+```js
+function *createIterator() { 
+    let first = yield 1; 
+    let second = yield first + 2;  // 4 + 2 
+    yield second + 3;              // 5 + 3 
+}
 
+let iterator = createIterator(); 
+console.log(iterator.next());      // "{ value: 1, done: false }" 
+console.log(iterator.next(4));     // "{ value: 6, done: false }" 
+console.log(iterator.next(5));     // "{ value: 8, done: false }" 
+console.log(iterator.next());      // "{ value: undefined, done: true }"
+```
+对于`next()`的首次调用，传递给它的任一参数都会被忽略。
 
+#### 迭代器中抛出错误
+传递错误对象给迭代器的`throw()`方法，可以让迭代器抛出该错误。
+```js
+function *createIterator() { 
+    let first = yield 1; 
+    let second = yield first + 2; // yield 4 + 2 ，然后抛出错误 
+    yield second + 3; // 永不会被执行 
+}
 
+let iterator = createIterator(); 
+console.log(iterator.next()); // "{ value: 1, done: false }" 
+console.log(iterator.next(4)); // "{ value: 6, done: false }" 
+console.log(iterator.throw(new Error("Boom"))); // 从生成器中抛出了错误
+```
+可以使用`try-catch`来捕捉错误。
+```js
+function *createIterator() { 
+    let first = yield 1; 
 
+    try {
+        let second = yield first + 2; // yield 4 + 2 ，然后抛出错误 
+    } catch(e) {
+        second = 6;                   // 捕捉到错误时，赋予新值
+    }
+    yield second + 3;
+}
 
+let iterator = createIterator(); 
+console.log(iterator.next()); // "{ value: 1, done: false }" 
+console.log(iterator.next(4)); // "{ value: 6, done: false }" 
+console.log(iterator.throw(new Error("Boom"))); // "{ value: 9, done: false }" 
+```
 
+#### 生成器的`Return`语句
+生成器中使用`return`，可以让生成器在指定位置退出执行，且指定最后一次调用`next()`的返回值。使用`return`语句，`done`属性会被设置为`true`。
+```js
+function *createIterator() { 
+    yield 1; 
+    return 99; 
+    yield 2; 
+    yield 3; 
+}
 
+let iterator = createIterator(); 
+console.log(iterator.next()); // "{ value: 1, done: false }" 
+console.log(iterator.next()); // "{ value: 99, done: true }"
+```
 
+#### 生成器委托
+可以将多个生成器合并成一个生成器来使用，该合并后的生成器创建出来的迭代器从外部来看就是一个单一的迭代器。该迭代器在`next()`调用过程中，
+会委托给合适的生成器。合并后的生成器中，可以
+```js
+function *createNumberIterator() { 
+    yield 1; 
+    yield 2; 
+    return 3; 
+}
 
+function *createRepeatingIterator(count) { 
+    for (let i=0; i < count; i++) { 
+        yield "repeat"; 
+    } 
+}
 
+function *createCombinedIterator() { 
+    let result = yield *createNumberIterator(); // 第3次调用next()时result会被赋值为3，并传递给下一个生成器
+    yield *createRepeatingIterator(result); 
+}
 
+var iterator = createCombinedIterator(); 
+console.log(iterator.next()); // "{ value: 1, done: false }" 
+console.log(iterator.next()); // "{ value: 2, done: false }" 
+console.log(iterator.next()); // "{ value: "repeat", done: false }" 
+console.log(iterator.next()); // "{ value: "repeat", done: false }" 
+console.log(iterator.next()); // "{ value: "repeat", done: false }" 
+console.log(iterator.next()); // "{ value: undefined, done: true }"
+```
 
-
+#### 异步任务运行器
 
 
 
