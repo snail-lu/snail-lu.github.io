@@ -1412,29 +1412,6 @@ console.log(iterator.next()); // "{ value: "repeat", done: false }"
 console.log(iterator.next()); // "{ value: undefined, done: true }"
 ```
 
-#### 异步任务运行器
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### 第九章 JS的类
 #### ES5的仿类结构
 创建一个构造函数，然后在该构造函数的原型上定义方法，由此构造函数创建的实例对象都可以调用该方法。
@@ -1456,9 +1433,11 @@ person1.sayName(); // Jack
 class Person{
     // 构造器，作用相当于构造函数
     constructor(name){
-        // 自由属性在这里面创建
+        // 自有属性在这里面创建
         this.name = name;
     }
+
+    // 等价于Person.prototype.sayName
     sayName() {
         console.log(this.name)
     }
@@ -1470,11 +1449,11 @@ person1.sayName(); // Jack
 console.log(typeof Person); // function
 ```
 #### 类与构造函数之间的区别
-- 类声明不会被提升，行为类似于let
+- 类声明不会被提升，行为类似于`let`
 - 类声明中的所有代码会自动运行在严格模式下，并且也无法退出严格模式
 - 类的所有方法都是不可枚举的
-- 类的所有方法内部都没有[[construct]]，使用new来调用它们会出错
-- 调用类构造器时不使用new，会抛出错误
+- 类的所有方法内部都没有`[[Construct]]`，使用`new`来调用它们会出错
+- 调用类构造器时不使用`new`，会抛出错误
 - 试图在类的方法内部重写类名，会抛出错误（外部可以）
 
 #### 基本的类表达式
@@ -1511,7 +1490,7 @@ console.log(typeof PersonClass2); //'undefined'   //外部访问结果为"undefi
 ```
 
 #### 作为一级公民的类
-能被当作值来使用的就称为“一级公民”，意味着它能作为参数传给函数、能作为函数返回值、能用来给变量赋值。JS的函数就是一级公民。ES6中，类也是一级公民。
+能被当作值来使用的就称为`一级公民`，意味着它能作为参数传给函数、能作为函数返回值、能用来给变量赋值。JS的函数就是一级公民。ES6中，类也是一级公民。
 ```js
 function createObject(classDef) {
     return new classDef();
@@ -1526,7 +1505,7 @@ let obj = createObject(class {
 obj.sayHi(); //"Hi!"
 ```
 
-立即调用类构造器，以创建单例，需使用new配合类表达式来使用。
+立即调用类构造器，以创建单例，需使用`new`配合类表达式来使用。
 ```js
 let person = new class {
     constructor(name){
@@ -1655,9 +1634,6 @@ let b1 = new B('Jack', 20);
 console.log(b1 instanceof B); // false
 console.log(b1 instanceof A); // false
 console.log(A.isPrototypeOf(B)); // true
-
-// 静态方法继承
-B.sayHello(); // Hello
 ```
 
 #### 屏蔽类方法
