@@ -1860,12 +1860,12 @@ numbers.fill(2, 1, 3); // -> [0, 2, 2, 1]
 > Promise是异步编程的另一种选择，它的工作方式类似于在其他语言中延迟并在将来执行作业。一个Promise指定一些稍后要执行的代码，并且也明确标示了作业的代码是否执行成功。
 
 #### 异步编程的背景
-JS引擎建立在单线程事件循环的概念上。单线程意味着在同一时刻只能执行一段代码。代码会被放置在作业队列（job queue）中，每当一段代码准备被执行，它就被添加到作业队列 。当JS引擎结束当前代码的执行后，事件循环（event loop）就会执行队列中的下一个作业。  
+JS引擎建立在`单线程事件循环`的概念上。单线程意味着在同一时刻只能执行一段代码。代码会被放置在`作业队列（job queue）`中，每当一段代码准备被执行，它就被添加到作业队列 。当JS引擎结束当前代码的执行后，`事件循环（event loop）`就会执行队列中的下一个作业。  
 回调函数模式是异步编程的最常用的一种选择，但是当回调函数嵌套过多时，会陷入回调地狱（callback hell），代码会可读性会变差且调试困难。
 
 #### Promise的生命周期
-Promise初始为挂起态（pending）时，表示异步操作尚未结束，此时的Promise是未决的（unsettled），异步操作结束的Promise是已决的（settled），已决的Promise有完成（fullfilled）及拒绝（rejected）两种状态。
-```
+Promise初始为`挂起态（pending）`时，表示异步操作尚未结束，此时的Promise是未决的（unsettled），异步操作结束的Promise是已决的（settled），已决的Promise有`完成（fullfilled）`及`拒绝（rejected）`两种状态。
+```mermaid
 graph LR
 A[挂起态 pending]-->B[已完成 fulfilled]
 A-->C[已拒绝 rejected]
@@ -1904,7 +1904,7 @@ promise.catch(function(err){
 ```
 
 #### 创建未决的Promise
-使用Promise构造器来创建，接收一个函数作为参数，该函数传递`resolve`及`reject`两个参数。  
+使用Promise构造器来创建，接收一个执行器函数作为参数，该函数传递`resolve`及`reject`两个参数。  
 示例代码：
 ```js
 // Node.js 范例
@@ -1936,11 +1936,140 @@ promise.then(function(contents) {
     console.error(err.message);
 });
 ```
-##### Promise的作业顺序问题
+#### 创建已处理的Promise
 ```js
-let promise = new Promise(function(resolve, reject){
-    
-});
+// 创建一个已完成的promise
+let promise1 = Promise.resolve(688);
+
+promise1.then(res => {
+    consol.log(res);  // 688
+})
+
+// 创建一个已拒绝的promise
+let promise2 = Promise.reject(422);
+
+promise2.catch(res => {
+    conosole.log(res); // 422
+})
+```
+
+#### 串联Promise
+每次调用`then()`或`catch()`方法时实际上创建并返回了另一个Promise，只有当前面的promise完成或拒绝后，后面的才会被解决。
+```js
+let p1 = new Promise(resolve => {
+    resolve(42)
+})
+
+p1.then(res => {
+    console.log(res)
+}).then(res => {
+    console.log('Finished')
+})
+
+// 输出结果
+42
+Finished
+```
+
+可以在promise链的末尾保留一个`catch()`方法，用以捕获处理promise链中的错误。
+```js
+let p2 = new Promise(resolve => {
+    resolve(42)
+})
+
+p2.then(res => {
+    console.log(res)
+    throw new Error('Error Happened!')
+}).then(res => {
+    console.log('Finished')
+}).catch(err => {
+    console.log(err.message)
+})
+
+// 输出结果
+42
+Error Happened!
+```
+可以在promise链中使用`return`传递数据到下游promise中。
+```js
+// 传递普通数据
+let p3 = new Promise(resolve => {
+    resolve(42)
+})
+
+p3.then(res => {
+    console.log(res)
+    return res + 10;
+}).then(res => {
+    console.log(res)
+})
+// 输出结果
+42
+52
+
+
+// 传递promise
+// 传递普通数据
+let p4 = new Promise(resolve => {
+    resolve(42)
+})
+
+let p5 = new Promise(resolve => {
+    resolve(52)
+})
+
+p4.then(res => {
+    console.log(res)
+    return p5;
+}).then(res => {
+    console.log(res)
+})
+// 输出结果
+42
+52
+```
+
+#### 响应多个Promise
+ES6中提供了`Promise.all()`和`Promise.race()`两个方法来监听多个Promise。
+`Promise.all()`接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。
+```js
+let p1 = new Promise(resolve => {
+    resolve(42)
+})
+let p2 = new Promise(resolve => {
+    resolve(43)
+})
+let p3 = new Promise(resolve => {
+    resolve(44)
+})
+
+let p4 = Promise.all([p1, p2, p3]);
+p4.then(res => {
+    console.log(res)
+})
+
+// 输出结果
+[42, 43, 44]
+```
+
+`Promise.race()`接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。
+```js
+let p1 = Promise.resolve(42)
+
+let p2 = new Promise(resolve => {
+    resolve(43)
+})
+let p3 = new Promise(resolve => {
+    resolve(44)
+})
+
+let p4 = Promise.all([p1, p2, p3]);
+p4.then(res => {
+    console.log(res)
+})
+
+// 输出结果
+42
 ```
 
 ### 第十二章 代理与反射接口
