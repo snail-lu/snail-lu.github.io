@@ -2073,11 +2073,11 @@ p4.then(res => {
 ```
 
 ### 第十二章 代理与反射接口
-> ES6通过代理（proxy）暴露了再对象上的内部工作，代理是一种封装，能够拦截并改变JS引擎的底层操作。
+> ES6通过代理（proxy）暴露了在对象上的内部工作，代理是一种封装，能够拦截并改变JS引擎的底层操作。
 
 #### 创建代理
 
-使用`Proxy`构造器来创建一个代理时，需要传递两个参数：`目标对象`以及`处理器`。处理器是定义了一个或多个陷阱函数的对象。如果未提供陷阱函数，代理会对所有操作采取默认行为。
+使用`Proxy`构造函数来创建一个代理时，需要传递两个参数：`目标对象`以及`处理器`。处理器是定义了一个或多个陷阱函数的对象。如果未提供陷阱函数，代理会对所有操作采取默认行为。
 
 ```js
 let target = {};
@@ -2090,7 +2090,7 @@ target.name = "target";
 console.log(proxy.name, target.name); // "target,target"
 ```
 
-#### 使用set陷阱函数验证属性值
+#### 使用set陷阱验证属性
 
 示例：创建一个属性值只能是数值的对象。
 
@@ -2101,23 +2101,32 @@ let target = {
 
 let proxy = new Proxy(target, {
     set(trapTarget, key, value, receiver) {
-        // 操作未有属性
+        // 新增属性且属性值非数字时报错
         if(!trapTarget.hasOwnProperty(key)) {
             if(isNaN(value)) {
                 throw new TypeError('Property must be a number.')
             }
         }
         
-        // 添加属性
+        // 新增属性值为数字或已有属性可以正常操作
         return Reflect.set(trapTarget, key, value, receiver);
     }
 });
 
+// 新增属性
 proxy.count = 1;
 console.log(proxy.count, target.count);  // "1,1"
 
+// 修改已有属性
+proxy.name = "proxy";
+console.log(proxy.name, target.name);  // "proxy,proxy"
+
+// 新增属性但属性值非数字
 proxy.anotherName = "proxy"; // 报错，"Property must be a number."
 ```
+
+#### 用get陷阱验证对象结构
+
 
 ### 第十三章 用模块封装代码
 #### 基本的导出
