@@ -351,3 +351,35 @@ class Image implements SelectableControl {
 }
 ```
 
+### 函数
+#### 函数完整类型
+包含两部分：参数类型和返回值类型。
+```ts
+let myAdd: (x: number, y: number) => number =
+    function(x: number, y: number): number { return x + y; };
+```
+※※※ 不明白这个形式的含义。
+
+#### 可选参数
+参数名后面添加`?`即表示该参数为可选参数。可选参数必须跟在必须参数后面。
+```ts
+function buildName(firstName: string, lastName?: string) {
+    if (lastName)
+        return firstName + " " + lastName;
+    else
+        return firstName;
+}
+```
+
+#### 默认参数
+可以给参数提供默认值以供用户没有传递这个参数或者传递了`undefined`时使用。
+- 在所有必须参数后面的有默认值的参数都是可选参数。
+- 带默认值的参数不必一定放在必选参数后面。
+- 带默认值的参数出现在必须参数前时，当且仅当用户传入`undefined`时，才会使用默认参数。
+```ts
+function buildName(firstName = "Will", lastName: string) {
+    return firstName + " " + lastName;
+}
+
+let result = buildName(undefined, "Adams");     // okay and returns "Will Adams"
+```
