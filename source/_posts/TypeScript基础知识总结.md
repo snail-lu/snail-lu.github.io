@@ -176,6 +176,38 @@ function creatSquare(config: SquareConfig): {color: string, area: number}{
 let mySquare = creatSquare({color: "black"});
 ```
 
+#### 额外的属性校验
+在上述示例代码中，只给`createSquare()`传递只包含部分属性的对象是可以的，如果传递了接口定义中不存在的属性，TS检查器会报错。这是因为将对象字面量赋值给变量或作为参数传递的时候会被进行`额外的属性检查`。
+```ts
+interface SquareConfig {    
+  color?: string;   
+  width?: number;  
+} 
+
+function creatSquare(config: SquareConfig): {color: string, area: number}{    
+  let newSquare = { color: "white", area: 100 };    
+  if (config.color) {        
+    newSquare.color = config.color;    
+  }    
+  
+  if (config.width) {        
+    newSquare.area = config.width * config.width;    
+  }    
+  
+  return newSquare; 
+} 
+// error: 'opacity' not expected in type 'SquareConfig'
+let mySquare = creatSquare({ color: "black", opacity: 0.5 });
+
+// 解决方法1：使用类型断言
+let mySquare = creatSquare({ color: "black", opacity: 0.5 } as SquareConfig);
+
+// 解决方法2：使用一个额外变量作为中转
+let squareOptions = { color: "black", opacity: 0.5 };
+let mySquare = creatSquare(squareOptions);
+
+```
+
 #### 只读属性
 在属性名前使用`readonly`来指定只读属性。另有`ReadonlyArray<T>`类型来指定数组为只读数组。
 ```ts
