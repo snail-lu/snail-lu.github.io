@@ -49,23 +49,22 @@ let list: Array<number> = [1,2,3];
 let x: [string, number]; 
 x = ['hello', 10];  // OK 
 x = [10, 'hello'];  // Error
-
-// 当访问一个越界的元素，会使用联合类型替代 
-x[3] = 'world';  // OK，字符串可以赋值给（string | number）类型 
-x[6] = true; // Error，布尔不是（string | number）类型
 ```
 
 #### 枚举
 ```ts
-enum Color {Red, Green, Blue}; 
-let c: Color = Color.Green; //默认情况下，从0开始为元素编号，
+enum Gender { Male, Female }; //默认情况下，从0开始为元素编号，
 
+let person: { name: string, gender: Gender } = {
+  name: 'Nike',
+  gender: Gender.Male
+}
 // 也可以手动指定成员的数值 
-enum Color {Red = 1, Green, Blue};
+// enum Gender { Male = 1, Female }; 
 
 // 可以根据枚举的值获得它对应的名字
-let colorName: string = Color[2]; 
-console.log(colorName); //Green
+let gender: string = Gender[1]; 
+console.log(gender); // Female
 ```
 
 #### Any
@@ -384,11 +383,11 @@ class Image implements SelectableControl {
 ```
 
 ### 函数
-#### 定义函数类型
+#### 定义函数结构的类型声明
 ```ts
-// 先声明
+// 定义函数结构
 let myAdd: (x: number, y: number) => number;
-// 后定义
+// 函数实现
 myAdd = function(x: number, y: number): number {
   return x + y;
 }
