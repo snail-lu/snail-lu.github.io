@@ -352,13 +352,22 @@ class Image implements SelectableControl {
 ```
 
 ### 函数
+#### 定义函数类型
+```ts
+// 先声明
+let myAdd: (x: number, y: number) => number;
+// 后定义
+myAdd = function(x: number, y: number): number {
+  return x + y;
+}
+```
 #### 函数完整类型
 包含两部分：参数类型和返回值类型。
 ```ts
+// 声明的同时定义函数
 let myAdd: (x: number, y: number) => number =
     function(x: number, y: number): number { return x + y; };
 ```
-※※※ 不明白这个形式的含义。
 
 #### 可选参数
 参数名后面添加`?`即表示该参数为可选参数。可选参数必须跟在必须参数后面。
