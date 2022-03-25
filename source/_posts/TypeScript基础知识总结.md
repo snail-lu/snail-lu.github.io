@@ -147,7 +147,7 @@ let strLength: number = (someValue as string).length;
 ```
 
 ### 接口
-接口的作用：声明变量的结构。
+接口的作用：定义对象的结构。
 
 #### 可选属性
 
@@ -422,4 +422,16 @@ function buildName(firstName = "Will", lastName: string) {
 }
 
 let result = buildName(undefined, "Adams");     // okay and returns "Will Adams"
+```
+
+### 泛型
+在定义函数或类时，如果遇到类型不明确就可以使用泛型。
+```ts
+// 此处定义泛型是为了保证函数入参与返回值是同一数据类型
+function fn<T>(a: T): T {
+  return a;
+}
+
+let result1 = fn(10); // 调用时不指定泛型，TS会自动推断
+let result2 = fn<string>('hello'); // 调用时指定泛型
 ```
