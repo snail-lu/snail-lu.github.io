@@ -428,6 +428,36 @@ function buildName(firstName = "Will", lastName: string) {
 let result = buildName(undefined, "Adams");     // okay and returns "Will Adams"
 ```
 
+#### 剩余参数
+可以把函数的所有参数收集到一个变量里，该变量即为剩余参数。剩余参数为可选参数，不限个数。
+```ts
+function buildName(firstName: string, ...restOfName: string[]) {
+  return firstName + " " + restOfName.join(" ");
+}
+
+let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
+```
+
+#### 函数重载
+TS中为同一个函数提供多个函数类型定义来进行函数重载。
+```ts
+function getUserInfo(name: string): string;
+function getUserInfo(name: string, age?: number): object;
+
+function getUserInfo(name: string, age?: number): any {
+  if (age) {
+    return {
+      name,
+      age
+    }
+  } else {
+    return `Hello, ${name}`
+  }
+}
+
+console.log(getUserInfo('Jack', 15))
+```
+
 ### 泛型
 在定义函数或类时，如果遇到类型不明确就可以使用泛型。
 ```ts
