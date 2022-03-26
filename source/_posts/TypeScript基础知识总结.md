@@ -383,11 +383,15 @@ class Image implements SelectableControl {
 ```
 
 ### 函数
-#### 定义函数结构的类型声明
+#### 函数声明
 ```ts
-// 定义函数结构
+// 常规形式
+function myAdd1(x: number, y: number): number {
+  return x + y;
+}
+// 函数表达式形式
 let myAdd: (x: number, y: number) => number;
-// 函数实现
+// 函数赋值
 myAdd = function(x: number, y: number): number {
   return x + y;
 }
