@@ -47,7 +47,7 @@ categories:
 ### 基本指令
 ```bash
 show dbs/databases        # 显示当前的所有数据库
-use 数据库名               # 进入到指定的数据库中/创建不存在的数据库
+use <database>            # 进入到指定的数据库中/创建不存在的数据库
 db                        # 查看当前所处的数据库
 show collections          # 显示当前数据库中的所有集合
 ```
@@ -81,10 +81,10 @@ db.users.findOne({ age: 16 })
 
 - 修改
 ```bash
-db.<collection>.update(query, document)               # 替换文档
-db.<collection>.update(query, { $set：newDocument })  # 修改文档
-db.<collection>.updateMany(filter, update, option)    # 修改多个文档
-db.<collection>.updateOne(filter, update, option)     # 修改一个文档
+db.<collection>.update(query, document)                # 替换文档
+db.<collection>.update(query, { $set：newDocument })   # 修改文档
+db.<collection>.updateMany(filter, update, options)    # 修改多个文档
+db.<collection>.updateOne(filter, update, options)     # 修改一个文档
 
 # 示例：
 db.users.update({ name: 'mike' }, { name: 'Jack' })    # 查找到的文档会被{ name:'Jack' }替换
@@ -93,7 +93,13 @@ db.users.update({ name: 'mike', { $set: { age: 17 }}}) # 查到的第一个文�
 
 - 删除
 ```bash
-db.<collection>.remove()
-db.<collection>.deleteOne()
-db.<collection>.deleteMany()
+db.users.remove({})                         # 删除集合中所有文档
+db.<collection>.remove(query, options)      # 删除符合条件的文档
+db.<collection>.deleteOne(filter, options)  # 删除一个文档
+db.<collection>.deleteMany(filter, options) # 删除多个文档
+db.<collection>.drop()                      # 删除集合
+db.dropDatabase()                           # 删除数据库
+# 示例：
+db.users.remove({ name: 'Mike' })
+db.users.deleteOne()
 ```
