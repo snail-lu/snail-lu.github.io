@@ -52,6 +52,8 @@ db                        # 查看当前所处的数据库
 show collections          # 显示当前数据库中的所有集合
 ```
 ### CRUD指令
+> query指查询条件，documnent指文档。
+
 - 插入文档
 ```bash
 db.<collection>.insert()                                # 插入一个或多个文档
@@ -67,20 +69,26 @@ db.users.insertMany([{ name: 'admin', age: 16 }, { name: 'admin2', age: 30 }])
 - 查询文档
 ```bash
 db.<collection>.find()               # 查询所有文档
-db.<collection>.find(query)          # 查询符合查询条件的文档
+db.<collection>.find(query)          # 查询符合查询条件的文档集合
+db.<collection>.findOne(query)       # 查询符合查询条件的第一个文档
 db.<collection>.find(query).count()  # 查询文档数量
 
 # 示例：
 db.users.find()
 db.users.find({ age: 16 })
+db.users.findOne({ age: 16 })
 ```
 
 - 修改
 ```bash
-db.<collection>.update(query, document)           # 替换文档
-db.<collection>.update(query, {$set：newDocument})  # 修改文档
-db.<collection>.updateMany()  
-db.<collection>.updateOne()
+db.<collection>.update(query, document)               # 替换文档
+db.<collection>.update(query, { $set：newDocument })  # 修改文档
+db.<collection>.updateMany(filter, update, option)    # 修改多个文档
+db.<collection>.updateOne(filter, update, option)     # 修改一个文档
+
+# 示例：
+db.users.update({ name: 'mike' }, { name: 'Jack' })    # 查找到的文档会被{ name:'Jack' }替换
+db.users.update({ name: 'mike', { $set: { age: 17 }}}) # 查到的第一个文档age值会被修改为17
 ```
 
 - 删除
