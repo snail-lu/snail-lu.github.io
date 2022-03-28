@@ -54,22 +54,31 @@ show collections          # 显示当前数据库中的所有集合
 ### CRUD指令
 - 插入文档
 ```bash
-db.<collection>.insert()  # 插入一个或多个文档
-db.<collection>.insertOne(document)  # 插入一个文档      
-db.<collection>.insertMany([document1, document2]) # 插入多个文档
+db.<collection>.insert()                                # 插入一个或多个文档
+db.<collection>.insertOne(document)                     # 插入一个文档      
+db.<collection>.insertMany([document1, document2, ...]) # 插入多个文档
+
+# 示例：
+db.users.insert({ name: 'admin', age: 16 })
+db.users.insertOne({ name: 'admin', age: 16 })
+db.users.insertMany([{ name: 'admin', age: 16 }, { name: 'admin2', age: 30 }])
 ```
 
 - 查询文档
 ```bash
-db.<collection>.find()                  # 查询所有文档
-db.<collection>.find(查询条件)          # 查询符合查询条件的文档
-db.<collection>.find(查询条件).count()  # 查询文档数量
+db.<collection>.find()               # 查询所有文档
+db.<collection>.find(query)          # 查询符合查询条件的文档
+db.<collection>.find(query).count()  # 查询文档数量
+
+# 示例：
+db.users.find()
+db.users.find({ age: 16 })
 ```
 
 - 修改
 ```bash
-db.<collection>.update(查询条件,新文档)           # 替换文档
-db.<collection>.update(查询条件，{$set：新文档})  # 修改文档
+db.<collection>.update(query, document)           # 替换文档
+db.<collection>.update(query, {$set：newDocument})  # 修改文档
 db.<collection>.updateMany()  
 db.<collection>.updateOne()
 ```
