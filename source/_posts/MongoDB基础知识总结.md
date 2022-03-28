@@ -54,9 +54,9 @@ show collections          # 显示当前数据库中的所有集合
 ### CRUD指令
 - 插入文档
 ```bash
-db.<collection>.insert()  
-db.<collection>.insertOne()  # 插入一个文档      
-db.<collection>.insertMany() # 插入多个文档
+db.<collection>.insert()  # 插入一个或多个文档
+db.<collection>.insertOne(document)  # 插入一个文档      
+db.<collection>.insertMany([document1, document2]) # 插入多个文档
 ```
 
 - 查询文档
