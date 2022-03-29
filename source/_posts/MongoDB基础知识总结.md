@@ -103,3 +103,13 @@ db.dropDatabase()                           # 删除数据库
 db.users.remove({ name: 'Mike' })
 db.users.deleteOne()
 ```
+
+### 操作符
+|操作符|含义|
+|----|----|
+|$gt|>|
+|$gte|>=|
+|$lt|<|
+|$lte|<=|
+|$eq|=|
+|$ne|!=|
