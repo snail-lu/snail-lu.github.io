@@ -68,10 +68,12 @@ db.users.insertMany([{ name: 'admin', age: 16 }, { name: 'admin2', age: 30 }])
 
 - 查询文档
 ```bash
-db.<collection>.find()               # 查询所有文档
-db.<collection>.find(query)          # 查询符合查询条件的文档集合
-db.<collection>.findOne(query)       # 查询符合查询条件的第一个文档
-db.<collection>.find(query).count()  # 查询文档数量
+db.<collection>.find()                                                 # 查询所有文档
+db.<collection>.find(query)                                            # 查询符合查询条件的文档集合
+db.<collection>.findOne(query)                                         # 查询符合查询条件的第一个文档
+db.<collection>.find(query).count()                                    # 查询文档数量
+db.<collection>.find(query).limit(pageSize)                            # 限制查询数量
+db.<collection>.find(query).skip([pageNum-1]*pageSize).limit(pageSize) # 查询分页
 
 # 示例：
 db.users.find()
