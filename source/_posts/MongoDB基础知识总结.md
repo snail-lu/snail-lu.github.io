@@ -134,3 +134,10 @@ db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 # <field>为要排序的字段，1表示升序 -1表示降序
 db.users.find({}).sort({ age: 1 }) # users集合中的文档按照age升序返回
 ```
+
+### 限制查询的返回字段
+默认情况下，MongoDB中的查询返回匹配文档中的所有字段。可以在查询中来配置指定货限制返回的字段。
+```bash
+db.inventory.find( { status: "A" }, { item: 1, status: 1 } ) # 查找status为A的文档，返回的查询结果仅包含item,status,_id三个字段
+db.inventory.find( { status: "A" }, { item: 1, status: 1, _id: 0 } ) # 查找status为A的文档，返回的查询结果仅包含item,status两个字段
+```
