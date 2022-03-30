@@ -121,3 +121,8 @@ db.users.deleteOne()
 db.users.find({ age: { $gt: 20 }}) # 查询age>20的文档数据
 db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 ```
+
+### 文档间的关系
+- 一对一
+- 一对多
+- 多对多
