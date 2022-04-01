@@ -179,6 +179,23 @@ const blogSchema = new Schema({
 });
 
 // 创建Model（文档集合），以便后续来操作集合
-const BlogModel = mongoose.model('Blog', blogSchema)
+const BlogModel = mongoose.model('blog', blogSchema)
 
+// 使用BlogModel来进行CRUD
+BlogModel.create({
+    title: '第一篇博客',
+    author: 'Snail-Lu',
+    body: '这是我的第一篇博客',
+    comments: [{ body: '写的不错', date: '2022/4/1 22:23:14' }],
+    date: '2022-4-1 22:22:22',
+    hidden: false,
+    meta: {
+      votes: 10,
+      favs:  10
+    }
+}, function(err) {
+    if(!err) {
+        console.log('插入成功')
+    }
+}) 
 ```
