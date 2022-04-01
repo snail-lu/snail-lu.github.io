@@ -198,4 +198,12 @@ BlogModel.create({
         console.log('插入成功')
     }
 }) 
+
+BlogModel.findOne({ title: '第一篇博客' }, function(err, doc) {
+    if(!err) {
+        // 利用document方法进行文档修改
+        doc.$set({ hidden: true })
+        doc.save()
+    }
+})
 ```
