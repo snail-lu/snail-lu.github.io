@@ -141,3 +141,44 @@ db.users.find({}).sort({ age: 1 }) # users集合中的文档按照age升序返�
 db.inventory.find( { status: "A" }, { item: 1, status: 1 } ) # 查找status为A的文档，返回的查询结果仅包含item,status,_id三个字段
 db.inventory.find( { status: "A" }, { item: 1, status: 1, _id: 0 } ) # 查找status为A的文档，返回的查询结果仅包含item,status两个字段
 ```
+
+### 使用mongoose连接mongoDB
+```js
+// 引入
+const mongoose = require('mongoose');
+
+// 连接数据库
+mongoose.connect("mongodb://localhost:27017/adminclient");
+
+// 监听连接状态
+const connection = mongoose.connection;
+connection.once('open', function() {
+    console.log('数据库连接成功');
+})
+connection.once('close', function() {
+    console.log('数据库连接断开');
+})
+
+// 断开数据库连接(一般无需使用)
+mongoose.disconnect()
+
+// 定义Schema（集合中的文档结构）
+const Schema = mongoose.Schema;
+
+const blogSchema = new Schema({
+    title:  String,
+    author: String,
+    body:   String,
+    comments: [{ body: String, date: Date }],
+    date: { type: Date, default: Date.now },
+    hidden: Boolean,
+    meta: {
+      votes: Number,
+      favs:  Number
+    }
+});
+
+// 创建Model（文档集合），以便后续来操作集合
+const BlogModel = mongoose.model('Blog', blogSchema)
+
+```
