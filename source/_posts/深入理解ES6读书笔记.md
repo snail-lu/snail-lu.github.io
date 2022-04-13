@@ -1253,14 +1253,15 @@ console.log(iterator.next()); // {done: false, value: 1}
 #### 访问默认迭代器
 <span id="iterableObject">可迭代对象</span>是包含`Symbol.iterator`属性的对象。`for-of`只可用在可迭代对象上。常用的`数组`、`Set`、`Map`以及`字符串`都是可迭代对象，用户自定义创建的对象默认不是可迭代对象。    
 `Symbol.iterator`定义了为指定对象返回迭代器的函数，可以使用`Symbol.iterator`来访问对象上的默认迭代器。
+
 ```js
 let values = [1, 2, 3];
 let iterator = values[Symbol.iterator]();
 
 console.log(iterator.next()); // {done: false, value: 1}
-// ...
 ```
 可以使用`Symbol.iterator`来检测一个对象是否能进行迭代。
+
 ```js
 function isIterable(object) {
     return typeof object[Symbol.iterator] === 'function';
@@ -1809,7 +1810,7 @@ function makeArray() {
 ```
 
 #### Array.from()方法
-接收[可迭代对象](#iterableObject)或类数组对象作为第一个参数，接收一个映射函数作为第二个参数，接收第三个参数作为映射函数的this值，最终返回一个数组。
+接收[可迭代对象](#iterableObject)或`类数组对象`(arguments对象或带有length属性的对象)作为第一个参数，接收一个映射函数作为第二个参数，接收第三个参数作为映射函数的this值，最终返回一个数组。
 ```js
 function translate() {
     return Array.from(arguments, (value)=> value + 1);
