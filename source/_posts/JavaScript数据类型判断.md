@@ -6,6 +6,7 @@ tags:
 categories:
 - [前端]
 - [JavaScript进阶]
+- [面试]
 ---
 
 ### 数据类型
