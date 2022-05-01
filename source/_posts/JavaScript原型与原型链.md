@@ -22,3 +22,10 @@ categories:
 - `constructor` ----  访问原型对象/实例对象对应的构造函数
 - `isPrototypeOf()` ---- 判断对象之间是否有原型链关系
 - `Object.getPrototypeOf()` ---- 获取某个实例对象对应的原型对象
+
+### 修改原型
+- `[构造函数].prototype.方法` ---- 在原型对象上增加方法
+- `[构造函数].prototype = {}` ---- 字面量方式修改原型对象，此方式`constructor`指向会出现问题，需要重新指定
+- `[构造函数1].prototype = new [构造函数2]()` ---- 将一个实例对象指定为另一个构造函数的原型，同样需要重新指定`constructor`指向
+- `const a = Object.create(A)` ---- 以对象A作为原型创建实例a
+- `Object.setPrototypeOf(A, B)` ---- 将B设定为A的原型对象
