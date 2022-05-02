@@ -108,10 +108,62 @@ const obj2 ={
 
 const bar = foo.call(obj1);
 
-bar.call(obj2);     //2 ,不是3
+bar.call(obj2);     // 2 ,不是3
 ```
 `foo()`内部创建的箭头函数会捕获调用`foo()`的`this`，由于`foo()`的`this`绑定到`obj1`，`bar`的`this`也会绑定到`obj1`，箭头函数的绑定无法被修改。
 
 
-### 四、参考文章
+### 五、常见使用浅析
+```js
+var name = "window";
+var obj = {
+    name: "obj",
+    // 传统函数形式
+    getName1: function() {
+        console.log(this.name)
+    },
+
+    // 箭头函数-作为直接执行的方法
+    getName2: () => {
+        console.log(this.name)
+    },
+
+    // 传统函数闭包
+    getName3: function(){
+        setTimeout(function(){
+            console.log(this.name);
+        }, 500)
+    },
+ 
+    // 箭头函数闭包
+    getName4: function(){
+        setTimeout(() => {
+            console.log(this.name)
+        },500)
+    }
+};
+// 调用时this应用隐式绑定规则，绑定到obj上
+obj.getName1() // "obj"
+
+// obj.getName2为箭头函数，调用时作用域为全局作用域，this被绑定到window
+obj.getName2() // "window"
+
+// setTimeout回调函数，应用默认绑定，绑定到window
+obj.getName3() // "window"
+
+// setTimeout回调函数为箭头函数，外层作用域为getName4的作用域，
+// 此作用域中的this指向obj，则箭头函数中的this指向也为obj
+obj.getName4() // "obj"
+
+
+// 函数的间接引用，直接调用函数，应用默认绑定规则，this指向window
+const getName1 = obj.getName1;
+getName1(); // "window"
+```
+
+### 七、总结
+> [JavaScript高级程序设计]: 每个函数在被调用时都会自动取得两个特殊变量：`this` 和 `arguments`。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。  
+
+闭包中的`this`是无法`“继承”`其外部作用域中的`this`的，所以闭包中的`this`可以直接用上述4中规则进行判断。而箭头函数会继承外层函数调用的 `this` 绑定。
+### 六、参考文章
 - [KYLE SIMPSON.你不知道的JavaScript-上卷](https://juejin.cn/post/6844904050543034376)
