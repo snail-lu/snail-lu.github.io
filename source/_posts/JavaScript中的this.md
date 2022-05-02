@@ -82,11 +82,18 @@ var bar = new foo(2);
 console.log(bar.a);       //2
 ```
 
-### 三、箭头函数中的this
-箭头函数不使用`this`绑定的四种标准规则，而是根据外层（函数或全局）作用域来决定`this`。
+### 三、绑定规则的优先级
+`new绑定` > `显示绑定` > `隐式绑定` > `默认绑定`
+根据优先级来判断`this`的指向，顺序如下：
+1. 由 `new` 调用？绑定到新创建的对象。 
+2. 由 `call` 或者 `apply`（或者 `bind`）调用？绑定到指定的对象（指定`null`或`undefined`的时候会被忽略，然后遵循`默认绑定`规则绑定`this`）。 
+3. 由上下文对象调用？绑定到那个上下文对象。 
+4. 默认：在严格模式下绑定到 `undefined`，否则绑定到全局对象。
+### 四、箭头函数中的this
+箭头函数不使用上述`this`绑定的四种标准规则，而是根据外层（函数或全局）作用域来决定`this`。
 ```js
 function foo(){
-    return (a) => {
+    return () => {
         console.log(this.a);
     }
 }
@@ -103,4 +110,8 @@ const bar = foo.call(obj1);
 
 bar.call(obj2);     //2 ,不是3
 ```
-`foo()`内部创建的箭头函数会捕获调用时`foo()`的`this`，由于`foo()`的`this`绑定到`obj1`，`bar`的`this`也会绑定到`obj1`，箭头函数的绑定无法被修改。
+`foo()`内部创建的箭头函数会捕获调用`foo()`的`this`，由于`foo()`的`this`绑定到`obj1`，`bar`的`this`也会绑定到`obj1`，箭头函数的绑定无法被修改。
+
+
+### 四、参考文章
+- [KYLE SIMPSON.你不知道的JavaScript-上卷](https://juejin.cn/post/6844904050543034376)
