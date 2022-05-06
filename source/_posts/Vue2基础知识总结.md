@@ -19,22 +19,22 @@ categories:
 `key` 主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes（虚拟节点）。如果不使用 `key`，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 `key` 时，它会基于 `key` 的变化重新排列元素顺序，并且会移除 `key` 不存在的元素。
 综上，简单列表的渲染可以不使用`key`或者用数组的`index`作为`key`（效果等同于不带key），这种模式下性能最高，但是并不能准确的更新列表项的状态。一旦你需要保存列表项的状态，那么就需要用使用唯一的key用来准确的定位每一个列表项以及复用其自身的状态。
 
-#### 4. `computed` 和 `watch` 的区别及各自的应用场景
+#### 3. `computed` 和 `watch` 的区别及应用场景
 - **computed**
 计算属性，依赖其它属性值，并且 `computed` 的值有缓存，只有它依赖的属性值发生改变才会重新求值；  
 - **watch**
 更多的是「观察」的作用，类似于某些数据的监听回调 ，每当监听的数据变化时都会执行回调进行后续操作；  
 
-**运用场景：**  
-- 当我们需要进行数值计算，并且依赖于其它数据时，应该使用 `computed`，因为可以利用 `computed` 的缓存特性，避免每次获取值时，都要重新计算；
+- **应用场景**  
+  - 需要进行数值计算，并且依赖于其它数据，应该使用 `computed`，因为可以利用 `computed` 的缓存特性，避免每次获取值时，都要重新计算；
 
-- 当我们需要在`数据变化时执行异步`或`开销较大的操作`时，应该使用 `watch`，使用watch选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
+  - 需要在数据变化时执行`异步`或`开销较大的操作`，应该使用 `watch`。因为使用`watch`选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
 
-### 4. Vue 的单向数据流？
-所有的 prop 都使得其父子 prop 之间形成了一个**单向下行绑定**：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。
-额外的，每次父级组件发生更新时，子组件中所有的 `prop` 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue会在浏览器的控制台中发出警告。子组件想修改时，只能通过`$emit`派发一个自定义事件，父组件接收到后，由父组件修改。
+### 4. 单向数据流
+从父组件传到子组件的数据，子组件没有权利直接修改，想要修改该数据，只能通过`$emit`派发一个自定义事件，父组件接收到后，由父组件修改。
+每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这样会防止从子组件意外改变父级组件的状态，从而导致应用的数据流向难以理解。
 
-### 5、 vue实例的生命周期钩子都有哪些？
+### 5. Vue实例的生命周期钩子
 
 生命周期 | 描述
 ---|---
@@ -46,37 +46,38 @@ beforeUpdate | 组件数据更新之前调用，发生在虚拟 DOM 打补丁之
 updated | 组件数据更新之后
 activited | keep-alive 专属，组件被激活时调用
 deactivated | keep-alive 专属，组件被销毁时调用
-beforeDestory | 组件销毁前调用
-destoryed | 组件销毁后调用
+beforeDestroy | 组件销毁前调用
+destroyed | 组件销毁后调用
+errorCaptured | 2.5.0+ 新增，在捕获一个来自后代组件的错误时被调用。
 
 ![image](https://note.youdao.com/yws/api/personal/file/2BC932EC07A94D708B48933FFCF56131?method=download&shareKey=72ed2942cb733bfd27d2d039a1739544)
 
-### 6、 父组件和子组件生命周期钩子执行顺序？
-Vue 的父组件和子组件生命周期钩子函数执行顺序可以归类为以下 4 部分：
+### 6. 父组件和子组件生命周期钩子执行顺序
+可以归类为以下 4 部分：
 
 - 加载渲染过程  
-父 beforeCreate -> 父 created -> 父 beforeMount -> 子 beforeCreate -> 子 created -> 子 beforeMount -> 子 mounted -> 父 mounted
+父 `beforeCreate` -> 父 `created` -> 父 `beforeMount` -> 子 `beforeCreate` -> 子 `created` -> 子 `beforeMount` -> 子 `mounted` -> 父 `mounted`
 
 
 - 子组件更新过程  
-父 beforeUpdate -> 子 beforeUpdate -> 子 updated -> 父 updated
+父 `beforeUpdate` -> 子 `beforeUpdate` -> 子 `updated` -> 父 `updated`
 
 
 - 父组件更新过程  
-父 beforeUpdate -> 父 updated
+父 `beforeUpdate` -> 父 `updated`
 
 
 - 销毁过程  
-父 beforeDestroy -> 子 beforeDestroy -> 子 destroyed -> 父 destroyed
+父 `beforeDestroy` -> 子 `beforeDestroy` -> 子 `destroyed` -> 父 `destroyed`
 
-### 7、父组件监听子组件生命周期钩子的实现方法。
+### 7. 父组件中监听子组件生命周期钩子
 - `props/$emit`
-```jsx
+```vue
 // Parent.vue
 <Child @mounted="doSomething"/>
 
 doSomething() {
-   console.log('子组件mounted了');
+  console.log('子组件mounted了');
 },
     
 // Child.vue
@@ -86,7 +87,7 @@ mounted() {
 ```
 
 - `@hook`
-```js
+```vue
 //  Parent.vue
 <Child @hook:mounted="doSomething" ></Child>
 
@@ -100,11 +101,11 @@ mounted(){
 },  
 ```
 
-### 8、vue组件间常用的通信方式有哪几种？
+### 8. 组件间的通信方式
 - `props/$emit` 父子间通信
 - `ref` 与 `$parent / $children` 父子间通信
-  - ref：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
-  - $parent / $children：访问父 / 子实例  
+  - `ref`：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
+  - `$parent` / `$children`：访问父 / 子组件实例  
 - `EventBus($emit / $on)` 父子、隔代、兄弟间通信
 ```js
 // event-bus.js
@@ -124,31 +125,31 @@ EventBus.$on("aMsg", (msg) => {
 - `Vuex` 父子、隔代、兄弟间通信
 
 
-### 9、vue是如何实现数据双向绑定的？
-Vue实现数据双向绑定主要利用的就是: **数据劫持**和**发布订阅模式**。
+### 9. 数据双向绑定原理
+Vue实现数据双向绑定主要利用的就是: `数据劫持`和`发布订阅模式`。
 - **发布订阅模式**  
-定义了对象间的一种一对多的关系，让多个观察者对象同时监听某一个主题对象，当一个对象发生改变时，所有依赖于它的对象都将得到通知。
+当发布者数据变化时发布数据，全部订阅者均可以接收到通知。
 - **数据劫持**  
-就是利用JavaScript的访问器属性，即Object.defineProperty()方法，当对对象的属性进行赋值时，Object.defineProperty就可以通过set方法劫持到数据的变化，然后通知发布者(主题对象)去通知所有观察者，观察者收到通知后，就会对视图进行更新。  
+就是利用JavaScript的访问器属性，即`Object.defineProperty()`方法，当对对象的属性进行赋值时，`Object.defineProperty`就可以通过`set`方法劫持到数据的变化，然后通知发布者(主题对象)去通知所有订阅者，订阅者收到通知后，就会对视图进行更新。  
 
 Vue 主要通过以下 4 个步骤来实现数据双向绑定的：
-- 实现一个**监听器 Observer**  
-对数据对象进行遍历，包括子属性对象的属性，利用 Object.defineProperty() 对属性都加上 setter 和 getter。这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据变化。
-- 实现一个**编译器 Compiler**  
+- 实现一个**监听器 Observer**
+对数据对象进行遍历，包括子属性对象的属性，利用 `Object.defineProperty()` 对属性都加上 `setter` 和 `getter`。这样的话，给这个对象的某个值赋值，就会触发 `setter`，那么就能监听到了数据变化。
+- 实现一个**消息订阅器 Dep**
+用来收集订阅者 `Watcher`，对监听器 `Observer` 和 订阅者 `Watcher` 进行统一管理。
+- 实现一个**订阅者 Watcher**
+`Watcher` 是 `Observer` 和 `Compiler` 之间通信的桥梁 ，主要的任务是订阅 `Observer` 中的属性值变化的消息，当收到属性值变化的消息时，触发编译器 `Compiler` 中对应的更新函数。
+- 实现一个**编译器 Compiler**
 解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新。
-- 实现一个**订阅者 Watcher**  
-Watcher 订阅者是 Observer 和 Compiler 之间通信的桥梁 ，主要的任务是订阅 Observer 中的属性值变化的消息，当收到属性值变化的消息时，触发编译器 Compiler 中对应的更新函数。
-- 实现一个**发布者 Dep**  
-订阅器采用 发布-订阅 设计模式，用来收集订阅者 Watcher，对监听器 Observer 和 订阅者 Watcher 进行统一管理。
 
 ![image](https://note.youdao.com/yws/api/personal/file/WEB04c43c43cde70438811ebae027344add?method=download&shareKey=ac2f89c46ce2638c34dc2e069ba7dc9d)
 
-总之就是，在创建Vue实例的时候给传入的data进行数据劫持，同时视图编译的时候，对于使用到data中数据的地方进行创建Watcher对象，然后在数据劫持的getter中添加到发布者对象中，当劫持到数据发生变化的时候，就通过发布订阅模式以回调函数的方式通知所有观察者操作DOM进行更新，从而实现数据的双向绑定。
+总之就是，在创建 Vue 实例的时候给传入的 `data` 进行数据劫持，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` 对象，然后在数据劫持的 `getter` 中添加订阅者到订阅器 `Dep`，当劫持的数据发生变化的时候，监听器 `Observer` 就通过订阅器 `Dep` 来通知所有订阅者`Watcher` 操作DOM进行更新，从而实现数据的双向绑定。
 
-#### 10、data为什么是一个函数而不是一个对象？
+### 10. data为何是一个函数而非对象
 因为组件可能被用来创建多个实例。如果data仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供data函数，每次创建一个新实例后，我们能够调用data函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的data独立性。
 
-#### 11、Vue的diff算法。
+### 11. `diff`算法
 
 - 特点：    
   - 比较只会在同层级进行, 不会跨层级比较。
@@ -166,7 +167,8 @@ Watcher 订阅者是 Observer 和 Compiler 之间通信的桥梁 ，主要的任
 3. 当 while 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 dom 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 dom 中删除。至此整个 diff 过程就已经全部完成了。
 
 
-#### 12、Vue项目中做过的优化。
+### 12. `$nextTick`原理
+### 13. 项目中做过的优化
 - 编码优化
   - 尽量不要将所有的数据都放在data中，data中的数据都会增加getter和setter，会收集对应的 watcher
   - vue 在 v-for 时给每项元素绑定事件尽量用事件代理
