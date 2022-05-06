@@ -147,38 +147,50 @@ Vue 主要通过以下 4 个步骤来实现数据双向绑定的：
 总之就是，在创建 Vue 实例的时候给传入的 `data` 进行数据劫持，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` 对象，然后在数据劫持的 `getter` 中添加订阅者到订阅器 `Dep`，当劫持的数据发生变化的时候，监听器 `Observer` 就通过订阅器 `Dep` 来通知所有订阅者`Watcher` 操作DOM进行更新，从而实现数据的双向绑定。
 
 ### 10. data为何是一个函数而非对象
-因为组件可能被用来创建多个实例。如果data仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供data函数，每次创建一个新实例后，我们能够调用data函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的data独立性。
+因为组件可能被用来创建多个实例。如果data仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 `data` 函数，每次创建一个新实例后，我们能够调用 `data` 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的data独立性。
 
-### 11. `diff`算法
+### 11. 虚拟DOM `diff` 算法
 
 - 特点：    
   - 比较只会在同层级进行, 不会跨层级比较。
-  - 在 diff 比较的过程中，循环从两边向中间收拢。
+  - 在 `diff` 比较的过程中，循环从两边向中间收拢。
 
 - 流程
-1. 首先会对新老 VNode 的开始和结束位置进行标记：oldStartIdx、oldEndIdx、newStartIdx、newEndIdx。
-2. 进入到的 while 循环处理中，这里是 diff 算法的核心流程，分情况进行了新老节点的比较并移动对应的 VNode 节点。while 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。  
-   while 循环中的处理逻辑， 循环过程中首先对新老 VNode 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 sameVnode（可以复用的相同节点） 则直接进行 patchVnode (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 VNode 索引，以便进入下一次循环处理，一共有 2 * 2 = 4 种情形。
-   - **情形一**：当新老 VNode 节点的 start 满足 sameVnode 时，直接 patchVnode 即可，同时新老 VNode 节点的开始索引都加 1。
-   - **情形二**：当新老 VNode 节点的 end 满足 sameVnode 时，同样直接 patchVnode 即可，同时新老 VNode 节点的结束索引都减 1。
-   - **情形三**：当老 VNode 节点的 start 和新 VNode 节点的 end 满足 sameVnode 时，这说明这次数据更新后 oldStartVnode 已经跑到了 oldEndVnode 后面去了。这时候在 patchVnode 后，还需要将当前真实 dom 节点移动到 oldEndVnode 的后面，同时老 VNode 节点开始索引加 1，新 VNode 节点的结束索引减 1。
-   - **情形四**：当老 VNode 节点的 end 和新 VNode 节点的 start 满足 sameVnode 时，这说明这次数据更新后 oldEndVnode 跑到了 oldStartVnode 的前面去了。这时候在 patchVnode 后，还需要将当前真实 dom 节点移动到 oldStartVnode 的前面，同时老 VNode 节点结束索引减 1，新 VNode 节点的开始索引加 1。  
-   如果都不满足以上四种情形，那说明没有相同的节点可以复用。于是则通过查找事先建立好的以旧的 VNode 为 key 值，对应 index 序列为 value 值的哈希表。从这个哈希表中找到与 newStartVnode 一致 key 的旧的 VNode 节点，如果两者满足 sameVnode 的条件，在进行 patchVnode 的同时会将这个真实 dom 移动到 oldStartVnode 对应的真实 dom 的前面；如果没有找到，则说明当前索引下的新的 VNode 节点在旧的 VNode 队列中不存在，无法进行节点的复用，那么就只能调用 createElm 创建一个新的 dom 节点放到当前 newStartIdx 的位置。
-3. 当 while 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 dom 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 dom 中删除。至此整个 diff 过程就已经全部完成了。
+1. 首先会对新老 `VNode` 的开始和结束位置进行标记：`oldStartIdx`、`oldEndIdx`、`newStartIdx`、`newEndIdx`。
+2. 进入到的 `while` 循环处理中，这里是 `diff` 算法的核心流程，分情况进行了新老节点的比较并移动对应的 `VNode` 节点。`while` 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。  
+`while` 循环中的处理逻辑，循环过程中首先对新老 `VNode` 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 `sameVnode`（可以复用的相同节点） 则直接进行 `patchVnode` (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 `VNode` 索引，以便进入下一次循环处理，一共有 `2 * 2 = 4` 种情形。
+   - **情形一**：当新老 `VNode` 节点的 `start` 满足 `sameVNode` 时，直接 `patchVNode` 即可，同时新老 `VNode` 节点的开始索引都加 1。
+   - **情形二**：当新老 `VNode` 节点的 `end` 满足 `sameVNode` 时，同样直接 `patchVNode` 即可，同时新老 `VNode` 节点的结束索引都减 1。
+   - **情形三**：当老 `VNode` 节点的 `start` 和新 `VNode` 节点的 `end` 满足 `sameVnode` 时，这说明这次数据更新后 `oldStartVNode` 已经跑到了 `oldEndVNode` 后面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldEndVNode` 的后面，同时老 `VNode` 节点开始索引`加1`，新 `VNode` 节点的结束索引`减1`。
+   - **情形四**：当老 `VNode` 节点的 `end` 和新 `VNode` 节点的 `start` 满足 `sameVnode` 时，这说明这次数据更新后 `oldEndVNode` 跑到了 `oldStartVNode` 的前面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldStartVNode` 的前面，同时老 `VNode` 节点结束索引`减1`，新 `VNode` 节点的开始索引`加 1`。  
+   如果都不满足以上四种情形，那说明没有相同的节点可以复用。于是则通过查找事先建立好的以旧的 `VNode` 为 `key` 值，对应 `index` 序列为 `value` 值的哈希表。从这个哈希表中找到与 `newStartVnode` 一致 `key` 的旧的 `VNode` 节点，如果两者满足 `sameVnode` 的条件，在进行 `patchVnode` 的同时会将这个真实 `dom` 移动到 `oldStartVnode` 对应的真实 `dom` 的前面；如果没有找到，则说明当前索引下的新的 `VNode` 节点在旧的 `VNode` 队列中不存在，无法进行节点的复用，那么就只能调用 `createElm` 创建一个新的 `dom` 节点放到当前 `newStartIdx` 的位置。
+3. 当 `while` 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 `dom` 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 `dom` 中删除。至此整个 diff 过程就已经全部完成了。
 
 
 ### 12. `$nextTick`原理
+> Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+
+`$nextTick`的实现本质上就是将某个任务依次尝试使用`Promise.then`、`MutationObserver`和`setImmediate`、`setTimeout`进行处理，前两个方法会将任务放到微任务队列，后两个方法会将任务放到宏任务队列，无论是微任务还是宏任务，该任务都是在DOM更新之后执行的，这样就实现了DOM更新之后再去执行特定任务。
+
+### 13. 数组和对象的变化检测
+Vue对数组的7个方法`push`、`pop`、`shift`、`unshift`、`splice`、`sort`、`reverse`实现了响应式，对对象已有属性也是实现了响应式的。但是由于 Vue 会在初始化实例时对 `property` 执行 `getter/setter` 转化，所以 `property` 必须在 `data` 对象上存在才能让 `Vue` 将它转换为响应式的。这导致了以下情况：
+- Vue 无法检测 property 的添加或移除。
+- Vue 不能检测以下数组的变动：
+  - 当你利用索引直接设置一个数组项时，例如：`vm.items[indexOfItem] = newValue`（其实对于已有元素是可以实现的，但是由于性能问题没有实现）
+  - 当你修改数组的长度时，例如：`vm.items.length = newLength`
+
+出现以上问题可以使用`$set`方法进行响应式处理。
 ### 13. 项目中做过的优化
 - 编码优化
-  - 尽量不要将所有的数据都放在data中，data中的数据都会增加getter和setter，会收集对应的 watcher
-  - vue 在 v-for 时给每项元素绑定事件尽量用事件代理
+  - 尽量不要将所有的数据都放在 `data` 中，`data`中的数据都会增加 `getter` 和 `setter`，会收集对应的 `watcher`
+  - vue 在 `v-for` 时给每项元素绑定事件尽量用事件代理（事件处理绑定在父元素上，而非子元素上）
   - 拆分组件( 提高复用性、增加代码的可维护性,减少不必要的渲染 )
-  - v-if 当值为false时内部指令不会执行,具有阻断功能，很多情况下使用v-if替代v-show
+  - `v-if` 当值为 `false` 时内部指令不会执行，具有阻断功能，很多情况下使用`v-if`替代`v-show`
   - 合理使用路由懒加载、异步组件
-  - Object.freeze 冻结数据
+  - 对于一个巨大的对象或数组数据，如果确信该数据不会修改，使用`Object.freeze`冻结数据，该数据不会被vue监听，能大幅提升性能。
 - 用户体验
-  - app-skeleton 骨架屏
-  - pwa serviceworker
+  - `app-skeleton` 骨架屏
+  - `PWA` 与 `Service worker`实现离线访问和后台同步
 - 加载性能优化
   - 第三方模块按需导入 ( babel-plugin-component )
   - 滚动到可视区域动态加载 ( https://tangbc.github.io/vue-virtual-scroll-list )
