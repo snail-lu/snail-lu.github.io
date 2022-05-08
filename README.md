@@ -36,6 +36,8 @@ $ hexo publish draft <filename>
 本博客内的文章图片都存放在了`github`上的`imageGalleries`仓库里，直接在博客内引用图片链接，大多数时间图片都是无法正常显示的，需要FQ才行，为了解决这个问题，
 改用了`jsdelivr`的CDN进行访问加速。
 格式:  `https://cdn.jsdelivr.net/gh/[用户名]/[仓库名]/[图片路径]`
+之前出现了`jsdelivr`被q，这里找了个备用cdn `statically.io`：
+备用：`https://cdn.statically.io/gh/[用户名]/[仓库名]/[图片路径]`
 ```
 // 原始图片链接1
 https://raw.githubusercontent.com/Snail-Lu/imageGalleries/main/logo/avatar.png
