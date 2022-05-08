@@ -2,12 +2,10 @@
 title: Markdown基本语法总结
 date: 2020-04-27 17:40:29
 summary: Marddown基本语法
-keywords:
-- markdown
 tags:
 - markdown
 categories:
-- [随笔]
+- [读书笔记]
 ---
 
 ### 块级元素

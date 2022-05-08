@@ -7,8 +7,7 @@ tags:
 - Event Loop
 - Task
 categories:
-- [随笔]
-- [前端]
+- [前端进阶]
 ---
 
 ### 一、代码执行基本流程

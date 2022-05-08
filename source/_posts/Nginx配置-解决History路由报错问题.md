@@ -4,11 +4,10 @@ date: 2020-12-11 23:55:38
 summary: Vue项目中history路由刷新报错修复。
 tags:
 - Vue
+- Nginx
 - History
 categories:
-- [随笔]
-- [前端]
-- [开发配置]
+- [项目开发]
 ---
 
 ### 一、功能描述

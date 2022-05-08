@@ -6,7 +6,7 @@ tags:
 - npm
 - Node
 categories:
-- [随笔]
+- [读书笔记]
 ---
 
 ### 查看npm版本  

@@ -3,10 +3,9 @@ title: JavaScript数据类型判断
 date: 2022-04-24 14:27:27
 tags:
 - JavaScript
+- 面试
 categories:
-- [前端]
-- [JavaScript进阶]
-- [面试]
+- [前端进阶]
 ---
 
 ### 数据类型

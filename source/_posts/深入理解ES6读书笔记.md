@@ -6,7 +6,6 @@ tags:
 - JavaScript
 - ES6
 categories:
-- [前端]
 - [读书笔记]
 ---
 

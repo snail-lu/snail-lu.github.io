@@ -6,9 +6,7 @@ tags:
 - http-server
 - Node
 categories:
-- [随笔]
-- [前端]
-- [开发配置]
+- [项目开发]
 ---
 
 ### 1. 安装`http-server`

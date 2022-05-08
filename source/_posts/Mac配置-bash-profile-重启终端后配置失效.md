@@ -8,7 +8,6 @@ tags:
 - bash
 categories:
 - [随笔]
-- [开发配置]
 ---
 
 ### 1.场景

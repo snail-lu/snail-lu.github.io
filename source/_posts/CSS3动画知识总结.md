@@ -1,13 +1,13 @@
 ---
 title: CSS3动画知识总结
 date: 2021-11-29 17:11:13
-summary: Animation动画用法及常见动画库。
+summary: Animation动画用法及常见动画库
 tags:
 - CSS
 - Animation
 categories:
-- [随笔]
-- [前端]
+- [前端进阶]
+- [CSS]
 ---
 
 ### 一、基本用法

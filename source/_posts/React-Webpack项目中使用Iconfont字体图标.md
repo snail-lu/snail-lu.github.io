@@ -7,9 +7,7 @@ tags:
 - Webpack
 - Iconfont
 categories:
-- [随笔]
-- [前端]
-- [开发配置]
+- [项目开发]
 ---
 
 ### 1、下载字体图标

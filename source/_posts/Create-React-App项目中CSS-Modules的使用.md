@@ -7,9 +7,7 @@ tags:
 - Create React App
 - CSS Modules
 categories:
-- [随笔]
-- [前端]
-- [开发配置]
+- [项目开发]
 ---
 
 ### 概述

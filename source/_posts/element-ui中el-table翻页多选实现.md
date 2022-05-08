@@ -2,14 +2,12 @@
 title: element-ui中el-table翻页多选实现
 date: 2021-11-11 21:19:57
 summary: element-ui中el-table翻页多选实现
-categories:
-- [随笔]
-- [前端]
-- [功能实现]
 tags:
 - Vue
 - element-ui
 - el-table
+categories:
+- [项目开发]
 ---
 
 ### 一、功能描述

@@ -2,12 +2,11 @@
 title: ES6常用特性总结
 date: 2019-10-30 15:40:00
 summary: ES6常用语法总结及代码示例。
-categories:
-- [随笔]
-- [前端]
 tags:
 - ES
 - JavaScript
+categories:
+- [读书笔记]
 ---
 ### 1.const、let关键字
 let用来声明一个局部变量，用法类似于var，但是它所声明的变量，只在let声明所在的块级作用域内有效。

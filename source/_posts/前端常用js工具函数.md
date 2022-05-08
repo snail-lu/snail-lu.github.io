@@ -5,8 +5,7 @@ summary: 前端常用js工具函数汇总
 tags: 
 - JavaScript
 categories:
-- [随笔]
-- [前端]
+- [项目开发]
 ---
 
 ### 日期格式化（简易版）

@@ -1,12 +1,11 @@
 ---
 title: JavaScript原型与原型链
-date: 2022-04-30 14:46:11
+date: 2021-09-30 14:46:11
 tags:
 - JavaScript
+- 面试
 categories:
-- [前端]
-- [JavaScript进阶]
-- [面试]
+- [前端进阶]
 ---
 
 ### 原型链

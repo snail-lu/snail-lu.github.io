@@ -3,10 +3,9 @@ title: JavaScript中的this
 date: 2022-05-01 22:17:16
 tags:
 - JavaScript
+- 面试
 categories:
-- [前端]
-- [JavaScript进阶]
-- [面试]
+- [前端进阶]
 ---
 
 ### 一、this到底是什么

@@ -2,14 +2,12 @@
 title: element-ui中表格穿梭功能
 date: 2020-05-08 20:33:33
 summary: element-ui中表格穿梭功能实现
-categories:
-- [随笔]
-- [前端]
-- [功能实现]
 tags:
 - Vue
 - element-ui
 - el-table
+categories:
+- [项目开发]
 ---
 
 ### 一、功能描述

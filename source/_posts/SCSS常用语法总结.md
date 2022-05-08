@@ -6,8 +6,8 @@ tags:
 - CSS
 - SCSS
 categories:
-- [随笔]
-- [前端]
+- [读书笔记]
+- [CSS]
 ---
 
 ### <span id="cate1">一、CSS扩展</span>

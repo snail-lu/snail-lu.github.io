@@ -2,6 +2,9 @@
 title: windows11系统WSL2安装记录
 date: 2021-12-16 15:47:30
 tags:
+- Linux
+categories:
+- [随笔]
 ---
 ### 需求场景
 今天在安装`Docker Desktop`时，出现提示`WSL2 installation is incomplete.`：

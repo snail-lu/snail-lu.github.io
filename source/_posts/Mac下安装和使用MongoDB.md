@@ -6,8 +6,6 @@ tags:
 - Mac
 - MongoDB
 categories:
-- [随笔]
-- [开发配置]
 - [数据库]
 ---
 ### 1.下载安装

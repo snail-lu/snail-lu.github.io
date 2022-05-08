@@ -2,14 +2,12 @@
 title: element-ui中表格自定义排序
 date: 2020-05-07 16:54:03
 summary: element-ui中表格自定义排序
-categories:
-- [随笔]
-- [前端]
-- [功能实现]
 tags:
 - Vue
 - element-ui
 - el-table
+categories:
+- [项目开发]
 ---
 
 ### 一、功能描述

@@ -6,8 +6,8 @@ tags:
 - TypeScript
 - TS
 categories:
-- [前端]
 - [读书笔记]
+- [前端进阶]
 ---
 
 ### 基础类型

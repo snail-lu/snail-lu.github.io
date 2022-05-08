@@ -9,7 +9,6 @@ tags:
 - Linux
 categories:
 - [随笔]
-- [Linux]
 ---
 
 ### 软件版本

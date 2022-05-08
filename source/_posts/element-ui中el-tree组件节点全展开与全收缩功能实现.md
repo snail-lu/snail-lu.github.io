@@ -2,14 +2,12 @@
 title: element-ui中el-tree组件节点全展开与全收缩功能实现
 date: 2020-05-05 15:08:10
 summary: el-tree组件节点全展开与全收缩功能实现
-categories:
-- [随笔]
-- [前端]
-- [功能实现]
 tags:
 - Vue
 - element-ui
 - el-tree
+categories:
+- [项目开发]
 ---
 
 ### 一、功能描述
