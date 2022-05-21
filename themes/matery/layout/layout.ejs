@@ -22,8 +22,8 @@
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.lightgallery) %>"></script>
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.matery) %>"></script>
 
-    <!-- <%- partial('_partial/baidu-analytics') %> -->
-    <!-- <%- partial('_partial/baidu-push') %> -->
+    <%- partial('_partial/baidu-analytics') %>
+    <%- partial('_partial/baidu-push') %>
     <% if (theme.clicklove.enable) { %>
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.clicklove) %>" async="async"></script>
     <% } %>
