@@ -402,7 +402,7 @@ googleAnalytics:
 # Add baidu analytics configuration
 # 添加 baidu Analytics 配置
 baiduAnalytics:
-  enable: true
+  enable: false
   id: 3ee696b85b0bb417437de1bab78784ee
 
 # 百度搜索资源平台提交链接（自动推送，百度已关闭自动推送）
