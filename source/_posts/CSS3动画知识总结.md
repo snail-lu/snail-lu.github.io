@@ -90,7 +90,7 @@ div {
     animation-delay: 2s; /* aniSecond 延迟 2s 执行*/
 }
 ```
-![image](https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-11/animation-delay-timeline.png)
+![image](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-11/animation-delay-timeline.png)
 
 #### 2.animation-direction
 指示动画是否反向播放

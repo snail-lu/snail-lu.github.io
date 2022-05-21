@@ -41,7 +41,7 @@ is:private                 #匹配有权限的私有仓库
 topic:node stars:>1000 pushed:>2020-01-01
 ```
 搜索结果：
-![](https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/common/1610029-20200701154612647-1201985840.png)
+![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/common/1610029-20200701154612647-1201985840.png)
 
 
  

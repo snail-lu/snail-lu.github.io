@@ -13,7 +13,7 @@ categories:
 ，假如让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型对象的指针，相应的，另一个原型中也包含着指向另一个构造函数的指针。
 假如另一个原型对象又是另一个类型的实例，上述关系层层递进，就构成了实例与原型的链条。
 
-![img](https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2022-04/js-prototype.png)
+![img](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2022-04/js-prototype.png)
 
 ### 判断原型链上关系的方式
 - `instanceof` ---- 判断实例对象与构造函数的关系
