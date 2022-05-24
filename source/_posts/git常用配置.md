@@ -1,8 +1,7 @@
 ---
 title: git常用配置
 date: 2021-12-15 16:58:06
-summary: 多个SSH配置、多用户配置等常用配置/命令记录
-top: true
+summary: 日常开发中git常用配置
 tags:
 - Git
 - SSH

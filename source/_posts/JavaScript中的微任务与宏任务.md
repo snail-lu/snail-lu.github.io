@@ -2,6 +2,7 @@
 title: JavaScript中的微任务与宏任务
 date: 2021-12-14 20:49:49
 summary: JavaScript中微任务与宏任务知识点简单总结及示例代码。
+top: true
 tags:
 - JavaScript
 - Event Loop

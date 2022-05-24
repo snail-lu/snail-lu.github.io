@@ -1,6 +1,7 @@
 ---
 title: MongoDB基础知识总结
 date: 2022-03-27 15:40:07
+summary: MongoDB数据库基础知识
 tags:
 - Node.js
 - MongoDB

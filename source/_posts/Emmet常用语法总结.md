@@ -1,8 +1,7 @@
 ---
 title: Emmet常用语法总结
 date: 2020-08-02 21:48:03
-summary: Emmet常用语法总结。
-top: true
+summary: 使用Emmet插件提升HTML/CSS编写效率
 tags:
 - Emmet
 - HTML
