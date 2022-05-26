@@ -1,6 +1,7 @@
 ---
 title: JavaScript原型与原型链
 date: 2021-09-30 14:46:11
+summary: JS中的原型链知识
 tags:
 - JavaScript
 - 面试

@@ -1,7 +1,7 @@
 ---
 title: windows11系统WSL2安装记录
 date: 2021-12-16 15:47:30
-summary: wind
+summary: windows11下linux子系统安装实践
 tags:
 - Linux
 categories:

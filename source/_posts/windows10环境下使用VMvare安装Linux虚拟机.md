@@ -1,7 +1,7 @@
 ---
 title: windows10环境下使用VMvare安装Linux虚拟机
 date: 2020-05-05 22:18:09
-summary: windows10环境下使用VMvare安装Linux虚拟机体验。
+summary: windows10环境下使用VMvare安装Linux虚拟机实践
 tags:
 - CentOS
 - SSH
