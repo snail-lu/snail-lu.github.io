@@ -2078,6 +2078,21 @@ p4.then(res => {
 #### 创建代理
 
 使用`Proxy`构造函数来创建一个代理时，需要传递两个参数：`目标对象`以及`处理器`。处理器是定义了一个或多个陷阱函数的对象。如果未提供陷阱函数，代理会对所有操作采取默认行为。
+|陷阱函数|触发时机|默认行为|
+|----|----|----|
+|get | 读取一个属性的值| Reflect.get()|
+|set |写入一个属性| Reflect.set()|
+| has|in 运算符| Reflect.has()|
+| deleteProperty| delete 运算符| Reflect.deleteProperty()|
+| getPrototypeOf| Object.getPrototypeOf()| Reflect.getPrototypeOf()|
+| setPrototypeOf| Object.setPrototypeOf()| Reflect.setPrototypeOf()|
+| isExtensible | Object.isExtensible() | Reflect.isExtensible()|
+|preventExtensions| Object.preventExtensions() |Reflect.preventExtensions()| |
+|getOwnPropertyDescriptor |Object.getOwnPropertyDescriptor() |Reflect.getOwnPropertyDescriptor()|
+| defineProperty| Object.defineProperty()| Reflect.defineProperty|
+| ownKeys| Object.keys 、 Object.getOwnPropertyNames() 与 Object.getOwnPropertySymbols()| Reflect.ownKeys()|
+| apply| 调用一个函数| Reflect.apply()|
+| construct| 使用 new 调用一个函数| Reflect.construct()|
 
 ```js
 let target = {};
@@ -2126,7 +2141,22 @@ proxy.anotherName = "proxy"; // 报错，"Property must be a number."
 ```
 
 #### 用get陷阱验证对象结构
+```js
+let target = {};
 
+let proxy = new Proxy(target, {
+    get(trapTarget, key, receiver) {
+        // 属性不存在时报错
+        if(!(key in receiver)) {
+            throw new TypeError(`Property ${key} doesn't exist.`)
+        }
+        
+        return Reflect.get(trapTarget, key, receiver);
+    }
+});
+
+console.log(proxy.name) // 报错 "Uncaught TypeError: Property name doesn't exist."
+```
 
 ### 第十三章 用模块封装代码
 #### 基本的导出
