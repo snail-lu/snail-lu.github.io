@@ -19,6 +19,7 @@ categories:
 - `===`
 - `Object.is()`
 - `Array.isArray()`
+- `isNaN()`
 
 #### `typeof`
 对一个值使用`typeof`操作符的返回值（返回值类型为字符串）有以下几种：
@@ -66,4 +67,16 @@ var arr = new xArray(1,2,3); // [1,2,3]
 
 console.log(Array.isArray(arr));  // true
 console.log(arr instanceof Array); // false
+```
+
+#### `isNaN()`
+判断指定值是否为数字，是数字返回`false`，否则返回`true`。 `isNaN()` 在判断参数是否为数字之前，会首先使用 `Number()` 对参数进行数字类型的转换。所以 `isNaN(value)` 其实等效于：`isNaN(Number(value))`。当参数 `value` 能被 `Number()` 转换为数字时，结果返回 `false`，否则返回 `true`。
+```js
+console.log(isNaN('100'))  // false
+console.log(isNaN(''))  // false
+console.log(isNaN('100px'))  // true
+console.log(isNaN(undefined))  // true
+console.log(isNaN({})) // true
+console.log(isNaN([])) // false
+console.log(isNaN(null)) // false
 ```
