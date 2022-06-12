@@ -194,4 +194,4 @@ export default {
 ```
 
 ### 三、最终效果
-[demo地址](https://portfolio-snail.vercel.app/#/demo/table-select)
+[demo地址](https://portfolio-snail.vercel.app/demo/table-select)

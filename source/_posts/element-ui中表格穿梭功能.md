@@ -182,4 +182,4 @@ categories:
 ```
 
 ### 三、最终效果
-[demo地址](https://portfolio-snail.vercel.app/#/demo/table-transfer)
+[demo地址](https://portfolio-snail.vercel.app/demo/table-transfer)
