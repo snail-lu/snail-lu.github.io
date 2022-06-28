@@ -326,6 +326,7 @@ console.log((new Function().name);  // "anonymous"
 JS为函数提供了两个不同的内部方法：`[[Call]]`和`[[Construct]]`。
 - 当函数未使用new进行调用时，`[[Call]]`方法会被调用，运行代码中显示的函数体。
 - 当函数使用new进行调用时，`[[Construct]]`方法会被执行，负责创建一个被称为新目标的新的对象，并且使用该新目标作为this去执行函数体，最后将该对象作为函数的返回值。
+
 ```js
 function Person(name){
     this.name = name;
@@ -337,6 +338,7 @@ var notAPerson = Person("Nicholas");
 console.log(person); // "[Object,Object]"
 console.log(notAPerson); // "undefined"
 ```
+
 #### new.target
 ES6引入了`new.target`元属性。`元属性`指的是“非对象”上的一个属性，并提供关联到它的目标的附加信息。当函数的`[[Construct]`方法被调用时，`new.target`会被填入`new`运算符的作用目标（构造器）。而`[[Call]]`被执行，`new.target`的值则会是`undefined`。
 ```js
@@ -478,7 +480,6 @@ function factorial(n, result = 1) {
 ```
 
 ### 第四章 扩展的对象功能
-
 #### 对象类别
 ES6规范明确的对象类别包括：  
 - 普通对象：拥有JS对象所有默认的内部行为。
