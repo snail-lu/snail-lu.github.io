@@ -10,7 +10,7 @@ categories:
 - [读书笔记]
 ---
 
-### 数据库分类
+### 一、 数据库分类
 - 关系型数据库（RDBMS）
   - MySQL、Oracle、DB2、SQL Server
   - ...
@@ -18,7 +18,7 @@ categories:
   - 键值对数据库: Redis
   - 文档数据库: MongoDB
 
-### 安装MongoDB
+### 二、 安装MongoDB
   - 数据库软件构成
     - 数据库的服务器
       - 数据库的服务器用来存放数据
@@ -37,7 +37,7 @@ categories:
 
 
 
-### 相关概念
+### 三、相关概念
 - 数据库（database）
   数据库是一个仓库，在仓库中可以存放集合
 - 集合（collection）
@@ -45,14 +45,14 @@ categories:
 - 文档（document)
   是数据库中最小单位，我们存储和操作的内容都是文档
 
-### 基本指令
+### 四、基本指令
 ```bash
 show dbs/databases        # 显示当前的所有数据库
 use <database>            # 进入到指定的数据库中/创建不存在的数据库
 db                        # 查看当前所处的数据库
 show collections          # 显示当前数据库中的所有集合
 ```
-### CRUD指令
+### 五、CRUD指令
 > query指查询条件，documnent指文档。
 
 - 插入文档
@@ -107,7 +107,7 @@ db.users.remove({ name: 'Mike' })
 db.users.deleteOne()
 ```
 
-### 操作符
+### 七、操作符
 - 比较操作符
 |操作符|含义|
 |----|----|
@@ -123,12 +123,12 @@ db.users.find({ age: { $gt: 20 }}) # 查询age>20的文档数据
 db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 ```
 
-### 文档间的关系
+### 八、文档间的关系
 - 一对一
 - 一对多
 - 多对多
 
-### 文档排序
+### 九、文档排序
 ```bash
 # sort()可以用来指定文档的排序规则 
 # 参数为{ <field>: 1|-1 }
@@ -136,14 +136,14 @@ db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 db.users.find({}).sort({ age: 1 }) # users集合中的文档按照age升序返回
 ```
 
-### 限制查询的返回字段
+### 十、限制查询的返回字段
 默认情况下，MongoDB中的查询返回匹配文档中的所有字段。可以在查询中来配置指定货限制返回的字段。
 ```bash
 db.inventory.find( { status: "A" }, { item: 1, status: 1 } ) # 查找status为A的文档，返回的查询结果仅包含item,status,_id三个字段
 db.inventory.find( { status: "A" }, { item: 1, status: 1, _id: 0 } ) # 查找status为A的文档，返回的查询结果仅包含item,status两个字段
 ```
 
-### 使用mongoose连接mongoDB
+### 十一、使用mongoose连接mongoDB
 ```js
 // 引入
 const mongoose = require('mongoose');
