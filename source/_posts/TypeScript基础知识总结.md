@@ -10,7 +10,7 @@ categories:
 - [前端进阶]
 ---
 
-### 基础类型
+### 一、基础类型
 #### 布尔值
 ```ts
 let isDone: boolean = false;
@@ -146,7 +146,7 @@ let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 ```
 
-### 接口
+### 二、接口
 接口的作用：定义对象的结构。
 
 #### 可选属性
@@ -382,7 +382,7 @@ class Image implements SelectableControl {
 }
 ```
 
-### 函数
+### 三、函数
 #### 函数声明
 ```ts
 // 常规形式
@@ -458,7 +458,7 @@ function getUserInfo(name: string, age?: number): any {
 console.log(getUserInfo('Jack', 15))
 ```
 
-### 泛型
+### 四、泛型
 在定义函数或类时，如果遇到类型不明确就可以使用泛型。
 ```ts
 // 此处定义泛型是为了保证函数入参与返回值是同一数据类型
