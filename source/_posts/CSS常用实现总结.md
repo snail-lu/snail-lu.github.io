@@ -201,3 +201,21 @@ categories:
 ```
 
 ### 七、不同大小文字底部对齐
+```scss
+// 利用vertical-align，看效果选择
+.box {
+    vertical-align: bottom;
+    // 或
+    vertical-align: baseline;
+}
+
+// 利用flex布局的align-items
+.box {
+    display: flex;
+    align-items: baseline;
+    // 或
+    align-items: flex-end;
+}
+
+
+```
