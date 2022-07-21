@@ -22,7 +22,8 @@ categories:
 
 
 ### 2. `Vuex`的实现原理
-Vuex的双向绑定通过调用 `new Vue`实现，然后通过 `Vue.mixin`在所有组件的`beforeCreate`生命周期内注入了`$store`对象，再通过劫持`state.get`将数据放入组件中。
+- Vuex的数据的响应式是通过`new Vue`实现的
+- 组件中的`$store`属性是通过 `Vue.mixin` 在所有组件的`beforeCreate`生命周期内注入的
 
 ### 3. 核心概念
 - **state**：vuex的基本数据，用来存储变量
