@@ -1,7 +1,7 @@
 ---
 title: Vuex基础知识总结
 date: 2021-05-06 21:07:03
-summary: Vuex基础知识
+summary: Vuex v3.x基础知识
 tags:
 - Vue
 - Vuex
@@ -12,18 +12,18 @@ categories:
 ---
 
 
-### 1. `Vuex`的工作原理
-![Vuex工作原理图](https://vuex.vuejs.org/vuex.png)
+### 1. `Vuex`的运行流程
+![Vuex运行流程图](https://vuex.vuejs.org/vuex.png)
 
-1. vue组件中利用`dispatch`或`mapActions`触发`action`
-2. `action`方法中执行异步操作，异步回调中利用`commit`触发`mutaion`
-3. `mutation`方法中对`state`对象进行修改
-4. `state`数据修改后，页面进行更新渲染
+1. Vue组件中调用`dispatch`方法触发对应的`action`
+2. `action`中包含同步/异步操作，可以在`action`中进行后台API请求、触发其他`action`以及提交`mutation`操作
+3. `mutation`方法中对`state`对象进行修改，只能执行同步操作
+4. `state`中的数据修改后，页面进行响应式更新
 
 
 ### 2. `Vuex`的实现原理
-- Vuex的数据的响应式是通过`new Vue`实现的
-- 组件中的`$store`属性是通过 `Vue.mixin` 在所有组件的`beforeCreate`生命周期内注入的
+- Vuex的数据响应式是通过`new Vue`实现的
+- 组件的`$store`属性是通过使用全局混入 `Vue.mixin` 在所有组件的`beforeCreate`生命周期内注入的
 
 ### 3. 核心概念
 - **state**：vuex的基本数据，用来存储变量
