@@ -1,7 +1,7 @@
 ---
 title: Vue Router基础知识总结
 date: 2021-05-07 20:16:35
-summary: Vue Router 基础知识
+summary: Vue Router V3.x 基础知识
 tags:
 - Vue
 - Vue Router
@@ -45,3 +45,8 @@ categories:
 - Hash模式：通过监听`hashchange`事件实现
 - History模式：基于HTML5的 `history` api实现
 - Abstract模式：非浏览器环境下，强制使用此模式
+
+### 5. 动态路由实现权限控制 
+1.通过 `router.beforeEach()`进行权限校验，获取角色可访问的路由数据。
+
+2.通过 `vue-router` 的 `addRoute()` 来动态增加路由。
