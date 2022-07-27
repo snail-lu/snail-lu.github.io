@@ -42,6 +42,6 @@ categories:
 - `route` 是一个当前正在跳转的路由对象，每一个路由都会有一个`route`对象，是一个局部对象，包含`path`,`params`,`hash`,`query`,`fullPath`,`matched`,`name`等路由信息参数。
 
 ### 4. 路由模式
-- Hash模式
-- History模式：基于HTML5的 `history` 接口实现
-- Abstract模式：非浏览器下，强制使用此模式
+- Hash模式：通过监听`hashchange`事件实现
+- History模式：基于HTML5的 `history` api实现
+- Abstract模式：非浏览器环境下，强制使用此模式
