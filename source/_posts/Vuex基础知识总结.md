@@ -26,9 +26,9 @@ categories:
 - 组件的`$store`属性是通过使用全局混入 `Vue.mixin` 在所有组件的`beforeCreate`生命周期内注入的
 
 ### 3. 核心概念
-- **state**：vuex的基本数据，用来存储变量
+- **state**：vuex的基本数据，用来存储变量。
 
-- **getter**：从`state`派生的数据，相当于`state`的计算属性
+- **getter**：从`state`派生的数据，相当于`state`的计算属性。
 
 - **mutation**：更新数据的同步函数（必须是同步的）。接受 state 作为第一个参数，提交载荷作为第二个参数。
 
