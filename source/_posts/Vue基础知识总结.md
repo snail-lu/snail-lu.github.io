@@ -148,6 +148,14 @@ Vue2 响应式的实现主要有：
 
 总之就是，在创建 Vue 实例的时候给传入的 `data` 进行数据劫持，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` 对象，然后在数据劫持的 `getter` 中添加订阅者到订阅器 `Dep`，当劫持的数据发生变化的时候，监听器 `Observer` 就通过订阅器 `Dep` 来通知所有订阅者`Watcher` 操作DOM进行更新，从而实现数据的响应式变化。
 
+### 10. 双向数据绑定原理
+表单元素 <input>、<textarea> 及 <select> 上可以用 `v-model` 指令创建双向数据绑定，当进行表单输入或选择的时候，通过`v-model`绑定的值会同步修改。
+`v-model` 在内部为不同的输入元素使用不同的 `property` 并抛出不同的事件：
+
+- `text` 和 `textarea` 元素使用 `value` property 和 `input` 事件；
+- `checkbox` 和 `radio` 使用 `checked` property 和 `change` 事件；
+- `select` 字段将 `value` 作为 prop 并将 `change` 作为事件。
+
 ### 10. Vue3的响应式和Vue2的区别
 Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，而是通过`Proxy`代理实现数据的变化监听。
 主要区别：
