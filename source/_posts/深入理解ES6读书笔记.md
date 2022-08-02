@@ -1560,7 +1560,7 @@ me.sayName(); // Jack
 #### 静态成员
 使用`static`关键字标注的成员即为类的静态成员。
 ```js
-class PersonClass
+class PersonClass {
     constructor(name) {
         this.name = name;
     }
@@ -1607,7 +1607,7 @@ console.log(square.getArea()); //9
 - 只能在派生类中使用`super()`，否则会报错
 - 在构造器中，必须在访问`this`之前调用`super()`，因为`super()`负责初始化`this`，否则会报错
 - 唯一能避免使用`super()`的办法，是从类构造器中返回一个对象。
-> 解读：使用extends实现的类的继承，要么在子类中不指定`constructor`（此时super()会被自动调用），要么就手动指明`constructor`，此时`constructor`中必须手动调用`super()`，否则会报错。若不想使用`super()`且不想报错，唯一的办法就是`constructor`中返回一个对象，但一旦这么做，虽然仍然实现了继承，但使用该派生类创建的类实例，就与该派生类断开了联系，也违背了继承的目的。示例代码下附。  
+> 解读：使用extends实现的类的继承，要么在子类中不指定`constructor`（此时super()会被自动调用），要么就手动指明`constructor`，此时`constructor`中必须手动调用`super()`，否则会报错。若不想使用`super()`且不想报错，唯一的办法就是`constructor`中返回一个对象，但一旦这么做，虽然仍然实现了继承，但使用该派生类创建的类实例，就与该派生类断开了联系，也违背了继承的目的。示例代码附下。  
 
 ```js
 class A {
@@ -1714,7 +1714,7 @@ let AreaMixin = {
     }
 }
 
-function minxin(...mixins) {
+function mixin(...mixins) {
     var base = function() {};
     Object.assign(base.prototype, ...mixins);
     return base;
@@ -1723,7 +1723,7 @@ function minxin(...mixins) {
 class Square extends mixin(AreaMixin, SerializableMixin) {
     constructor(length) {
         super();
-        this.length = this.length;
+        this.length = length;
         this.width = length;
     }
 }
