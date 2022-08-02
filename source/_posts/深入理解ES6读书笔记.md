@@ -1730,7 +1730,7 @@ class Square extends mixin(AreaMixin, SerializableMixin) {
 
 var x = new Square(3);
 console.log(x.getArea()); // 9
-console.log(x.serialize()); //"{"length":3,"width":3}"
+console.log(x.serialize()); // {"length":3,"width":3}
 ```
 
 #### 继承内置对象
@@ -1745,6 +1745,8 @@ let colors = new MyArray();
 colors[0] = 'red';
 console.log(colors.length); //1
 
+// 内置数组的功能：设置length=0会清空数组
+// 在ES5中实现的继承中，设置length=0无法清空数组
 colors.length = 0;
 console.log(colors[0]); // undefined
 ```
