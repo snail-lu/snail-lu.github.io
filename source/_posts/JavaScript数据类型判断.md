@@ -1,7 +1,7 @@
 ---
 title: JavaScript数据类型判断
 date: 2022-04-24 14:27:27
-summary: JS中基本数据类型和引用数据类型的常用判别方法
+summary: 基本数据类型和引用数据类型的常用判别方法
 tags:
 - JavaScript
 - 面试
