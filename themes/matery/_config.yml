@@ -559,7 +559,7 @@ subtitle:
   typeSpeed: 100 # 打字速度
   backSpeed: 50 # 删除速度
   sub1: 道阻且长，行则将至
-  sub2: Though the road ahead is dangerous and difficult, we can only achieve our goals with constant efforts.
+  # sub2: Though the road ahead is dangerous and difficult, we can only achieve our goals with constant efforts.
 
 # 手机二级菜单.
 navMenu:
