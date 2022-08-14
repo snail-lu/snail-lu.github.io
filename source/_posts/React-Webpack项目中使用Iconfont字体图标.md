@@ -13,12 +13,12 @@ categories:
 ### 1、下载字体图标
 [Iconfont官网](https://www.iconfont.cn/ 'Iconfont')，收藏自己要用的图标到自己的项目下，下载后将文件解压：
 
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/iconfont/1610029-20200502154112751-1052215406.png)
+[![vUC4v6.png](https://s1.ax1x.com/2022/08/14/vUC4v6.png)](https://imgtu.com/i/vUC4v6)
 > Tips: 其中`demo`开头的文件为图标样式示例文件，可以在浏览器中打开，便于使用图标时查看图标名称或编码。可以不放到项目中。
 
 ### 2、项目中导入图标文件
 将所需的字体文件和样式文件复制到项目的静态资源文件夹中：
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/iconfont/1610029-20200502154129525-228099742.png)
+[![vUCWCR.png](https://s1.ax1x.com/2022/08/14/vUCWCR.png)](https://imgtu.com/i/vUCWCR)
 
 ### 3、引入图标样式
 在`App.js`中或者需要使用图标字体样式的组件中引入`iconfont.css`文件：
@@ -39,7 +39,7 @@ import '../../style/iconfont/iconfont.css';  // 注意路径不要写错
     <span className="iconfont">&#xe61c;</span>         // jsx文件    
 ```
 ### 5、编译报错
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/iconfont/1610029-20200502154207285-1011437676.png)
+[![vUCf81.png](https://s1.ax1x.com/2022/08/14/vUCf81.png)](https://imgtu.com/i/vUCf81)
 无法解析处理`ttf`字体文件，需要安装对应的加载器。
 
 ### 6、安装file-loader
@@ -48,8 +48,8 @@ npm install file-loader --save-dev
 ```
 
 `webpack.config.js`中配置：
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/iconfont/1610029-20200502154224797-637029206.png)
+[![vUChgx.png](https://s1.ax1x.com/2022/08/14/vUChgx.png)](https://imgtu.com/i/vUChgx)
 
 
 ### 7、最终实现效果
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/iconfont/1610029-20200502154249813-892010816.png)
+[![vUC259.png](https://s1.ax1x.com/2022/08/14/vUC259.png)](https://imgtu.com/i/vUC259)

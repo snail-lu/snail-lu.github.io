@@ -27,57 +27,56 @@ categories:
 安装过程只要按照软件提示一步步进行就好了，这里不再赘述。
 
 #### 3. 创建新的虚拟机
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212506641-397719604.png)
+[![vUiGkQ.png](https://s1.ax1x.com/2022/08/14/vUiGkQ.png)](https://imgtu.com/i/vUiGkQ)
 
 #### 4. 自定义虚拟机配置
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212559842-1450751586.png)
+[![vUi3Tg.png](https://s1.ax1x.com/2022/08/14/vUi3Tg.png)](https://imgtu.com/i/vUi3Tg)
 
 #### 5. 设置虚拟机硬件兼容性
 使用默认配置即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212725252-930402878.png)
+[![vUilm8.png](https://s1.ax1x.com/2022/08/14/vUilm8.png)](https://imgtu.com/i/vUilm8)
 
 #### 6. 指定系统镜像位置
-将镜像地址指向自己下载好的Linux镜像文件地址即可。
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212732317-215440586.png)
+[![vUiMOf.png](https://s1.ax1x.com/2022/08/14/vUiMOf.png)](https://imgtu.com/i/vUiMOf)
 
 #### 7. 配置简易安装信息
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212732317-215440586.png)
+[![vUi10S.png](https://s1.ax1x.com/2022/08/14/vUi10S.png)](https://imgtu.com/i/vUi10S)
 #### 8. 配置名称及存储位置
 我这里只更改了名称，位置使用了默认路径。
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212828860-1311874380.png)
+[![vUiJYj.png](https://s1.ax1x.com/2022/08/14/vUiJYj.png)](https://imgtu.com/i/vUiJYj)
 #### 9. 处理器配置
 按自己需求配置即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212836865-1178715123.png)
+[![vUiYfs.png](https://s1.ax1x.com/2022/08/14/vUiYfs.png)](https://imgtu.com/i/vUiYfs)
 #### 10. 内存配置
 按自己需求配置即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212843299-192235076.png)
+[![vUiNpn.png](https://s1.ax1x.com/2022/08/14/vUiNpn.png)](https://imgtu.com/i/vUiNpn)
 
 #### 11. 网络连接类型配置
 使用桥接网络
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212849458-1162105469.png)
+[![vUiUlq.png](https://s1.ax1x.com/2022/08/14/vUiUlq.png)](https://imgtu.com/i/vUiUlq)
 
 #### 12. I/O控制器类型配置
 默认值即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212906347-597953643.png)
+[![vUia60.png](https://s1.ax1x.com/2022/08/14/vUia60.png)](https://imgtu.com/i/vUia60)
 
 #### 13. 磁盘类型配置
 默认值即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212912251-1756270358.png)
+[![vUidXV.png](https://s1.ax1x.com/2022/08/14/vUidXV.png)](https://imgtu.com/i/vUidXV)
 
 #### 14. 选择磁盘
 选择`创建新虚拟磁盘`
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212919164-1840071717.png)
+[![vUi0mT.png](https://s1.ax1x.com/2022/08/14/vUi0mT.png)](https://imgtu.com/i/vUi0mT)
 
 #### 15. 配置磁盘容量
 默认值即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505212925809-1498233658.png)
+[![vUiB0U.png](https://s1.ax1x.com/2022/08/14/vUiB0U.png)](https://imgtu.com/i/vUiB0U)
 
 #### 16. 指定磁盘文件的存储位置
 默认值即可
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505213003452-6980476.png)
+[![vUiD7F.png](https://s1.ax1x.com/2022/08/14/vUiD7F.png)](https://imgtu.com/i/vUiD7F)
 
 #### 17. 配置完成
-![](https://fastly.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/vmvare//1610029-20200505213010534-2034553820.png)
+[![vUiytJ.png](https://s1.ax1x.com/2022/08/14/vUiytJ.png)](https://imgtu.com/i/vUiytJ)
 
 #### 18. 报错
 安装报错：`Section %packages does not end with %end` （没报错忽略步骤18、19）
