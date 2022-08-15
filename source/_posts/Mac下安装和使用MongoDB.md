@@ -10,7 +10,7 @@ categories:
 ---
 ### 1.下载安装
 官网下载地址：[MongoDB Download Center | Community](https://www.mongodb.com/download-center/community). community版本可以免费使用
-[![vUi9Qx.png](https://s1.ax1x.com/2022/08/14/vUi9Qx.png)](https://imgtu.com/i/vUi9Qx)
+![vUi9Qx.png](https://s1.ax1x.com/2022/08/14/vUi9Qx.png)
 
 
 下载完成后，将其解压后拷贝至`/usr/local`目录下。
@@ -30,7 +30,7 @@ open -e ~/.bash_profile
 ```
 export PATH=/usr/local/mongodb/bin:$PATH
 ```
-[![vUipS1.png](https://s1.ax1x.com/2022/08/14/vUipS1.png)](https://imgtu.com/i/vUipS1)
+![vUipS1.png](https://s1.ax1x.com/2022/08/14/vUipS1.png)
 - 保存后关闭窗口，使用命令使配置生效
 
 ```bash
@@ -42,7 +42,7 @@ source ~/.bash_profile
 ``` bash
 mongod -version
 ```
-[![vUiCy6.png](https://s1.ax1x.com/2022/08/14/vUiCy6.png)](https://imgtu.com/i/vUiCy6)
+![vUiCy6.png](https://s1.ax1x.com/2022/08/14/vUiCy6.png)
 成功输出版本号，说明以上步骤成功完成。如果出现`command not found`，证明配置失败，解决办法见[Mac配置.bash_profile失效](http://localhost:4000/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html)。
 
 ### 3.运行MongoDB
@@ -113,7 +113,7 @@ sudo ./mongo
 ```
 
 出现以下内容，证明成功连接到了数据库
-[![vUPzWR.png](https://s1.ax1x.com/2022/08/14/vUPzWR.png)](https://imgtu.com/i/vUPzWR)
+![vUPzWR.png](https://s1.ax1x.com/2022/08/14/vUPzWR.png)
 
 
 如果出现`command not found`，证明配置失败，解决办法见[Mac配置.bash_profile失效](http://localhost:4000/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html)。

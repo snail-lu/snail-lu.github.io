@@ -41,7 +41,7 @@ is:private                 #匹配有权限的私有仓库
 topic:node stars:>1000 pushed:>2020-01-01
 ```
 搜索结果：
-[![vU9bpq.png](https://s1.ax1x.com/2022/08/14/vU9bpq.png)](https://imgtu.com/i/vU9bpq)
+![vU9bpq.png](https://s1.ax1x.com/2022/08/14/vU9bpq.png)
 
 
  

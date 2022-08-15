@@ -34,7 +34,7 @@ http-server -open
 
 ### 4. 查看效果
 正常启动后，会出现以下信息：
-[![vUC8u8.png](https://s1.ax1x.com/2022/08/14/vUC8u8.png)](https://imgtu.com/i/vUC8u8)
+![vUC8u8.png](https://s1.ax1x.com/2022/08/14/vUC8u8.png)
 
 此时，在浏览器中访问开发的页面`http://127.0.0.1:8080/index.html`，同时打开浏览器的开发者工具即可看到浏览器端模拟的开发效果。
 <div align="center">
