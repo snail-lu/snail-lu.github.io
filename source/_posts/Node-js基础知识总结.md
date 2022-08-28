@@ -92,6 +92,25 @@ console.log('文件复制成功');
 更多API参考[Node.js官方文档之文件系统](https://nodejs.org/dist/latest-v18.x/docs/api/fs.html)
 
 #### 1.5 `http`模块
+http 模块主要用于搭建 HTTP 服务端和客户端。
+```js
+const http = require('http');
+const url = require('url');
+
+// 创建服务器
+http.createServer( function (req, res) {  
+   // 解析请求，包括文件名
+   var pathname = url.parse(req.url).pathname;
+   
+   // 输出请求的文件名
+   console.log("Request for " + pathname + " received.");
+
+    res.writeHead(200, {'Content-Type': 'text/html'});   
+    //  完成响应
+    res.end("hello world!"); 
+     
+}).listen(8080);
+```
 
 #### 1.6 `path`模块
 用于处理文件的路径。
