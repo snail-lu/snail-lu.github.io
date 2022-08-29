@@ -9,9 +9,7 @@ categories:
 - [读书笔记]
 - [前端进阶]
 ---
-
-### 1. Node.js常用核心模块
-#### 1.1 全局对象`global`
+#### 1 全局对象`global`
 全局变量都是全局对象`global`的属性
 - `process`
 它是用于描述和控制当前Node.js进程状态的对象。
@@ -35,14 +33,14 @@ console.log('hello world'); // 打印字符并换行
 console.error('error'); // 输出错误消息
 console.warn('warning'); // 输出警告消息。控制台出现有黄色的惊叹号。
 ```
-#### 1.2 常用工具`util`
+### 2 常用工具`util`
 - `util.inherits()` 对象间原型继承
 - `util.inspect()` 将对象格式化为字符串
 - `util.isArray()` 判断是否为数组
 - `util.isRegExp()` 判断是否为正则表达式
 - `util.isDate()` 判断是否为日期类型
 
-#### 1.3 事件模块`events`
+### 3 事件模块`events`
 `events`模块对外只提供了一个`EventEmitter`对象。`EventEmitter`对象是对事件触发与事件监听功能的封装。当EventEmitter对象触发一个事件时，所有绑定在该事件上的函数都被同步调用。
 ```js
 // 引入 events 模块
@@ -64,7 +62,7 @@ EventEmitter对象的实例方法：
 
 EventEmitter定义了一个特殊的事件`error`，当`error`被触发时，如果没有相应的监听器，Node.js会把它当做异常，退出程序并输出错误信息。
 
-#### 1.4 文件系统`fs`模块
+### 4 文件系统`fs`模块
 ```js
 const fs = require('fs');
 const path = require('path');
@@ -98,7 +96,7 @@ console.log('文件复制成功');
 ```
 更多API参考[Node.js官方文档之文件系统](https://nodejs.org/dist/latest-v18.x/docs/api/fs.html)
 
-#### 1.5 `http`模块
+### 5 `http`模块
 http 模块主要用于搭建 HTTP 服务端和客户端。
 ```js
 const http = require('http');
@@ -119,7 +117,7 @@ http.createServer( function (req, res) {
 }).listen(8080);
 ```
 
-#### 1.6 `path`模块
+### 6 `path`模块
 用于处理文件的路径。
 - `join()` 连接路径
 - `resolve()` 将相对路径转换为绝对路径
