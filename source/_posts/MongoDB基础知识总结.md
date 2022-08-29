@@ -107,7 +107,7 @@ db.users.remove({ name: 'Mike' })
 db.users.deleteOne()
 ```
 
-### 七、操作符
+### 六、操作符
 - 比较操作符
 |操作符|含义|
 |----|----|
@@ -123,12 +123,12 @@ db.users.find({ age: { $gt: 20 }}) # 查询age>20的文档数据
 db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 ```
 
-### 八、文档间的关系
+### 七、文档间的关系
 - 一对一
 - 一对多
 - 多对多
 
-### 九、文档排序
+### 八、文档排序
 ```bash
 # sort()可以用来指定文档的排序规则 
 # 参数为{ <field>: 1|-1 }
@@ -136,14 +136,14 @@ db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
 db.users.find({}).sort({ age: 1 }) # users集合中的文档按照age升序返回
 ```
 
-### 十、限制查询的返回字段
+### 九、限制查询的返回字段
 默认情况下，MongoDB中的查询返回匹配文档中的所有字段。可以在查询中来配置指定货限制返回的字段。
 ```bash
 db.inventory.find( { status: "A" }, { item: 1, status: 1 } ) # 查找status为A的文档，返回的查询结果仅包含item,status,_id三个字段
 db.inventory.find( { status: "A" }, { item: 1, status: 1, _id: 0 } ) # 查找status为A的文档，返回的查询结果仅包含item,status两个字段
 ```
 
-### 十一、使用mongoose连接mongoDB
+### 十、使用mongoose连接mongoDB
 ```js
 // 引入
 const mongoose = require('mongoose');
