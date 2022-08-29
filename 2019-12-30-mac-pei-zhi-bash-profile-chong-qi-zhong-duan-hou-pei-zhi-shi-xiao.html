@@ -18,19 +18,19 @@
 
 
     <title>Mac配置.bash_profile,重启终端后配置失效 | Snail-Lu</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/favicon.ico">
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aos/aos.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/css/matery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/css/my.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/jquery/jquery.min.js"></script>
+    <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 
@@ -42,7 +42,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Snail-Lu</span>
                 </a>
@@ -119,7 +119,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Snail-Lu</div>
         <div class="logo-desc">
@@ -204,7 +204,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -222,7 +222,7 @@
 <main class="post-container content">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/tocbot/tocbot.min.css">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
     #articleContent h1::before,
     #articleContent h2::before,
@@ -349,10 +349,6 @@
                                 随笔
                             </a>
                         
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE/" class="post-category">
-                                开发配置
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -369,7 +365,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-27
+                    2022-08-15
                 </div>
                 
 
@@ -394,14 +390,14 @@
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h3><p>在Mac中使用mongodb，一般都要在.bash_profile中配置一下环境变量，后面使用会比较方便一点。<br>遇到的问题状况是：配置.bash_profile后，source了一下，然后启动了mongodb，这时又新建了一个终端窗口去连接数据库，去执行mongo命令，提示:<br><img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/mac-bash/1610029-20191210130742610-1488085198.png"></p>
+                <h3 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h3><p>在Mac中使用mongodb，一般都要在.bash_profile中配置一下环境变量，后面使用会比较方便一点。<br>遇到的问题状况是：配置.bash_profile后，source了一下，然后启动了mongodb，这时又新建了一个终端窗口去连接数据库，去执行mongo命令，提示:<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/14/vUPfoQ.png" alt="vUPfoQ.png"></p>
 <h3 id="2-原因"><a href="#2-原因" class="headerlink" title="2.原因"></a>2.原因</h3><p>使用的终端是<code>zsh</code>，zsh加载的是<code> ~/.zshrc</code>文件，而<code>.zshrc</code>文件中并没有定义任务环境变量</p>
 <h3 id="3-解决"><a href="#3-解决" class="headerlink" title="3.解决"></a>3.解决</h3><ol>
 <li>终端中执行命令，打开<code>.zshrc</code>文件：</li>
@@ -418,7 +414,7 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/.zshrc <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>4、新建窗口，测试：</p>
-<p><img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/imageGalleries/gh-pages/2021-10/mac-bash/1610029-20191210132653687-1027904723.png"></p>
+<p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/14/vUP4ij.png" alt="vUP4ij.png"></p>
 <p>PS:</p>
 <blockquote>
 <p>profile（/etc/profile），用于设置系统级的环境变量和启动程序，在这个文件下配置会对所有用户生效。当用户登录（login）时，文件会被执行，并从/etc/profile.d目录的配置文件中查找shell设置。<br>一般不建议在/etc/profile文件中添加环境变量，因为在这个文件中添加的设置会对所有用户起作用。<br>bash_profile只有单一用户有效，文件存储位于~/.bash_profile，该文件是一个用户级的设置，可以理解为某一个用户的profile目录下。这个文件同样也可以用于配置环境变量和启动程序，但只针对单个用户有效。<br>和profile文件类似，bash_profile也会在用户登录（login）时生效，也可以用于设置环境变理。但与profile不同，bash_profile只会对当前用户生效。</p>
@@ -449,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Snail-Lu.github.io/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html">https://Snail-Lu.github.io/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html</a>
+                    <a href="https://snail-lu.vercel.app/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html">https://snail-lu.vercel.app/2019-12-30-mac-pei-zhi-bash-profile-chong-qi-zhong-duan-hou-pei-zhi-shi-xiao.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -503,12 +499,12 @@
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/share/js/social-share.min.js"></script>
+    <script src="/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -548,7 +544,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/23.jpg" class="responsive-img" alt="Markdown基本语法总结">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Markdown基本语法总结">
                         
                         <span class="card-title">Markdown基本语法总结</span>
                     </div>
@@ -567,8 +563,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    读书笔记
                                 </a>
                             
                             
@@ -597,7 +593,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="./medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/medias/featureimages/0.jpg" class="responsive-img" alt="微信小程序开发问题记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="微信小程序开发问题记录">
                         
                         <span class="card-title">微信小程序开发问题记录</span>
                     </div>
@@ -605,7 +601,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            微信小程序开发记录
                         
                     </div>
                     <div class="publish-info">
@@ -616,12 +612,12 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
+                                    项目开发
                                 </a>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="post-category">
+                                    小程序
                                 </a>
                             
                             
@@ -685,21 +681,21 @@
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -720,7 +716,7 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/tocbot/tocbot.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -805,7 +801,7 @@
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aplayer/APlayer.min.css">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
 <style>
     .aplayer .aplayer-lrc p {
         
@@ -846,8 +842,8 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
     <div class="container row center-align" style="margin-bottom: 15px !important;">
@@ -863,7 +859,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.6k</span>&nbsp;字
+                class="white-color">60.9k</span>&nbsp;字
             
             
             
@@ -1086,44 +1082,20 @@ $(function () {
 </div>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/aos/aos.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/js/matery.min.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
     <!-- Baidu Analytics -->
 
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?3ee696b85b0bb417437de1bab78784ee";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
     <!-- Baidu Push -->
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
     
     
-    <script async src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
@@ -1136,11 +1108,11 @@ $(function () {
     
 
     
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/background/ribbon-dynamic.min.js" async="async"></script>
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     
-    <script src="https://cdn.jsdelivr.net/gh/Snail-Lu/Snail-Lu.github.io@gh-pages/libs/instantpage/instantpage.min.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 <script>
