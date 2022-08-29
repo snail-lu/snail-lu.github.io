@@ -13,7 +13,7 @@ categories:
 ### 1. Node.js常用核心模块
 #### 1.1 全局对象`global`
 全局变量都是全局对象`global`的属性
-- `process`全局变量
+- `process`
 它是用于描述和控制当前Node.js进程状态的对象。
 ```js
 // 示例用法：
@@ -28,6 +28,13 @@ process.exit() // 退出进程
 ```
 更多API参考[Node.js官方文档之process](https://nodejs.org/dist/latest-v18.x/docs/api/process.html)
 
+- `console`
+用户向控制台输出信息。
+```js
+console.log('hello world'); // 打印字符并换行
+console.error('error'); // 输出错误消息
+console.warn('warning'); // 输出警告消息。控制台出现有黄色的惊叹号。
+```
 #### 1.2 常用工具`util`
 - `util.inherits()` 对象间原型继承
 - `util.inspect()` 将对象格式化为字符串
