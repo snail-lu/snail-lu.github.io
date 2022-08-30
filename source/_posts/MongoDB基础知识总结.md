@@ -26,7 +26,7 @@ categories:
     - 数据库的客户端
       - 客户端用来操作服务器，对数据进行增删改查的操作
       - `mongo` 用来启动客户端
-- 下载msi安装包
+- 下载[msi安装包](https://www.mongodb.com/try/download/community?tck=docs_server)
 - 打开安装包进行安装
 - 配置mongoDB安装路径到环境变量中 `C:\Program Files\MongoDB\Server\4.0\bin`
 - 在C盘根目录创建一个`data`文件夹，在`data`中创建`db`文件夹，用于存放数据库文件
@@ -38,19 +38,50 @@ categories:
 
 
 ### 三、相关概念
-- 数据库（database）
+- `database` 数据库
   数据库是一个仓库，在仓库中可以存放集合
-- 集合（collection）
-  集合类似于数组，在集合中可以存放文档
-- 文档（document)
-  是数据库中最小单位，我们存储和操作的内容都是文档
+
+  **命名规范**：
+  * UTF-8字符
+  * 不能是空字符串
+  * 不能含有空格、`.`、`$`、`/`、`\`和`\0`（空字符）
+  * 全部小写
+  * 最多64Byte。
+  
+  **保留的数据库名**：
+  * **admin**：root数据库
+  * **local**：用于存储限于本地单台服务器的任意集合
+  * **config**：用于保存分片相关的信息
+
+- `collection` 集合
+  类似于数组，对应SQL中的`table`，在集合中可以存放文档
+  **命名规范**：
+  * 不能是空字符串
+  * 不能包含`\0`（空字符）
+  * 不能以`system.`开头
+  * 不能包含`$`
+- `document` 文档
+  是MongoDB数据库中最小单位，我们存储和操作的内容都是文档。文档是一组键值对，采用BSON格式存储（[BSON](https://blog.csdn.net/m0_38110132/article/details/77716792 "BSON的介绍及BSON与JSON的区别")，一种类json的二进制形式的存储格式。）  
+  **注意**：
+  1. 文档中的键值对是有序的，例如`{"username":"test","password":"123"}`和`{"password":"123","username":"test"}`是不同的文档。
+  2. 文档的键是字符串，值可以是字符串，也可以是其它几种[数据类型](https://docs.mongodb.com/manual/reference/bson-types/)。
+  3. 区分类型和大小写。
+  4. 键不能重复。
+
+  **命名规范**：
+  * 不能含有`\0`（空字符）
+  * `.`和`$`有特别的意义，只有在特定环境下使用
+  * 以`_`开头的键是保留的
 
 ### 四、基本指令
+启动`mongo`客户端
 ```bash
 show dbs/databases        # 显示当前的所有数据库
 use <database>            # 进入到指定的数据库中/创建不存在的数据库
 db                        # 查看当前所处的数据库
 show collections          # 显示当前数据库中的所有集合
+
+db.dropDatabase()         # 删除数据库
 ```
 ### 五、CRUD指令
 > query指查询条件，documnent指文档。
@@ -109,18 +140,22 @@ db.users.deleteOne()
 
 ### 六、操作符
 - 比较操作符
+
 |操作符|含义|
-|----|----|
+|:----:|:----:|
 |$gt|>|
 |$gte|>=|
 |$lt|<|
 |$lte|<=|
 |$eq|=|
 |$ne|!=|
+|$type|数据类型|
 
+示例：
 ```bash
 db.users.find({ age: { $gt: 20 }}) # 查询age>20的文档数据
-db.user.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
+db.users.find({ age: { $gt: 20, $lt: 40 }}) # 查询20<age<40的文档
+db.blogs.find({"title": {$type: 'string'}}) # 查找title属性的值为string类型的文档
 ```
 
 ### 七、文档间的关系
@@ -208,3 +243,7 @@ BlogModel.findOne({ title: '第一篇博客' }, function(err, doc) {
     }
 })
 ```
+
+### 参考资料
+1. [菜鸟MongoDB教程](https://www.runoob.com/mongodb/mongodb-tutorial.html)
+2. [MongoDB官方文档](https://www.mongodb.com/docs/manual/tutorial/getting-started/)

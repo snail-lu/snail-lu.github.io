@@ -5,15 +5,15 @@ tags:
 
 ### 一、基本概念  
 
-SQL概念 | MongoDB概念 | 含义(用/区分SQL和MongoDB)
----|---|---
-database | database | 数据库
-table | collection | 数据库表/集合
-row | document | 数据记录行/文档
-column | field | 数据字段/域
-index | index | 索引
-table joins |  | 表链接/不支持
-primary | primary key | 主键（mongoDB中自动设置_id为主键）
+|SQL概念 | MongoDB概念 |
+|---|---|
+database 数据库 | database 数据库
+table 表 | collection 集合
+row 数据行| document 文档
+column 数据字段 | field 域
+index 索引 | index 索引 
+table joins 表链接 |  不支持
+primary 主键 | primary key 自动设置_id为主键 
 
 ### 二、概念解析
 #### 1.数据库
@@ -159,6 +159,7 @@ db.COLLECTION_NAME.find()
 * $ne   ---  不等于
 * $eq   ---  等于
 * $type ---  数据类型
+
 示例：  
 ```
 // 在blogs集合中查找likes属性值大于100的文档
