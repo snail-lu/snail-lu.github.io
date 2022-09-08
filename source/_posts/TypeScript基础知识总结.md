@@ -10,7 +10,7 @@ categories:
 - [前端进阶]
 ---
 
-### 一、基础类型
+### 一、数据类型
 #### 布尔值
 ```ts
 let isDone: boolean = false;
@@ -89,7 +89,7 @@ function warnUser(): void{
 let unusable: void = undefined; 
 let unusable: void = null;
 ```
-#### Null 和Undefined
+#### Null 和 Undefined
 
 默认情况下`null`和`undefined`是所有类型的子类型。当`--strictNullChecks`标记关闭的情况下，可以将这两个类型赋值给别的类型。
 ```ts
