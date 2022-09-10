@@ -469,3 +469,74 @@ function fn<T>(a: T): T {
 let result1 = fn(10); // 调用时不指定泛型，TS会自动推断
 let result2 = fn<string>('hello'); // 调用时指定泛型
 ```
+### 五、联合类型
+```ts
+type A = { name: string }
+type B = { age: number }
+type C = A | B
+
+// 下面三种使用都是可以的
+const c1: C = {
+  name: 'snail'
+}
+
+const c2: C = {
+  age: 27
+}
+
+const c3: C = {
+  name: 'snail',
+  age: 27
+}
+```
+使用联合类型，有时候需要收窄类型，不然ts会报错：
+```ts
+function test(a: string | number) {
+  // Property 'toFixed' does not exist on type 'string | number'.
+  // Property 'toFixed' does not exist on type 'string'
+  return a.toFixed(2)
+}
+
+// 使用js做类型区分
+function test(a: string | number) {
+  if(typeof a === 'number') {
+    return a.toFixed(2)
+  } else if(typeof a === 'string') {
+    return parseFloat(a).toFixed(2)
+  } else {
+    return a
+  }
+}
+
+// 使用类型谓词is做类型区分
+type Rect =  {
+  height: number
+  width: number
+}
+
+type Circle = {
+  center: [number, number],
+  radius: number
+}
+
+const f1 = (a: Rect | Circle) => {
+  if(isCircle(a)) {
+    console.log(a)
+  } else if(isRect(a)) {
+    console.log(a)
+  }
+}
+
+function isRect(x: Rect | Circle): x is Rect {
+  return 'height' in x && 'width' in x
+}
+
+function isCircle(x: Rect | Circle): x is Circle {
+  return 'center' in x && 'radius' in x
+}
+```
+
+### 常见问题
+1. `type`和`interface`的区别
+- interface只描述对象，type则描述所有数据
+- interface是类型声明，type只是别名
