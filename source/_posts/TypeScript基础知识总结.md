@@ -556,6 +556,7 @@ function area(s: Shape) {
 ```
 
 ### 六、交叉类型
+将多个类型叠加合并组成新的类型，新类型包含了所有被合并类型的所有属性。
 ```ts
 type A = { id: number, name: string }
 type B = { id: string, age: number }
