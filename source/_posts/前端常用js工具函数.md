@@ -88,3 +88,34 @@ function throttle(fn, delay) {
 }
 ```
 [debounce和throttle可视化比较](http://demo.nimius.net/debounce_throttle/)
+
+### 对象数组排序
+```js
+/**
+ * 排序函数
+ * @param {string} key - 要排序的键名
+ * @param {string} order - asc:升序 desc:降序
+ * @return {function}
+ */
+function objectArraySort(key, order='asc') {
+	return function (object1, object2) {
+		const a = object1[key];
+		const b = object2[key];
+		if(order==='asc') {
+			return a>b ? 1 : -1;
+		} else {
+			return a<b ? 1 : -1;
+		}
+
+	}
+}
+
+// 使用示例：
+const obj = [
+	{ name: '张三', age: 12 },
+	{ name: '李四', age: 10 },
+	{ name: '王五', age: 18 },
+	{ name: '赵六', age: 15 },
+]
+obj.sort(objectArraySort('age'))
+```
