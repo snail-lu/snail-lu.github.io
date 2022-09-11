@@ -489,7 +489,7 @@ const c3: C = {
   age: 27
 }
 ```
-使用联合类型，有时候需要收窄类型，不然ts会报错：
+使用联合类型，执行具体操作时，需要收窄类型，不然ts会报错：
 ```ts
 function test(a: string | number) {
   // Property 'toFixed' does not exist on type 'string | number'.
@@ -498,7 +498,7 @@ function test(a: string | number) {
 }
 ```
 
-使用js做类型区分：
+使用js做类型收窄（类型区分）：
 ```ts
 function test(a: string | number) {
   if(typeof a === 'number') {
@@ -541,7 +541,8 @@ function isCircle(x: Rect | Circle): x is Circle {
 ```
 使用`kind`做类型区分：
 ```ts
-type Shape = { kind: "Circle"; radius: number } | { kind: "Rect"; width: number; height: number };
+type Shape = { kind: "Circle"; radius: number } 
+| { kind: "Rect"; width: number; height: number };
  
 function area(s: Shape) {
   if (s.kind === "Circle") {
@@ -554,6 +555,34 @@ function area(s: Shape) {
 }
 ```
 
+### 六、交叉类型
+```ts
+type A = { id: number, name: string }
+type B = { id: string, age: number }
+type C = A & B
+
+// 报错
+// 1. id属性类型为string & number => never, 1不可赋值给never
+// 2. 缺少属性age
+const c1: C = {
+  id: 1,
+  name: 'snail'
+}
+
+// 报错
+// 1. id属性类型为string & number => never, 1不可赋值给never
+// 2. 缺少属性name
+const c2: C = {
+  age: 27
+}
+
+// ok
+const c3: C = {
+  id: 1 as never,
+  name: 'snail',
+  age: 27
+}
+```
 ### 常见问题
 1. `type`和`interface`的区别
 - interface只描述对象，type则描述所有数据
