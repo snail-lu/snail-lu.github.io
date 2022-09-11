@@ -496,8 +496,10 @@ function test(a: string | number) {
   // Property 'toFixed' does not exist on type 'string'
   return a.toFixed(2)
 }
+```
 
-// 使用js做类型区分
+使用js做类型区分：
+```ts
 function test(a: string | number) {
   if(typeof a === 'number') {
     return a.toFixed(2)
@@ -507,15 +509,17 @@ function test(a: string | number) {
     return a
   }
 }
+```
 
-// 使用类型谓词is做类型区分
+使用类型谓词`is`做类型区分：
+```ts
 type Rect =  {
   height: number
   width: number
 }
 
 type Circle = {
-  center: [number, number],
+  center: [number, number], 
   radius: number
 }
 
@@ -533,6 +537,20 @@ function isRect(x: Rect | Circle): x is Rect {
 
 function isCircle(x: Rect | Circle): x is Circle {
   return 'center' in x && 'radius' in x
+}
+```
+使用`kind`做类型区分：
+```ts
+type Shape = { kind: "Circle"; radius: number } | { kind: "Rect"; width: number; height: number };
+ 
+function area(s: Shape) {
+  if (s.kind === "Circle") {
+    return Math.PI * s.radius * s.radius;
+  } else if (s.kind === "Rect") {
+    return s.width * s.height;
+  } else {
+    return 0
+  }
 }
 ```
 
