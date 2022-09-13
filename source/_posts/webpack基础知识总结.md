@@ -46,7 +46,7 @@ webpack在开发模式下的打包结果默认会缓存在内存中，不会输�
 ```js
 module.exports = {
     // 内存缓存
-    cache: true, // dev模式下默认。
+    cache: true, // development模式下默认。
     // cache: { type: 'memory' }, // 和上面等价。
 
     // 文件缓存
@@ -61,3 +61,8 @@ module.exports = {
 
 ### 10. 文件指纹
 文件指纹是打包后输出的文件名的后缀。
+
+### 11. webpackBootstrap做了什么？
+1. 使用立即执行函数封装我们的代码，避免全局污染
+2. 缓存每个模块的输出值并自执行函数
+3. 定义了一些处理 import, export 或者是 require 的方法，做到不同规范的兼容
