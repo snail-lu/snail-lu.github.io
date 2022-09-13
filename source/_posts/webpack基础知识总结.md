@@ -25,6 +25,8 @@ plugin是一个扩展器，它丰富了webpack本身，针对是loader结束后�
 **loader**:
 - `babel-loader`: ES6转ES5
 - `sass-loader`：SASS语法转CSS
+- `css-loader`：解析css文件，转换为js模块
+- `style-loader`：将css-loader解析后的内容挂载到html页面当中
 - `ts-loader`: TS转JS
 - `postcss-loader`：css语法降级及增加浏览器前缀等功能
 - `eslint-loader`：JS代码语法及风格检查
