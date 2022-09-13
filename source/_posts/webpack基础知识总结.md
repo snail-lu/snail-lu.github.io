@@ -12,13 +12,14 @@ categories:
 以一个或多个文件作为打包入口，将整个项目的所有文件编译组合成一个或多个文件输出，输出的文件可以直接在浏览器端运行。
 打包过程可以简单归结如下：
 - **初始化**：启动构建，读取与合并配置参数，加载 `Plugin`，实例化 `Compiler`
-- **编译**：从 `Entry` 出发，针对每个 `Module` 串行调用对应的 `Loader` 去翻译文件的内容，再找到该 `Module` 依赖的 `Module`，递归地进行编译处理
+- **编译**：从 `Entry` 出发，针对每个 `Module` 串行调用对应的 `Loader` 去翻译文件的内容，构建出模块依赖关系图，递归地进行编译处理
 - **输出**：将编译后的 `Module` 组合成 `Chunk`，将 `Chunk` 转换成文件，输出到文件系统中
 
 ### 2. 热更新原理
-客户端从服务端拉去更新后的文件，准确的说是 `chunk diff` (chunk 需要更新的部分)，实际上 `webpack dev server` 与浏览器之间维护了一个 `Websocket`，当本地资源发生变化时，`webpack dev server` 会向浏览器推送更新，并带上构建时的 `hash`，让客户端与上一次资源进行对比。客户端对比出差异后会向 `webpack dev server` 发起 `Ajax` 请求来获取更改内容(文件列表、hash)，这样客户端就可以再借助这些信息继续向 WDS 发起 jsonp 请求获取该chunk的增量更新。
-后续的部分(拿到增量更新之后如何处理？哪些状态该保留？哪些又需要更新？)由 `HotModulePlugin` 来完成，提供了相关 API 以供开发者针对自身场景进行处理，像`react-hot-loader` 和 `vue-loader` 都是借助这些 API 实现 HMR。
+`WDS`(**webpack dev server**)与浏览器之间维护了一个 `websocket`通信，当webpack编译器编译完成之后，`WDS` 会向浏览器发送更新通知，并带上构建时的 `hash`。浏览器对比出差异后会向 `WDS` 发起`xxxhash.hot-update.json`的`Ajax` 请求来获取更改内容（文件列表、下次更新的`hash`），客户端就可以再借助这些信息继续向 `WDS` 发起 `xxx/hash.hot-update.js` 的 `jsonp` 请求获取增量更新的文件。拿到需要更新的文件后，`HotModuleReplacementPlugin`将更新后的代码进行替换，并刷新浏览器。
 ### 3. loader和plugin区别
+loader，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。
+plugin是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务
 
 ### 4. 常用的loader和plugin
 **loader**:
@@ -36,9 +37,24 @@ categories:
 
 ### 6. 如何优化构建速度
 
-### 7. 分包机制
+### 7. 分包
+webpack的分包主要通过`SplitChunksPlugin`来实现
 
 ### 8. webpack5 的缓存方式
+webpack在开发模式下的打包结果默认会缓存在内存中，不会输出到静态文件。
+> 在生产环境下禁用缓存，默认输出到静态文件。
+```js
+module.exports = {
+    // 内存缓存
+    cache: true, // dev模式下默认。
+    // cache: { type: 'memory' }, // 和上面等价。
+
+    // 文件缓存
+    cache: {
+        type: 'filesystem', // 编译缓存将保存在文件中，不占用内存
+    }
+}
+```
 
 ### 9. sourcemap原理及使用
 
