@@ -37,13 +37,16 @@ categories:
 - `clean-webpack-plugin`：打包前移除上次打包的文件
 - `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出得bundle
 - `copy-webpack-plugin`：复制文件，一般用于将`public`目录的内容复制到输出目录
+- `mini-css-extract-plugin`: css文件提取到单独的文件，而非使用`style-loader`插入到html代码中
 
 ### 5. 如何优化包体积
 
 ### 6. 如何优化构建速度
 
 ### 7. 分包
-webpack的分包主要通过`SplitChunksPlugin`来实现
+webpack的分包主要通过`SplitChunksPlugin`来实现。实现的分包方式主要有两种：
+- 根据业务不同配置多个打包入口，输出多个打包结果（适用于多页应用程序）
+- 结合`ES Modules`的动态导入特性，按需加载模块
 
 ### 8. webpack5 的缓存方式
 webpack在开发模式下的打包结果默认会缓存在内存中，不会输出到静态文件。
@@ -71,3 +74,5 @@ module.exports = {
 1. 使用立即执行函数封装我们的代码，避免全局污染
 2. 缓存每个模块的输出值并自执行函数
 3. 定义了一些处理 import, export 或者是 require 的方法，做到不同规范的兼容
+
+### 12. Tree Shaking原理
