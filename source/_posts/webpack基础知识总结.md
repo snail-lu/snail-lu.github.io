@@ -18,8 +18,8 @@ categories:
 ### 2. 热更新原理
 `WDS`(**webpack dev server**)与浏览器之间维护了一个 `websocket`通信，当webpack编译器编译完成之后，`WDS` 会向浏览器发送更新通知，并带上构建时的 `hash`。浏览器对比出差异后会向 `WDS` 发起`xxxhash.hot-update.json`的`Ajax` 请求来获取更改内容（文件列表、下次更新的`hash`），客户端就可以再借助这些信息继续向 `WDS` 发起 `xxx/hash.hot-update.js` 的 `jsonp` 请求获取增量更新的文件。拿到需要更新的文件后，`HotModuleReplacementPlugin`将更新后的代码进行替换，并刷新浏览器。
 ### 3. loader和plugin区别
-loader，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。
-plugin是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务
+- `loader`，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。
+- `plugin`是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务
 
 ### 4. 常用的loader和plugin
 **loader**:
@@ -34,6 +34,9 @@ plugin是一个扩展器，它丰富了webpack本身，针对是loader结束后�
 
 **plugin**: 
 - `webpack-bundle-analyzer`：打包分析插件
+- `clean-webpack-plugin`：打包前移除上次打包的文件
+- `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出得bundle
+- `copy-webpack-plugin`：复制文件，一般用于将`public`目录的内容复制到输出目录
 
 ### 5. 如何优化包体积
 
