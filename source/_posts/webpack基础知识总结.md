@@ -86,13 +86,20 @@ module.exports = {
 在打包生产环境的代码时，为了避免向外暴露源码，一般选用`hidden-source-map`或`nosources-source-map`模式。
 - `hidden-source-map`
 仍然会产生完整的map文件，但是不会在 `bundle` 文件中添加对于 map 文件的引用。这样当打开浏览器开发者工具时，是无法看到map文件的，自然也就无法解析。如果我们自己想要追溯源码，可使用一些第三方服务，将map文件上传到第三方服务中（比如`Sentry`）。
-
 - `nosources-source-map`
 当打包部署后，我们可以在浏览器开发者工具的sources选项卡中看到源码的目录结构，但是文件内容会被隐藏起来。对于错误，仍然可以在console控制台中查看源代码的错误栈，或者console日志的准确行数。
 
 ### 10. webpackBootstrap做了什么？
 1. 使用立即执行函数封装我们的代码，避免全局污染
 2. 缓存每个模块的输出值并自执行函数
-3. 定义了一些处理 import, export 或者是 require 的方法，做到不同规范的兼容
+3. 定义了一些处理 `import`, `export` 或者是 `require` 的方法，做到不同规范的兼容
 
-### 11. Tree Shaking原理
+### 11. Tree Shaking
+`Tree-Shaking` 是一种基于 `ES Module` 规范的 `Dead Code Elimination` 技术，它会在运行过程中静态分析模块之间的导入导出，确定 `ESM` 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。
+启动 `Tree Shaking` 需要同时满足三个条件：
+- 使用 `ESM` 规范编写模块代码
+- 配置 `optimization.usedExports = true`, 即打包结果只导出外部用到的成员
+- 满足下列条件之一：
+    - 配置 `mode = production`
+    - 配置 `optimization.minimize = true`
+    - 配置 `optimization.minimizer`
