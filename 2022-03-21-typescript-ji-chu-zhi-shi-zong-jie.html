@@ -365,14 +365,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-21
+                    2022-09-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    3.2k
                 </div>
                 
 
@@ -397,7 +397,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、基础类型"><a href="#一、基础类型" class="headerlink" title="一、基础类型"></a>一、基础类型</h3><h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let isDone: boolean &#x3D; false;
+                <h3 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h3><h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let isDone: boolean &#x3D; false;
 
 &#x2F;&#x2F; 数字(全是浮点数)
 let deLiteral: number &#x3D; 6;           &#x2F;&#x2F; 十进制 
@@ -454,7 +454,7 @@ function warnUser(): void&#123;
 &#x2F;&#x2F; void类型变量只能赋值undefined和null 
 let unusable: void &#x3D; undefined; 
 let unusable: void &#x3D; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="Null-和Undefined"><a href="#Null-和Undefined" class="headerlink" title="Null 和Undefined"></a>Null 和Undefined</h4><p>默认情况下<code>null</code>和<code>undefined</code>是所有类型的子类型。当<code>--strictNullChecks</code>标记关闭的情况下，可以将这两个类型赋值给别的类型。</p>
+<h4 id="Null-和-Undefined"><a href="#Null-和-Undefined" class="headerlink" title="Null 和 Undefined"></a>Null 和 Undefined</h4><p>默认情况下<code>null</code>和<code>undefined</code>是所有类型的子类型。当<code>--strictNullChecks</code>标记关闭的情况下，可以将这两个类型赋值给别的类型。</p>
 <pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">let u: undefined &#x3D; undefined; 
 let n: null &#x3D; null;
 
@@ -750,6 +750,115 @@ function fn&lt;T&gt;(a: T): T &#123;
 
 let result1 &#x3D; fn(10); &#x2F;&#x2F; 调用时不指定泛型，TS会自动推断
 let result2 &#x3D; fn&lt;string&gt;(&#39;hello&#39;); &#x2F;&#x2F; 调用时指定泛型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="五、联合类型"><a href="#五、联合类型" class="headerlink" title="五、联合类型"></a>五、联合类型</h3><pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type A &#x3D; &#123; name: string &#125;
+type B &#x3D; &#123; age: number &#125;
+type C &#x3D; A | B
+
+&#x2F;&#x2F; 下面三种使用都是可以的
+const c1: C &#x3D; &#123;
+  name: &#39;snail&#39;
+&#125;
+
+const c2: C &#x3D; &#123;
+  age: 27
+&#125;
+
+const c3: C &#x3D; &#123;
+  name: &#39;snail&#39;,
+  age: 27
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用联合类型，执行具体操作时，需要收窄类型，不然ts会报错：</p>
+<pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function test(a: string | number) &#123;
+  &#x2F;&#x2F; Property &#39;toFixed&#39; does not exist on type &#39;string | number&#39;.
+  &#x2F;&#x2F; Property &#39;toFixed&#39; does not exist on type &#39;string&#39;
+  return a.toFixed(2)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用js做类型收窄（类型区分）：</p>
+<pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">function test(a: string | number) &#123;
+  if(typeof a &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;
+    return a.toFixed(2)
+  &#125; else if(typeof a &#x3D;&#x3D;&#x3D; &#39;string&#39;) &#123;
+    return parseFloat(a).toFixed(2)
+  &#125; else &#123;
+    return a
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用类型谓词<code>is</code>做类型区分：</p>
+<pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type Rect &#x3D;  &#123;
+  height: number
+  width: number
+&#125;
+
+type Circle &#x3D; &#123;
+  center: [number, number], 
+  radius: number
+&#125;
+
+const f1 &#x3D; (a: Rect | Circle) &#x3D;&gt; &#123;
+  if(isCircle(a)) &#123;
+    console.log(a)
+  &#125; else if(isRect(a)) &#123;
+    console.log(a)
+  &#125;
+&#125;
+
+function isRect(x: Rect | Circle): x is Rect &#123;
+  return &#39;height&#39; in x &amp;&amp; &#39;width&#39; in x
+&#125;
+
+function isCircle(x: Rect | Circle): x is Circle &#123;
+  return &#39;center&#39; in x &amp;&amp; &#39;radius&#39; in x
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用<code>kind</code>做类型区分：</p>
+<pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type Shape &#x3D; &#123; kind: &quot;Circle&quot;; radius: number &#125; 
+| &#123; kind: &quot;Rect&quot;; width: number; height: number &#125;;
+ 
+function area(s: Shape) &#123;
+  if (s.kind &#x3D;&#x3D;&#x3D; &quot;Circle&quot;) &#123;
+    return Math.PI * s.radius * s.radius;
+  &#125; else if (s.kind &#x3D;&#x3D;&#x3D; &quot;Rect&quot;) &#123;
+    return s.width * s.height;
+  &#125; else &#123;
+    return 0
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="六、交叉类型"><a href="#六、交叉类型" class="headerlink" title="六、交叉类型"></a>六、交叉类型</h3><p>将多个类型叠加合并组成新的类型，新类型包含了所有被合并类型的所有属性。</p>
+<pre class="line-numbers language-ts" data-language="ts"><code class="language-ts">type A &#x3D; &#123; id: number, name: string &#125;
+type B &#x3D; &#123; id: string, age: number &#125;
+type C &#x3D; A &amp; B
+
+&#x2F;&#x2F; 报错
+&#x2F;&#x2F; 1. id属性类型为string &amp; number &#x3D;&gt; never, 1不可赋值给never
+&#x2F;&#x2F; 2. 缺少属性age
+const c1: C &#x3D; &#123;
+  id: 1,
+  name: &#39;snail&#39;
+&#125;
+
+&#x2F;&#x2F; 报错
+&#x2F;&#x2F; 1. id属性类型为string &amp; number &#x3D;&gt; never, 1不可赋值给never
+&#x2F;&#x2F; 2. 缺少属性name
+const c2: C &#x3D; &#123;
+  age: 27
+&#125;
+
+&#x2F;&#x2F; ok
+const c3: C &#x3D; &#123;
+  id: 1 as never,
+  name: &#39;snail&#39;,
+  age: 27
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li><code>type</code>和<code>interface</code>的区别</li>
+</ol>
+<ul>
+<li>interface只描述对象，type则描述所有数据</li>
+<li>interface是类型声明，type只是别名</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -1189,7 +1298,7 @@ let result2 &#x3D; fn&lt;string&gt;(&#39;hello&#39;); &#x2F;&#x2F; 调用时指�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.9k</span>&nbsp;字
+                class="white-color">68.1k</span>&nbsp;字
             
             
             
