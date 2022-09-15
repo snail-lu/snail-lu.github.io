@@ -96,10 +96,14 @@ module.exports = {
 
 ### 11. Tree Shaking
 `Tree-Shaking` 是一种基于 `ES Module` 规范的 `Dead Code Elimination` 技术，它会在运行过程中静态分析模块之间的导入导出，确定 `ESM` 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。
-启动 `Tree Shaking` 需要同时满足三个条件：
+生产环境打包默认会开启 `Tree Shaking`，开发环境启动 `Tree Shaking` 需要同时满足三个条件：
 - 使用 `ESM` 规范编写模块代码
-- 配置 `optimization.usedExports = true`, 即打包结果只导出外部用到的成员
+- 配置 `optimization.usedExports = true`, 即开启标记未被使用的导出内容，`terser`压缩代码时会将这部分代码删除
 - 满足下列条件之一：
-    - 配置 `mode = production`
     - 配置 `optimization.minimize = true`
     - 配置 `optimization.minimizer`
+
+对于包含无副作用代码的模块，想要使用 `Tree Shaking`跳过该模块，需要如下设置：
+- 在`webpack.config.js`中设置`optimization.sideEffects = true`（生产环境打包无需配置，默认为 true），以告知 `webpack` 去辨识 `package.json` 中的 副作用 标记 `sideEffects`
+- 在无副作用的模块的 `package.json` 中设置副作用标记 `sideEffects = false`，表明该模块没有副作用，未使用时可以被跳过不打包进 `bundle`
+- 对于项目，如果确认自己项目中没有副作用代码，希望 `Tree Shaking` 时跳过没用到的js模块代码，同样可以在项目的`package.json` 中设置 `sideEffects = false`
