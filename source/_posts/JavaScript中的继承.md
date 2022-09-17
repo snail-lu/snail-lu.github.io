@@ -10,10 +10,14 @@ categories:
 
 ---
 ### 1. 原型链继承
-**原理**：重写 `SubType` 类型的原型对象为 `SuperType` 类型的实例，这样， `SubType` 的实例就可以顺着原型链访问 `SuperType` 的实例所能访问的所有属性和方法。
+**原理**：
+重写 `SubType` 类型的原型对象为 `SuperType` 类型的实例，这样， `SubType` 的实例就可以顺着原型链访问 `SuperType` 的实例所能访问的所有属性和方法。
+
 **缺点**：
 - 原型中包含的引用值会在所有实例间共享，一变俱变
-- 子类型在实例化时无法在不影响所有对象实例的情况下给父类型的构造函数传参
+- 子类型在实例化时无法给父类型的构造函数传参
+
+**代码示例**：
 ```js
 function SuperType() { 
     this.property = true;
@@ -25,23 +29,115 @@ SuperType.prototype.getSuperValue = function() {
 function SubType() { 
     this.subproperty = false; 
 } 
-// 重写原型对象
-// SuperType实例中拥有引用类型的
+// 重写SubType的原型对象
 SubType.prototype = new SuperType(); 
 SubType.prototype.getSubValue = function () {
     return this.subproperty; 
 }; 
+
 let instance1 = new SubType(); 
+// SubType的实例可以访问SuperType实例的方法和属性
 console.log(instance1.getSuperValue()); // true
-console.log(instance1.colors)  // ["red","blue","green"]
 
 let instance2 = new SubType();
-console.log(instance2.colors); //  ["red","blue","green"]
+// 修改instance1的colors属性，会影响instance2
+instance1.colors.push('black')
+console.log(instance2.colors); //  ["red","blue","green", "black"]
 ```
-### 2. 构造函数继承
+### 2. 盗用构造函数继承
+**原理**：
+在子类构造函数中调用父类构造函数。
+
+**优点**：
+- 解决了原型链继承中存在的原型对象上引用值的继承问题
+- 解决了原型链继承中从子类构造函数中向父类构造函数传参的问题
+
+**缺点**：
+- 父类的方法在每个子类实例上都要创建一遍，无法复用
+- 子类实例无法访问父类原型上的方法
+
+**代码示例**：
+```js
+function SuperType(show) {
+    this.show = show;
+    this.colors = ["red", "blue", "green"];
+    this.showColors = function() {
+        console.log(this.colors)
+    }
+}
+// 父类原型上定义getShow方法
+SuperType.prototype.getShow = function() {
+    console.log('test')
+}
+function SubType(show) {
+    // 继承 SuperType，为每个实例对象上都创建了独立的colors属性，而非在原型对象上共享
+    SuperType.call(this, show);
+}
+let instance1 = new SubType(true);
+instance1.colors.push("black");
+console.log(instance1.colors); // ["red","blue","green","black"]
+console.log(instance1.show); // true
+
+let instance2 = new SubType(false);
+console.log(instance2.colors); // ["red","blue","green"]
+console.log(instance2.show); // false
+
+// 缺点1：相同的方法无法复用
+console.log(instance1.showColors === instance2.showColors); // false
+
+// 缺点2：无法访问父类原型上的方法
+instance1.getShow() // Uncaught TypeError: instance1.getShow is not a function
+```
+
 ### 3. 组合继承
+**原理**：
+综合了原型链和盗用构造函数，使用原型链继承原型上的属性和方法，而通过盗用构造函数继承实例属性。
+
+**优点**：
+既可以把方法定义在原型上以实现重用，又可以让每个实例都有自己的属性。
+
+**缺点**：
+效率问题，父类构造函数始终会被调用两次
+
+**代码示例**：
+```js
+function SuperType(name){ 
+    this.name = name; 
+    this.colors = ["red", "blue", "green"]; 
+} 
+SuperType.prototype.sayName = function() { 
+    console.log(this.name); 
+}; 
+function SubType(name, age){ 
+    // 盗用构造函数，以继承属性
+    SuperType.call(this, name); // 第2次调用SuperType()
+    this.age = age; 
+} 
+
+// 原型链，以继承方法
+SubType.prototype = new SuperType(); // 第1次调用SuperType()
+SubType.prototype.sayAge = function() { 
+    console.log(this.age); 
+}; 
+let instance1 = new SubType("Nicholas", 29); 
+instance1.colors.push("black"); 
+console.log(instance1.colors); // ["red","blue","green","black"]
+instance1.sayName(); // "Nicholas"; 
+instance1.sayAge(); // 29 
+
+let instance2 = new SubType("Greg", 27); 
+console.log(instance2.colors); // ["red","blue","green"]
+instance2.sayName(); // "Greg"; 
+instance2.sayAge(); // 27
+
+// 方法是公用的，都是SuperType原型上的方法
+console.log(instance1.sayName === instance2.sayName) // true
+```
+
 ### 4. 原型式继承
+
 ### 5. 寄生式继承
 ### 6. 寄生组合式继承
 
 ### 参考文档
+1. JavaScript高级程序设计（第四版）
