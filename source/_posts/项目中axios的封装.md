@@ -13,7 +13,7 @@ categories:
 - 请求头中自动携带token
 - 未登录用户重定向到登录页
 - 请求重连
-- 取消请求
+- 支持取消请求（`"axios": ^0.22.0` ）
   
 ```js
 // @/utils/request.js
@@ -111,11 +111,12 @@ export function getUserList(params={}) {
 }
 
 // 获取用户列表
-export function getUserList(data) {
+export function getUserList(data, signal) {
     return request({
         method: 'post',
         url: urls.userList,
-        data
+        data,
+        signal
     })
 }
 
@@ -163,8 +164,14 @@ export default {
     methods: {
         // 获取用户列表
         async function getUserList() {
+            const controller = new AbortController();
+
+            // 3秒后自动取消请求
+            setTimeout(() => {
+                controller.abort();
+            }, 3000);
             try {
-                const response = await getUserList(this.pageInfo);
+                const response = await getUserList(this.pageInfo, controller.signal);
                 console.log(response);
             } catch (error) {
                 console.error(error);
