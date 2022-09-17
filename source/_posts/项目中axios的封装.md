@@ -19,7 +19,6 @@ categories:
 // @/utils/request.js
 
 import axois from 'axios';
-import { Message } from 'element-ui';
 
 const USER_NOT_LOGIN_CODE = '0000'; // 用户未登录
 const USER_RESPONSE_CODE = '1000'; //  正常响应
@@ -66,11 +65,6 @@ service.interceptors.response.use(
             // 转到登录页
             window.location.href = 'xxxx/login';
         } else if (code !== USER_RESPONSE_CODE) { // 
-            Message({
-                message: message || '请求失败',
-                type: 'error',
-                duration: 2 * 1000
-            })
             return Promise.reject(new Error(message || 'Error'))
         } else {
             return response.data
@@ -78,11 +72,24 @@ service.interceptors.response.use(
     },
     // HTTP状态码非 2xx 时进入到此回调
     error => {
-        Message({
-            type: 'error',
-            message: '接口请求失败'
-        })
-        return Promise.reject(error)
+        let config = error.config;
+        if (!config) return Promise.reject(error);
+
+        // 请求重连功能
+        const { retryCount = 0, retryDelay = 300, retryTimes = 2 } = config;
+        // 记录已经重试的次数
+        config.retryCount = retryCount;
+
+        // 判断是否超过了重试次数
+        if (retryCount >= retryTimes) {
+            return Promise.reject(error);
+        }
+        // 增加重试次数
+        config.retryCount++;
+        // 延时处理后重新发起请求
+        setTimeout(() => {
+            service(config);
+        }, retryDelay);
     }
 )
 
