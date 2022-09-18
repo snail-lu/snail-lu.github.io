@@ -119,3 +119,5 @@ const obj = [
 ]
 obj.sort(objectArraySort('age'))
 ```
+
+### 数组扁平化
