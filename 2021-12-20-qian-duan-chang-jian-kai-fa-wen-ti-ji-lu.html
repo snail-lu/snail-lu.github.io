@@ -30,7 +30,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 
@@ -325,12 +325,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
                             <a href="/tags/React/">
                                 <span class="chip bg-color">React</span>
+                            </a>
+                        
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                             <a href="/tags/Vue/">
@@ -398,17 +398,17 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="1-input输入框保存对象格式的数据"><a href="#1-input输入框保存对象格式的数据" class="headerlink" title="1. input输入框保存对象格式的数据"></a>1. input输入框保存对象格式的数据</h3><p>有时候需要将JavaScript对象（或数组）格式的数据利用表单保存起来，但是输入框会将输入的对象数据当作字符串，这样存到数据库中的数据格式也是字符串。<br>例如：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// input输入框中输入的是 &#123; name: 'snail', age: 20 &#125;</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// input输入框中输入的是 &#123; name: 'snail', age: 20 &#125;</span>
 <span class="token comment">// 表单提交时，该条数据就是 "&#123;name: 'snail', age: 20 &#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>针对这种使用场景，开发时可以从两个方面入手：</p>
 <ol>
-<li>利用input保存数据前，将要保存的数据转为标准的JSON格式，再复制到输入框中，这样在使用保存的该条数据时，可以直接使用<code>JSON.parse()</code>转换为JavaScript对象或数组。<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// JSON字符串</span>
+<li>利用input保存数据前，将要保存的数据转为标准的JSON格式，再复制到输入框中，这样在使用保存的该条数据时，可以直接使用<code>JSON.parse()</code>转换为JavaScript对象或数组。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// JSON字符串</span>
 <span class="token keyword">let</span> o1 <span class="token operator">=</span> <span class="token string">'&#123; "name": "snail", "age": 20 &#125;'</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment">// 可以被转成JavaScript对象 </span>
 <span class="token punctuation">&#123;</span>
-    name<span class="token operator">:</span> <span class="token string">'snail'</span><span class="token punctuation">,</span> 
-    age<span class="token operator">:</span> <span class="token number">20</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'snail'</span><span class="token punctuation">,</span> 
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span>
 <span class="token punctuation">&#125;</span>
 
 <span class="token comment">// “数组”的JSON数据</span>
@@ -422,7 +422,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">let</span> a2 <span class="token operator">=</span> <span class="token string">'[&#123;"name": "jack", "age": 13 &#125;, &#123; "name": "mike", "age": 15 &#125;]'</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span><span class="token punctuation">)</span> 
 <span class="token comment">//  可以被转成数组 </span>
-<span class="token punctuation">[</span><span class="token punctuation">&#123;</span>name<span class="token operator">:</span> <span class="token string">'jack'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>name<span class="token operator">:</span> <span class="token string">'mike'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'jack'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'mike'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
 
 
 <span class="token comment">// 多层JSON数据</span>
@@ -430,21 +430,21 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment">// 可以被转成对象</span>
 <span class="token punctuation">&#123;</span>
-    age<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
-    name<span class="token operator">:</span> <span class="token string">"snail"</span><span class="token punctuation">,</span>
-    other<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        sex<span class="token operator">:</span> <span class="token string">'male'</span><span class="token punctuation">,</span> 
-        address<span class="token operator">:</span> <span class="token string">'上海市黄浦区人民广场'</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"snail"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">other</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">sex</span><span class="token operator">:</span> <span class="token string">'male'</span><span class="token punctuation">,</span> 
+        <span class="token literal-property property">address</span><span class="token operator">:</span> <span class="token string">'上海市黄浦区人民广场'</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>一些字符串数据格式不符合标准的JSON格式，直接使用<code>JSON.parse()</code>会报错，这时可以使用<code>eval()</code>来进行格式转换<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> o3 <span class="token operator">=</span> <span class="token string">"&#123; name: 'snail', age: 20, other: &#123; sex: 'male', address: '上海市黄浦区人民广场' &#125;&#125;"</span>
+<li>一些字符串数据格式不符合标准的JSON格式，直接使用<code>JSON.parse()</code>会报错，这时可以使用<code>eval()</code>来进行格式转换<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> o3 <span class="token operator">=</span> <span class="token string">"&#123; name: 'snail', age: 20, other: &#123; sex: 'male', address: '上海市黄浦区人民广场' &#125;&#125;"</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>o3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 报错：Uncaught SyntaxError: Unexpected token n in JSON at position 2</span>
 
 <span class="token comment">// 使用eval()，为了避免eval()解析对象时将其当做语句执行，需要在对象字符串外使用()包裹，转换数组时，无需加()</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">'('</span> <span class="token operator">+</span> o3 <span class="token operator">+</span> <span class="token string">')'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 可以正常转换</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="2-苹果IOS中Date的兼容性问题"><a href="#2-苹果IOS中Date的兼容性问题" class="headerlink" title="2. 苹果IOS中Date的兼容性问题"></a>2. 苹果IOS中Date的兼容性问题</h3><p><code>2001-01-01 12:00:00</code>这种格式使用<code>new Date()</code>时，会报错，需要转变为<code>2001/01/01 12:00:00</code>格式</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token string">'2001-01-01 12:00:00'</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token string">'2001-01-01 12:00:00'</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// IOS系统中报错 invalid Date</span>
 
 date <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">-</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span>
@@ -452,15 +452,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <h3 id="3-生成海报图片发生错位-偏移问题"><a href="#3-生成海报图片发生错位-偏移问题" class="headerlink" title="3. 生成海报图片发生错位/偏移问题"></a>3. 生成海报图片发生错位/偏移问题</h3><p>原来使用的是<code>html-2-canvas</code>库，版本较旧，改用新库<code>html-to-image</code>完美解决问题。<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/html-to-image">文档地址</a></p>
 <h3 id="4-Vue项目过渡行为和滚动行为的冲突问题"><a href="#4-Vue项目过渡行为和滚动行为的冲突问题" class="headerlink" title="4. Vue项目过渡行为和滚动行为的冲突问题"></a>4. Vue项目过渡行为和滚动行为的冲突问题</h3><p>项目中使用<code>transition</code>组件来实现组件的过渡行为，同时也使用<code>vue-router</code>中的<code>scrollBehavior</code>定义了滚动行为。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fade-transform<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fade-transform<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>key<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">createRouter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">createRouter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
     <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-        mode<span class="token operator">:</span> <span class="token string">'hash'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'hash'</span><span class="token punctuation">,</span>
         <span class="token function-variable function">scrollBehavior</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> savedPosition</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span>savedPosition<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                 <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
@@ -469,7 +469,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
                 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
             <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> y<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
+                <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
         routes
@@ -480,14 +480,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p><strong>解决方案：</strong></p>
 <ol>
 <li><p><span style="color:green;">【已测试】</span><code>scrollBehavior</code>中使用延迟滚动，同时设置一下<code>scroll-behavior</code>样式。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">createRouter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">createRouter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
     <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-        mode<span class="token operator">:</span> <span class="token string">'hash'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'hash'</span><span class="token punctuation">,</span>
         <span class="token function-variable function">scrollBehavior</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> savedPosition</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
             <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
                 <span class="token comment">// 这里的延迟时间根据过渡时间来决定，>过渡时间即可</span>
                 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">resolve</span><span class="token punctuation">(</span>savedPosition <span class="token operator">?</span> savedPosition <span class="token operator">:</span> <span class="token punctuation">&#123;</span> y<span class="token operator">:</span><span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>savedPosition <span class="token operator">?</span> savedPosition <span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">y</span><span class="token operator">:</span><span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
                 <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
             <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
         <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
@@ -511,7 +511,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ol>
 <li>确保<code>body</code>元素的<code>margin</code>被清零</li>
 <li>给<code>canvas</code>元素设置<code>display: block;</code>，或给<code>canvas</code>的父元素设置<code>font-size:0;</code>以确保元素之间的间隙被清零</li>
-<li>电脑屏幕设置了缩放的情况下（我的缩放是125%），<code>window.innerHeight</code>高度是窗口理论缩放高度<code>原始innerHeight/devicePixelRatio</code>四舍五入<br>后的结果，所以<code>window.innerHeight</code>有可能大于理论缩放高度，这就导致设置了滚动条的出现。<br>我这里进行了一定抹零处理。如果想省事也可以直接<code>window.innerHeight - 0.5</code>。<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> innerWidth<span class="token punctuation">,</span> innerHeight<span class="token punctuation">,</span> devicePixelRatio <span class="token punctuation">&#125;</span> <span class="token operator">=</span> window<span class="token punctuation">;</span>
+<li>电脑屏幕设置了缩放的情况下（我的缩放是125%），<code>window.innerHeight</code>高度是窗口理论缩放高度<code>原始innerHeight/devicePixelRatio</code>四舍五入<br>后的结果，所以<code>window.innerHeight</code>有可能大于理论缩放高度，这就导致设置了滚动条的出现。<br>我这里进行了一定抹零处理。如果想省事也可以直接<code>window.innerHeight - 0.5</code>。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> innerWidth<span class="token punctuation">,</span> innerHeight<span class="token punctuation">,</span> devicePixelRatio <span class="token punctuation">&#125;</span> <span class="token operator">=</span> window<span class="token punctuation">;</span>
 
 <span class="token comment">// 现在电脑的高分辨率屏幕一般都会设置缩放（我的屏幕设置了125%）</span>
 <span class="token comment">// 此时window.innerHeight = Math.round(理论上屏幕缩放后分辨率)</span>
@@ -585,12 +585,12 @@ renderer<span class="token punctuation">.</span><span class="token function">set
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
                                 <a href="/tags/React/">
                                     <span class="chip bg-color">React</span>
+                                </a>
+                            
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                                 <a href="/tags/Vue/">
@@ -961,7 +961,7 @@ renderer<span class="token punctuation">.</span><span class="token function">set
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.1k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             

@@ -30,7 +30,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 
@@ -365,14 +365,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-09
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.5k
                 </div>
                 
 
@@ -597,7 +597,13 @@
 <li><strong>参数</strong>：从<code>?</code>开始到<code>#</code>为止之间的部分为参数部分，又称<code>搜索部分</code>、<code>查询部分</code>。本例中的参数部分为<code>id=1&amp;cate=2</code>。参数可以允许有多个参数，参数与参数之间用<code>&amp;</code>分隔。</li>
 <li><strong>锚</strong>：从<code>#</code>开始到最后部分，前端用来做页面定位。本例中的锚部分是<code>#header</code>。</li>
 </ul>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6908327746473033741">1. 「2021」高频前端面试题汇总之计算机网络篇.CUGGZ</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv3625682">2. 一个TCP连接可以发送几个HTTP请求</a></p>
+<h3 id="11-HTTP缓存"><a href="#11-HTTP缓存" class="headerlink" title="11. HTTP缓存"></a>11. HTTP缓存</h3><p>HTTP缓存主要分为<code>协商缓存</code>与<code>强缓存</code>，它们的基本原理如下：</p>
+<ul>
+<li>浏览器在加载资源时，根据响应头的 <code>Expires</code> 和 <code>Cache-Control</code> 判断是否命中强缓存，是则直接从缓存读取资源，不会发请求到服务器。</li>
+<li>如果没有命中强缓存，浏览器一定会发送一个请求到服务器，通过 <code>Last-Modified</code> 和 <code>Etag</code> 验证资源是否命中协商缓存，如果命中，服务器会将这个请求返回，但是不会返回这个资源的数据，依然是从缓存中读取资源</li>
+<li>如果前面两者都没有命中，直接从服务器加载资源</li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6908327746473033741">1. 「2021」高频前端面试题汇总之计算机网络篇.CUGGZ</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv3625682">2. 一个TCP连接可以发送几个HTTP请求</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7060876277376352293">3. HTTP缓存</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5MDE2NjYxNw==&mid=2447866020&idx=1&sn=74d965f9f29c8408d93da49031b42507&chksm=b25b2392852caa8430981da2bcc56deddb68547e10288566a8e946c34e77c6b93406ff87da88&scene=21#wechat_redirect">4. 一文读懂http缓存</a></p>
 
                 
             </div>
@@ -1038,7 +1044,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.1k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             

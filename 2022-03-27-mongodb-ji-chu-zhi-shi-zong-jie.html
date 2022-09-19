@@ -30,7 +30,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 
@@ -584,7 +584,7 @@ db.users.find<span class="token punctuation">(</span><span class="token punctuat
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">db.inventory.find<span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status: <span class="token string">"A"</span> <span class="token punctuation">&#125;</span>, <span class="token punctuation">&#123;</span> item: <span class="token number">1</span>, status: <span class="token number">1</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span> <span class="token comment"># 查找status为A的文档，返回的查询结果仅包含item,status,_id三个字段</span>
 db.inventory.find<span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> status: <span class="token string">"A"</span> <span class="token punctuation">&#125;</span>, <span class="token punctuation">&#123;</span> item: <span class="token number">1</span>, status: <span class="token number">1</span>, _id: <span class="token number">0</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">)</span> <span class="token comment"># 查找status为A的文档，返回的查询结果仅包含item,status两个字段</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="十、使用mongoose连接mongoDB"><a href="#十、使用mongoose连接mongoDB" class="headerlink" title="十、使用mongoose连接mongoDB"></a>十、使用mongoose连接mongoDB</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 引入</span>
+<h3 id="十、使用mongoose连接mongoDB"><a href="#十、使用mongoose连接mongoDB" class="headerlink" title="十、使用mongoose连接mongoDB"></a>十、使用mongoose连接mongoDB</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 引入</span>
 <span class="token keyword">const</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongoose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 连接数据库</span>
@@ -606,15 +606,15 @@ mongoose<span class="token punctuation">.</span><span class="token function">dis
 <span class="token keyword">const</span> Schema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>Schema<span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> blogSchema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-    title<span class="token operator">:</span>  String<span class="token punctuation">,</span>
-    author<span class="token operator">:</span> String<span class="token punctuation">,</span>
-    body<span class="token operator">:</span>   String<span class="token punctuation">,</span>
-    comments<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> body<span class="token operator">:</span> String<span class="token punctuation">,</span> date<span class="token operator">:</span> Date <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    date<span class="token operator">:</span> <span class="token punctuation">&#123;</span> type<span class="token operator">:</span> Date<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token operator">:</span> Date<span class="token punctuation">.</span>now <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    hidden<span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
-    meta<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      votes<span class="token operator">:</span> Number<span class="token punctuation">,</span>
-      favs<span class="token operator">:</span>  Number
+    <span class="token literal-property property">title</span><span class="token operator">:</span>  String<span class="token punctuation">,</span>
+    <span class="token literal-property property">author</span><span class="token operator">:</span> String<span class="token punctuation">,</span>
+    <span class="token literal-property property">body</span><span class="token operator">:</span>   String<span class="token punctuation">,</span>
+    <span class="token literal-property property">comments</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">body</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token literal-property property">date</span><span class="token operator">:</span> Date <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">type</span><span class="token operator">:</span> Date<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token operator">:</span> Date<span class="token punctuation">.</span>now <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hidden</span><span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+    <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">votes</span><span class="token operator">:</span> Number<span class="token punctuation">,</span>
+      <span class="token literal-property property">favs</span><span class="token operator">:</span>  Number
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -623,15 +623,15 @@ mongoose<span class="token punctuation">.</span><span class="token function">dis
 
 <span class="token comment">// 使用BlogModel来进行CRUD</span>
 BlogModel<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-    title<span class="token operator">:</span> <span class="token string">'第一篇博客'</span><span class="token punctuation">,</span>
-    author<span class="token operator">:</span> <span class="token string">'Snail-Lu'</span><span class="token punctuation">,</span>
-    body<span class="token operator">:</span> <span class="token string">'这是我的第一篇博客'</span><span class="token punctuation">,</span>
-    comments<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> body<span class="token operator">:</span> <span class="token string">'写的不错'</span><span class="token punctuation">,</span> date<span class="token operator">:</span> <span class="token string">'2022/4/1 22:23:14'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    date<span class="token operator">:</span> <span class="token string">'2022-4-1 22:22:22'</span><span class="token punctuation">,</span>
-    hidden<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    meta<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      votes<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
-      favs<span class="token operator">:</span>  <span class="token number">10</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'第一篇博客'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token string">'Snail-Lu'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">'这是我的第一篇博客'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">comments</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">'写的不错'</span><span class="token punctuation">,</span> <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token string">'2022/4/1 22:23:14'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token string">'2022-4-1 22:22:22'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">meta</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token literal-property property">votes</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">favs</span><span class="token operator">:</span>  <span class="token number">10</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -639,10 +639,10 @@ BlogModel<span class="token punctuation">.</span><span class="token function">cr
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> 
 
-BlogModel<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> title<span class="token operator">:</span> <span class="token string">'第一篇博客'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> doc</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+BlogModel<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'第一篇博客'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> doc</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// 利用document方法进行文档修改</span>
-        doc<span class="token punctuation">.</span><span class="token function">$set</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> hidden<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        doc<span class="token punctuation">.</span><span class="token function">$set</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
         doc<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1095,7 +1095,7 @@ BlogModel<span class="token punctuation">.</span><span class="token function">fi
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.1k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             

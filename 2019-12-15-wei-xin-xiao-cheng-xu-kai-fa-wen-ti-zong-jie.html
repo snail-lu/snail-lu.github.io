@@ -30,7 +30,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 
@@ -395,18 +395,18 @@
             <div id="articleContent">
                 <h3 id="1-页面跳转过程的参数传递"><a href="#1-页面跳转过程的参数传递" class="headerlink" title="1. 页面跳转过程的参数传递"></a>1. 页面跳转过程的参数传递</h3><ul>
 <li><p>单个普通参数</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>url<span class="token operator">:</span> <span class="token string">"../api/getOrderList?orderStatus="</span><span class="token operator">+</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"../api/getOrderList?orderStatus="</span><span class="token operator">+</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>多个普通参数</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 多个参数之间使用 "&amp;" 分割</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>url<span class="token operator">:</span> <span class="token string">"../api/getOrderList?orderStatus="</span><span class="token operator">+</span><span class="token number">0</span><span class="token operator">+</span><span class="token string">"&amp;psize="</span><span class="token operator">+</span><span class="token number">10</span><span class="token operator">+</span><span class="token string">"&amp;pno="</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 多个参数之间使用 "&amp;" 分割</span>
+wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"../api/getOrderList?orderStatus="</span><span class="token operator">+</span><span class="token number">0</span><span class="token operator">+</span><span class="token string">"&amp;psize="</span><span class="token operator">+</span><span class="token number">10</span><span class="token operator">+</span><span class="token string">"&amp;pno="</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>传递对象</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 对象中不带 "?"</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 对象中不带 "?"</span>
 <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token punctuation">&#123;</span> 
-    orderStatus<span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span> 
-    psize<span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span>
-    pno<span class="token operator">:</span><span class="token number">1</span>
+    <span class="token literal-property property">orderStatus</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span> 
+    <span class="token literal-property property">psize</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">pno</span><span class="token operator">:</span><span class="token number">1</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> url<span class="token operator">:</span> <span class="token string">"../api/getOrderList?params="</span><span class="token operator">+</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"../api/getOrderList?params="</span><span class="token operator">+</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 接收页</span>
 <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -415,12 +415,12 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
 
 <span class="token comment">// 对象中带 "?"</span>
 <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    orderStatus<span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span>
-    psize<span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span>
-    pno<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
-    picUrl<span class="token operator">:</span>"https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>pic<span class="token punctuation">.</span>bonwebuy<span class="token punctuation">.</span>com<span class="token operator">/</span>sources<span class="token operator">/</span>images<span class="token operator">/</span>goods<span class="token operator">/</span><span class="token constant">MB</span><span class="token operator">/</span><span class="token number">653434255.</span>png<span class="token operator">?</span>x<span class="token operator">-</span>oss<span class="token operator">-</span>process<span class="token operator">=</span>image<span class="token operator">/</span>resize<span class="token punctuation">,</span>m_fill<span class="token punctuation">,</span>w_500<span class="token punctuation">,</span>h_500<span class="token operator">/</span>quality<span class="token punctuation">,</span>q_90
+    <span class="token literal-property property">orderStatus</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">psize</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">pno</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">picUrl</span><span class="token operator">:</span>"https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>pic<span class="token punctuation">.</span>bonwebuy<span class="token punctuation">.</span>com<span class="token operator">/</span>sources<span class="token operator">/</span>images<span class="token operator">/</span>goods<span class="token operator">/</span><span class="token constant">MB</span><span class="token operator">/</span><span class="token number">653434255</span><span class="token punctuation">.</span>png<span class="token operator">?</span>x<span class="token operator">-</span>oss<span class="token operator">-</span>process<span class="token operator">=</span>image<span class="token operator">/</span>resize<span class="token punctuation">,</span>m_fill<span class="token punctuation">,</span>w_500<span class="token punctuation">,</span>h_500<span class="token operator">/</span>quality<span class="token punctuation">,</span>q_90
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> url<span class="token operator">:</span> <span class="token string">"../api/getOrderList?params="</span><span class="token operator">+</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"../api/getOrderList?params="</span><span class="token operator">+</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 接收页</span>
 <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -433,7 +433,7 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
     <span class="token property">line-height</span><span class="token punctuation">:</span> 40rpx<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-自定义顶部导航栏计算"><a href="#3-自定义顶部导航栏计算" class="headerlink" title="3. 自定义顶部导航栏计算"></a>3. 自定义顶部导航栏计算</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">/**
+<h3 id="3-自定义顶部导航栏计算"><a href="#3-自定义顶部导航栏计算" class="headerlink" title="3. 自定义顶部导航栏计算"></a>3. 自定义顶部导航栏计算</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
  * 小程序自定义导航栏情况下，获取导航栏高度
  * @return &#123;Object&#125; 返回状态栏高度和导航栏高度以及胶囊高度
  */</span>
@@ -451,9 +451,9 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
 	<span class="token comment">// 计算公式</span>
 	<span class="token comment">// 导航栏高度 = 状态栏到胶囊的间距（胶囊距上距离-状态栏高度） * 2 + 胶囊高度，这里是最小高度</span>
 	<span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-		navigationBarHeight<span class="token operator">:</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>top <span class="token operator">-</span> statusBarHeight<span class="token punctuation">)</span> <span class="token operator">+</span> height<span class="token punctuation">,</span>
+		<span class="token literal-property property">navigationBarHeight</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>top <span class="token operator">-</span> statusBarHeight<span class="token punctuation">)</span> <span class="token operator">+</span> height<span class="token punctuation">,</span>
 		statusBarHeight<span class="token punctuation">,</span>
-		menuButtonHeight<span class="token operator">:</span> height
+		<span class="token literal-property property">menuButtonHeight</span><span class="token operator">:</span> height
 	<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
@@ -895,7 +895,7 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.1k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             

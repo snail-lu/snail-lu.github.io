@@ -30,7 +30,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 
@@ -411,7 +411,7 @@
 <ol start="2">
 <li><code>BroserRouter</code>中配置<code>basename</code>属性</li>
 </ol>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 其他引入项省略</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 其他引入项省略</span>
 <span class="token comment">// 引入路由组件</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>
     BrowserRouter <span class="token keyword">as</span> Router<span class="token punctuation">,</span>
@@ -449,16 +449,16 @@
 <h4 id="2-vue项目配置"><a href="#2-vue项目配置" class="headerlink" title="2.vue项目配置"></a>2.vue项目配置</h4><ol>
 <li><code>router</code>中配置基础路径</li>
 </ol>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  mode<span class="token operator">:</span> <span class="token string">'history'</span><span class="token punctuation">,</span>
-  base<span class="token operator">:</span> <span class="token string">'/home'</span><span class="token punctuation">,</span> <span class="token comment">//基础路径</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'history'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">base</span><span class="token operator">:</span> <span class="token string">'/home'</span><span class="token punctuation">,</span> <span class="token comment">//基础路径</span>
   routes
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li><code>vue.config.js</code>（项目中没有该文件的，可以在项目根目录下创建）中配置基础路径</li>
 </ol>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  publicPath<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">publicPath</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span>
     <span class="token operator">?</span> <span class="token string">'/home'</span>
     <span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
     <span class="token comment">// 其他配置内容省略</span>
@@ -997,7 +997,7 @@ location @router <span class="token punctuation">&#123;</span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.1k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             
