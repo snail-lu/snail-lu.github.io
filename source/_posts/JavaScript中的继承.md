@@ -232,3 +232,5 @@ SubType.prototype.sayAge = function() {
 
 ### 参考文档
 1. JavaScript高级程序设计（第四版）
+2. [JavaScript继承](https://juejin.cn/post/7035828718161362981)
+3. [JavaScript常用八种继承方案](https://juejin.cn/post/6844903696111763470)
