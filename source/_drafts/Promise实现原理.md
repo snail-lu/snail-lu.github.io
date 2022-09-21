@@ -45,7 +45,7 @@ class Promise {
     }
 
     /**
-     * @method catch
+     * @method catch实现
      * @param {Function} onRejection
      * @return {Promise}
      */
@@ -54,7 +54,7 @@ class Promise {
         return this.then(null, onRejection);
     }
     /**
-     * @method finally
+     * @method finally实现
      * @param {Function} callback
      * @return {Promise}
      */
@@ -70,15 +70,19 @@ class Promise {
         return promise.then(callback, callback);
     }
 }
+
+// 将实现的then方法挂载到Promise.prototype上
 Promise.prototype.then = then;
 export default Promise;
+
+// 将实现的all、race、resolve、reject静态方法挂载Promise上
 Promise.all = all;
 Promise.race = race;
 Promise.resolve = Resolve;
 Promise.reject = Reject;
 ```
 
-### 2. `resovle` 函数和 `reject` 函数实现
+### 2. `resolve` 和 `reject` 函数实现
 ```js
 // /lib/es6-promise/-internal.js
 
@@ -177,6 +181,98 @@ function fulfill(promise, value) {
 }
 
 ```
+
+### 3. `then` 方法实现
+```js
+// /lib/es6-promise/then.js
+
+export default function then(onFulfillment, onRejection) {
+    const parent = this;
+
+    // 创建子promise实例，仅初始化变量，不进行initializePromise处理
+    const child = new this.constructor(noop);
+    // child: {
+    //     [PROMISE_ID]: id++,
+    //     _state: undefined,
+    //     _result: undefined,
+    //     _subscribers: []
+    // }
+
+    // 这里是对上一步的补充，避免Promise.prototype.then.call(otherThingWithoutPromiseId)的情况的发生
+    if (child[PROMISE_ID] === undefined) {
+        makePromise(child);
+    }
+
+    // _state: PENDING = 0 | FULFILLED = 1 | REJECTED = 2
+    const { _state } = parent;
+
+    // 当前的promise状态已经不是PENDING
+    if (_state) {
+        // 根据_state 获取 onFulfillment 或者onRejection 回调函数
+        const callback = arguments[_state - 1];
+
+        // 更新子promise的状态
+        asap(() => invokeCallback(_state, child, callback, parent._result));
+    } else {
+        // 当前的 promise 为 PENDING 
+        // 将子promise 收集到父promise 的 _subscribers 中
+        subscribe(parent, child, onFulfillment, onRejection);
+    }   
+
+    // 返回子promise，供链式调用
+    return child;
+}
+```
+
+### 4. `subscribe`和 `publish` 函数的实现
+```js
+// 收集订阅者
+function subscribe(parent, child, onFulfillment, onRejection) {
+    let { _subscribers } = parent;
+    let { length } = _subscribers;
+
+    parent._onerror = null;
+
+    // 收集then方法的创建的子promise及回调，每次增加3个元素
+    _subscribers[length] = child;
+    _subscribers[length + FULFILLED] = onFulfillment;
+    _subscribers[length + REJECTED]  = onRejection;
+
+    // 在 parent 状态更新之后增加的订阅
+    // 状态不再发生变化 则直接发出通知
+    if (length === 0 && parent._state) {
+        asap(publish, parent);
+    }
+}
+
+// resolve函数调用时会触发fullfill，修改promise状态并进行publish
+function publish(promise) {
+    let subscribers = promise._subscribers;
+    let settled = promise._state;
+
+    if (subscribers.length === 0) { return; }
+
+    let child, callback, detail = promise._result;
+
+    // subscribe中每次增加3个元素，依次为then创建的子promise，传入then方法的onFulfillment函数和onRejection函数
+    // 这里每3个为一组，因为是执行resolve，onRejection无需调用
+    for (let i = 0; i < subscribers.length; i += 3) {
+        child = subscribers[i];
+        callback = subscribers[i + settled];
+
+        // 存在子promise 订阅
+        if (child) {
+            invokeCallback(settled, child, callback, detail);
+        } else {
+            callback(detail);
+        }
+    }
+
+    promise._subscribers.length = 0;
+}
+
+```
+
 ### 参考文档
 [1. ES6-Promise源码阅读](https://juejin.cn/post/6844903684904583181)
 [2. ES6-Promise源码](https://github.com/stefanpenner/es6-promise)
