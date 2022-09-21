@@ -18,8 +18,8 @@ categories:
 ### 2. 热更新原理
 `WDS`(**webpack dev server**)与浏览器之间维护了一个 `websocket`通信，当webpack编译器编译完成之后，`WDS` 会向浏览器发送更新通知，并带上构建时的 `hash`。浏览器对比出差异后会向 `WDS` 发起`xxxhash.hot-update.json`的`Ajax` 请求来获取更改内容（文件列表、下次更新的`hash`），客户端就可以再借助这些信息继续向 `WDS` 发起 `xxx/hash.hot-update.js` 的 `jsonp` 请求获取增量更新的文件。拿到需要更新的文件后，`HotModuleReplacementPlugin`将更新后的代码进行替换，并刷新浏览器。
 ### 3. loader和plugin区别
-- `loader`，它是一个转换器，将A文件进行编译成B文件，比如：将A.less转换为A.css，单纯的文件转换过程。
-- `plugin`是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务
+- `loader`是文件加载器，能够加载特定的资源文件，直接对这些文件进行一些处理，比如编译、压缩等，最终打包到指定文件中。
+- `plugin`是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack运行的声明周期中的事件，执行广泛的任务
 
 ### 4. 常用的loader和plugin
 **loader**:
