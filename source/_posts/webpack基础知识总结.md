@@ -107,3 +107,36 @@ module.exports = {
 - 在`webpack.config.js`中设置`optimization.sideEffects = true`（生产环境打包无需配置，默认为 true），以告知 `webpack` 去辨识 `package.json` 中的 副作用 标记 `sideEffects`
 - 在无副作用的模块的 `package.json` 中设置副作用标记 `sideEffects = false`，表明该模块没有副作用，未使用时可以被跳过不打包进 `bundle`
 - 对于项目，如果确认自己项目中没有副作用代码，希望 `Tree Shaking` 时跳过没用到的js模块代码，同样可以在项目的`package.json` 中设置 `sideEffects = false`
+
+12. 开发plugin
+- 一个 JavaScript 命名函数或 JavaScript 类。
+- 在插件函数的 prototype 上定义一个 apply 方法。
+- 指定一个绑定到 webpack 自身的事件钩子。
+- 处理 webpack 内部实例的特定数据。
+- 功能完成后调用 webpack 提供的回调。
+```js
+// 一个 JavaScript 类
+class MyExampleWebpackPlugin {
+  // 在插件函数的 prototype 上定义一个 `apply` 方法，以 compiler 为参数。
+  apply(compiler) {
+    // 指定一个挂载到 webpack 自身的事件钩子。
+    compiler.hooks.emit.tapAsync(
+      'MyExampleWebpackPlugin',
+      (compilation, callback) => {
+        console.log('这是一个示例插件！');
+        console.log(
+          '这里表示了资源的单次构建的 `compilation` 对象：',
+          compilation
+        );
+
+        // 用 webpack 提供的插件 API 处理构建过程
+        compilation.addModule(/* ... */);
+
+        callback();
+      }
+    );
+  }
+}
+```
+
+1.  
