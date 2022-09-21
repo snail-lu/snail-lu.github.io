@@ -84,21 +84,57 @@ Promise.reject = Reject;
 
 /**
  * new Promise((resolve, reject) => {})
+ * resolver = (resolve, reject) => {}
+ * initializePromise函数来为resolver注入resolve函数和reject函数
+ */
+function initializePromise(promise, resolver) {
+    try {
+        // 这里执行了resolver函数
+        // resolver中的形参resolve = resolvePromise
+        // resolver中的形参reject = rejectPromise
+        resolver(function resolvePromise(value){
+            // 调用内部实现的resolve函数
+            resolve(promise, value);
+        }, function rejectPromise(reason) {
+            // 调用内部实现的reject函数
+            reject(promise, reason);
+        });
+    } catch(e) {
+        reject(promise, e);
+    }
+}
+
+/**
  * resolve函数实现
  */
 function resolve(promise, value) {
+    // new Promise((resolve, reject) => {
+    //      setTimeout(() => {
+    //          resolve('5')
+    //      }, 3000)
+    // })
+
+    // value === '5'
+    // 如果resolve的value是当前promise实例
     if (promise === value) {
+        // selfFulfillment为一个报错函数
+        // 调用reject方法更新promise状态到REJECTED，返回报错信息
         reject(promise, selfFulfillment());
     } else if (objectOrFunction(value)) {
+        // 如果value是否是一个object或function
         let then;
         try {
             then = value.then;
         } catch (error) {
+            // 如果value上不带then方法，
+            // reject处理promise, 返回报错信息
             reject(promise, error);
             return;
         }
+        // value可能是thenable的，进一步处理
         handleMaybeThenable(promise, value, then);
     } else {
+        // 其他情况，转换promise状态到FULFILLED
         fulfill(promise, value);
     }
 }
@@ -108,10 +144,16 @@ function resolve(promise, value) {
  * reject函数实现
  */
 function reject(promise, reason) {
+    // promise的状态不是pending状态，不予处理
     if (promise._state !== PENDING) { return; }
+
+    // 修改promise实例的状态为REJECTED
     promise._state = REJECTED;
+
+    // 缓存reject的原因
     promise._result = reason;
 
+    // 通知订阅者
     asap(publishRejection, promise);
 }
 
@@ -119,7 +161,7 @@ function reject(promise, reason) {
  * 转换promise状态到FULFILLED
  */
 function fulfill(promise, value) {
-    // 判断promise的状态是否是pending状态，否则不予修改
+    // promise的状态不是pending状态，不予处理
     if (promise._state !== PENDING) { return; }
 
     // 缓存promise结果
@@ -128,7 +170,7 @@ function fulfill(promise, value) {
     // 修改promise状态为FULFILLED
     promise._state = FULFILLED;
 
-    // 通知订阅序列
+    // 通知订阅者
     if (promise._subscribers.length !== 0) {
         asap(publish, promise);
     }
