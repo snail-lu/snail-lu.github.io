@@ -226,3 +226,63 @@ Vue对数组的7个方法`push`、`pop`、`shift`、`unshift`、`splice`、`sort
 - 缓存/压缩
   - 客户端缓存/服务端缓存
   - 服务端gzip压缩
+
+### 16. Vue的初始化过程（new Vue(options)）
+在使用 `new Vue(options)` 创建Vue实例时，会调用 Vue 原型对象上的 `_init` 方法，执行一系列初始化操作。
+```js
+// Vue v2.6.14
+Vue.prototype._init = function (options?: Object) {
+  const vm: Component = this
+  // a uid
+  vm._uid = uid++
+  let startTag, endTag
+  /* istanbul ignore if */
+  if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+    startTag = `vue-perf-start:${vm._uid}`
+    endTag = `vue-perf-end:${vm._uid}`
+    mark(startTag)
+  }
+  // a flag to avoid this being observed
+  vm._isVue = true
+  // merge options
+  if (options && options._isComponent) {
+    // optimize internal component instantiation
+    // since dynamic options merging is pretty slow, and none of the
+    // internal component options needs special treatment.
+    initInternalComponent(vm, options)
+  } else {
+    vm.$options = mergeOptions(
+      resolveConstructorOptions(vm.constructor),
+      options || {},
+      vm
+    )
+  }
+  /* istanbul ignore else */
+  if (process.env.NODE_ENV !== 'production') {
+    initProxy(vm)
+  } else {
+    vm._renderProxy = vm
+  }
+  // expose real self
+  vm._self = vm
+  initLifecycle(vm)
+  initEvents(vm)
+  initRender(vm)
+  callHook(vm, 'beforeCreate')
+  initInjections(vm) // resolve injections before data/props
+  initState(vm)
+  initProvide(vm) // resolve provide after data/props
+  callHook(vm, 'created')
+  /* istanbul ignore if */
+  if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+    vm._name = formatComponentName(vm, false)
+    mark(endTag)
+    measure(`vue ${vm._name} init`, startTag, endTag)
+  }
+  if (vm.$options.el) {
+    vm.$mount(vm.$options.el)
+  }
+}
+```
+1. 处理组件配置项
+  - 对选项合并，将全局配置合并到根组件的配置上
