@@ -277,3 +277,4 @@ function publish(promise) {
 [1. ES6-Promise源码阅读](https://juejin.cn/post/6844903684904583181)
 [2. ES6-Promise源码](https://github.com/stefanpenner/es6-promise)
 [3. Promise/A+规范](https://www.ituring.com.cn/article/66566)
+[4. 图解 Promise 实现原理](https://zhuanlan.zhihu.com/p/58428287)
