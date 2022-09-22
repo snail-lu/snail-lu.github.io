@@ -245,12 +245,14 @@ Vue.prototype._init = function (options?: Object) {
   // a flag to avoid this being observed
   vm._isVue = true
   // merge options
+  // 普通组件
   if (options && options._isComponent) {
     // optimize internal component instantiation
     // since dynamic options merging is pretty slow, and none of the
     // internal component options needs special treatment.
     initInternalComponent(vm, options)
   } else {
+    // 根组件merge options
     vm.$options = mergeOptions(
       resolveConstructorOptions(vm.constructor),
       options || {},
@@ -265,24 +267,32 @@ Vue.prototype._init = function (options?: Object) {
   }
   // expose real self
   vm._self = vm
-  initLifecycle(vm)
-  initEvents(vm)
-  initRender(vm)
-  callHook(vm, 'beforeCreate')
-  initInjections(vm) // resolve injections before data/props
-  initState(vm)
-  initProvide(vm) // resolve provide after data/props
-  callHook(vm, 'created')
+  initLifecycle(vm) // 给vue实例上挂载$parent, $root, $refs, $children等属性
+  initEvents(vm) // 初始化实例的事件系统
+  initRender(vm) // 初始化渲染函数，给实例上挂载$createElement方法
+  callHook(vm, 'beforeCreate') // 触发beforeCreate钩子
+  initInjections(vm) // 初始化injections
+  initState(vm) // 初始化props,methods,data,computed,watch
+  initProvide(vm) // 初始化 provide
+  callHook(vm, 'created') // 触发created钩子
   /* istanbul ignore if */
   if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
     vm._name = formatComponentName(vm, false)
     mark(endTag)
     measure(`vue ${vm._name} init`, startTag, endTag)
   }
+
+  // 判断用户是否传入了el选项，如果传入了则调用$mount函数进入模板编译与挂载阶段，
+  // 如果没有传入el选项，则不进入下一个生命周期阶段，需要用户手动执行 vm.$mount 方法才进入下一个生命周期阶段。
   if (vm.$options.el) {
     vm.$mount(vm.$options.el)
   }
 }
 ```
-1. 处理组件配置项
-  - 对选项合并，将全局配置合并到根组件的配置上
+由上，可以总积额如下总结：
+1. 处理组件配置项，合并options后挂载到 `vm.$options`
+2. 调用一些初始化函数: `initLifecycle` 、`initEvents`、`initRender`
+3. 触发 `beforeCreate` 生命周期钩子
+4. 调用另外一些初始化函数: `initInjections` 、`initState`、`initProvide`
+5. 触发 `created` 生命周期钩子
+6. 调用 `$mount` 进入挂载阶段
