@@ -137,7 +137,7 @@ EventBus.$on("aMsg", (msg) => {
 Vue2 响应式的实现主要有：
 - **监听器 Observer**
 对数据对象进行遍历，包括子属性对象的属性，利用 `Object.defineProperty()` 对属性都加上 `setter` 和 `getter`。这样的话，给这个对象的某个属性赋值，就会触发 `setter`，那么就能监听到了数据变化。
-- **消息订阅器 Dep**
+- **依赖管理器 Dep**
 用来收集订阅者 `Watcher`，对监听器 `Observer` 和 订阅者 `Watcher` 进行统一管理。
 - **订阅者 Watcher**
 `Watcher` 是 `Observer` 和 `Compiler` 之间通信的桥梁 ，主要的任务是订阅 `Observer` 中的属性值变化的消息，当收到属性值变化的消息时，触发编译器 `Compiler` 中对应的更新函数。
@@ -146,7 +146,7 @@ Vue2 响应式的实现主要有：
 
 ![image](https://note.youdao.com/yws/api/personal/file/WEB04c43c43cde70438811ebae027344add?method=download&shareKey=ac2f89c46ce2638c34dc2e069ba7dc9d)
 
-总之就是，在创建 Vue 实例的时候给传入的 `data` 进行数据劫持，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` 对象，然后在数据劫持的 `getter` 中添加订阅者到订阅器 `Dep`，当劫持的数据发生变化的时候，监听器 `Observer` 就通过订阅器 `Dep` 来通知所有订阅者`Watcher` 操作DOM进行更新，从而实现数据的响应式变化。
+总之就是，在创建 Vue 实例的时候给传入的 `data`的每个属性使用 `Observer` 增加`getter` 和 `setter`，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` ，然后在数据劫持的 `getter` 中收集 `Watcher` 到订阅器 `Dep`，当劫持的数据发生变化的时候，触发`setter`，`setter中` 会调用 `Dep` 来通知所有收集到的 `Watcher`，`Watcher` 通知DOM进行更新，从而实现数据的响应式变化。
 
 ### 10. 双向数据绑定原理
 表单元素 <input>、<textarea> 及 <select> 上可以用 `v-model` 指令创建双向数据绑定，当进行表单输入或选择的时候，通过`v-model`绑定的值会同步修改。
