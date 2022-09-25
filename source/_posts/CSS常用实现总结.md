@@ -216,6 +216,4 @@ categories:
     // 或
     align-items: flex-end;
 }
-
-
 ```
