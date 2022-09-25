@@ -190,11 +190,11 @@ Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，
 直接操作 `DOM` 是十分消耗性能的，可以利用 `js` 计算对比数据变化前后的状态，计算出视图中哪些地方需要更新，只更新需要更新的地方，以此来减少不必要的 `DOM` 操作。
 
 #### diff 算法
-- 特点：    
+- **特点：**    
   - 比较只会在同层级进行, 不会跨层级比较。
   - 在 `diff` 比较的过程中，循环从两边向中间收拢。
 
-- 流程
+- **流程：**
 1. 首先会对新老 `VNode` 的开始和结束位置进行标记：`oldStartIdx`、`oldEndIdx`、`newStartIdx`、`newEndIdx`。
 2. 进入到的 `while` 循环处理中，这里是 `diff` 算法的核心流程，分情况进行了新老节点的比较并移动对应的 `VNode` 节点。`while` 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。  
 `while` 循环中的处理逻辑，循环过程中首先对新老 `VNode` 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 `sameVnode`（可以复用的相同节点） 则直接进行 `patchVnode` (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 `VNode` 索引，以便进入下一次循环处理，一共有 `2 * 2 = 4` 种情形。
@@ -202,7 +202,9 @@ Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，
    - **情形二**：当新老 `VNode` 节点的 `end` 满足 `sameVNode` 时，同样直接 `patchVNode` 即可，同时新老 `VNode` 节点的结束索引都减 1。
    - **情形三**：当老 `VNode` 节点的 `start` 和新 `VNode` 节点的 `end` 满足 `sameVnode` 时，这说明这次数据更新后 `oldStartVNode` 已经跑到了 `oldEndVNode` 后面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldEndVNode` 的后面，同时老 `VNode` 节点开始索引`加1`，新 `VNode` 节点的结束索引`减1`。
    - **情形四**：当老 `VNode` 节点的 `end` 和新 `VNode` 节点的 `start` 满足 `sameVnode` 时，这说明这次数据更新后 `oldEndVNode` 跑到了 `oldStartVNode` 的前面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldStartVNode` 的前面，同时老 `VNode` 节点结束索引`减1`，新 `VNode` 节点的开始索引`加 1`。  
+
    如果都不满足以上四种情形，那说明没有相同的节点可以复用。于是则通过查找事先建立好的以旧的 `VNode` 为 `key` 值，对应 `index` 序列为 `value` 值的哈希表。从这个哈希表中找到与 `newStartVnode` 一致 `key` 的旧的 `VNode` 节点，如果两者满足 `sameVnode` 的条件，在进行 `patchVnode` 的同时会将这个真实 `dom` 移动到 `oldStartVnode` 对应的真实 `dom` 的前面；如果没有找到，则说明当前索引下的新的 `VNode` 节点在旧的 `VNode` 队列中不存在，无法进行节点的复用，那么就只能调用 `createElm` 创建一个新的 `dom` 节点放到当前 `newStartIdx` 的位置。
+
 3. 当 `while` 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 `dom` 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 `dom` 中删除。至此整个 diff 过程就已经全部完成了。
 
 
@@ -309,7 +311,7 @@ Vue.prototype._init = function (options?: Object) {
   }
 }
 ```
-由上，可以总积额如下总结：
+由上，可以总结出vue初始化的流程如下：
 1. 处理组件配置项，合并options后挂载到 `vm.$options`
 2. 调用一些初始化函数: `initLifecycle` 、`initEvents`、`initRender`
 3. 触发 `beforeCreate` 生命周期钩子
