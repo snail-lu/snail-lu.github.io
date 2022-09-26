@@ -61,3 +61,53 @@ tags:
 - `table-cell` + `vertical-align: middle;`
 - float + margin
 
+### 6. 回流和重绘
+#### 概念
+- **回流(reflow)**：`Render Tree`中部分或全部元素的几何尺寸发生改变，浏览器重新计算元素的几何属性并调整布局的过程，也称**重排**。
+- **重绘(repaint)**：`Render tree`中的一些元素只发生样式的改变并不影响它在文档流中的位置时，浏览器不需重新计算元素的几何属性、直接为元素绘制新的样式的过程。
+
+#### 区别：
+回流必将引起重绘，重绘不一定会引起回流。
+
+#### 回流的触发场景
+- 页面首次渲染
+- 浏览器的窗口尺寸变化
+- 元素的位置/尺寸/内容/字体大小发生变化
+- 添加或删除可见的DOM元素
+- 查询一些属性或方法
+  - clientTop、clientLeft、clientWidth、clientHeight
+  - offsetTop、offsetLeft、 offsetWidth、offsetHeight
+  - scrollTop、scrollLeft、scrollWidth、scrollHeight
+  - scrollIntoView()、scrollIntoViewIfNeeded()、getComputedStyle()、getBoundingClientRect()、scrollTo()
+
+#### 重绘的触发场景
+- 回流
+- 一些CSS属性的改变
+  - color、border-style、visibility、background、text-decoration、background-image、background-position、background-repeat、outline-color、outline、outline-style、border-radius、outline-width、box-shadow、background-size
+
+### 7. CSS3新特性
+- RGBA和透明度
+- background-image background-origin(content-box/padding-box/border-box) background-size background-repeat
+- word-wrap（对长的不可分割单词换行）word-wrap：break-word
+- 文字阴影：text-shadow： 5px 5px 5px #FF0000;（水平阴影，垂直阴影，模糊距离，阴影颜色）
+- font-face属性：定义自己的字体
+- 圆角（边框半径）：border-radius 属性用于创建圆角
+- 边框图片：border-image: url(border.png) 30 30 round
+- 盒阴影：box-shadow: 10px 10px 5px #888888
+- 媒体查询：定义两套css，当浏览器的尺寸变化时会采用不同的属性
+
+### 8. `display: none`和`visibility: hidden`的区别
+- `display：none` 不显示对应的元素，在文档布局中不再分配空间（回流+重绘）
+- `visibility：hidden` 隐藏对应元素，在文档布局中仍保留原来的空间（重绘）
+
+### 9. 清除浮动
+浮动带来的问题：
+- 父元素的高度无法被撑开
+- 与浮动元素同级的非浮动元素（内联元素）会跟随其后
+- 若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构。
+
+清除浮动的方式：
+- 父级元素设置高度
+- 最后一个浮动元素后加空div标签 并添加样式`clear:both`。
+- 包含浮动元素的父元素设置样式`overflow: hidden`或`overflow: auto`
+- 父级元素设置`zoom`
