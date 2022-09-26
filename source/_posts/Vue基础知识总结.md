@@ -318,7 +318,7 @@ Vue.prototype._init = function (options?: Object) {
 4. 调用另外一些初始化函数: `initInjections` 、`initState`、`initProvide`
 5. 触发 `created` 生命周期钩子
 6. 调用 `$mount` 进入挂载阶段
-**
+
 ### 17. 模板编译
 **模板编译流程：**
 1. **模板解析阶段**：将模板字符串用正则等方式解析成抽象语法树 `AST`；
