@@ -11,8 +11,9 @@ tags:
 - **IE盒模型**：
   - `width = content + padding + border`
   - 通过`box-sizing: border-box;`来使用IE盒模型
-### 2. 布局
-
+### 2. flex和grid的区别
+- `flex`布局是一维布局，适合做局部布局，比如导航栏
+- `grid`布局是二维布局，适合做整个页面的规划
 
 ### 3. BFC
 #### 概念
