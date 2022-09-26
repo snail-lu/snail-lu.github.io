@@ -1,6 +1,7 @@
 ---
 title: Promise实现原理
 summary: 阅读ES6-Promise源码从而了解Promise实现原理
+date: 2022-04-25 21:25:17
 tags:
 - Promise
 - JavaScript
