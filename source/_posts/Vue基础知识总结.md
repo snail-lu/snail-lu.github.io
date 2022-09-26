@@ -52,7 +52,7 @@ beforeDestroy | 组件销毁前调用
 destroyed | 组件销毁后调用
 errorCaptured | 2.5.0+ 新增，在捕获一个来自后代组件的错误时被调用。
 
-![image](https://note.youdao.com/yws/api/personal/file/2BC932EC07A94D708B48933FFCF56131?method=download&shareKey=72ed2942cb733bfd27d2d039a1739544)
+![image](https://s1.ax1x.com/2022/09/26/xVvOpR.png)
 
 ### 6. 父组件和子组件生命周期钩子执行顺序
 可以归类为以下 4 部分：
@@ -144,7 +144,7 @@ Vue2 响应式的实现主要有：
 - **编译器 Compiler**
 解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新。
 
-![image](https://note.youdao.com/yws/api/personal/file/WEB04c43c43cde70438811ebae027344add?method=download&shareKey=ac2f89c46ce2638c34dc2e069ba7dc9d)
+![image](https://s1.ax1x.com/2022/09/26/xVxS0O.png)
 
 总之就是，在创建 Vue 实例的时候给传入的 `data`的每个属性使用 `Observer` 增加`getter` 和 `setter`，同时视图编译的时候，对于使用到`data`中数据的地方进行创建 `Watcher` ，然后在数据劫持的 `getter` 中收集 `Watcher` 到订阅器 `Dep`，当劫持的数据发生变化的时候，触发`setter`，`setter中` 会调用 `Dep` 来通知所有收集到的 `Watcher`，`Watcher` 通知DOM进行更新，从而实现数据的响应式变化。
 
