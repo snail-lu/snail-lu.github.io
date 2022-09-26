@@ -37,13 +37,9 @@ http-server -open
 ![](https://s1.ax1x.com/2022/08/14/vUC8u8.png)
 
 此时，在浏览器中访问电脑端访问地址并打开开发者工具，即可看到浏览器端模拟的开发效果。
-<div align="center">
-<img src="https://s1.ax1x.com/2022/08/14/vUCGDS.png" width="40%" />
-</div>
+![](https://s1.ax1x.com/2022/08/14/vUCGDS.png)
 
 使用手机（需要和电脑处于同一局域网中）访问手机端访问地址，即可实现真机查看开发效果：
-<div align="center">
-<img src="https://s1.ax1x.com/2022/08/14/vUCJHg.png" width="40%" />
-</div>
+![](https://s1.ax1x.com/2022/08/14/vUCJHg.png)
 
 > Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将防火墙关闭即可。
