@@ -1,10 +1,10 @@
 ---
-title: JavaScript常见面试题总结
+title: JavaScript基础知识总结
 tags:
 ---
 
 ### 1. 作用域和作用域链
-### 2. promise的理解，实现
+### 2. promise的实现原理
 promise是什么，常用方法，如何实现promise
 ### 3. ES6常用新特性
 ### 4. 数据类型的判断方法
@@ -17,3 +17,4 @@ promise是什么，常用方法，如何实现promise
 ### 11. this指向
 ### 12. 箭头函数和普通函数有什么区别
 ### 13. new的原理
+### 14. async-await的实现原理
