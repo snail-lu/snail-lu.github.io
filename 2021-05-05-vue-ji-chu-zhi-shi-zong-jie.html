@@ -369,14 +369,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-13
+                    2022-09-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.8k
                 </div>
                 
 
@@ -473,7 +473,7 @@
 <td>2.5.0+ 新增，在捕获一个来自后代组件的错误时被调用。</td>
 </tr>
 </tbody></table>
-<p><img src="/medias/loading.gif" data-original="https://note.youdao.com/yws/api/personal/file/2BC932EC07A94D708B48933FFCF56131?method=download&shareKey=72ed2942cb733bfd27d2d039a1739544" alt="image"></p>
+<p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/09/26/xVvOpR.png" alt="image"></p>
 <h3 id="6-父组件和子组件生命周期钩子执行顺序"><a href="#6-父组件和子组件生命周期钩子执行顺序" class="headerlink" title="6. 父组件和子组件生命周期钩子执行顺序"></a>6. 父组件和子组件生命周期钩子执行顺序</h3><p>可以归类为以下 4 部分：</p>
 <ul>
 <li>加载渲染过程<br>父 <code>beforeCreate</code> -&gt; 父 <code>created</code> -&gt; 父 <code>beforeMount</code> -&gt; 子 <code>beforeCreate</code> -&gt; 子 <code>created</code> -&gt; 子 <code>beforeMount</code> -&gt; 子 <code>mounted</code> -&gt; 父 <code>mounted</code></li>
@@ -543,13 +543,13 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <p>Vue2 响应式的实现主要有：</p>
 <ul>
 <li><strong>监听器 Observer</strong><br>对数据对象进行遍历，包括子属性对象的属性，利用 <code>Object.defineProperty()</code> 对属性都加上 <code>setter</code> 和 <code>getter</code>。这样的话，给这个对象的某个属性赋值，就会触发 <code>setter</code>，那么就能监听到了数据变化。</li>
-<li><strong>消息订阅器 Dep</strong><br>用来收集订阅者 <code>Watcher</code>，对监听器 <code>Observer</code> 和 订阅者 <code>Watcher</code> 进行统一管理。</li>
+<li><strong>依赖管理器 Dep</strong><br>用来收集订阅者 <code>Watcher</code>，对监听器 <code>Observer</code> 和 订阅者 <code>Watcher</code> 进行统一管理。</li>
 <li><strong>订阅者 Watcher</strong><br><code>Watcher</code> 是 <code>Observer</code> 和 <code>Compiler</code> 之间通信的桥梁 ，主要的任务是订阅 <code>Observer</code> 中的属性值变化的消息，当收到属性值变化的消息时，触发编译器 <code>Compiler</code> 中对应的更新函数。</li>
 <li><strong>编译器 Compiler</strong><br>解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新。</li>
 </ul>
-<p><img src="/medias/loading.gif" data-original="https://note.youdao.com/yws/api/personal/file/WEB04c43c43cde70438811ebae027344add?method=download&shareKey=ac2f89c46ce2638c34dc2e069ba7dc9d" alt="image"></p>
-<p>总之就是，在创建 Vue 实例的时候给传入的 <code>data</code> 进行数据劫持，同时视图编译的时候，对于使用到<code>data</code>中数据的地方进行创建 <code>Watcher</code> 对象，然后在数据劫持的 <code>getter</code> 中添加订阅者到订阅器 <code>Dep</code>，当劫持的数据发生变化的时候，监听器 <code>Observer</code> 就通过订阅器 <code>Dep</code> 来通知所有订阅者<code>Watcher</code> 操作DOM进行更新，从而实现数据的响应式变化。</p>
-<h3 id="10-双向数据绑定原理"><a href="#10-双向数据绑定原理" class="headerlink" title="10. 双向数据绑定原理"></a>10. 双向数据绑定原理</h3><p>表单元素 <input>、<textarea> 及 <select> 上可以用 <code>v-model</code> 指令创建双向数据绑定，当进行表单输入或选择的时候，通过<code>v-model</code>绑定的值会同步修改。<br><code>v-model</code> 在内部为不同的输入元素使用不同的 <code>property</code> 并抛出不同的事件：</p>
+<p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/09/26/xVxS0O.png" alt="image"></p>
+<p>总之就是，在创建 Vue 实例的时候给传入的 <code>data</code>的每个属性使用 <code>Observer</code> 增加<code>getter</code> 和 <code>setter</code>，同时视图编译的时候，对于使用到<code>data</code>中数据的地方进行创建 <code>Watcher</code> ，然后在数据劫持的 <code>getter</code> 中收集 <code>Watcher</code> 到订阅器 <code>Dep</code>，当劫持的数据发生变化的时候，触发<code>setter</code>，<code>setter中</code> 会调用 <code>Dep</code> 来通知所有收集到的 <code>Watcher</code>，<code>Watcher</code> 通知DOM进行更新，从而实现数据的响应式变化。</p>
+<h3 id="10-双向数据绑定原理"><a href="#10-双向数据绑定原理" class="headerlink" title="10. 双向数据绑定原理"></a>10. 双向数据绑定原理</h3><p>表单元素 <code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code> 及 <code>&lt;select&gt;</code> 上可以用 <code>v-model</code> 指令创建双向数据绑定，当进行表单输入或选择的时候，通过<code>v-model</code>绑定的值会同步修改。<br><code>v-model</code> 在内部为不同的输入元素使用不同的 <code>property</code> 并抛出不同的事件：</p>
 <ul>
 <li><code>text</code> 和 <code>textarea</code> 元素使用 <code>value</code> property 和 <code>input</code> 事件；</li>
 <li><code>checkbox</code> 和 <code>radio</code> 使用 <code>checked</code> property 和 <code>change</code> 事件；</li>
@@ -564,26 +564,45 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <li><code>Proxy</code>在ie浏览器上存在兼容问题</li>
 </ol>
 <h3 id="11-data为何是一个函数而非对象"><a href="#11-data为何是一个函数而非对象" class="headerlink" title="11. data为何是一个函数而非对象"></a>11. data为何是一个函数而非对象</h3><p>因为组件可能被用来创建多个实例。如果data仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 <code>data</code> 函数，每次创建一个新实例后，我们能够调用 <code>data</code> 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的data独立性。</p>
-<h3 id="12-虚拟DOM-diff-算法"><a href="#12-虚拟DOM-diff-算法" class="headerlink" title="12. 虚拟DOM diff 算法"></a>12. 虚拟DOM <code>diff</code> 算法</h3><ul>
-<li><p>特点：    </p>
+<h3 id="12-虚拟DOM"><a href="#12-虚拟DOM" class="headerlink" title="12. 虚拟DOM"></a>12. 虚拟DOM</h3><p>所谓<strong>虚拟DOM</strong>，就是用一个 <code>JS</code> 对象来描述一个 <code>DOM</code> 节点。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 示例</span>
+<span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"a"</span> id<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>Hello World<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+<span class="token comment">// 上述html代码可以使用如下js对象来表示</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>  <span class="token comment">// 元素标签</span>
+  <span class="token literal-property property">attrs</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>           <span class="token comment">// 属性</span>
+    <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'b'</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'Hello World!'</span><span class="token punctuation">,</span>  <span class="token comment">// 文本内容</span>
+  <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>       <span class="token comment">// 子元素</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="产生的原因及用途"><a href="#产生的原因及用途" class="headerlink" title="产生的原因及用途"></a>产生的原因及用途</h4><p>直接操作 <code>DOM</code> 是十分消耗性能的，可以利用 <code>js</code> 计算对比数据变化前后的状态，计算出视图中哪些地方需要更新，只更新需要更新的地方，以此来减少不必要的 <code>DOM</code> 操作。</p>
+<h4 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h4><ul>
+<li><p><strong>特点：</strong>    </p>
 <ul>
 <li>比较只会在同层级进行, 不会跨层级比较。</li>
 <li>在 <code>diff</code> 比较的过程中，循环从两边向中间收拢。</li>
 </ul>
 </li>
-<li><p>流程</p>
+<li><p><strong>流程：</strong></p>
 </li>
 </ul>
 <ol>
-<li>首先会对新老 <code>VNode</code> 的开始和结束位置进行标记：<code>oldStartIdx</code>、<code>oldEndIdx</code>、<code>newStartIdx</code>、<code>newEndIdx</code>。</li>
-<li>进入到的 <code>while</code> 循环处理中，这里是 <code>diff</code> 算法的核心流程，分情况进行了新老节点的比较并移动对应的 <code>VNode</code> 节点。<code>while</code> 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。<br><code>while</code> 循环中的处理逻辑，循环过程中首先对新老 <code>VNode</code> 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 <code>sameVnode</code>（可以复用的相同节点） 则直接进行 <code>patchVnode</code> (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 <code>VNode</code> 索引，以便进入下一次循环处理，一共有 <code>2 * 2 = 4</code> 种情形。<ul>
+<li><p>首先会对新老 <code>VNode</code> 的开始和结束位置进行标记：<code>oldStartIdx</code>、<code>oldEndIdx</code>、<code>newStartIdx</code>、<code>newEndIdx</code>。</p>
+</li>
+<li><p>进入到的 <code>while</code> 循环处理中，这里是 <code>diff</code> 算法的核心流程，分情况进行了新老节点的比较并移动对应的 <code>VNode</code> 节点。<code>while</code> 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。<br><code>while</code> 循环中的处理逻辑，循环过程中首先对新老 <code>VNode</code> 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 <code>sameVnode</code>（可以复用的相同节点） 则直接进行 <code>patchVnode</code> (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 <code>VNode</code> 索引，以便进入下一次循环处理，一共有 <code>2 * 2 = 4</code> 种情形。</p>
+<ul>
 <li><strong>情形一</strong>：当新老 <code>VNode</code> 节点的 <code>start</code> 满足 <code>sameVNode</code> 时，直接 <code>patchVNode</code> 即可，同时新老 <code>VNode</code> 节点的开始索引都加 1。</li>
 <li><strong>情形二</strong>：当新老 <code>VNode</code> 节点的 <code>end</code> 满足 <code>sameVNode</code> 时，同样直接 <code>patchVNode</code> 即可，同时新老 <code>VNode</code> 节点的结束索引都减 1。</li>
 <li><strong>情形三</strong>：当老 <code>VNode</code> 节点的 <code>start</code> 和新 <code>VNode</code> 节点的 <code>end</code> 满足 <code>sameVnode</code> 时，这说明这次数据更新后 <code>oldStartVNode</code> 已经跑到了 <code>oldEndVNode</code> 后面去了。这时候在 <code>patchVNode</code> 后，还需要将当前真实 <code>dom</code> 节点移动到 <code>oldEndVNode</code> 的后面，同时老 <code>VNode</code> 节点开始索引<code>加1</code>，新 <code>VNode</code> 节点的结束索引<code>减1</code>。</li>
-<li><strong>情形四</strong>：当老 <code>VNode</code> 节点的 <code>end</code> 和新 <code>VNode</code> 节点的 <code>start</code> 满足 <code>sameVnode</code> 时，这说明这次数据更新后 <code>oldEndVNode</code> 跑到了 <code>oldStartVNode</code> 的前面去了。这时候在 <code>patchVNode</code> 后，还需要将当前真实 <code>dom</code> 节点移动到 <code>oldStartVNode</code> 的前面，同时老 <code>VNode</code> 节点结束索引<code>减1</code>，新 <code>VNode</code> 节点的开始索引<code>加 1</code>。<br>如果都不满足以上四种情形，那说明没有相同的节点可以复用。于是则通过查找事先建立好的以旧的 <code>VNode</code> 为 <code>key</code> 值，对应 <code>index</code> 序列为 <code>value</code> 值的哈希表。从这个哈希表中找到与 <code>newStartVnode</code> 一致 <code>key</code> 的旧的 <code>VNode</code> 节点，如果两者满足 <code>sameVnode</code> 的条件，在进行 <code>patchVnode</code> 的同时会将这个真实 <code>dom</code> 移动到 <code>oldStartVnode</code> 对应的真实 <code>dom</code> 的前面；如果没有找到，则说明当前索引下的新的 <code>VNode</code> 节点在旧的 <code>VNode</code> 队列中不存在，无法进行节点的复用，那么就只能调用 <code>createElm</code> 创建一个新的 <code>dom</code> 节点放到当前 <code>newStartIdx</code> 的位置。</li>
+<li><strong>情形四</strong>：当老 <code>VNode</code> 节点的 <code>end</code> 和新 <code>VNode</code> 节点的 <code>start</code> 满足 <code>sameVnode</code> 时，这说明这次数据更新后 <code>oldEndVNode</code> 跑到了 <code>oldStartVNode</code> 的前面去了。这时候在 <code>patchVNode</code> 后，还需要将当前真实 <code>dom</code> 节点移动到 <code>oldStartVNode</code> 的前面，同时老 <code>VNode</code> 节点结束索引<code>减1</code>，新 <code>VNode</code> 节点的开始索引<code>加 1</code>。  </li>
 </ul>
+<p>如果都不满足以上四种情形，那说明没有相同的节点可以复用。于是则通过查找事先建立好的以旧的 <code>VNode</code> 为 <code>key</code> 值，对应 <code>index</code> 序列为 <code>value</code> 值的哈希表。从这个哈希表中找到与 <code>newStartVnode</code> 一致 <code>key</code> 的旧的 <code>VNode</code> 节点，如果两者满足 <code>sameVnode</code> 的条件，在进行 <code>patchVnode</code> 的同时会将这个真实 <code>dom</code> 移动到 <code>oldStartVnode</code> 对应的真实 <code>dom</code> 的前面；如果没有找到，则说明当前索引下的新的 <code>VNode</code> 节点在旧的 <code>VNode</code> 队列中不存在，无法进行节点的复用，那么就只能调用 <code>createElm</code> 创建一个新的 <code>dom</code> 节点放到当前 <code>newStartIdx</code> 的位置。</p>
 </li>
-<li>当 <code>while</code> 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 <code>dom</code> 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 <code>dom</code> 中删除。至此整个 diff 过程就已经全部完成了。</li>
+<li><p>当 <code>while</code> 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 <code>dom</code> 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 <code>dom</code> 中删除。至此整个 diff 过程就已经全部完成了。</p>
+</li>
 </ol>
 <h3 id="13-nextTick原理"><a href="#13-nextTick原理" class="headerlink" title="13. $nextTick原理"></a>13. <code>$nextTick</code>原理</h3><blockquote>
 <p>Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p>
@@ -638,6 +657,87 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 </ul>
 </li>
 </ul>
+<h3 id="16-Vue的初始化过程（new-Vue-options-）"><a href="#16-Vue的初始化过程（new-Vue-options-）" class="headerlink" title="16. Vue的初始化过程（new Vue(options)）"></a>16. Vue的初始化过程（new Vue(options)）</h3><p>在使用 <code>new Vue(options)</code> 创建Vue实例时，会调用 Vue 原型对象上的 <code>_init</code> 方法，执行一系列初始化操作。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// Vue v2.6.14</span>
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_init</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">options<span class="token operator">?</span><span class="token operator">:</span> Object</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> <span class="token literal-property property">vm</span><span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token comment">// a uid</span>
+  vm<span class="token punctuation">.</span>_uid <span class="token operator">=</span> uid<span class="token operator">++</span>
+  <span class="token keyword">let</span> startTag<span class="token punctuation">,</span> endTag
+  <span class="token comment">/* istanbul ignore if */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> config<span class="token punctuation">.</span>performance <span class="token operator">&amp;&amp;</span> mark<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    startTag <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">vue-perf-start:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>vm<span class="token punctuation">.</span>_uid<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
+    endTag <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">vue-perf-end:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>vm<span class="token punctuation">.</span>_uid<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token function">mark</span><span class="token punctuation">(</span>startTag<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// a flag to avoid this being observed</span>
+  vm<span class="token punctuation">.</span>_isVue <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// merge options</span>
+  <span class="token comment">// 普通组件</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>options <span class="token operator">&amp;&amp;</span> options<span class="token punctuation">.</span>_isComponent<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// optimize internal component instantiation</span>
+    <span class="token comment">// since dynamic options merging is pretty slow, and none of the</span>
+    <span class="token comment">// internal component options needs special treatment.</span>
+    <span class="token function">initInternalComponent</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 根组件merge options</span>
+    vm<span class="token punctuation">.</span>$options <span class="token operator">=</span> <span class="token function">mergeOptions</span><span class="token punctuation">(</span>
+      <span class="token function">resolveConstructorOptions</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>constructor<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      options <span class="token operator">||</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      vm
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">/* istanbul ignore else */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">initProxy</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    vm<span class="token punctuation">.</span>_renderProxy <span class="token operator">=</span> vm
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// expose real self</span>
+  vm<span class="token punctuation">.</span>_self <span class="token operator">=</span> vm
+  <span class="token function">initLifecycle</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 给vue实例上挂载$parent, $root, $refs, $children等属性</span>
+  <span class="token function">initEvents</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 初始化实例的事件系统</span>
+  <span class="token function">initRender</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 初始化渲染函数，给实例上挂载$createElement方法</span>
+  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> <span class="token string">'beforeCreate'</span><span class="token punctuation">)</span> <span class="token comment">// 触发beforeCreate钩子</span>
+  <span class="token function">initInjections</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 初始化injections</span>
+  <span class="token function">initState</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 初始化props,methods,data,computed,watch</span>
+  <span class="token function">initProvide</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 初始化 provide</span>
+  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> <span class="token string">'created'</span><span class="token punctuation">)</span> <span class="token comment">// 触发created钩子</span>
+  <span class="token comment">/* istanbul ignore if */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> config<span class="token punctuation">.</span>performance <span class="token operator">&amp;&amp;</span> mark<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    vm<span class="token punctuation">.</span>_name <span class="token operator">=</span> <span class="token function">formatComponentName</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token function">mark</span><span class="token punctuation">(</span>endTag<span class="token punctuation">)</span>
+    <span class="token function">measure</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">vue </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>vm<span class="token punctuation">.</span>_name<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> init</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> startTag<span class="token punctuation">,</span> endTag<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">// 判断用户是否传入了el选项，如果传入了则调用$mount函数进入模板编译与挂载阶段，</span>
+  <span class="token comment">// 如果没有传入el选项，则不进入下一个生命周期阶段，需要用户手动执行 vm.$mount 方法才进入下一个生命周期阶段。</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span>el<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    vm<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由上，可以总结出vue初始化的流程如下：</p>
+<ol>
+<li>处理组件配置项，合并options后挂载到 <code>vm.$options</code></li>
+<li>调用一些初始化函数: <code>initLifecycle</code> 、<code>initEvents</code>、<code>initRender</code></li>
+<li>触发 <code>beforeCreate</code> 生命周期钩子</li>
+<li>调用另外一些初始化函数: <code>initInjections</code> 、<code>initState</code>、<code>initProvide</code></li>
+<li>触发 <code>created</code> 生命周期钩子</li>
+<li>调用 <code>$mount</code> 进入挂载阶段</li>
+</ol>
+<h3 id="17-模板编译"><a href="#17-模板编译" class="headerlink" title="17. 模板编译"></a>17. 模板编译</h3><p><strong>模板编译流程：</strong></p>
+<ol>
+<li><strong>模板解析阶段</strong>：将模板字符串用正则等方式解析成抽象语法树 <code>AST</code>；</li>
+<li><strong>优化阶段</strong>：遍历 <code>AST</code>，找出其中的静态节点，并打上标记；</li>
+<li><strong>代码生成阶段</strong>：将 <code>AST</code> 转换成渲染函数；</li>
+</ol>
+<p><strong>模板解析阶段的运行流程：</strong><br>解析器根据解析内容的不同分为<code>HTML解析器</code>，<code>文本解析器</code>和<code>过滤器解析器</code>。</p>
+<ul>
+<li>在解析器主线中先调用HTML解析器 <code>parseHTML</code> 函数对模板字符串进行解析，</li>
+<li>如果在解析过程中遇到文本信息，就会调用文本解析器<code>parseText</code>进行解析，</li>
+<li>如遇到过滤器信息则再调用过滤解析器<code>parseFilters</code>进行解析</li>
+</ul>
+<p>最终完成对整个模板字符串的解析。</p>
 
                 
             </div>
@@ -858,12 +958,12 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Node-js/">
-                        <span class="chip bg-color">Node.js</span>
-                    </a>
-                    
                     <a href="/tags/Nest-js/">
                         <span class="chip bg-color">Nest.js</span>
+                    </a>
+                    
+                    <a href="/tags/Node-js/">
+                        <span class="chip bg-color">Node.js</span>
                     </a>
                     
                 </div>
@@ -1094,7 +1194,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">72.4k</span>&nbsp;字
+                class="white-color">71.2k</span>&nbsp;字
             
             
             
