@@ -34,6 +34,31 @@ promise是什么，常用方法，如何实现promise
 ### 11. this指向
 ### 12. 箭头函数和普通函数有什么区别
 ### 13. new的原理
+使用 `new` 来调用函数，会自动执行下面的操作：
+1. 创建一个空对象`{}`
+2. 将这个新对象的原型对象指向构造函数的原型属性，以继承原型上的方法
+3. 将构造函数中的this指向到新创建的对象并执行构造函数，以获取实例属性
+4. 如果构造函数执行后返回了对象，就将该对象作为结果返回；否则就将上面创建的新对象作为结果返回
+
+```js
+// 简单实现
+function myNew(Fn, ...args) {
+    // 原型式继承
+    const obj = Object.create(Fn.prototype);
+    // 执行构造函数
+    const res = Fn.apply(obj, args);
+    return res instanceof Object ? res : obj;
+}
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    return this;
+}
+
+const student1 = myNew(Person, 'Mike', 20);
+console.log(student1); //  {"name":"Mike","age":20}
+```
 ### 14. async-await的实现原理
 ### 15. instanceof原理
 ### 16. ===原理
