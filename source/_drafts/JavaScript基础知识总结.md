@@ -35,3 +35,6 @@ promise是什么，常用方法，如何实现promise
 ### 12. 箭头函数和普通函数有什么区别
 ### 13. new的原理
 ### 14. async-await的实现原理
+### 15. instanceof原理
+### 16. ===原理
+### 17. call、bind、apply原理
