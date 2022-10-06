@@ -21,19 +21,38 @@ function foo() {
 
 foo(); // 10, 20, 30
 ```
-### 2. promise的实现原理
-promise是什么，常用方法，如何实现promise
-### 3. ES6常用新特性
-### 4. 数据类型的判断方法
-### 5. 继承
-### 6. 原型链
-### 7. 闭包
-### 8. 事件循环、微任务、宏任务
-### 9. 防抖与节流
+### 2. Promise
+**Promise是什么**
+`Promise` 是 `ES6` 新增的语法，是一种异步编程的一种解决方案，`Promise` 本质上是一个绑定了回调的对象。 `Promise` 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。`Promise` 可以看作是一个状态机，它有三种状态：`pending`，`fulfilled`，`rejected`，其中初始状态是 `pending`，可以通过函数 `resolve` 把状态变为 `fulfilled`，或者通过函数 `reject` 把状态变为 `rejected`，状态一经改变就不能再次变化。
+
+**常用API**
+`Promise.all()`: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。
+
+`Promise.race()`: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。
+
+`Promise.any()`: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被完成，返回的Promise就会变成完成状态，如果所有的promise都被拒绝，返回的promise就会变成拒绝状态。
+
+`Promise.allSettled()`: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。当可迭代对象中的所有Promise都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。
+
+**实现**
+[Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
+
+### 3. async-await的实现原理
+### 4. ES6常用新特性
+### 5. 数据类型的判断方法
+### 6. 继承
+### 7. 原型链
+### 8. 闭包
+### 9. 事件循环、微任务、宏任务
 ### 10. 浏览器缓存
 ### 11. this指向
 ### 12. 箭头函数和普通函数有什么区别
-### 13. new的原理
+### 13. 防抖与节流
+### 14. instanceof原理
+### 15. ===原理
+### 16. call、bind、apply原理
+
+### 17. new的原理
 使用 `new` 来调用函数，会自动执行下面的操作：
 1. 创建一个空对象`{}`
 2. 将这个新对象的原型对象指向构造函数的原型属性，以继承原型上的方法
@@ -59,7 +78,3 @@ function Person(name, age) {
 const student1 = myNew(Person, 'Mike', 20);
 console.log(student1); //  {"name":"Mike","age":20}
 ```
-### 14. async-await的实现原理
-### 15. instanceof原理
-### 16. ===原理
-### 17. call、bind、apply原理
