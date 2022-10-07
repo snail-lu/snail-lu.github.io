@@ -132,6 +132,41 @@ data[2](); // 2
 - 不允许重复的具名参数，传统的函数中参数可以重名。
 
 ### 13. 防抖与节流
+**防抖**：事件持续触发不执行，停止触发指定时间之后才执行一次。
+```js
+/**
+ * @fn : 要执行的函数
+ * @delay : 执行函数的时间间隔（毫秒）
+ */ 
+ 
+function debounce(fn, delay) {
+    let timer;
+    return function(...args) {    
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay)
+    }
+}
+```
+**节流**：事件重复触发，不会每次都执行，每间隔一段时间执行一次。
+```js
+/**
+ * @fn : 要执行的函数
+ * @delay : 每次函数的时间间隔
+ */  
+function throttle(fn, delay) {
+    let timer;    // 定时器
+ 
+    return function(...args) {
+        if(timer) return;
+        timer = setTimeout(() => {
+            timer = null;
+            fn.apply(this, args);
+        }, delay);
+    }
+}
+```
 ### 14. instanceof原理
 ### 15. ===原理
 ### 16. call、bind、apply原理
