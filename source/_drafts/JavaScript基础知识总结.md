@@ -120,9 +120,17 @@ data[1](); // 1
 data[2](); // 2
 ```
 ### 9. 事件循环、微任务、宏任务
+[JavaScript中的微任务与宏任务](https://snail-lu.github.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html)
 ### 10. 浏览器缓存
 ### 11. this指向
+[JavaScript中的this](https://snail-lu.github.io/2022-05-01-javascript-zhong-de-this.html)
 ### 12. 箭头函数和普通函数有什么区别
+- 没有`this`、`super`、`arguments`及`new.target`绑定，`this`、`super`、`arguments`及`new.target`的值由所在的、最靠近的非箭头函数来决定；
+- 不能被使用`new`调用；
+- 没有原型；
+- 不能更改`this`；
+- 不允许重复的具名参数，传统的函数中参数可以重名。
+
 ### 13. 防抖与节流
 ### 14. instanceof原理
 ### 15. ===原理
