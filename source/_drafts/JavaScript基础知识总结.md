@@ -86,6 +86,7 @@ function spawn(genF) {
 
 ### 4. ES6常用新特性
 ### 5. 数据类型的判断方法
+[JavaScript数据类型判断](https://snail-lu.github.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
 ### 6. 继承
 ### 7. 原型链
 ### 8. 闭包
