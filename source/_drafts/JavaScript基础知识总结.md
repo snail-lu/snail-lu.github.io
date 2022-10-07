@@ -37,7 +37,11 @@ foo(); // 10, 20, 30
 **实现**
 [Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
 
-### 3. async-await的实现原理
+### 3. async/await
+`async/await` 是一个语法糖，作用是**用同步的方式，执行异步操作**。
+
+**实现**
+
 ### 4. ES6常用新特性
 ### 5. 数据类型的判断方法
 ### 6. 继承
