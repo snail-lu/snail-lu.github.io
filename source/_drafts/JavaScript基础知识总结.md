@@ -88,8 +88,37 @@ function spawn(genF) {
 ### 5. 数据类型的判断方法
 [JavaScript数据类型判断](https://snail-lu.github.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
 ### 6. 继承
+[JavaScript中的继承](https://snail-lu.github.io/2022-07-16-javascript-zhong-de-ji-cheng.html)
 ### 7. 原型链
+[JavaScript原型与原型链](https://snail-lu.github.io/2021-09-30-javascript-yuan-xing-yu-yuan-xing-lian.html)
+
 ### 8. 闭包
+`闭包`是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。
+```js
+var data = [];
+
+for (var i = 0; i < 3; i++) {
+  data[i] = function () {
+    console.log(i);
+  };
+}
+
+data[0](); // 3
+data[1](); // 3
+data[2](); // 3
+
+// 改善输出结果
+for (var i = 0; i < 3; i++) {
+  data[i] = (function (i) {
+    return function() {
+        console.log(i);
+    }
+  })(i);
+}
+data[0](); // 0
+data[1](); // 1
+data[2](); // 2
+```
 ### 9. 事件循环、微任务、宏任务
 ### 10. 浏览器缓存
 ### 11. this指向
