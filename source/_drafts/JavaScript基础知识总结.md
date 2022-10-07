@@ -38,9 +38,51 @@ foo(); // 10, 20, 30
 [Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
 
 ### 3. async/await
-`async/await` 是一个语法糖，作用是**用同步的方式，执行异步操作**。
-
+`async/await` 是 `Generator`函数的语法糖，作用是**用同步的方式，执行异步操作**。
+`async` 函数的实现原理，就是将 `Generator` 函数和自动执行器，包装在一个函数里。
 **实现**
+```js
+async function fn(args) {
+  // ...
+}
+
+// 等同于
+
+function fn(args) {
+    // spawn是自动执行器函数，自动调用generator的next方法
+    return spawn(function* () {
+        // ...
+    });
+}
+
+// spawn函数实现
+function spawn(genF) {
+    return new Promise(function(resolve, reject) {
+        const iterator = genF();
+        function step(nextF) {
+            let next;
+            try {
+                next = nextF();
+            } catch(e) {
+                return reject(e);
+            }
+            if(next.done) {
+                return resolve(next.value);
+            }
+            Promise.resolve(next.value).then(function(v) {
+                step(function() { 
+                    return iterator.next(v); 
+                });
+            }, function(e) {
+                step(function() { 
+                    return iterator.throw(e); 
+                });
+            });
+        }
+        step(function() { return iterator.next(undefined); });
+    });
+}
+```
 
 ### 4. ES6常用新特性
 ### 5. 数据类型的判断方法
