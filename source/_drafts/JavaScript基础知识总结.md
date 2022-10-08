@@ -168,7 +168,45 @@ function throttle(fn, delay) {
 }
 ```
 ### 14. instanceof原理
-### 15. ===原理
+```js
+function instance_of(left, right) {
+  const RP = right.prototype; // 构造函数的原型
+  while(true) {
+    if (left === null) {
+      return false;
+    }
+    if (left === RP) { // 一定要严格比较
+      return true;
+    }
+    left = left.__proto__; // 沿着原型链重新赋值
+  }
+}
+```
+### 15. `==` 和 `===`
+- `==` 和 `!=` --- 先转换数据类型再比较
+- `===` 和 `!==` --- 仅比较而不转换数据类型
+
+`==`和 `!=` 遵循下列转换规则：
+- 如果有一个操作数是**布尔值**，则在比较相等性之前先将其转换为数值：**false转换为0，true转换为1**
+- 一个是字符串，一个是数值，则在比较相等性之前先将字符串转换为数值
+- 一个是对象，一个不是对象，则调用对象的 `valueOf()` 方法，得到基本数据类型后再按前面的规则比较
+- `null` 和 `undefined` 不能转换为其他任何值
+
+`==`和`!=` 在比较时需要遵循下列规则：
+- `null` 和 `undefined` 是相等的
+- `NaN` 与任何值都不相等，包括它自己
+- 两个操作数都是对象，如果两个操作数指向同一个对象，则为`true`，否则为`false`
+
+特殊情况比较结果：
+|表达式|值|
+|---|---|
+|null == undefined|true|
+|NaN == NaN|false|
+|false == 0|true|
+|true == 1|true|
+|true == 2|false|
+|undefined == 0|false|
+|null == 0|false|
 ### 16. call、bind、apply原理
 
 ### 17. new的原理
