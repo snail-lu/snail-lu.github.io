@@ -208,7 +208,76 @@ function instance_of(left, right) {
 |undefined == 0|false|
 |null == 0|false|
 ### 16. call、bind、apply原理
+> MDN:
+> call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。
+```js
+/**
+ * call的模拟实现
+ */
+Function.prototype.myCall = function(context) {
+    // this指向调用myCall方法的函数
+    if (typeof this !== 'function') { 
+        throw new TypeError('Error') 
+    }
+    context = context || window;
 
+    // 将调用myCall的函数赋值为context对象的方法
+    context.fn = this;
+    const args = [...arguments].slice(1);
+    // 利用context.fn()来执行原函数，原函数中的this就指向了context
+    const result = context.fn(...args) ;
+    delete context.fn ;
+    return result;
+}
+```
+> MDN:
+> apply() 方法调用一个具有给定 this 值的函数，以及以一个数组（或一个类数组对象）的形式提供的参数。
+```js
+/**
+ * apply的模拟实现
+ * 原理与call一样，区别仅在于参数的处理上
+ */
+Function.prototype.myApply = function(context) { 
+    if (typeof this !== 'function') { 
+        throw new TypeError('Error') 
+    } 
+    context = context || window;
+    context.fn = this;  
+    let result // 处理参数和 call 有区别  
+    if (arguments[1]) { 
+        result = context.fn(...arguments[1]) 
+    } else { 
+        result = context.fn() 
+    } 
+    delete context.fn;
+    return result; 
+}
+```
+> MDN:
+> bind() 方法创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+```js
+/**
+ * bind的模拟实现
+ * 
+ */
+Function.prototype.myBind = function (context) {
+    if (typeof this !== 'function') {
+        throw new TypeError('Error')
+    }
+    const _this = this
+    // 保存调用bind时传递的参数
+    const args = [...arguments].slice(1)
+    // 返回一个函数
+    return function F() {
+        // 因为返回了一个函数，我们可以 new F()，所以需要判断
+        if (this instanceof F) {
+            return new _this(...args, ...arguments)
+        }
+        // 修改this及合并参数
+        return _this.apply(context, args.concat(...arguments))
+    }
+}
+```
 ### 17. new的原理
 使用 `new` 来调用函数，会自动执行下面的操作：
 1. 创建一个空对象`{}`
