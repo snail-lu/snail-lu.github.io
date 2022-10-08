@@ -365,7 +365,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-02
+                    2022-10-08
                 </div>
                 
 
@@ -461,11 +461,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>任务队列中分为<code>宏任务队列</code>和<code>微任务队列</code>，每执行一次任务都可能注册新的宏任务或微任务到相应的任务队列中，遵循<code>每执行一个宏任务，就会清空一次任务队列中的所有微任务</code>这一循环规则。<br>大致过程如下：</p>
 <ul>
-<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
-<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
+<li>一开始整个脚本作为一个宏任务执行</li>
+<li>执行过程中同步代码直接执行，宏任务进入宏任务队列，微任务进入微任务队列</li>
 <li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
-<li>当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染</li>
-<li>渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）</li>
+<li>微任务执行完成，GUI线程开始渲染工作</li>
+<li>渲染完毕后，JS线程继续接管，开始下一个宏任务，依次循环</li>
 </ul>
 <h3 id="三、示例代码"><a href="#三、示例代码" class="headerlink" title="三、示例代码"></a>三、示例代码</h3><h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setTimeout'</span><span class="token punctuation">)</span>
@@ -1123,7 +1123,7 @@ setTimeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snail-lu.vercel.app/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html">https://snail-lu.vercel.app/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html</a>
+                    <a href="https://snaillu.gitee.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html">https://snaillu.gitee.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1545,7 +1545,7 @@ setTimeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70.6k</span>&nbsp;字
+                class="white-color">71.3k</span>&nbsp;字
             
             
             

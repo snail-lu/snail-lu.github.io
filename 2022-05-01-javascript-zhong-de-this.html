@@ -361,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-21
+                    2022-10-08
                 </div>
                 
 
@@ -403,7 +403,8 @@
 <span class="token punctuation">&#125;</span>
 
 <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 调用时，this指向window</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2-隐式绑定"><a href="#2-隐式绑定" class="headerlink" title="2. 隐式绑定"></a>2. 隐式绑定</h4><p>当函数引用有上下文对象时，隐式绑定规则会把函数调用中的 <code>this</code> 绑定到这个上下文对象。且当对象属性存在引用链时，最后一层引用决定调用位置。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
@@ -414,6 +415,7 @@
     foo
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
+<span class="token comment">// foo中的this指向obj对象</span>
 obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
 
 
@@ -422,7 +424,8 @@ obj<span class="token punctuation">.</span><span class="token function">foo</spa
     obj
 <span class="token punctuation">&#125;</span>
 
-obj1<span class="token punctuation">.</span>obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// foo中的对象指向obj对象</span>
+obj1<span class="token punctuation">.</span>obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="3-显示绑定"><a href="#3-显示绑定" class="headerlink" title="3. 显示绑定"></a>3. 显示绑定</h4><p>利用JS提供的<code>call()</code>、<code>apply()</code>、<code>bind()</code>方法显示指定<code>this</code>的绑定对象。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -459,7 +462,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>由上下文对象调用？绑定到那个上下文对象。 </li>
 <li>默认：在严格模式下绑定到 <code>undefined</code>，否则绑定到全局对象。</li>
 </ol>
-<h3 id="四、箭头函数中的this"><a href="#四、箭头函数中的this" class="headerlink" title="四、箭头函数中的this"></a>四、箭头函数中的this</h3><p>箭头函数不使用上述<code>this</code>绑定的四种标准规则，而是根据外层（函数或全局）作用域来决定<code>this</code>。</p>
+<h3 id="四、箭头函数中的this"><a href="#四、箭头函数中的this" class="headerlink" title="四、箭头函数中的this"></a>四、箭头函数中的this</h3><p>箭头函数不使用上述<code>this</code>绑定的四种标准规则，而是根据外层（函数或全局）作用域来决定<code>this</code>，这个<code>this</code>是在函数定义时就确定的，而非普通函数那样在调用时确定。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -526,7 +529,7 @@ obj<span class="token punctuation">.</span><span class="token function">getName4
 <h3 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h3><blockquote>
 <p>每个函数在被调用时都会自动取得两个特殊变量：<code>this</code> 和 <code>arguments</code>。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。  </p>
 </blockquote>
-<p>闭包中的<code>this</code>是无法<code>“继承”</code>其外部作用域中的<code>this</code>的，所以闭包中的<code>this</code>可以直接用上述4中规则进行判断。而箭头函数会继承外层函数调用的 <code>this</code> 绑定。</p>
+<p>闭包中的<code>this</code>是无法<code>“继承”</code>其外部作用域中的<code>this</code>的，所以闭包中的<code>this</code>可以直接用上述4种规则进行判断。而箭头函数会继承外层函数调用的 <code>this</code> 绑定。</p>
 <h3 id="七、参考文章"><a href="#七、参考文章" class="headerlink" title="七、参考文章"></a>七、参考文章</h3><ul>
 <li><a href="">KYLE SIMPSON.你不知道的JavaScript-上卷</a></li>
 <li><a href="">尼古拉斯·泽卡斯.JavaScript高级程序设计</a></li>
@@ -557,7 +560,7 @@ obj<span class="token punctuation">.</span><span class="token function">getName4
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snail-lu.vercel.app/2022-05-01-javascript-zhong-de-this.html">https://snail-lu.vercel.app/2022-05-01-javascript-zhong-de-this.html</a>
+                    <a href="https://snaillu.gitee.io/2022-05-01-javascript-zhong-de-this.html">https://snaillu.gitee.io/2022-05-01-javascript-zhong-de-this.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -671,12 +674,12 @@ obj<span class="token punctuation">.</span><span class="token function">getName4
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
-                                    前端进阶
-                                </a>
-                            
                             <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
                                     项目开发
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    前端进阶
                                 </a>
                             
                             
@@ -983,7 +986,7 @@ obj<span class="token punctuation">.</span><span class="token function">getName4
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70.6k</span>&nbsp;字
+                class="white-color">71.3k</span>&nbsp;字
             
             
             
