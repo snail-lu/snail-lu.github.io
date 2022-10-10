@@ -332,3 +332,5 @@ Vue.prototype._init = function (options?: Object) {
 - 如遇到过滤器信息则再调用过滤解析器`parseFilters`进行解析
 
 最终完成对整个模板字符串的解析。
+
+### 18. 自定义指令
