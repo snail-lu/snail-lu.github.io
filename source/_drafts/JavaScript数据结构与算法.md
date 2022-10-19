@@ -40,6 +40,10 @@ class Stack {
             return this.items[size-1]
         }
     }
+
+    peek() {
+        
+    }
 }
 ```
 #### 2. 队列
