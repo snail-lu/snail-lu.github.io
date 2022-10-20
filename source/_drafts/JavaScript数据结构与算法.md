@@ -83,11 +83,10 @@ class Stack {
         if (this.count === 0) {
             return null;
         }
-        const last = this.items[this.count-1];
-        delete this.items[this.count-1];
         this.count--;
+        const last = this.items[this.count];
+        delete this.items[this.count];
         return last;
-
     }
 
     peek() {
@@ -103,6 +102,7 @@ class Stack {
 
     clear() {
         this.items = {};
+        this.count = 0;
     }
 
     size() {
