@@ -119,7 +119,7 @@ class Stack {
 /**
  * Queue类
  * items - 队列元素集合
- * count - 队列尾部元素下标
+ * count - 下一个队列尾部元素下标
  * lowestCount - 队列头部元素下标
  * enqueue() - 队列尾部增加元素方法
  * dequeue() - 移除队列头部元素方法
@@ -166,7 +166,7 @@ class Queue {
     }
 
     isEmpty() {
-        return this.count === 0;
+        return this.count-this.lowestCount === 0;
     }
 
     clear() {
