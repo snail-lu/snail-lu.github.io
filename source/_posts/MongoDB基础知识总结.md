@@ -10,7 +10,7 @@ categories:
 - [读书笔记]
 ---
 
-### 一、 数据库分类
+### 一、数据库分类
 - 关系型数据库（RDBMS）
   - MySQL、Oracle、DB2、SQL Server
   - ...
@@ -18,7 +18,7 @@ categories:
   - 键值对数据库: Redis
   - 文档数据库: MongoDB
 
-### 二、 安装MongoDB
+### 二、安装MongoDB
   - 数据库软件构成
     - 数据库的服务器
       - 数据库的服务器用来存放数据
@@ -33,7 +33,7 @@ categories:
 - 打开命令行工具，输入`mongod`，启动`mongoDB`服务器
   - 如果想要更改数据库默认存放目录及端口，使用命令`mongod --dbpath 路径  --port 端口`
 - 再打开一个命令行窗口，输入`mongo`，出现`>`，表示成功连接mongoDB服务器
-- 设为系统服务：开机自启，后台自动运行(4.0版本以后安装MongoDB的时候就可以开启此功能)（参见[mongodb官网资料](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)）
+- 设为系统服务：开机自启，后台自动运行（4.0版本以后安装MongoDB的时候就可以开启此功能）（参见[mongodb官网资料](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)）
 
 
 
