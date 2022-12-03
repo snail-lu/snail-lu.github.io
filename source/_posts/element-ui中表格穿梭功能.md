@@ -182,4 +182,4 @@ categories:
 ```
 
 ### 三、最终效果
-[demo地址](https://snaillu.gitee.io/portfolio-vue/demo/table-transfer)
+[demo地址](https://snaillu.gitee.io/portfolio/demo/table-transfer)
