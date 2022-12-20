@@ -361,14 +361,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-02
+                    2022-12-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    423
+                    672
                 </div>
                 
 
@@ -456,6 +456,21 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
 		<span class="token literal-property property">menuButtonHeight</span><span class="token operator">:</span> height
 	<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-页面中存在定时器导致点击事件出现延迟的问题"><a href="#4-页面中存在定时器导致点击事件出现延迟的问题" class="headerlink" title="4. 页面中存在定时器导致点击事件出现延迟的问题"></a>4. 页面中存在定时器导致点击事件出现延迟的问题</h3><p><strong>应用场景：</strong> 计时答题，计时器在运行时，按钮的点击事件感觉很卡顿，要反应一会才会有选中效果，去掉计时器，按钮点击效果就很顺畅。H5中不存在这个问题，只有小程序中有这种情况。暂时没找到解决方案。<br><strong>解决思路：</strong></p>
+<ul>
+<li>启用多线程worker</li>
+</ul>
+<h3 id="5-new-Date-39-2020-11-11-13-23-32-39-在IOS中报错问题"><a href="#5-new-Date-39-2020-11-11-13-23-32-39-在IOS中报错问题" class="headerlink" title="5. new Date(&#39;2020-11-11 13:23:32&#39;)在IOS中报错问题"></a>5. <code>new Date(&#39;2020-11-11 13:23:32&#39;)</code>在IOS中报错问题</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> time <span class="token operator">=</span> <span class="token string">'2020-11-11 23:23:32'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> transformedTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">-</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="6-wx-canvasToTempFilePath导出的图片在IOS中无法显示"><a href="#6-wx-canvasToTempFilePath导出的图片在IOS中无法显示" class="headerlink" title="6. wx.canvasToTempFilePath导出的图片在IOS中无法显示"></a>6. <code>wx.canvasToTempFilePath</code>导出的图片在IOS中无法显示</h3><p><strong>解决思路：</strong></p>
+<ul>
+<li>确认画布尺寸是否过大，超出了屏幕尺寸（IOS中canvas尺寸超出屏幕，会绘制的图片有可能会出现空白）</li>
+<li>确认canvas中的图片是否绘制正确，然后再导出</li>
+<li>确认<code>canvas</code>api是否是旧版接口，若是旧版接口，<code>wx.canvasToTempFilePath()</code>需要在<code>draw()</code>回调中调用</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -895,7 +910,7 @@ wx<span class="token punctuation">.</span><span class="token function">navigateT
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">71.3k</span>&nbsp;字
+                class="white-color">71.5k</span>&nbsp;字
             
             
             
