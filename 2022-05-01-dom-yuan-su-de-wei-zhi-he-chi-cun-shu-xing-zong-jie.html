@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JavaScript数据类型判断, Snail-Lu">
+    <meta name="keywords" content="DOM元素的位置和尺寸属性总结, Snail-Lu">
     <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript数据类型判断 | Snail-Lu</title>
+    <title>DOM元素的位置和尺寸属性总结 | Snail-Lu</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript数据类型判断</h1>
+                    <h1 class="description center-align post-title">DOM元素的位置和尺寸属性总结</h1>
                 </div>
             </div>
         </div>
@@ -329,8 +329,8 @@
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
                         
-                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                <span class="chip bg-color">面试</span>
+                            <a href="/tags/DOM/">
+                                <span class="chip bg-color">DOM</span>
                             </a>
                         
                     </div>
@@ -354,21 +354,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-24
+                    2022-05-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-08
+                    2023-01-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    573
+                    468
                 </div>
                 
 
@@ -393,80 +393,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一-JS中的数据类型"><a href="#一-JS中的数据类型" class="headerlink" title="一. JS中的数据类型"></a>一. JS中的数据类型</h3><ul>
-<li>基本数据类型：<code>String</code>、<code>Number</code>、<code>Boolean</code>、<code>Undefined</code>、<code>Null</code>、<code>Symbol</code></li>
-<li>引用数据类型：<code>Object</code></li>
-</ul>
-<h3 id="二-数据类型判断方法"><a href="#二-数据类型判断方法" class="headerlink" title="二. 数据类型判断方法"></a>二. 数据类型判断方法</h3><ul>
-<li><code>typeof</code></li>
-<li><code>instanceof</code></li>
-<li><code>constructor</code></li>
-<li><code>===</code></li>
-<li><code>Object.is()</code></li>
-<li><code>Array.isArray()</code></li>
-<li><code>isNaN()</code></li>
-</ul>
-<h4 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h4><p>对一个值使用<code>typeof</code>操作符的返回值（返回值类型为字符串）有以下几种：</p>
-<ul>
-<li>“undefined” — 值未定义</li>
-<li>“boolean”   — 布尔值</li>
-<li>“string”    — 字符串</li>
-<li>“number”    — 数值</li>
-<li>“object”    — 对象或null</li>
-<li>“function”  — 函数</li>
-</ul>
-<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><p>检测某个变量是否是某个构造函数的实例。常用的一些JS原生引用类型有：</p>
-<ul>
-<li><code>o instanceof Object</code> — 变量o是否是Object类型的实例</li>
-<li><code>o instanceof Array</code>  — 变量o是否是Array类型的实例</li>
-<li><code>o instanceof RegExp</code> — 变量o是否是RegExp类型的实例</li>
-<li><code>o instanceof Date</code>   — 变量o是否是Date类型的实例</li>
-<li><code>o instanceof Function</code> — 变量o是否是Function类型的实例</li>
-<li><code>o instanceof Boolean</code> — 变量o是否是Boolean类型的实例</li>
-<li><code>o instanceof String</code> — 变量o是否是String类型的实例</li>
-<li><code>o instanceof Number</code> — 变量o是否是Number类型的实例</li>
-</ul>
-<h4 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h4><p><code>constructor</code>属性是对创建对象的构造函数的引用。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
-a<span class="token punctuation">.</span>constructor <span class="token operator">===</span> String<span class="token punctuation">;</span> <span class="token comment">// true</span>
+                <h3 id="DOM元素的位置"><a href="#DOM元素的位置" class="headerlink" title="DOM元素的位置"></a>DOM元素的位置</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">含义</th>
+<th align="left">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">offsetLeft</td>
+<td align="left">当前元素左上角相对于其 <code>offsetParent</code> 节点的左边界偏移的像素值。</td>
+<td align="left">只读</td>
+</tr>
+<tr>
+<td align="left">offsetTop</td>
+<td align="left">当前元素相对于其 <code>offsetParent</code> 元素的顶部内边距的距离。</td>
+<td align="left">只读</td>
+</tr>
+<tr>
+<td align="left">scrollLeft</td>
+<td align="left">读取或设置元素滚动条到元素左边的距离。</td>
+<td align="left">读写</td>
+</tr>
+<tr>
+<td align="left">scrollTop</td>
+<td align="left">获取或设置一个元素的内容垂直滚动的像素数。</td>
+<td align="left">读写</td>
+</tr>
+<tr>
+<td align="left">getBoundingClientRect()</td>
+<td align="left">返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect">示意图</a></td>
+</tr>
+</tbody></table>
+<h3 id="DOM元素的尺寸"><a href="#DOM元素的尺寸" class="headerlink" title="DOM元素的尺寸"></a>DOM元素的尺寸</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">含义</th>
+<th align="left">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">offsetWidth</td>
+<td align="left">元素的<code>border-box</code>宽度。包括边框 (border)、内边距 (padding)、竖直方向滚动条 (scrollbar)（如果存在）。</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">offsetHeight</td>
+<td align="left">元素的<code>border-box</code>高度度。包括边框 (border)、内边距 (padding)、水平方向滚动条 (scrollbar)（如果存在）。</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">scrollWidth</td>
+<td align="left">元素的内容宽度，包括由于 overflow 溢出而在屏幕上不可见的内容。包含元素的内边距，但不包括边框，外边距或垂直滚动条（如果存在）</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">scrollHeight</td>
+<td align="left">元素的内容高度，包括由于 overflow 溢出而在屏幕上不可见的内容。包含元素的内边距，但不包括边框，外边距或水平滚动条（如果存在）</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">clientWidth</td>
+<td align="left">元素内部的宽度（以像素为单位）。包括内边距（padding），但不包括边框（border）、外边距（margin）和垂直滚动条（如果存在）。</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">clientHeight</td>
+<td align="left">元素内部的高度（以像素为单位），包含内边距，但不包括边框、外边距和水平滚动条（如果存在）。</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">clientLeft</td>
+<td align="left">左边框的宽度</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">clientTop</td>
+<td align="left">上边框的宽度</td>
+<td align="left">只读，整数</td>
+</tr>
+<tr>
+<td align="left">getBoundingClientRect()</td>
+<td align="left">返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect">示意图</a></td>
+</tr>
+</tbody></table>
 
-a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-a<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Number<span class="token punctuation">;</span> <span class="token comment">// true</span>
-
-<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>constructor <span class="token operator">===</span> Date<span class="token punctuation">;</span> <span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id=""><a href="#" class="headerlink" title="==="></a>===</h4><p>判断两个操作数的数据类型和值是否完全一致。</p>
-<ul>
-<li><code>&quot;5&quot; === 5</code> — false</li>
-</ul>
-<h4 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h4><p>弥补了全等运算符<code>===</code>存在的两个怪异点：</p>
-<ul>
-<li><code>+0 === -0</code> — true</li>
-<li><code>NaN === NaN</code> — false</li>
-<li><code>Object.is(+0, -0)</code> —  false</li>
-<li><code>Object.is(NaN, NaN)</code> — true<br>其他判断结果与<code>===</code>结果一致。</li>
-</ul>
-<h4 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h4><p>判断一个值是否是一个<code>Array</code>。解决了网页中存在多个<code>iframe</code>（即存在多个多个全局执行环境），<code>instanceof</code>无法判断<code>Array</code>类型的问题</p>
-<ul>
-<li><code>Array.isArray([])</code> —  true</li>
-<li><code>Array.isArray(Array.prototype)</code> — true</li>
-</ul>
-<p>示例代码：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 获取窗口中最后一个框架中的Array构造函数</span>
-xArray <span class="token operator">=</span> window<span class="token punctuation">.</span>frames<span class="token punctuation">[</span>window<span class="token punctuation">.</span>frames<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Array<span class="token punctuation">;</span>
-<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">xArray</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1,2,3]</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// true</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN()"></a>isNaN()</h4><p>判断指定值是否为数字，是数字返回<code>false</code>，否则返回<code>true</code>。 <code>isNaN()</code> 在判断参数是否为数字之前，会首先使用 <code>Number()</code> 对参数进行数字类型的转换。所以 <code>isNaN(value)</code> 其实等效于：<code>isNaN(Number(value))</code>。当参数 <code>value</code> 能被 <code>Number()</code> 转换为数字时，结果返回 <code>false</code>，否则返回 <code>true</code>。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">'100'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// false</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// false</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">'100px'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -492,7 +507,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snaillu.gitee.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html">https://snaillu.gitee.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html</a>
+                    <a href="https://snaillu.gitee.io/2022-05-01-dom-yuan-su-de-wei-zhi-he-chi-cun-shu-xing-zong-jie.html">https://snaillu.gitee.io/2022-05-01-dom-yuan-su-de-wei-zhi-he-chi-cun-shu-xing-zong-jie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,8 +549,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
                                     <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
-                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                    <span class="chip bg-color">面试</span>
+                                <a href="/tags/DOM/">
+                                    <span class="chip bg-color">DOM</span>
                                 </a>
                             
                         </div>
@@ -583,6 +598,59 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2022-05-01-javascript-zhong-de-this.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JavaScript中的this">
+                        
+                        <span class="card-title">JavaScript中的this</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JS中的this指向问题
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    前端进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2022-04-25-promise-shi-xian-yuan-li.html">
                     <div class="card-image">
                         
@@ -599,9 +667,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -623,63 +691,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     
                     <a href="/tags/Promise/">
                         <span class="chip bg-color">Promise</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022-03-27-mongodb-ji-chu-zhi-shi-zong-jie.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB基础知识总结">
-                        
-                        <span class="card-title">MongoDB基础知识总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            MongoDB数据库基础知识
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    读书笔记
-                                </a>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/MongoDB/">
-                        <span class="chip bg-color">MongoDB</span>
-                    </a>
-                    
-                    <a href="/tags/Node-js/">
-                        <span class="chip bg-color">Node.js</span>
                     </a>
                     
                 </div>
