@@ -107,7 +107,7 @@ theme: matery
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:Snail-Lu/Snail-Lu.github.io.git
+  repo: git@github.com:snail-lu/snail-lu.github.io.git
   branch: gh-pages
   name: Snail-Lu
   email: snaillu@yeah.net
