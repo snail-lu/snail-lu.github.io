@@ -361,14 +361,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-10
+                    2023-01-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    468
+                    823
                 </div>
                 
 
@@ -467,12 +467,12 @@
 </tr>
 <tr>
 <td align="left">clientLeft</td>
-<td align="left">左边框的宽度</td>
+<td align="left">左边框（border-left）的宽度</td>
 <td align="left">只读，整数</td>
 </tr>
 <tr>
 <td align="left">clientTop</td>
-<td align="left">上边框的宽度</td>
+<td align="left">上边框（border-top）的宽度</td>
 <td align="left">只读，整数</td>
 </tr>
 <tr>
@@ -481,6 +481,112 @@
 <td align="left"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect">示意图</a></td>
 </tr>
 </tbody></table>
+<h3 id="window的尺寸和位置"><a href="#window的尺寸和位置" class="headerlink" title="window的尺寸和位置"></a>window的尺寸和位置</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">window.innerWidth</td>
+<td align="left">视口的宽</td>
+</tr>
+<tr>
+<td align="left">window.innerHeight</td>
+<td align="left">视口的高</td>
+</tr>
+<tr>
+<td align="left">window.outerWidth</td>
+<td align="left">浏览器窗口的宽</td>
+</tr>
+<tr>
+<td align="left">window.outerHeight</td>
+<td align="left">浏览器窗口的高</td>
+</tr>
+<tr>
+<td align="left">window.screenX</td>
+<td align="left">浏览器左边界到屏幕左边界的水平距离</td>
+</tr>
+<tr>
+<td align="left">window.screenY</td>
+<td align="left">返回浏览器顶部到屏幕顶部的垂直距离。</td>
+</tr>
+<tr>
+<td align="left">window.screenLeft</td>
+<td align="left">screenX的别名</td>
+</tr>
+<tr>
+<td align="left">window.screenTop</td>
+<td align="left">screenY的别名</td>
+</tr>
+<tr>
+<td align="left">window.scrollX</td>
+<td align="left">页面水平方向滚动的像素值</td>
+</tr>
+<tr>
+<td align="left">window.scrollY</td>
+<td align="left">页面在垂直方向已滚动的像素值</td>
+</tr>
+<tr>
+<td align="left">window.screen.width</td>
+<td align="left">屏幕的宽度</td>
+</tr>
+<tr>
+<td align="left">window.screen.height</td>
+<td align="left">屏幕的高度</td>
+</tr>
+<tr>
+<td align="left">window.screen.availWidth</td>
+<td align="left">浏览器窗口可占用的水平宽度，一般情况下等于屏幕的宽度</td>
+</tr>
+<tr>
+<td align="left">window.screen.availHeight</td>
+<td align="left">浏览器窗口在屏幕上可占用的垂直空间，一般情况下等于屏幕的高度减去 mac 顶部栏或 windows 底部栏。</td>
+</tr>
+</tbody></table>
+<h3 id="MouseEvent的位置"><a href="#MouseEvent的位置" class="headerlink" title="MouseEvent的位置"></a>MouseEvent的位置</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">clientX</td>
+<td align="left">鼠标在视口中的水平坐标</td>
+</tr>
+<tr>
+<td align="left">clientY</td>
+<td align="left">鼠标在视口中的垂直坐标</td>
+</tr>
+<tr>
+<td align="left">screenX</td>
+<td align="left">鼠标在屏幕中的水平坐标</td>
+</tr>
+<tr>
+<td align="left">screenY</td>
+<td align="left">鼠标在屏幕中的垂直坐标</td>
+</tr>
+<tr>
+<td align="left">pageX</td>
+<td align="left">鼠标在文档中的水平坐标，包括滚动的距离</td>
+</tr>
+<tr>
+<td align="left">pageY</td>
+<td align="left">鼠标在文档中的垂直坐标，包括滚动的距离</td>
+</tr>
+<tr>
+<td align="left">offsetX</td>
+<td align="left">鼠标在被触发的dom中的水平坐标</td>
+</tr>
+<tr>
+<td align="left">offsetY</td>
+<td align="left">鼠标在被触发的dom中的垂直坐标</td>
+</tr>
+</tbody></table>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/01/11/pSn33p6.jpg"></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement">1. HTMLElement</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element">2. Element</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window">3. Window</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Screen">4. Screen</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent">5. MouseEvent</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33716557/article/details/91890517">6. window和screen的尺寸总结</a></p>
 
                 
             </div>
@@ -921,7 +1027,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">72k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
             
             
             
