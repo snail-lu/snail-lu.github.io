@@ -10,7 +10,7 @@ categories:
 ---
 
 ### DOM元素的位置
-| 属性 | 含义 |操作|
+| 属性 | 含义 | 操作 |
 | :---- | :---- | :---- |
 | offsetLeft | 当前元素左上角相对于其 `offsetParent` 节点的左边界偏移的像素值。| 只读 |
 | offsetTop | 当前元素相对于其 `offsetParent` 元素的顶部内边距的距离。| 只读 |
@@ -32,26 +32,43 @@ categories:
 | getBoundingClientRect() | 返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。|[示意图](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)|
 
 ### window的尺寸和位置
-| 属性  | 含义   | 操作 |
-| :---- | :---- | :---- |
-| window.innerWidth | 视口的宽 | |
-| window.innerHeight | 视口的高 | |
-| window.outerWidth | 浏览器窗口的宽 | |
+| 属性  | 含义   | 
+| :---- | :---- | 
+| window.innerWidth | 视口的宽 |
+| window.innerHeight | 视口的高 |
+| window.outerWidth | 浏览器窗口的宽 |
 | window.outerHeight | 浏览器窗口的高 | |
-| window.screenX | 浏览器左边界到屏幕左边界的水平距离 ||
-| window.screenY | 返回浏览器顶部到屏幕顶部的垂直距离。||
-| window.screenLeft | screenX的别名 ||
-| window.screenTop | screenY的别名 ||
-| window.scrollX | 页面水平方向滚动的像素值 ||
-| window.scrollY | 页面在垂直方向已滚动的像素值 ||
-| window.screen.width | 屏幕的宽度 ||
-| window.screen.height | 屏幕的高度 ||
-| window.screen.availWidth | 浏览器窗口可占用的水平宽度，一般情况下等于屏幕的宽度 || 
-| window.screen.availHeight | 浏览器窗口在屏幕上可占用的垂直空间，一般情况下等于屏幕的高度减去 mac 顶部栏或 windows 底部栏。|| 
+| window.screenX | 浏览器左边界到屏幕左边界的水平距离 |
+| window.screenY | 返回浏览器顶部到屏幕顶部的垂直距离。|
+| window.screenLeft | screenX的别名 |
+| window.screenTop | screenY的别名 |
+| window.scrollX | 页面水平方向滚动的像素值 |
+| window.scrollY | 页面在垂直方向已滚动的像素值 |
+| window.screen.width | 屏幕的宽度 |
+| window.screen.height | 屏幕的高度 |
+| window.screen.availWidth | 浏览器窗口可占用的水平宽度，一般情况下等于屏幕的宽度 |
+| window.screen.availHeight | 浏览器窗口在屏幕上可占用的垂直空间，一般情况下等于屏幕的高度减去 mac 顶部栏或 windows 底部栏。|
+
+
+### MouseEvent的位置
+| 属性  | 含义   | 
+| :---- | :---- | 
+| clientX | 鼠标在视口中的水平坐标 |
+| clientY | 鼠标在视口中的垂直坐标 |
+| screenX | 鼠标在屏幕中的水平坐标 |
+| screenY | 鼠标在屏幕中的垂直坐标 |
+| pageX | 鼠标在文档中的水平坐标，包括滚动的距离 |
+| pageY | 鼠标在文档中的垂直坐标，包括滚动的距离 |
+| offsetX | 鼠标在被触发的dom中的水平坐标 |
+| offsetY | 鼠标在被触发的dom中的垂直坐标 |
+
+### 总结
+![](https://s1.ax1x.com/2023/01/11/pSn33p6.jpg)
 
 ### 参考文档
 [1. HTMLElement](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement)
 [2. Element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)
 [3. Window](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)
 [4. Screen](https://developer.mozilla.org/zh-CN/docs/Web/API/Screen)
-[5. window和screen的尺寸总结](https://blog.csdn.net/weixin_33716557/article/details/91890517)
+[5. MouseEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)
+[6. window和screen的尺寸总结](https://blog.csdn.net/weixin_33716557/article/details/91890517)
