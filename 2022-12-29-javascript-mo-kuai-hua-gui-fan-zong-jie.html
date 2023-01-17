@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Node.js基础知识总结, Snail-Lu">
+    <meta name="keywords" content="JavaScript模块化规范总结, Snail-Lu">
     <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Node.js基础知识总结 | Snail-Lu</title>
+    <title>JavaScript模块化规范总结 | Snail-Lu</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Node.js基础知识总结</h1>
+                    <h1 class="description center-align post-title">JavaScript模块化规范总结</h1>
                 </div>
             </div>
         </div>
@@ -329,10 +329,6 @@
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
                         
-                            <a href="/tags/Node-js/">
-                                <span class="chip bg-color">Node.js</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -345,10 +341,6 @@
                                 前端进阶
                             </a>
                         
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                读书笔记
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -358,21 +350,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-27
+                    2022-12-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-05
+                    2023-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    845
+                    670
                 </div>
                 
 
@@ -397,139 +389,125 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-全局对象global"><a href="#1-全局对象global" class="headerlink" title="1 全局对象global"></a>1 全局对象<code>global</code></h4><p>全局变量都是全局对象<code>global</code>的属性</p>
-<ul>
-<li><p><code>process</code><br>它是用于描述和控制当前Node.js进程状态的对象。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 示例用法：</span>
-<span class="token comment">// process属性</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>pid<span class="token punctuation">)</span> <span class="token comment">// 打印进程号</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'version'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>version<span class="token punctuation">)</span> <span class="token comment">// 打印node.js版本</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">)</span> <span class="token comment">// 打印环境变量</span>
-
-<span class="token comment">// process方法</span>
-process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span> <span class="token comment">// 输出信息</span>
-process<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 退出进程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多API参考<a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/process.html">Node.js官方文档之process</a></p>
-</li>
-<li><p><code>console</code><br>用户向控制台输出信息。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印字符并换行</span>
-console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出错误消息</span>
-console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'warning'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出警告消息。控制台出现有黄色的惊叹号。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-常用工具util"><a href="#2-常用工具util" class="headerlink" title="2 常用工具util"></a>2 常用工具<code>util</code></h3></li>
-<li><p><code>util.inherits()</code> 对象间原型继承</p>
-</li>
-<li><p><code>util.inspect()</code> 将对象格式化为字符串</p>
-</li>
-<li><p><code>util.isArray()</code> 判断是否为数组</p>
-</li>
-<li><p><code>util.isRegExp()</code> 判断是否为正则表达式</p>
-</li>
-<li><p><code>util.isDate()</code> 判断是否为日期类型</p>
-</li>
-</ul>
-<h3 id="3-事件模块events"><a href="#3-事件模块events" class="headerlink" title="3 事件模块events"></a>3 事件模块<code>events</code></h3><p><code>events</code>模块对外只提供了一个<code>EventEmitter</code>对象。<code>EventEmitter</code>对象是对事件触发与事件监听功能的封装。当EventEmitter对象触发一个事件时，所有绑定在该事件上的函数都被同步调用。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 引入 events 模块</span>
-<span class="token keyword">var</span> events <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'events'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 创建 eventEmitter 对象</span>
-<span class="token keyword">var</span> eventEmitter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">events<span class="token punctuation">.</span>EventEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>EventEmitter对象的实例方法：</p>
-<table>
+                <h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><table>
 <thead>
 <tr>
-<th>方法</th>
-<th>描述</th>
+<th align="left">序号</th>
+<th align="left">规范</th>
+<th align="left">适用场景</th>
+<th align="left">常见实现</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>on(event, listener)</td>
-<td>为事件event注册一个监听器</td>
+<td align="left">1</td>
+<td align="left">CommonJS</td>
+<td align="left">服务器端</td>
+<td align="left">-</td>
 </tr>
 <tr>
-<td>once(event, listener)</td>
-<td>为指定事件注册一个单次监听器，</td>
+<td align="left">2</td>
+<td align="left">AMD</td>
+<td align="left">浏览器端</td>
+<td align="left">require.js、curl.js</td>
 </tr>
 <tr>
-<td>emit(event, [arg1], [arg2], […])</td>
-<td>触发event事件</td>
+<td align="left">3</td>
+<td align="left">CMD</td>
+<td align="left">服务器端</td>
+<td align="left">sea.js</td>
 </tr>
 <tr>
-<td>addListener(event, listener)</td>
-<td>为指定事件添加一个监听器到监听器数组的尾部。</td>
+<td align="left">4</td>
+<td align="left">UMD</td>
+<td align="left">浏览器端和服务器端</td>
+<td align="left"></td>
 </tr>
 <tr>
-<td>removeListener(event, listener)</td>
-<td>移除指定事件的某个监听器，监听器必须是该事件已经注册过的监听器。</td>
-</tr>
-<tr>
-<td>removeAllListeners([event])</td>
-<td>移除所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。</td>
-</tr>
-<tr>
-<td>listeners(event)</td>
-<td>返回指定事件的监听器数组。</td>
+<td align="left">5</td>
+<td align="left">ES6 Module</td>
+<td align="left">浏览器端和服务器端</td>
+<td align="left"></td>
 </tr>
 </tbody></table>
-<p>EventEmitter定义了一个特殊的事件<code>error</code>，当<code>error</code>被触发时，如果没有相应的监听器，Node.js会把它当做异常，退出程序并输出错误信息。</p>
-<h3 id="4-文件系统fs模块"><a href="#4-文件系统fs模块" class="headerlink" title="4 文件系统fs模块"></a>4 文件系统<code>fs</code>模块</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h3 id="2-CommonJS规范"><a href="#2-CommonJS规范" class="headerlink" title="2. CommonJS规范"></a>2. CommonJS规范</h3><p><strong>Node.js</strong>中所遵循的模块规范，以同步的方式加载模块。<br>该规范约定一个文件就是一个模块，每个模块都有独立的作用域，模块必须通过 <code>module.exports</code> 导出对外的变量或接口，通过 <code>require()</code> 来导入其他模块的输出到当前模块作用域中。</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// moduleA.js</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">value</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment">// 异步读取文件</span>
-<span class="token comment">// 文件路径可以为相对路径或绝对路径</span>
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"./tes.txt"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'error: '</span> <span class="token operator">+</span> err<span class="token punctuation">)</span>
+<span class="token comment">// moduleB.js</span>
+<span class="token keyword">var</span> multiplyBy2 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./moduleA'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">multiplyBy2</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-AMD"><a href="#3-AMD" class="headerlink" title="3. AMD"></a>3. AMD</h3><p><strong>AMD</strong> 的全称是<code>Asynchronous Module Definition</code>，意思是“<strong>异步模块定义</strong>”。它采用异步方式加载模块，模块的加载不影响它后面语句的运行，所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。使用AMD规范进行开发的时候需要引入第三方的库函数，常用的有<code>require.js</code>和<code>curl.js</code>。</p>
+<h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><p>以<code>require.js</code>为例：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 定义模块</span>
+<span class="token comment">// moodule1.js</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'module1'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// ...</span>
     <span class="token punctuation">&#125;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'异步读取：'</span><span class="token operator">+</span>data<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<span class="token comment">/**
- * 异步写入文件
- */</span>
-fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'./test.txt'</span><span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> <span class="token string">'err'</span><span class="token punctuation">)</span>
+<span class="token comment">// 加载模块</span>
+<span class="token comment">// index.js</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'module1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">module1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-CMD"><a href="#4-CMD" class="headerlink" title="4. CMD"></a>4. CMD</h3><p><strong>CMD</strong> 的全称是<code>Common Module Definition</code>，意思是“<strong>同步模块定义</strong>”，属于<code>CommonJS</code>的一种规范。使用CMD规范进行开发的时候需要引入第三方的库函数<code>Sea.js</code>。</p>
+<h4 id="基本用法-2"><a href="#基本用法-2" class="headerlink" title="基本用法"></a>基本用法</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 定义模块</span>
+<span class="token comment">// module1.js</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">require<span class="token punctuation">,</span> exports<span class="token punctuation">,</span> module</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// ...</span>
     <span class="token punctuation">&#125;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件写入完成'</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<span class="token comment">/**
- * 复制文件
- */</span>
-<span class="token keyword">const</span> readerStream <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> writeStream <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">'copyTest.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-readerStream<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>writeStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件复制成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多API参考<a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/fs.html">Node.js官方文档之文件系统</a></p>
-<h3 id="5-http模块"><a href="#5-http模块" class="headerlink" title="5 http模块"></a>5 <code>http</code>模块</h3><p>http 模块主要用于搭建 HTTP 服务端和客户端。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// module2.js</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">require<span class="token punctuation">,</span> exports<span class="token punctuation">,</span> module</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> module1 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./module1.js'</span><span class="token punctuation">)</span>
+    <span class="token comment">// ...</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<span class="token comment">// 创建服务器</span>
-http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
-   <span class="token comment">// 解析请求，包括文件名</span>
-   <span class="token keyword">var</span> pathname <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>pathname<span class="token punctuation">;</span>
-   
-   <span class="token comment">// 输出请求的文件名</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Request for "</span> <span class="token operator">+</span> pathname <span class="token operator">+</span> <span class="token string">" received."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 加载模块</span>
+seajs<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'module1.js'</span><span class="token punctuation">,</span> <span class="token string">'module2.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">module1<span class="token punctuation">,</span> module2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/html'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
-    <span class="token comment">//  完成响应</span>
-    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-     
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8080</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-UMD"><a href="#5-UMD" class="headerlink" title="5. UMD"></a>5. UMD</h3><p><strong>UMD</strong> 的全称是<code>Universal Module Definition</code>，意思是“<strong>通用模块定义</strong>”，他是为了让模块同时兼容<code>AMD</code>、<code>CommonJS</code>、<code>CMD</code>等规范而出现的，多被一些需要同时支持浏览器端和服务端引用的第三方库所使用。</p>
+<h4 id="基本用法-3"><a href="#基本用法-3" class="headerlink" title="基本用法"></a>基本用法</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">root<span class="token punctuation">,</span> factory</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&amp;&amp;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 适配AMD</span>
+		<span class="token function">define</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 适配CommonJS</span>
+		module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 浏览器全局变量</span>
+		root<span class="token punctuation">.</span>NProgress2 <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+ 
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 模块内容</span>
+    <span class="token comment">// ...</span>
+	<span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="6-path模块"><a href="#6-path模块" class="headerlink" title="6 path模块"></a>6 <code>path</code>模块</h3><p>用于处理文件的路径。</p>
-<ul>
-<li><code>join()</code> 连接路径</li>
-<li><code>resolve()</code> 将相对路径转换为绝对路径</li>
-<li><code>parse()</code> 解析路径，将URL字符串转换成对象</li>
-</ul>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
-<li>BYVoid. Node.js开发指南[M]. 人民邮电出版社, 2012.</li>
-<li>天津滨海迅腾科技集团有限公司. Node.js项目实战[M]. 1. 天津:南开大学出版社, 2018.</li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-tutorial.html">Node.js教程-RUNOOB.COM</a></li>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/">Node.js官方文档</a></li>
-</ol>
+<h3 id="6-ES6-Module"><a href="#6-ES6-Module" class="headerlink" title="6. ES6 Module"></a>6. ES6 Module</h3><p><strong>ES6</strong> 在语言标准的层面上实现的模块功能，有望成为浏览器和服务器通用的模块解决方案。</p>
+<h4 id="基本用法-4"><a href="#基本用法-4" class="headerlink" title="基本用法"></a>基本用法</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>                   <span class="token comment">// 导出变量</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                  <span class="token comment">// 导出方法</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"this is func1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Nike"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>       <span class="token comment">// 导出变量</span>
+
+<span class="token comment">// 导入</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> <span class="token constant">PI</span><span class="token punctuation">,</span> func1<span class="token punctuation">,</span> person <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023711059">【深度全面】前端JavaScript模块化规范进化论</a></p>
 
                 
             </div>
@@ -556,7 +534,7 @@ http<span class="token punctuation">.</span><span class="token function">createS
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snaillu.gitee.io/2022-08-27-node-js-ji-chu-zhi-shi-zong-jie.html">https://snaillu.gitee.io/2022-08-27-node-js-ji-chu-zhi-shi-zong-jie.html</a>
+                    <a href="https://snaillu.gitee.io/2022-12-29-javascript-mo-kuai-hua-gui-fan-zong-jie.html">https://snaillu.gitee.io/2022-12-29-javascript-mo-kuai-hua-gui-fan-zong-jie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -596,10 +574,6 @@ http<span class="token punctuation">.</span><span class="token function">createS
                             
                                 <a href="/tags/JavaScript/">
                                     <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
-                                <a href="/tags/Node-js/">
-                                    <span class="chip bg-color">Node.js</span>
                                 </a>
                             
                         </div>
@@ -643,9 +617,60 @@ http<span class="token punctuation">.</span><span class="token function">createS
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022-12-29-javascript-mo-kuai-hua-gui-fan-zong-jie.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JavaScript模块化规范总结">
+                        
+                        <span class="card-title">JavaScript模块化规范总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JS中的常见模块化规范总结
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    前端进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022-09-17-xiang-mu-zhong-axios-de-feng-zhuang.html">
                     <div class="card-image">
@@ -663,9 +688,9 @@ http<span class="token punctuation">.</span><span class="token function">createS
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -683,55 +708,6 @@ http<span class="token punctuation">.</span><span class="token function">createS
                     
                     <a href="/tags/axios/">
                         <span class="chip bg-color">axios</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022-08-08-vite-ji-chu-zhi-shi-zong-jie.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Vite基础知识总结">
-                        
-                        <span class="card-title">Vite基础知识总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Vite构建工具知识总结
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
-                                    前端进阶
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Vite/">
-                        <span class="chip bg-color">Vite</span>
                     </a>
                     
                 </div>
