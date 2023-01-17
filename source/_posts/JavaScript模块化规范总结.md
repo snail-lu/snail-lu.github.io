@@ -1,5 +1,5 @@
 ---
-title: JS模块化规范总结
+title: JavaScript模块化规范总结
 date: 2022-12-29 17:11:13
 summary: JS中的常见模块化规范总结
 tags:
