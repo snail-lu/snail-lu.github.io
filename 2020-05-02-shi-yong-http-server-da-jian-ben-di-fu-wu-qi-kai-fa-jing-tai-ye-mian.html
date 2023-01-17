@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Node.js基础知识总结, Snail-Lu">
+    <meta name="keywords" content="使用http-server启动本地服务开发静态页面, Snail-Lu">
     <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Node.js基础知识总结 | Snail-Lu</title>
+    <title>使用http-server启动本地服务开发静态页面 | Snail-Lu</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Node.js基础知识总结</h1>
+                    <h1 class="description center-align post-title">使用http-server启动本地服务开发静态页面</h1>
                 </div>
             </div>
         </div>
@@ -325,12 +325,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/Node/">
+                                <span class="chip bg-color">Node</span>
                             </a>
                         
-                            <a href="/tags/Node-js/">
-                                <span class="chip bg-color">Node.js</span>
+                            <a href="/tags/http-server/">
+                                <span class="chip bg-color">http-server</span>
                             </a>
                         
                     </div>
@@ -341,12 +341,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
-                                前端进阶
-                            </a>
-                        
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                读书笔记
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
+                                项目开发
                             </a>
                         
                     </div>
@@ -358,21 +354,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-27
+                    2020-05-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-05
+                    2023-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    845
+                    195
                 </div>
                 
 
@@ -397,139 +393,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-全局对象global"><a href="#1-全局对象global" class="headerlink" title="1 全局对象global"></a>1 全局对象<code>global</code></h4><p>全局变量都是全局对象<code>global</code>的属性</p>
-<ul>
-<li><p><code>process</code><br>它是用于描述和控制当前Node.js进程状态的对象。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 示例用法：</span>
-<span class="token comment">// process属性</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>pid<span class="token punctuation">)</span> <span class="token comment">// 打印进程号</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'version'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>version<span class="token punctuation">)</span> <span class="token comment">// 打印node.js版本</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">)</span> <span class="token comment">// 打印环境变量</span>
+                <h3 id="1-全局安装http-server"><a href="#1-全局安装http-server" class="headerlink" title="1. 全局安装http-server"></a>1. 全局安装<code>http-server</code></h3><p>工具：<code>Git Bash</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> http-server -g  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment">// process方法</span>
-process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span> <span class="token comment">// 输出信息</span>
-process<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 退出进程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多API参考<a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/process.html">Node.js官方文档之process</a></p>
-</li>
-<li><p><code>console</code><br>用户向控制台输出信息。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印字符并换行</span>
-console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出错误消息</span>
-console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'warning'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出警告消息。控制台出现有黄色的惊叹号。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-常用工具util"><a href="#2-常用工具util" class="headerlink" title="2 常用工具util"></a>2 常用工具<code>util</code></h3></li>
-<li><p><code>util.inherits()</code> 对象间原型继承</p>
-</li>
-<li><p><code>util.inspect()</code> 将对象格式化为字符串</p>
-</li>
-<li><p><code>util.isArray()</code> 判断是否为数组</p>
-</li>
-<li><p><code>util.isRegExp()</code> 判断是否为正则表达式</p>
-</li>
-<li><p><code>util.isDate()</code> 判断是否为日期类型</p>
-</li>
-</ul>
-<h3 id="3-事件模块events"><a href="#3-事件模块events" class="headerlink" title="3 事件模块events"></a>3 事件模块<code>events</code></h3><p><code>events</code>模块对外只提供了一个<code>EventEmitter</code>对象。<code>EventEmitter</code>对象是对事件触发与事件监听功能的封装。当EventEmitter对象触发一个事件时，所有绑定在该事件上的函数都被同步调用。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 引入 events 模块</span>
-<span class="token keyword">var</span> events <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'events'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 创建 eventEmitter 对象</span>
-<span class="token keyword">var</span> eventEmitter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">events<span class="token punctuation">.</span>EventEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>EventEmitter对象的实例方法：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>on(event, listener)</td>
-<td>为事件event注册一个监听器</td>
-</tr>
-<tr>
-<td>once(event, listener)</td>
-<td>为指定事件注册一个单次监听器，</td>
-</tr>
-<tr>
-<td>emit(event, [arg1], [arg2], […])</td>
-<td>触发event事件</td>
-</tr>
-<tr>
-<td>addListener(event, listener)</td>
-<td>为指定事件添加一个监听器到监听器数组的尾部。</td>
-</tr>
-<tr>
-<td>removeListener(event, listener)</td>
-<td>移除指定事件的某个监听器，监听器必须是该事件已经注册过的监听器。</td>
-</tr>
-<tr>
-<td>removeAllListeners([event])</td>
-<td>移除所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。</td>
-</tr>
-<tr>
-<td>listeners(event)</td>
-<td>返回指定事件的监听器数组。</td>
-</tr>
-</tbody></table>
-<p>EventEmitter定义了一个特殊的事件<code>error</code>，当<code>error</code>被触发时，如果没有相应的监听器，Node.js会把它当做异常，退出程序并输出错误信息。</p>
-<h3 id="4-文件系统fs模块"><a href="#4-文件系统fs模块" class="headerlink" title="4 文件系统fs模块"></a>4 文件系统<code>fs</code>模块</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h3 id="2-进入项目根目录"><a href="#2-进入项目根目录" class="headerlink" title="2. 进入项目根目录"></a>2. 进入项目根目录</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /d/document/projects/wxCoupon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment">// 异步读取文件</span>
-<span class="token comment">// 文件路径可以为相对路径或绝对路径</span>
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"./tes.txt"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'error: '</span> <span class="token operator">+</span> err<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'异步读取：'</span><span class="token operator">+</span>data<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<h3 id="3-启动http-server"><a href="#3-启动http-server" class="headerlink" title="3. 启动http-server"></a>3. 启动<code>http-server</code></h3><p>在命令行中，接着输入以下命令，启动<code>http-server</code>服务器，默认端口号为<code>8080</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hs -o 
+<span class="token comment"># 或 </span>
+http-server -open  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment">/**
- * 异步写入文件
- */</span>
-fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'./test.txt'</span><span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> <span class="token string">'err'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件写入完成'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-
-<span class="token comment">/**
- * 复制文件
- */</span>
-<span class="token keyword">const</span> readerStream <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> writeStream <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">'copyTest.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-readerStream<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>writeStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件复制成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多API参考<a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/fs.html">Node.js官方文档之文件系统</a></p>
-<h3 id="5-http模块"><a href="#5-http模块" class="headerlink" title="5 http模块"></a>5 <code>http</code>模块</h3><p>http 模块主要用于搭建 HTTP 服务端和客户端。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 创建服务器</span>
-http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
-   <span class="token comment">// 解析请求，包括文件名</span>
-   <span class="token keyword">var</span> pathname <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>pathname<span class="token punctuation">;</span>
-   
-   <span class="token comment">// 输出请求的文件名</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Request for "</span> <span class="token operator">+</span> pathname <span class="token operator">+</span> <span class="token string">" received."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    res<span class="token punctuation">.</span><span class="token function">writeHead</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'text/html'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
-    <span class="token comment">//  完成响应</span>
-    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-     
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8080</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="6-path模块"><a href="#6-path模块" class="headerlink" title="6 path模块"></a>6 <code>path</code>模块</h3><p>用于处理文件的路径。</p>
-<ul>
-<li><code>join()</code> 连接路径</li>
-<li><code>resolve()</code> 将相对路径转换为绝对路径</li>
-<li><code>parse()</code> 解析路径，将URL字符串转换成对象</li>
-</ul>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
-<li>BYVoid. Node.js开发指南[M]. 人民邮电出版社, 2012.</li>
-<li>天津滨海迅腾科技集团有限公司. Node.js项目实战[M]. 1. 天津:南开大学出版社, 2018.</li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-tutorial.html">Node.js教程-RUNOOB.COM</a></li>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v18.x/docs/api/">Node.js官方文档</a></li>
-</ol>
+<h3 id="4-查看效果"><a href="#4-查看效果" class="headerlink" title="4. 查看效果"></a>4. 查看效果</h3><p>正常启动后，会出现以下信息：<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/14/vUC8u8.png"></p>
+<p>此时，在浏览器中访问电脑端访问地址并打开开发者工具，即可看到浏览器端模拟的开发效果。<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/14/vUCGDS.png"></p>
+<p>使用手机（需要和电脑处于同一局域网中）访问手机端访问地址，即可实现真机查看开发效果：<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/14/vUCJHg.png"></p>
+<blockquote>
+<p>Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将其关闭即可。</p>
+</blockquote>
 
                 
             </div>
@@ -556,7 +435,7 @@ http<span class="token punctuation">.</span><span class="token function">createS
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snaillu.gitee.io/2022-08-27-node-js-ji-chu-zhi-shi-zong-jie.html">https://snaillu.gitee.io/2022-08-27-node-js-ji-chu-zhi-shi-zong-jie.html</a>
+                    <a href="https://snaillu.gitee.io/2020-05-02-shi-yong-http-server-da-jian-ben-di-fu-wu-qi-kai-fa-jing-tai-ye-mian.html">https://snaillu.gitee.io/2020-05-02-shi-yong-http-server-da-jian-ben-di-fu-wu-qi-kai-fa-jing-tai-ye-mian.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -594,12 +473,12 @@ http<span class="token punctuation">.</span><span class="token function">createS
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/Node/">
+                                    <span class="chip bg-color">Node</span>
                                 </a>
                             
-                                <a href="/tags/Node-js/">
-                                    <span class="chip bg-color">Node.js</span>
+                                <a href="/tags/http-server/">
+                                    <span class="chip bg-color">http-server</span>
                                 </a>
                             
                         </div>
@@ -647,24 +526,24 @@ http<span class="token punctuation">.</span><span class="token function">createS
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022-09-17-xiang-mu-zhong-axios-de-feng-zhuang.html">
+                <a href="/2020-05-05-element-ui-zhong-el-tree-zu-jian-jie-dian-quan-zhan-kai-yu-quan-shou-suo-gong-neng-shi-xian.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="项目中axios的封装">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="element-ui中el-tree组件节点全展开与全收缩功能实现">
                         
-                        <span class="card-title">项目中axios的封装</span>
+                        <span class="card-title">element-ui中el-tree组件节点全展开与全收缩功能实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            实际项目中axios的封装与应用
+                            el-tree组件节点全展开与全收缩功能实现
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-05
                         </span>
                         <span class="publish-author">
                             
@@ -681,8 +560,16 @@ http<span class="token punctuation">.</span><span class="token function">createS
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/axios/">
-                        <span class="chip bg-color">axios</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/element-ui/">
+                        <span class="chip bg-color">element-ui</span>
+                    </a>
+                    
+                    <a href="/tags/el-tree/">
+                        <span class="chip bg-color">el-tree</span>
                     </a>
                     
                 </div>
@@ -696,31 +583,31 @@ http<span class="token punctuation">.</span><span class="token function">createS
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022-08-08-vite-ji-chu-zhi-shi-zong-jie.html">
+                <a href="/2020-05-02-react-webpack-xiang-mu-zhong-shi-yong-iconfont-zi-ti-tu-biao.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Vite基础知识总结">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="React+Webpack项目中使用Iconfont字体图标">
                         
-                        <span class="card-title">Vite基础知识总结</span>
+                        <span class="card-title">React+Webpack项目中使用Iconfont字体图标</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Vite构建工具知识总结
+                            React项目中如何配置及使用iconfont图标
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
-                                    前端进阶
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
+                                    项目开发
                                 </a>
                             
                             
@@ -730,8 +617,16 @@ http<span class="token punctuation">.</span><span class="token function">createS
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vite/">
-                        <span class="chip bg-color">Vite</span>
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
+                    </a>
+                    
+                    <a href="/tags/Webpack/">
+                        <span class="chip bg-color">Webpack</span>
+                    </a>
+                    
+                    <a href="/tags/Iconfont/">
+                        <span class="chip bg-color">Iconfont</span>
                     </a>
                     
                 </div>
