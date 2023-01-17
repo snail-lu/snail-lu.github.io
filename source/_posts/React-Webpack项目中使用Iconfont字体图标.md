@@ -31,11 +31,11 @@ import '../../style/iconfont/iconfont.css';  // 注意路径不要写错
     // 使用类名来实现图标效果
     // iconfont为iconfont.css文件中定义的类名，必写
     // icon-meishi 为iconfont.css文件中要使用的图标类名
-    <span className="iconfont icon-meishi"></span>     // jsx文件
+    <span class="iconfont icon-meishi"></span>     // jsx文件
     
     // 使用unicode来实现图标效果
     // iconfont为iconfont.css文件中定义的类名，必写
-    <span className="iconfont">&#xe61c;</span>         // jsx文件    
+    <span class="iconfont">&#xe61c;</span>         // jsx文件    
 ```
 ### 5、编译报错
 ![](https://s1.ax1x.com/2022/08/14/vUCf81.png)
