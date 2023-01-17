@@ -1,7 +1,7 @@
 ---
 title: 使用http-server启动本地服务开发静态页面
 date: 2020-05-02 20:49:16
-summary: 如何安装及启动http-server，以实现静态页面真机预览及联调。
+summary: http-server的简单实践。
 tags:
 - http-server
 - Node
@@ -9,16 +9,13 @@ categories:
 - [项目开发]
 ---
 
-### 1. 安装`http-server`
-打开cmd(我自己使用的是git bash)，输入命令：
-
+### 1. 全局安装`http-server`
+工具：`Git Bash`
 ```bash
- npm install http-server -g  
+npm install http-server -g  
 ```
 
 ### 2. 进入项目根目录
-这里是通过命令行进入到项目文件夹中，windows中也可以在资源管理器中直接进入到项目文件夹后，使用`shift+"鼠标右键"`,选择`在此处打开命令行（PowerShell）窗口`
-
 ```bash  
 cd /d/document/projects/wxCoupon
 ```
@@ -28,7 +25,7 @@ cd /d/document/projects/wxCoupon
 
 ```bash
 hs -o 
-或 
+# 或 
 http-server -open  
 ```
 
@@ -42,4 +39,4 @@ http-server -open
 使用手机（需要和电脑处于同一局域网中）访问手机端访问地址，即可实现真机查看开发效果：
 ![](https://s1.ax1x.com/2022/08/14/vUCJHg.png)
 
-> Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将防火墙关闭即可。
+> Tips: 若手机无法访问该网络，查看是否是电脑局域网防火墙没有关闭，将其关闭即可。
