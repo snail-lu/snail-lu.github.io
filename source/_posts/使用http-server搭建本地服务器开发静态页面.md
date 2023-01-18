@@ -8,5 +8,13 @@ tags:
 categories:
 - [项目开发]
 ---
+### 1. 全局安装`http-server`
+工具：`Git Bash`
+```bash
+npm install http-server -g  
+```
 
-## 空页面
+### 2. 进入项目根目录
+```bash  
+cd /d/document/projects/wxCoupon
+```
