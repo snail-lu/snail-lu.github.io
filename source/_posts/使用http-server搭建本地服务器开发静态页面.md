@@ -20,7 +20,10 @@ cd /d/document/projects/wxCoupon
 ```
 
 ### 3. 启动`http-server`
-
+在命令行中，接着输入以下命令，启动`http-server`服务器，默认端口号为`8080`
+```bash
+http-server -open
+```
 ### 4. 查看效果
 正常启动后，会出现以下信息：
 ![](https://s1.ax1x.com/2022/08/14/vUC8u8.png)
