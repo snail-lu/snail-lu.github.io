@@ -295,6 +295,75 @@ class Deque {
 }
 ```
 #### 3. 链表
+**规则**：链表存储有序的元素集合，每个元素由一个存储元素本身的节点和一个指向下一个元素的指针组成
+**实现**：实现链表数据结构
+```js
+/**
+ * LinkedList类
+ * count - 元素数量
+ * head - 首元素
+ * push(element) - 向链表尾部增加元素
+ * insert(element, index) - 向链表指定位置增加元素
+ * getElementAt(index) - 返回链表指定位置元素
+ * indexOf(element) - 返回元素在链表中的索引
+ * remove(element) - 移除元素
+ * removeAt(index) - 移除指定位置的元素
+ * isEmpty() - 链表判空
+ * size() - 返回链表元素数量
+ */
+class LinkedList {
+    constructor() {
+        this.count = 0;
+        this.head = null;
+    }
+
+    push(element) {
+        const node = new Node(element);
+        if(this.head == null) {
+            this.head = node;
+        } else {
+            let current = this.head;
+            // 找到最后一个元素
+            while(current.next != null) {
+                current = current.next;
+            }
+            // 最后一个元素的next指向node
+            current.next = node;
+        }
+        this.count++;
+    }
+
+    insert(element, index) {
+        if (index >= 0 && index <= this.count) { 
+            const node = new Node(element);
+            if (index === 0) { // 在第一个位置添加
+                node.next = this.head; // node的next指向原来的首元素
+                this.head = node; // head指向node
+            } else {
+                const previous = this.getElementAt(index -1); // 找到前一个元素
+                node.next = previous.next; // 将node的next指向index位置的元素
+                previous.next = node; // 前一个元素的next指向node
+            }
+            this.count++; // 更新链表的长度
+            return true; // 插入成功则返回true
+        }
+        return false; // 越界,则返回false
+    }
+}
+
+/**
+ * Node类 - 链表元素
+ * element - 元素值
+ * next - 下一个元素
+ */
+class Node {
+    constructor(element) {
+        this.element = element;
+        this.next = null;
+    }
+}
+```
+
 #### 4. 集合
 #### 5. 字典和散列表
 #### 6. 树
@@ -303,3 +372,7 @@ class Deque {
 
 
 ### 二、算法部分 
+
+
+### 参考文档
+1. 学习JavaScript数据结构与算法 - 洛伊安妮·格罗娜
