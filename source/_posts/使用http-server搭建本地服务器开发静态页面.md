@@ -18,3 +18,5 @@ npm install http-server -g
 ```bash  
 cd /d/document/projects/wxCoupon
 ```
+
+### 3. 启动`http-server`
