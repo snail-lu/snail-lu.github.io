@@ -428,6 +428,28 @@ class Node {
 ```
 
 #### 4. 集合
+**规则**：元素无序且唯一
+**实现**：实现集合数据结构
+```js
+/**
+ * Set类
+ * add(element) - 向集合中添加元素
+ * delete(element) - 从集合中删除元素
+ * has(element) - 判断集合中是否存在某个元素
+ * clear() - 清空集合
+ * size() - 返回集合的元素数量
+ * values() - 返回一个包含集合中所有元素的数组
+ */
+class Set {
+    add(element){}
+    delete(element) {}
+    has(element){}
+    clear(){}
+    size(){}
+    values(){}
+}
+```
+
 #### 5. 字典和散列表
 #### 6. 树
 #### 7. 二叉堆
