@@ -334,7 +334,7 @@ class LinkedList {
     }
 
     insert(element, index) {
-        if (index >= 0 && index <= this.count) { 
+        if (index>=0 && index<=this.count) { 
             const node = new Node(element);
             if (index === 0) { // 在第一个位置添加
                 node.next = this.head; // node的next指向原来的首元素
@@ -348,6 +348,69 @@ class LinkedList {
             return true; // 插入成功则返回true
         }
         return false; // 越界,则返回false
+    }
+
+    getElementAt(index) {
+        if (index>=0 && index<=this.count) {
+            let idx = 0;
+            let node = this.head;
+            while (idx !== index) { // 找到特定下标的元素
+                node = node.next;
+                idx++;
+            }
+            return node.element;
+        }
+        return null // 越界
+    }
+
+    indexOf(element) {
+        let current = this.head;
+        let index = 0;
+        while(current!=null && current.element!==element) { // 元素比对
+            current = current.next;
+            index++;
+        }
+
+        return index>=this.count ? -1 : index // 超出元素数量，表示未找到，返回-1
+    }
+
+    remove(element) {
+        let current = this.head;
+        let node = new Node(element);
+        // 移除首元素
+        if(current.element === node.element) {
+            this.head = current.next;
+            this.count--;
+            return true
+        } else {
+            // 找到element元素
+            let previous = null;
+            while(current!=null && current.element!==node.element) {
+                previous = current;
+                current = current.next;
+            }
+
+            // 将previous的next指向下一个元素，从而达到删除current的目的
+            if(current != null) {
+                previous.next = current.next;
+                this.count--;
+                return true
+            }
+        }
+        return false
+    }
+
+    removeAt(index) {
+        let element = this.getElementAt(index)
+        return this.remove(element)
+    }
+
+    isEmpty() {
+        return this.count === 0;
+    }
+
+    size() {
+        return this.count;
     }
 }
 
@@ -375,4 +438,4 @@ class Node {
 
 
 ### 参考文档
-1. 学习JavaScript数据结构与算法 - 洛伊安妮·格罗娜
+1. 学习JavaScript数据结构与算法（第3版） - 洛伊安妮·格罗娜
