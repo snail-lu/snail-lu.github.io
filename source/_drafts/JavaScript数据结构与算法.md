@@ -487,6 +487,7 @@ class Set {
 /**
  * Dictionary类
  * table - 字典数据集合
+ * toStrFn(variable) - 将任意类型的值转换为字符串类型
  * set(key, value) - 向字典中添加新元素
  * remove(key) - 从字典中移除键对应的值
  * hasKey(key) - 判断字典中否存在某个键
@@ -566,6 +567,7 @@ class Dictionary {
         const tableValues = this.keyValues()
         for(let i=0, len=tableValues.length; i<len; i++) {
             const result = callback(tableValues[i].key, tableValues[i].value)
+            // callback返回false的时候，跳出循环
             if(result === false) {
                 break;
             }
@@ -608,11 +610,86 @@ function defaultToString(item) {
 **规则**：字典的一种，使用散列算法快速找到某个值，而不需要迭代整个数据结构
 **实现**：实现散列表数据结构
 ```js
+/**
+ * HashTable类
+ * table - 散列表数据集合
+ * toStrFn(variable) - 将任意类型的值转换为字符串类型
+ * hashCode(key) - 散列函数
+ * put(key, value) - 向散列表中添加新元素
+ * remove(key) - 从字典中移除键对应的值
+ */
 class HashTable {
     constructor(toStrFn = defaultToString) {
         this.toStrFn = toStrFn;
         this.table = {};
     }
+
+    // 此种散列函数为lose lose散列函数，较为简单，容易存在键冲突的问题
+    hashCode(key) {
+        if (typeof key === 'number') { // 如果key是number类型，无需转换
+            return key;
+        }
+        const tableKey = this.toStrFn(key); // 将key转换为字符串
+        let hash = 0; // 记录tableKey的hash值
+        for (let i = 0; i < tableKey.length; i++) {
+            hash += tableKey.charCodeAt(i); // 字符串各字符的ASCII值累加
+        }
+        return hash % 37; // 除以任意数，得到一个较小的数值
+    }
+
+    put(key, value) {
+        if (key != null && value != null) {
+            const position = this.hashCode(key);
+            this.table[position] = new ValuePair(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    get(key) {
+        const valuePair = this.table[this.hashCode(key)];
+        return valuePair == null ? undefined : valuePair.value;
+    }
+
+    remove(key) {
+        const hash = this.hashCode(key); 
+        const valuePair = this.table[hash];
+        if (valuePair ! = null) {
+            delete this.table[hash];
+            return true;
+        }
+        return false;
+    }
+}
+
+/**
+ * ValuePair类
+ * key - 键
+ * value - 值
+ * toString() - 转换为字符串的形式 
+ */
+class ValuePair {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+    toString() {
+        return `[#${this.key}: ${this.value}]`;
+    }
+}
+
+/**
+ * 将传入参数转换为字符串
+ */
+function defaultToString(item) {
+    if (item === null) {
+        return 'NULL';
+    } else if (item === undefined) {
+        return 'UNDEFINED';
+    } else if (typeof item === 'string' || item instanceof String) {
+        return `${item}`;
+    }
+    return item.toString();
 }
 ```
 #### 7. 树
