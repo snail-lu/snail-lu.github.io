@@ -480,10 +480,135 @@ class Set {
 }
 ```
 
-#### 5. 字典和散列表
-#### 6. 树
-#### 7. 二叉堆
-#### 8. 图
+#### 5. 字典
+**规则**：`[键,值]`的形式来存储元素
+**实现**：实现字典数据结构
+```js
+/**
+ * Dictionary类
+ * table - 字典数据集合
+ * set(key, value) - 向字典中添加新元素
+ * remove(key) - 从字典中移除键对应的值
+ * hasKey(key) - 判断字典中否存在某个键
+ * get() - 获取字典中键对应的值
+ * clear() - 清空字典
+ * size() - 返回字典中的值的数量
+ * keys() - 将字典所包含的所有键以数组的形式返回
+ * values() - 将字典所包含的所有值以数组的形式返回
+ * keyValues() - 将字典中的所有[键, 值]对返回
+ * forEach(callback) - 迭代字典中的所有键值对
+ * toString() - 迭代字典中的所有键值对
+ */
+class Dictionary {
+    // 可以自定义toStrFn函数，默认使用defaultToString
+    constructor(toStrFn = defaultToString) {
+        this.toStrFn = toStrFn
+        this.table = {}
+    }
+
+    set(key, value) {
+        const tableKey = this.toStrFn(key);
+        const tableValue = new ValuePair(key, value);
+        // tableKey为转换为字符串的key，tableValue中存放了原始的key和value
+        this.table[tableKey] = tableValue
+    }
+
+    remove(key) {
+        if(this.hasKey(key)) {
+            delete this.table[this.toStrFn(key)];
+            return true;
+        }
+        return false; 
+    }
+
+    hasKey(key) {
+        return this.table.hasOwnProperty(this.toStrFn(key))
+    }
+
+    get(key) {
+        const tableValue = this.table[this.toStrFn(key)]
+        return tableValue ? tableValue.value : undefined
+    }
+
+    clear() {
+        this.table = {}
+    }
+
+    size() {
+        return Object.keys(this.table).length
+    }
+
+    keys() {
+        return Object.values(this.table).map(tableValue => tableValue.key)
+    }
+
+    values() {
+        return Object.values(this.table).map(tableValue => tableValue.value)
+    }
+
+    keyValues() {
+        return Object.values(this.table)
+    }
+
+    toString() {
+        if (this.size() === 0) {
+            return '';
+        }
+        const tableValues = this.keyValues();
+        let objString = `${tableValues[0].toString()}`;
+        for (let i = 1; i < tableValues.length; i++) {
+          objString = `${objString}, ${tableValues[i].toString()}`; // 拼接
+        }
+        return objString;
+    }
+
+    forEach(callback) {
+        const tableValues = this.keyValues()
+        for(let i=0, len=tableValues.length; i<len; i++) {
+            const result = callback(tableValues[i].key, tableValues[i].value)
+            if(result === false) {
+                break;
+            }
+        }
+    }
+
+}
+
+/**
+ * ValuePair类
+ * key - 键
+ * value - 值
+ * toString() - 转换为字符串的形式 
+ */
+class ValuePair {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+    toString() {
+        return `[#${this.key}: ${this.value}]`;
+    }
+}
+
+/**
+ * 将传入参数转换为字符串
+ */
+function defaultToString(item) {
+    if (item === null) {
+        return 'NULL';
+    } else if (item === undefined) {
+        return 'UNDEFINED';
+    } else if (typeof item === 'string' || item instanceof String) {
+        return `${item}`;
+    }
+    return item.toString();
+}
+```
+#### 6. 散列表
+
+#### 7. 树
+#### 8. 二叉堆
+#### 9. 图
 
 
 ### 二、算法部分 
