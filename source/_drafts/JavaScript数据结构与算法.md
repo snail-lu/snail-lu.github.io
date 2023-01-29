@@ -433,6 +433,7 @@ class Node {
 ```js
 /**
  * Set类
+ * items - 元素集合
  * add(element) - 向集合中添加元素
  * delete(element) - 从集合中删除元素
  * has(element) - 判断集合中是否存在某个元素
@@ -441,12 +442,41 @@ class Node {
  * values() - 返回一个包含集合中所有元素的数组
  */
 class Set {
-    add(element){}
-    delete(element) {}
-    has(element){}
-    clear(){}
-    size(){}
-    values(){}
+    constructor() {
+        this.items = {}
+    }
+
+    add(element){
+        if(!this.has(element)) {
+            this.items[element] = element;
+            return true;
+        }
+        return false;
+    }
+
+    delete(element) {
+        if(this.has(element)) {
+            delete this.items[element];
+            return true;
+        }
+        return false; 
+    }
+
+    has(element){
+        return this.items.hasOwnProperty(element)
+    }
+
+    clear(){
+        this.items = {}
+    }
+
+    size(){
+        return Object.keys(this.items).length;
+    }
+
+    values(){
+        return Object.values(this.items);
+    }
 }
 ```
 
