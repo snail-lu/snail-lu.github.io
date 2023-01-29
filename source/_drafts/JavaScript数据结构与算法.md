@@ -605,7 +605,16 @@ function defaultToString(item) {
 }
 ```
 #### 6. 散列表
-
+**规则**：字典的一种，使用散列算法快速找到某个值，而不需要迭代整个数据结构
+**实现**：实现散列表数据结构
+```js
+class HashTable {
+    constructor(toStrFn = defaultToString) {
+        this.toStrFn = toStrFn;
+        this.table = {};
+    }
+}
+```
 #### 7. 树
 #### 8. 二叉堆
 #### 9. 图
