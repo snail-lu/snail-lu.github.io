@@ -114,7 +114,7 @@ class Stack {
 
 #### 2. 队列
 **规则**：先进先出（FIFO），即只允许往队列尾部添加元素，从队列头部移除元素
-**实现1**：实现队列数据结构
+**实现1**：队列
 ```js
 /**
  * Queue类
@@ -181,7 +181,7 @@ class Queue {
 }
 ```
 **规则**：先进先出和后进先出，即允许从队列头部和尾部添加和移除元素的特殊队列
-**实现1**：实现双端队列数据结构
+**实现1**：双端队列
 ```js
 /**
  * Deque类
@@ -295,8 +295,8 @@ class Deque {
 }
 ```
 #### 3. 链表
+![](https://res.weread.qq.com/wrepub/epub_26211966_96)
 **规则**：链表存储有序的元素集合，每个元素由一个存储元素本身的节点和一个指向下一个元素的指针组成
-**实现**：实现链表数据结构
 ```js
 /**
  * LinkedList类
@@ -607,7 +607,7 @@ function defaultToString(item) {
 }
 ```
 #### 6. 散列表
-**规则**：字典的一种，使用散列算法快速找到某个值，而不需要迭代整个数据结构
+**规则**：字典的一种，使用散列算法计算出键
 **实现**：实现散列表数据结构
 ```js
 /**
@@ -693,6 +693,206 @@ function defaultToString(item) {
 }
 ```
 #### 7. 树
+![](https://res.weread.qq.com/wrepub/epub_26211966_171)
+**规则**：一些存在父子关系的节点组成的数据结构
+**实现**：二叉搜索树（每个节点最多有两个子节点，且允许在左侧节点存储比父节点小的值，在右侧节点存储比父节点大的值）
+```js
+const Compare = {
+    LESS_THAN: -1,
+    BIGGER_THAN: 1
+};
+/**
+ * BinarySearchTree类
+ * root - 根节点
+ * defaultCompare() - 节点比较函数
+ * insert(key) - 向树中插入一个值
+ * inOrderTraverse(cb) - 中序遍历所有节点 
+ * preOrderTraverse(cb) - 先序遍历所有节点 
+ * postOrderTraverse(cb) - 后序遍历所有节点 
+ * search(key) - 在树中查找一个值，若节点存在返回true，反之返回false
+ * min() - 返回树中的最小值
+ * max() - 返回树中的最大值
+ * remove(key) - 从树中移除某个值
+ */
+class BinarySearchTree {
+    constructor(compareFn = defaultCompare) {
+        this.compareFn = defaultCompare;
+        this.root = null;
+    }
+
+    insert(key) {
+        if (this.root == null ) {
+            this.root = new Node(key)
+        } else {
+            this.insertNode(this.root, key);
+        }
+    }
+
+    insertNode(node, key) {
+        if (this.compareFn(key, node.key) === Compare.LESS_THAN) { // 要插入的值小于当前节点
+            if (node.left == null) { // 当前节点不存在左侧子节点，将该值插入到该位置
+                node.left = new Node(key);
+            } else {
+                this.insertNode(node.left, key); // 向下递归，找到合适的位置
+            }
+        } else {
+            if (node.right == null) { // 当前节点不存在右侧子节点，将该值插入到该位置
+                node.right = new Node(key);
+            } else {
+                this.insertNode(node.right, key); // 向下递归，找到合适的位置
+            }
+        }
+    }
+
+    // 中序遍历，以上行顺序遍历所有节点，也就是从小到大的顺序访问所有节点
+    inOrderTraverse(cb) {
+        this.inOrderTraverseNode(this.root, cb);
+    }
+
+    inOrderTraverseNode(node, cb) {
+        if(node != null) {
+            this.inOrderTraverseNode(node.left, cb);
+            cb(node.key);
+            this.inOrderTraverseNode(node.right, cb);
+        }
+    }
+
+    // 先序遍历，以优先于后代节点的顺序访问每个节点
+    preOrderTraverse(cb) {
+        this.preOrderTraverseNode(this.root, cb);
+    }
+
+    preOrderTraverseNode(node, cb) {
+        if(node != null) {
+            cb(node.key);
+            this.preOrderTraverseNode(node.left, cb);
+            this.preOrderTraverseNode(node.right, cb);
+        } 
+    }
+    
+    // 后序遍历，先访问节点的后代节点，再访问节点本身
+    postOrderTraverse(cb) {
+        this.postOrderTraverseNode(this.root, cb);
+    }
+
+    postOrderTraverseNode(node, cb) {
+        if(node != null) {
+            this.preOrderTraverseNode(node.left, cb);
+            this.preOrderTraverseNode(node.right, cb);
+            cb(node.key);
+        } 
+    }
+
+    search(key) {
+        if (this.root == null ) {
+            return false
+        } else {
+            this.searchNode(this.root, key);
+        }
+    }
+
+    searchNode(node, key) {
+        if (this.compareFn(key, node.key) === 0) {
+            return true;
+        } else if (this.compareFn(key, node.key) === Compare.LESS_THAN) { // 要检索的值小于当前节点
+            if (node.left == null) { // 左侧节点不存在，检索失败
+                return false;
+            } else {
+                this.searchNode(node.left, key); // 向下递归
+            }
+        } else {
+            if (node.right == null) { // 右侧节点不存在，检索失败
+                return false;
+            } else {
+                this.searchNode(node.right, key); // 向下递归
+            }
+        }
+    }
+
+    min() {
+        return this.minNode(this.root);
+    }
+
+    // 二叉搜索树最左侧的子节点即为最小值
+    minNode(node) {
+        let current = node;
+        while (current != null && current.left != null) {
+            current = current.left;
+        }
+        return current.key;
+    }
+
+    max() {
+        return this.maxNode(this.root);
+    }
+
+    // 二叉搜索树最右侧的子节点即为最大值
+    maxNode(node) {
+        let current = node;
+        while (current != null && current.right != null) {
+            current = current.right;
+        }
+        return current.key;
+    }
+
+    remove(key) {
+        this.root = this.removeNode(this.root, key);
+    }
+
+    removeNode(node, key) {
+        if (node == null) {
+            return null;
+        }
+        if (this.compareFn(key, node.key) === Compare.LESS_THAN) { // 要删除的值小于当前节点的值
+            node.left = this.removeNode(node.left, key); // 递归，直到找到要删除的值
+            return node;
+        } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) { // 要删除的值大于当前节点的值
+            node.right = this.removeNode(node.right, key); // 递归，直到找到要删除的值
+            return node;
+        } else { // 找到了要删除的节点
+            // 第一种情况：该节点无子节点
+            if (node.left == null && node.right == null) {
+                node = null;
+                return node; 
+            }
+            // 第二种情况：有一个子节点
+            if (node.left == null) { // 只有一个右子节点
+                node = node.right; // 右子节点代替当前节点
+                return node;
+            } else if (node.right == null) { // 只有一个左子节点
+                node = node.left; // 左子节点代替当前节点
+                return node;
+            }
+            // 第三种情况：有两个子节点，找到右侧子节点中的最小节点的值来替换当前节点的值，并移除该最小节点
+            const aux = this.minNode(node.right); // 找到子节点的最大值
+            node.key = aux.key; // 值替换
+            node.right = this.removeNode(node.right, aux.key); // 移除最小节点
+            return node;
+        }
+    }
+}
+
+function defaultCompare(a, b) {
+    if (a === b) {
+        return 0;
+    }
+    return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
+}
+
+/**
+ * Node类 - 树节点
+ * key - 节点值
+ * left - 左侧子节点
+ * right - 右侧子节点
+ */
+class Node {
+    constructor(key) {
+        this.key = key;
+        this.left = left;
+        this.right = right;
+    }
+}
+```
 #### 8. 二叉堆
 #### 9. 图
 
