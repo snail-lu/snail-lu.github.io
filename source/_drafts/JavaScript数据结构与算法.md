@@ -704,7 +704,7 @@ const Compare = {
 /**
  * BinarySearchTree类
  * root - 根节点
- * defaultCompare() - 节点比较函数
+ * compareFn() - 节点比较函数
  * insert(key) - 向树中插入一个值
  * inOrderTraverse(cb) - 中序遍历所有节点 
  * preOrderTraverse(cb) - 先序遍历所有节点 
@@ -894,6 +894,114 @@ class Node {
 }
 ```
 #### 8. 二叉堆
+![](https://res.weread.qq.com/wrepub/epub_26211966_199)
+**规则**： 特殊的二叉树，除了最后一层叶节点，每一层都有左侧和右侧子节点；所有的节点都大于等于（最大堆）或小于等于（最小堆）每个他的子节点。
+**实现**：最小堆
+```js
+const Compare = {
+    LESS_THAN: -1,
+    BIGGER_THAN: 1
+};
+/**
+ * MinHeap类
+ * heap - 堆数据
+ * compareFn() - 节点比较函数
+ * insert(value) - 向堆中插入一个值
+ * extract() - 移除堆中的最小值 
+ * findMinimum() - 返回堆中的最小值 
+ */
+class MinHeap {
+    constructor(compareFn = defaultCompare) {
+        this.compareFn = compareFn; 
+        this.heap = []; // 使用数组来存储数据
+    }
+
+    /**
+     * 使用数组来实现的二叉树结构，可以使用以下方法获取index位置的节点的相关节点
+     * 左侧子节点：2*index+1
+     * 右侧子节点：2*index+2
+     * 父节点：index/2向下取整
+     */
+    getLeftIndex(index) {
+        return 2 * index + 1;
+    }
+    getRightIndex(index) {
+        return 2 * index + 2;
+    }
+    getParentIndex(index) {
+        if (index === 0) {
+            return undefined;
+        }
+        return Math.floor((index -1) / 2);
+    }
+
+    insert(value) {
+        if (value != null) {
+            this.heap.push(value);
+            this.siftUp(this.heap.length-1); // 上移操作，使父节点小于这个插入的值
+            return true;
+        }
+        return false;
+    }
+
+    siftUp(index) {
+        let parentIndex = this.getParentIndex(index);
+        // 交换节点，直到根节点
+        while(index> 0 && this.compareFn(this.heap[parentIndex], this.heap[index]) == Compare.BIGGER_THAN) {
+            swap(this.heap, parentIndex, index);
+            index = parentIndex;
+            parentIndex = this.getPrarentIndex(index);
+        }
+    }
+
+    extract() {
+        if (this.heap.length === 0) {
+            return undefined;
+        }
+        if (this.heap.length === 1) {
+            return this.heap.shift();
+        }
+        const removedValue = this.heap.shift();
+        this.siftDown(0); // 
+        return removedValue;
+    }
+
+    siftDown(index) {
+        let element = index;
+        const left = this.getLeftIndex(index);
+        const right = this.getRightIndex(index);
+        const size = this.heap.length;
+        if (left < size && this.compareFn(this.heap[element], this.heap[left]) ==  Compare.LESS_THAN) { // 当前元素小于左侧子节点
+            element = left; // 交换
+        }
+        if (right < size && this.compareFn(this.heap[element], this.heap[right]) == Compare.LESS_THAN) { // 当前元素小于右侧子节点
+            element = right; // 交换
+        }
+        if (index !== element) {
+            swap(this.heap, index, element);
+            this.siftDown(element);
+        }
+    }
+
+    findMinumum() {
+        return this.heap.length === 0 ? undefined : this.heap[0]
+    }
+
+}
+
+function swap(array, a, b) {
+    const temp = array[a]; 
+    array[a] = array[b];
+    array[b] = temp;
+}
+
+function defaultCompare(a, b) {
+    if (a === b) {
+        return 0;
+    }
+    return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
+}
+```
 #### 9. 图
 
 
