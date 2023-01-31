@@ -1003,7 +1003,53 @@ function defaultCompare(a, b) {
 }
 ```
 #### 9. 图
+```js
+/**
+ * Graph类
+ * isDirected - 是否是有向图
+ * vertices - 顶点列表
+ * adjList - 邻接表字典
+ * addVertex(v) - 增加顶点
+ * addEdge(v, w) - 增加边
+ * getVertices() - 返回顶点列表
+ * getAdjList() - 返回邻接表
+ */
+class Graph {
+    constructor(isDirected = false) {
+        this.isDirected = isDirected; // 有向图还是无向图
+        this.vertices = []; // 用于存储顶点的名字
+        this.adjList = new Dictionary(); // 存储邻接表，顶点名字作为键，邻接顶点列表作为值
+    }
 
+    addVertex(v) {
+        if(!this.vertices.includes(v)) {
+            this.vertices.push(v);
+            this.adjList.set(v, [])
+        }
+    }
+
+    addEdge(v, w) {
+        if (!this.adjList.get(v)) {
+            this.addVertex(v); // 顶点v不在图中，增加顶点
+        }
+        if (!this.adjList.get(w)) {
+            this.addVertex(w); // 顶点w不在图中，增加顶点
+        }
+        this.adjList.get(v).push(w); // 将顶点w添加到v的邻接表中
+        if (!this.isDirected) {
+            this.adjList.get(w).push(v); // 如果是无向图，也需要将v添加到w的邻接表中
+        }
+    }
+
+    getVertices() {
+        return this.vertices;
+    }
+
+    getAdjList() {
+        return this.adjList;
+    }
+}
+```
 
 ### 二、算法部分 
 
