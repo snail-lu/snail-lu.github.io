@@ -72,6 +72,8 @@ errorCaptured | 2.5.0+ 新增，在捕获一个来自后代组件的错误时被
 - 销毁过程  
 父 `beforeDestroy` -> 子 `beforeDestroy` -> 子 `destroyed` -> 父 `destroyed`
 
+[代码演示](https://codepen.io/snaillu/pen/YzjRzpr)
+
 ### 7. 父组件中监听子组件生命周期钩子
 - `props/$emit`
 ```vue
