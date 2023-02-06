@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.8k
+                    5.1k
                 </div>
                 
 
@@ -742,7 +742,31 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <li>如遇到过滤器信息则再调用过滤解析器<code>parseFilters</code>进行解析</li>
 </ul>
 <p>最终完成对整个模板字符串的解析。</p>
-<h3 id="18-自定义指令"><a href="#18-自定义指令" class="headerlink" title="18. 自定义指令"></a>18. 自定义指令</h3>
+<h3 id="18-自定义指令"><a href="#18-自定义指令" class="headerlink" title="18. 自定义指令"></a>18. 自定义指令</h3><blockquote>
+<p>只有当所需功能只能通过直接的 DOM 操作来实现时，才应该使用自定义指令。</p>
+</blockquote>
+<h4 id="指令钩子"><a href="#指令钩子" class="headerlink" title="指令钩子"></a>指令钩子</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> myDirective <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 在绑定元素的 attribute 前</span>
+  <span class="token comment">// 或事件监听器应用前调用</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 下面会介绍各个参数的细节</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 在元素被插入到 DOM 前调用</span>
+  <span class="token function">beforeMount</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 在绑定元素的父组件</span>
+  <span class="token comment">// 及他自己的所有子节点都挂载完成后调用</span>
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绑定元素的父组件更新前调用</span>
+  <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 在绑定元素的父组件</span>
+  <span class="token comment">// 及他自己的所有子节点都更新后调用</span>
+  <span class="token function">updated</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绑定元素的父组件卸载前调用</span>
+  <span class="token function">beforeUnmount</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绑定元素的父组件卸载后调用</span>
+  <span class="token function">unmounted</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> prevVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1198,7 +1222,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">74.1k</span>&nbsp;字
+                class="white-color">74.3k</span>&nbsp;字
             
             
             
