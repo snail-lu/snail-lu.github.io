@@ -9,10 +9,10 @@ categories:
 ---
 
 ### 1. 前端构建工具的常见用途
-- TypeScript编译: tsc
-- React/Vue语法编译: react-compiler / vue-compiler
-- SCSS/LESS语法编辑: sass-loader / less-loader
-- 语法降级: babel
+- `TypeScript`编译: `tsc`
+- `React` / `Vue` 语法编译: `react-compiler` / `vue-compiler`
+- `SCSS` / `LESS`语法编译: `sass-loader` / `less-loader`
+- 语法降级: `babel`
 - 语法校验
 - 代码格式化
 - 代码压缩
