@@ -170,5 +170,5 @@ getName1(); // "window"
 
 闭包中的`this`是无法`“继承”`其外部作用域中的`this`的，所以闭包中的`this`可以直接用上述4种规则进行判断。而箭头函数会继承外层函数调用的 `this` 绑定。
 ### 七、参考文章
-- [KYLE SIMPSON.你不知道的JavaScript-上卷]()
-- [尼古拉斯·泽卡斯.JavaScript高级程序设计]()
+- KYLE SIMPSON.你不知道的JavaScript（上卷）
+- 尼古拉斯·泽卡斯.JavaScript高级程序设计

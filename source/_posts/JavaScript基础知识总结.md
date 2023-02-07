@@ -1,6 +1,12 @@
 ---
 title: JavaScript基础知识总结
+date: 2021-05-01 22:17:16
+summary: JavaScript知识进阶
 tags:
+- JavaScript
+- 面试
+categories:
+- [前端进阶]
 ---
 
 ### 1. 作用域和作用域链
@@ -85,12 +91,13 @@ function spawn(genF) {
 ```
 
 ### 4. ES6常用新特性
+[详解](https://snaillu.gitee.io/2019-10-30-es6-chang-yong-te-xing-zong-jie.html)
 ### 5. 数据类型的判断方法
-[JavaScript数据类型判断](https://snail-lu.github.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
+[JavaScript数据类型判断](https://snaillu.gitee.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
 ### 6. 继承
-[JavaScript中的继承](https://snail-lu.github.io/2022-07-16-javascript-zhong-de-ji-cheng.html)
+[JavaScript中的继承](https://snaillu.gitee.io/2022-07-16-javascript-zhong-de-ji-cheng.html)
 ### 7. 原型链
-[JavaScript原型与原型链](https://snail-lu.github.io/2021-09-30-javascript-yuan-xing-yu-yuan-xing-lian.html)
+[JavaScript原型与原型链](https://snaillu.gitee.io/2021-09-30-javascript-yuan-xing-yu-yuan-xing-lian.html)
 
 ### 8. 闭包
 `闭包`是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。
@@ -120,10 +127,12 @@ data[1](); // 1
 data[2](); // 2
 ```
 ### 9. 事件循环、微任务、宏任务
-[JavaScript中的微任务与宏任务](https://snail-lu.github.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html)
+[JavaScript中的微任务与宏任务](https://snaillu.gitee.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html)
+
 ### 10. 浏览器缓存
+[](https://snaillu.gitee.io/2022-07-15-liu-lan-qi-yuan-li-zhi-shi-zong-jie.html#toc-heading-6)
 ### 11. this指向
-[JavaScript中的this](https://snail-lu.github.io/2022-05-01-javascript-zhong-de-this.html)
+[JavaScript中的this](https://snaillu.gitee.io/2022-05-01-javascript-zhong-de-this.html)
 ### 12. 箭头函数和普通函数有什么区别
 - 没有`this`、`super`、`arguments`及`new.target`绑定，`this`、`super`、`arguments`及`new.target`的值由所在的、最靠近的非箭头函数来决定；
 - 不能被使用`new`调用；
