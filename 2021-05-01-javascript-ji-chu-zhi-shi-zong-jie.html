@@ -368,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
@@ -646,6 +646,25 @@ data<span class="token punctuation">[</span><span class="token number">2</span><
 
 <span class="token keyword">const</span> student1 <span class="token operator">=</span> <span class="token function">myNew</span><span class="token punctuation">(</span>Person<span class="token punctuation">,</span> <span class="token string">'Mike'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>student1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  &#123;"name":"Mike","age":20&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="18-事件委托"><a href="#18-事件委托" class="headerlink" title="18. 事件委托"></a>18. 事件委托</h3><p>事件传播的 3 个阶段：</p>
+<ul>
+<li>捕获阶段（Capturing phase）—— 从window，document 和根元素开始，事件向下扩散至目标元素的祖先</li>
+<li>目标阶段（Target phase）—— 事件到达目标元素</li>
+<li>冒泡阶段（Bubbling phase）—— 事件从元素上开始冒泡，一直到根元素，document 和 window。</li>
+</ul>
+<ol>
+<li><p>为何使用事件委托？<br>在 JavaScript 中，页面内事件处理程序的个数会直接影响页面的整体性能，因为每个事件处理程序都是对象，对象会占用内存，内存中的对象越多，页面的性能则越差。此外，事件处理程序需要与 DOM 节点进行交互，访问 DOM 的次数越多，引起浏览器重绘和重排的次数也就越多，从而影响页面的性能。</p>
+</li>
+<li><p>事件委托实现原理<br>事件委托是利用事件的<code>冒泡原理</code>来实现的，大致可以分为三个步骤：</p>
+<ol>
+<li>确定要添加事件元素的父级元素；</li>
+<li>给父元素定义事件，监听子元素的冒泡事件；</li>
+<li>使用 event.target 来定位触发事件冒泡的子元素。</li>
+</ol>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -1097,7 +1116,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.5k</span>&nbsp;字
+                class="white-color">76.8k</span>&nbsp;字
             
             
             
