@@ -445,9 +445,9 @@ obj1<span class="token punctuation">.</span>obj<span class="token punctuation">.
 <h4 id="4-new绑定"><a href="#4-new绑定" class="headerlink" title="4. new绑定"></a>4. <code>new</code>绑定</h4><p>使用<code>new</code>来调用函数，或者说发生构造函数调用时，会自动执行下面的操作：</p>
 <ol>
 <li>创建一个全新的对象。</li>
-<li>这个新对象会被执行<code>[[原型]]</code>连接。</li>
-<li>这个新对象会绑定到函数调用的<code>this</code>。</li>
-<li>如果函数没有返回其它对象，那么<code>new</code>表达式中的函数调用会自动返回这个新对象。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<li>新对象会被执行<code>[[原型]]</code>连接，即将新对象的<code>__proto__</code>属性指向构造函数的<code>prototype</code>对象。</li>
+<li>函数调用的<code>this</code>改指向新对象，并执行函数代码。</li>
+<li>如果函数没有返回其它对象，那么会自动返回这个新对象，否则返回其它对象。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
@@ -972,7 +972,7 @@ obj<span class="token punctuation">.</span><span class="token function">getName4
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.4k</span>&nbsp;字
+                class="white-color">76.5k</span>&nbsp;字
             
             
             
