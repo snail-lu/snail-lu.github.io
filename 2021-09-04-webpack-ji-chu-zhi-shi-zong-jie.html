@@ -364,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
@@ -389,16 +389,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-webpack打包原理"><a href="#1-webpack打包原理" class="headerlink" title="1. webpack打包原理"></a>1. webpack打包原理</h3><p>以一个或多个文件作为打包入口，将整个项目的所有文件编译组合成一个或多个文件输出，输出的文件可以直接在浏览器端运行。<br>打包过程可以简单归结如下：</p>
+                <h3 id="1-webpack构建流程"><a href="#1-webpack构建流程" class="headerlink" title="1. webpack构建流程"></a>1. webpack构建流程</h3><p>以一个或多个文件作为打包入口，将整个项目的所有文件编译组合成一个或多个文件输出，输出的文件可以直接在浏览器端运行。<br>构建流程可以简单归结如下：</p>
 <ul>
 <li><strong>初始化</strong>：启动构建，读取与合并配置参数，加载 <code>Plugin</code>，实例化 <code>Compiler</code></li>
-<li><strong>编译</strong>：从 <code>Entry</code> 出发，针对每个 <code>Module</code> 串行调用对应的 <code>Loader</code> 去翻译文件的内容，构建出模块依赖关系图，递归地进行编译处理</li>
+<li><strong>编译</strong>：从 <code>Entry</code> 出发，针对每个 <code>Module</code> 串行调用对应的 <code>Loader</code> 去编译文件的内容，编译好的文件内容解析出 <code>AST</code> 语法树，从语法树中得到模块依赖关系图，递归地进行编译处理</li>
 <li><strong>输出</strong>：将编译后的 <code>Module</code> 组合成 <code>Chunk</code>，将 <code>Chunk</code> 转换成文件，输出到文件系统中</li>
 </ul>
-<h3 id="2-热更新原理"><a href="#2-热更新原理" class="headerlink" title="2. 热更新原理"></a>2. 热更新原理</h3><p><code>WDS</code>(<strong>webpack dev server</strong>)与浏览器之间维护了一个 <code>websocket</code>通信，当webpack编译器编译完成之后，<code>WDS</code> 会向浏览器发送更新通知，并带上构建时的 <code>hash</code>。浏览器对比出差异后会向 <code>WDS</code> 发起<code>xxxhash.hot-update.json</code>的<code>Ajax</code> 请求来获取更改内容（文件列表、下次更新的<code>hash</code>），客户端就可以再借助这些信息继续向 <code>WDS</code> 发起 <code>xxx/hash.hot-update.js</code> 的 <code>jsonp</code> 请求获取增量更新的文件。拿到需要更新的文件后，<code>HotModuleReplacementPlugin</code>将更新后的代码进行替换，并刷新浏览器。</p>
-<h3 id="3-loader和plugin区别"><a href="#3-loader和plugin区别" class="headerlink" title="3. loader和plugin区别"></a>3. loader和plugin区别</h3><ul>
-<li><code>loader</code>是文件加载器，能够加载特定的资源文件，直接对这些文件进行一些处理，比如编译、压缩等，最终打包到指定文件中。</li>
-<li><code>plugin</code>是一个扩展器，它丰富了webpack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack运行的声明周期中的事件，执行广泛的任务</li>
+<h3 id="2-热更新原理"><a href="#2-热更新原理" class="headerlink" title="2. 热更新原理"></a>2. 热更新原理</h3><ul>
+<li>当某一个文件或模块发生变化时，webpack 监听到文件变化会对文件重新编译打包，并生成下次热更新的 <code>hash</code>标识。</li>
+<li><code>WDS</code>(<strong>webpack dev server</strong>)与浏览器之间维护了一个 <code>websocket</code> 通信，当 webpack 编译完成之后，<code>WDS</code> 会向浏览器发送更新通知，并带上下次热更新的 <code>hash</code>值。</li>
+<li>浏览器收到更新通知后，会使用上一次的 <code>hash</code> 值向 <code>WDS</code> 发起 <code>hash.hot-update.json</code> 请求来获取更改内容（文件列表、下一次更新的<code>hash</code>），之后浏览器再借助这些信息继续向 <code>WDS</code> 发起 <code>hash值.hot-update.js</code> 请求获取增量更新的内容。拿到需要更新的内容后，<code>HotModuleReplacementPlugin</code> 将更新后的代码进行替换，并局部刷新浏览器。<h3 id="3-loader和plugin区别"><a href="#3-loader和plugin区别" class="headerlink" title="3. loader和plugin区别"></a>3. loader和plugin区别</h3></li>
+<li><code>loader</code> 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，最终返回一个新的文件内容。</li>
+<li><code>plugin</code> 是插件，本质就是一个类，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，执行广泛的任务</li>
 </ul>
 <h3 id="4-常用的loader和plugin"><a href="#4-常用的loader和plugin" class="headerlink" title="4. 常用的loader和plugin"></a>4. 常用的loader和plugin</h3><p><strong>loader</strong>:</p>
 <ul>
@@ -428,21 +430,21 @@
 </ul>
 <h3 id="6-如何优化构建速度"><a href="#6-如何优化构建速度" class="headerlink" title="6. 如何优化构建速度"></a>6. 如何优化构建速度</h3><ul>
 <li><strong>搜索时间优化</strong>，即搜索依赖项，以确定依赖关系的时间<ul>
-<li>使用loader时通过<code>test</code>、<code>include</code>、<code>exclude</code>配置项来尽可能精准命中文件</li>
-<li><code>resolve.extensions</code>列表尽可能小，频率出现最高的文件后缀优先放到前面，以减小文件检索的尝试过程</li>
+<li>使用 loader 时通过 <code>test</code>、<code>include</code>、<code>exclude</code>配置项来尽可能精准命中文件</li>
+<li><code>resolve.extensions</code> 列表尽可能小，频率出现最高的文件后缀优先放到前面，以减小文件检索的尝试过程</li>
 </ul>
 </li>
 <li><strong>解析时间优化</strong>，即使用各种loader对文件进行解析的时间<ul>
-<li>使用<code>threed-loader</code>对打包较耗时的loader开启多进程打包</li>
+<li>使用<code>threed-loader</code>（替代 happypack ）对打包较耗时的 loader 开启多进程打包</li>
 </ul>
 </li>
 <li><strong>压缩时间优化</strong>，即将各种依赖压缩生成到输出目录的时间<ul>
-<li><code>terser-webpack-plugin</code>启动多进程以提升构建速度（webpack5默认已开启）</li>
+<li><code>terser-webpack-plugin</code> 启动多进程以提升构建速度（webpack5默认已开启）</li>
 </ul>
 </li>
 <li><strong>二次打包时间优化</strong>，即更改部分代码后，重新打包的时间<ul>
-<li>在一些开销较大的loader之前使用<code>cache-loader</code>进行缓存</li>
-<li>使用<code>hard-source-webpack-plugin</code>进行中间缓存</li>
+<li>在一些开销较大的 loader 之前使用 <code>cache-loader</code> 进行缓存</li>
+<li>使用 <code>hard-source-webpack-plugin</code> 进行中间缓存</li>
 </ul>
 </li>
 </ul>
@@ -476,7 +478,7 @@
 <li>缓存每个模块的输出值并自执行函数</li>
 <li>定义了一些处理 <code>import</code>, <code>export</code> 或者是 <code>require</code> 的方法，做到不同规范的兼容</li>
 </ol>
-<h3 id="11-Tree-Shaking"><a href="#11-Tree-Shaking" class="headerlink" title="11. Tree Shaking"></a>11. Tree Shaking</h3><p><code>Tree-Shaking</code> 是一种基于 <code>ES Module</code> 规范的 <code>Dead Code Elimination</code> 技术，它会在运行过程中静态分析模块之间的导入导出，确定 <code>ESM</code> 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。<br>生产环境打包默认会开启 <code>Tree Shaking</code>，开发环境启动 <code>Tree Shaking</code> 需要同时满足三个条件：</p>
+<h3 id="11-Tree-Shaking机制的原理"><a href="#11-Tree-Shaking机制的原理" class="headerlink" title="11. Tree Shaking机制的原理"></a>11. Tree Shaking机制的原理</h3><p><code>Tree-Shaking</code> 是一种基于 <code>ES Module</code> 规范的 <code>Dead Code Elimination</code> 技术，它会在运行过程中静态分析模块之间的导入导出，确定 <code>ESM</code> 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。<br>生产环境打包默认会开启 <code>Tree Shaking</code>，开发环境启动 <code>Tree Shaking</code> 需要同时满足三个条件：</p>
 <ul>
 <li>使用 <code>ESM</code> 规范编写模块代码</li>
 <li>配置 <code>optimization.usedExports = true</code>, 即开启标记未被使用的导出内容，<code>terser</code>压缩代码时会将这部分代码删除</li>
@@ -492,10 +494,7 @@
 <li>在无副作用的模块的 <code>package.json</code> 中设置副作用标记 <code>sideEffects = false</code>，表明该模块没有副作用，未使用时可以被跳过不打包进 <code>bundle</code></li>
 <li>对于项目，如果确认自己项目中没有副作用代码，希望 <code>Tree Shaking</code> 时跳过没用到的js模块代码，同样可以在项目的<code>package.json</code> 中设置 <code>sideEffects = false</code></li>
 </ul>
-<ol start="12">
-<li>开发plugin</li>
-</ol>
-<ul>
+<h3 id="12-开发plugin"><a href="#12-开发plugin" class="headerlink" title="12. 开发plugin"></a>12. 开发plugin</h3><ul>
 <li>一个 JavaScript 命名函数或 JavaScript 类。</li>
 <li>在插件函数的 prototype 上定义一个 apply 方法。</li>
 <li>指定一个绑定到 webpack 自身的事件钩子。</li>
@@ -523,7 +522,7 @@
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-
+<h3 id="13-Tapable"><a href="#13-Tapable" class="headerlink" title="13. Tapable"></a>13. Tapable</h3>
                 
             </div>
             <hr/>
@@ -967,7 +966,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.8k</span>&nbsp;字
+                class="white-color">76.9k</span>&nbsp;字
             
             
             
