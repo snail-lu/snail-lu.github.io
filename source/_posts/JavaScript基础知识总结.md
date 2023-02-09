@@ -127,7 +127,7 @@ data[1](); // 1
 data[2](); // 2
 ```
 ### 9. 事件循环、微任务、宏任务
-[JavaScript中的微任务与宏任务](https://snaillu.gitee.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html)
+[JavaScript之Event Loop](https://snaillu.gitee.io/2021-12-14-javascript-zhong-de-wei-ren-wu-yu-hong-ren-wu.html)
 
 ### 10. 浏览器缓存
 [](https://snaillu.gitee.io/2022-07-15-liu-lan-qi-yuan-li-zhi-shi-zong-jie.html#toc-heading-6)
