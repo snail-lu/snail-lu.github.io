@@ -51,17 +51,17 @@ categories:
 
 ### 6. 如何优化构建速度
 - **搜索时间优化**，即搜索依赖项，以确定依赖关系的时间
-    - 使用 loader 时通过 `test`、`include`、`exclude`配置项来尽可能精准命中文件
-    - `resolve.extensions` 列表尽可能小，频率出现最高的文件后缀优先放到前面，以减小文件检索的尝试过程
+  - 使用 loader 时通过 `test`、`include`、`exclude`配置项来尽可能精准命中文件
+  - `resolve.extensions` 列表尽可能小，频率出现最高的文件后缀优先放到前面，以减小文件检索的尝试过程
 - **解析时间优化**，即使用各种loader对文件进行解析的时间
-    - 使用`threed-loader`（替代 happypack ）对打包较耗时的 loader 开启多进程打包
+  - 使用`threed-loader`（替代 happypack ）对打包较耗时的 loader 开启多进程打包
 - **压缩时间优化**，即将各种依赖压缩生成到输出目录的时间
-    - `terser-webpack-plugin` 启动多进程以提升构建速度（webpack5默认已开启）
+  - `terser-webpack-plugin` 启动多进程以提升构建速度（webpack5默认已开启）
 - **二次打包时间优化**，即更改部分代码后，重新打包的时间
-    - 在一些开销较大的 loader 之前使用 `cache-loader` 进行缓存
-    - 使用 `hard-source-webpack-plugin` 进行中间缓存
+  - 在一些开销较大的 loader 之前使用 `cache-loader` 进行缓存
+  - 使用 `hard-source-webpack-plugin` 进行中间缓存
 
-### 7. 分包
+### 7. Code Splitting
 webpack的分包主要通过`SplitChunksPlugin`来实现。实现的分包方式主要有两种：
 - 根据业务不同配置多个打包入口，输出多个打包结果（适用于多页应用程序）
 - 结合`ES Modules`的动态导入特性，按需加载模块
@@ -98,7 +98,7 @@ module.exports = {
 3. 定义了一些处理 `import`, `export` 或者是 `require` 的方法，做到不同规范的兼容
 
 ### 11. Tree Shaking机制的原理
-`Tree-Shaking` 是一种基于 `ES Module` 规范的 `Dead Code Elimination` 技术，它会在运行过程中静态分析模块之间的导入导出，确定 `ESM` 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。
+`Tree-Shaking` 是一种基于 `ES Module` 规范的 `Dead Code Elimination` 技术，它会在运行过程中静态分析模块之间的导入导出，确定 `ESM` 模块中哪些导出值未被其它模块使用，并将其删除，以此实现打包产物的优化。
 生产环境打包默认会开启 `Tree Shaking`，开发环境启动 `Tree Shaking` 需要同时满足三个条件：
 - 使用 `ESM` 规范编写模块代码
 - 配置 `optimization.usedExports = true`, 即开启标记未被使用的导出内容，`terser`压缩代码时会将这部分代码删除
@@ -106,14 +106,14 @@ module.exports = {
     - 配置 `optimization.minimize = true`
     - 配置 `optimization.minimizer`
 
-对于包含无副作用代码的模块，想要使用 `Tree Shaking`跳过该模块，需要如下设置：
+对于包含无副作用代码的模块，想要使用 `Tree Shaking` 跳过该模块，需要如下设置：
 - 在`webpack.config.js`中设置`optimization.sideEffects = true`（生产环境打包无需配置，默认为 true），以告知 `webpack` 去辨识 `package.json` 中的 副作用 标记 `sideEffects`
 - 在无副作用的模块的 `package.json` 中设置副作用标记 `sideEffects = false`，表明该模块没有副作用，未使用时可以被跳过不打包进 `bundle`
 - 对于项目，如果确认自己项目中没有副作用代码，希望 `Tree Shaking` 时跳过没用到的js模块代码，同样可以在项目的`package.json` 中设置 `sideEffects = false`
 
 ### 12. 开发plugin
 - 一个 JavaScript 命名函数或 JavaScript 类。
-- 在插件函数的 prototype 上定义一个 apply 方法。
+- 定义一个 apply 方法。
 - 指定一个绑定到 webpack 自身的事件钩子。
 - 处理 webpack 内部实例的特定数据。
 - 功能完成后调用 webpack 提供的回调。
