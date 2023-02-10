@@ -20,8 +20,8 @@ categories:
 - `WDS`(**webpack dev server**)与浏览器之间维护了一个 `websocket` 通信，当 webpack 编译完成之后，`WDS` 会向浏览器发送更新通知，并带上下次热更新的 `hash`值。
 - 浏览器收到更新通知后，会使用上一次的 `hash` 值向 `WDS` 发起 `hash.hot-update.json` 请求来获取更改内容（文件列表、下一次更新的`hash`），之后浏览器再借助这些信息继续向 `WDS` 发起 `hash值.hot-update.js` 请求获取增量更新的内容。拿到需要更新的内容后，`HotModuleReplacementPlugin` 将更新后的代码进行替换，并局部刷新浏览器。
 ### 3. loader和plugin区别
-- `loader` 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，最终返回一个新的文件内容。
-- `plugin` 是插件，本质就是一个类，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，执行广泛的任务
+- `loader` 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，如css文件、图片等。loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，最终返回一个新的文件内容。
+- `plugin` 是插件，本质就是一个类，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，执行广泛的任务，比如打包优化、文件管理、环境注入等。
 
 ### 4. 常用的loader和plugin
 **loader**:
@@ -37,7 +37,7 @@ categories:
 **plugin**: 
 - `webpack-bundle-analyzer`：打包分析插件
 - `clean-webpack-plugin`：打包前移除上次打包的文件
-- `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出得bundle
+- `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出的bundle
 - `copy-webpack-plugin`：复制文件，一般用于将`public`目录的内容复制到输出目录
 - `mini-css-extract-plugin`: css文件提取到单独的文件，而非使用`style-loader`插入到html代码中
 - `optimize-css-assets-webpack-plugin`：压缩css文件
