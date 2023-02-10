@@ -35,18 +35,19 @@ categories:
 - `file-loader`：将代码中引入的文件生成到输出目录，并且在JS代码里返回该文件的地址
 
 **plugin**: 
-- `webpack-bundle-analyzer`：打包分析插件
 - `clean-webpack-plugin`：打包前移除上次打包的文件
 - `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出的bundle
 - `copy-webpack-plugin`：复制文件，一般用于将`public`目录的内容复制到输出目录
 - `mini-css-extract-plugin`: css文件提取到单独的文件，而非使用`style-loader`插入到html代码中
 - `optimize-css-assets-webpack-plugin`：压缩css文件
-- `speed-measure-webpack-plugin`：打包速度测量
+- `webpack-bundle-analyzer`：打包体积分析
+- `speed-measure-webpack-plugin`：打包速度分析
 
-### 5. 如何优化包体积
-- 提取（`mini-css-extract-plugin`）并压缩（`optimize-css-assets-webpack-plugin`）css文件
-- 路由组件懒加载而非静态引入
-- 公用代码及三方库提取出来分包（`splitChunks`）
+### 5. 如何优化打包结果
+- `压缩代码`：使用`UglifyJsPlugin`压缩js代码，`CssMinimizerWebpackPlugin`压缩css代码，`HtmlWebpackPlugin`压缩HTML代码等
+- `CDN加速`：静态资源尽量改用CDN加速，无法使用CDN加速的，尽可能使用插件进行压缩优化，比如使用`image-webpack-loader`压缩图片
+- `Code Splitting`: 使用`splitChunksPlugin`将代码按照路由维度或组件分包，这样可以做到按需加载，同时提取公用代码及三方库到单独的包，浏览器就可以长期缓存这些无需频繁改动的公共代码
+- `Tree Shaking`: 删除无用代码
 
 ### 6. 如何优化构建速度
 - **搜索时间优化**，即搜索依赖项，以确定依赖关系的时间
