@@ -449,7 +449,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="7-分包"><a href="#7-分包" class="headerlink" title="7. 分包"></a>7. 分包</h3><p>webpack的分包主要通过<code>SplitChunksPlugin</code>来实现。实现的分包方式主要有两种：</p>
+<h3 id="7-Code-Splitting"><a href="#7-Code-Splitting" class="headerlink" title="7. Code Splitting"></a>7. Code Splitting</h3><p>webpack的分包主要通过<code>SplitChunksPlugin</code>来实现。实现的分包方式主要有两种：</p>
 <ul>
 <li>根据业务不同配置多个打包入口，输出多个打包结果（适用于多页应用程序）</li>
 <li>结合<code>ES Modules</code>的动态导入特性，按需加载模块</li>
@@ -479,7 +479,7 @@
 <li>缓存每个模块的输出值并自执行函数</li>
 <li>定义了一些处理 <code>import</code>, <code>export</code> 或者是 <code>require</code> 的方法，做到不同规范的兼容</li>
 </ol>
-<h3 id="11-Tree-Shaking机制的原理"><a href="#11-Tree-Shaking机制的原理" class="headerlink" title="11. Tree Shaking机制的原理"></a>11. Tree Shaking机制的原理</h3><p><code>Tree-Shaking</code> 是一种基于 <code>ES Module</code> 规范的 <code>Dead Code Elimination</code> 技术，它会在运行过程中静态分析模块之间的导入导出，确定 <code>ESM</code> 模块中哪些导出值未曾其它模块使用，并将其删除，以此实现打包产物的优化。<br>生产环境打包默认会开启 <code>Tree Shaking</code>，开发环境启动 <code>Tree Shaking</code> 需要同时满足三个条件：</p>
+<h3 id="11-Tree-Shaking机制的原理"><a href="#11-Tree-Shaking机制的原理" class="headerlink" title="11. Tree Shaking机制的原理"></a>11. Tree Shaking机制的原理</h3><p><code>Tree-Shaking</code> 是一种基于 <code>ES Module</code> 规范的 <code>Dead Code Elimination</code> 技术，它会在运行过程中静态分析模块之间的导入导出，确定 <code>ESM</code> 模块中哪些导出值未被其它模块使用，并将其删除，以此实现打包产物的优化。<br>生产环境打包默认会开启 <code>Tree Shaking</code>，开发环境启动 <code>Tree Shaking</code> 需要同时满足三个条件：</p>
 <ul>
 <li>使用 <code>ESM</code> 规范编写模块代码</li>
 <li>配置 <code>optimization.usedExports = true</code>, 即开启标记未被使用的导出内容，<code>terser</code>压缩代码时会将这部分代码删除</li>
@@ -489,7 +489,7 @@
 </ul>
 </li>
 </ul>
-<p>对于包含无副作用代码的模块，想要使用 <code>Tree Shaking</code>跳过该模块，需要如下设置：</p>
+<p>对于包含无副作用代码的模块，想要使用 <code>Tree Shaking</code> 跳过该模块，需要如下设置：</p>
 <ul>
 <li>在<code>webpack.config.js</code>中设置<code>optimization.sideEffects = true</code>（生产环境打包无需配置，默认为 true），以告知 <code>webpack</code> 去辨识 <code>package.json</code> 中的 副作用 标记 <code>sideEffects</code></li>
 <li>在无副作用的模块的 <code>package.json</code> 中设置副作用标记 <code>sideEffects = false</code>，表明该模块没有副作用，未使用时可以被跳过不打包进 <code>bundle</code></li>
@@ -497,7 +497,7 @@
 </ul>
 <h3 id="12-开发plugin"><a href="#12-开发plugin" class="headerlink" title="12. 开发plugin"></a>12. 开发plugin</h3><ul>
 <li>一个 JavaScript 命名函数或 JavaScript 类。</li>
-<li>在插件函数的 prototype 上定义一个 apply 方法。</li>
+<li>定义一个 apply 方法。</li>
 <li>指定一个绑定到 webpack 自身的事件钩子。</li>
 <li>处理 webpack 内部实例的特定数据。</li>
 <li>功能完成后调用 webpack 提供的回调。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 一个 JavaScript 类</span>
