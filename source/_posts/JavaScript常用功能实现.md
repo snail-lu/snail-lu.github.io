@@ -8,7 +8,7 @@ categories:
 - [项目开发]
 ---
 
-### 数组
+### 数组操作
 #### 查重
 ```js
 function checkDuplicates(arr) {
