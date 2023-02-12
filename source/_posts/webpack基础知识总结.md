@@ -11,9 +11,9 @@ categories:
 ### 1. webpack构建流程
 以一个或多个文件作为打包入口，将整个项目的所有文件编译组合成一个或多个文件输出，输出的文件可以直接在浏览器端运行。
 构建流程可以简单归结如下：
-- **初始化**：启动构建，读取与合并配置参数，加载 `Plugin`，实例化 `Compiler`
-- **编译**：从 `Entry` 出发，针对每个 `Module` 串行调用对应的 `Loader` 去编译文件的内容，编译好的文件内容解析出 `AST` 语法树，从语法树中得到模块依赖关系图，递归地进行编译处理
-- **输出**：将编译后的 `Module` 组合成 `Chunk`，将 `Chunk` 转换成文件，输出到文件系统中
+- **初始化**：启动构建，读取与合并配置参数，加载 `Plugin`，实例化 `Compiler`对象
+- **编译**：从 `Entry` 出发，调用对应的 `Loader` 去编译文件的内容，编译好的文件内容解析出 `AST` 语法树，从语法树中得到模块依赖关系图，递归地进行编译处理
+- **输出**：将编译后的 `Module` 组合成 `Chunk`，将 `Chunk` 根据配置的输出路径和文件名转换成文件并输出到文件系统中
 
 ### 2. 热更新原理
 - 当某一个文件或模块发生变化时，webpack 监听到文件变化会对文件重新编译打包，并生成下次热更新的 `hash`标识。
@@ -113,7 +113,7 @@ module.exports = {
 
 ### 12. 开发plugin
 - 一个 JavaScript 命名函数或 JavaScript 类。
-- 定义一个 apply 方法。
+- 原型上定义一个 apply 方法。
 - 指定一个绑定到 webpack 自身的事件钩子。
 - 处理 webpack 内部实例的特定数据。
 - 功能完成后调用 webpack 提供的回调。
@@ -141,5 +141,8 @@ class MyExampleWebpackPlugin {
   }
 }
 ```
+> 备注：Compiler 和 Compilation的区别
+> Compiler 是每次 Webpack 全部生命周期的对象，而 Compilation 是 Webpack 中每次构建过程的生命周期对象，Compilation 是通过 Compiler创建的实例。两个类都有自己生命周期，即有自己不同的 Hook，通过添加对应 Hook 事件，可以拿到各自生命周期关键数据和对象。Compilation 有个很重要的对象是 Stats 对象，通过这个对象可以得到 Webpack 打包后的所有 module、chunk 和 assets 信息，通过分析 Stats对象可以得到很多有用的信息，比如 webpack-bundle-analyzer 这类分析打包结果的插件都是通过分析 Stats 对象来得到分析报告的。
 
-### 13. Tapable
+
+### 13. Tapable事件流

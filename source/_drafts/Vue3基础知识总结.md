@@ -24,7 +24,7 @@ beforeUpdate | onBeforeUpdate | 组件数据更新后，DOM更新之前调用
 updated | onUpdated | 组件因为响应式状态变更而更新其 DOM 树之后调用
 beforeUnmount | onBeforeUnmount | 在组件实例被卸载之前调用
 unmounted | onUnmounted | 在组件实例被卸载之后调用
-activited | onActivated | keep-alive 专属，组件被激活时调用
+activated | onActivated | keep-alive 专属，组件被激活时调用
 deactivated | onDeactivated | keep-alive 专属，组件被移除时调用
 errorCaptured | onErrorCaptured | 在捕获了后代组件传递的错误时调用
 renderTracked | onRenderTracked | 仅在开发模式下可用，当组件渲染过程中追踪到响应式依赖时调用
