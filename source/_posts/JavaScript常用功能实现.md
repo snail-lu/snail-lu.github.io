@@ -189,4 +189,22 @@ console.log(dateFormat(new Date(), 'shortDate')); // "1/12/21"
 console.log(dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss')); // "2022-01-12 14:32:13"
 ```
 
+### 深拷贝
+**实现方式一：**
+原理：利用`JSON.stringify`序列化和`JSON.parse`反序列化
+缺点：对象中`undefined`、`function`、`symbol`这三种类型的值会被过滤掉
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null,
+  e: function() {console.log('test')},
+  h: new Set([4,3,null]),
+  i:Symbol('fsd'),
+  k: new Map([ ["name", "test"],  ["title", "Author"]  ])
+}
+console.log(JSON.stringify(obj)); // {"a":"123","b":234,"c":true,"d":null,"h":{},"k":{}}
 
+const newObj = JSON.parse(JSON.stringify(obj));
+```
