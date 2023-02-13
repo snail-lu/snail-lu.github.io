@@ -55,7 +55,7 @@ categories:
   - 使用 loader 时通过 `test`、`include`、`exclude`配置项来尽可能精准命中文件
   - `resolve.extensions` 列表尽可能小，频率出现最高的文件后缀优先放到前面，以减小文件检索的尝试过程
 - **解析时间优化**，即使用各种loader对文件进行解析的时间
-  - 使用`threed-loader`（替代 happypack ）对打包较耗时的 loader 开启多进程打包
+  - 使用`thread-loader`（替代 happypack ）对打包较耗时的 loader 开启多进程打包
 - **压缩时间优化**，即将各种依赖压缩生成到输出目录的时间
   - `terser-webpack-plugin` 启动多进程以提升构建速度（webpack5默认已开启）
 - **二次打包时间优化**，即更改部分代码后，重新打包的时间
