@@ -328,3 +328,72 @@ console.log(student1); //  {"name":"Mike","age":20}
     1. 确定要添加事件元素的父级元素；
     2. 给父元素定义事件，监听子元素的冒泡事件；
     3. 使用 event.target 来定位触发事件冒泡的子元素。
+
+### 19. 深拷贝
+**实现方式一：**
+原理：利用`JSON.stringify`序列化和`JSON.parse`反序列化
+缺点：对象中`undefined`、`function`、`symbol`这三种类型的值会被过滤掉
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null,
+  e: function() {console.log('test')},
+  h: new Set([4,3,null]),
+  i: Symbol('fsd'),
+  k: new Map([ ["name", "test"],  ["title", "Author"]  ])
+}
+console.log(JSON.stringify(obj)); // {"a":"123","b":234,"c":true,"d":null,"h":{},"k":{}}
+
+const newObj = JSON.parse(JSON.stringify(obj));
+```
+
+**实现方式二：**
+原理：利用`Object.assign(target, source1, source2)`
+缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null
+}
+
+const newObj = Object.assign({}, obj);
+```
+
+**实现方式三：**
+原理：利用扩展运算符
+缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null
+}
+
+const newObj = {...obj};
+```
+
+**实现方式四：**
+原理：递归
+```js
+function deepClone(obj) {
+  //判断拷贝的obj是对象还是数组
+  const objClone = Array.isArray(obj) ? [] : {};
+  if (obj && typeof obj === "object") { //obj不能为空，并且是对象或者是数组 因为null也是object
+      for (key in obj) {
+          if (obj.hasOwnProperty(key)) {
+              if (obj[key] && typeof obj[key] === "object") { //obj里面属性值不为空并且还是对象，进行深度拷贝
+                  objClone[key] = deepClone(obj[key]); //递归进行深度的拷贝
+              } else {
+                  objClone[key] = obj[key]; //直接拷贝
+              }
+          }
+      }
+  }
+  return objClone;
+}
+```

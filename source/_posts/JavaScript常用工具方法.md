@@ -1,15 +1,14 @@
 ---
-title: JavaScript常用功能实现
+title: JavaScript常用工具方法
 date: 2022-01-12 13:54:40
-summary: JavaScript常用功能实现
+summary: 开发中经常用到的JS工具方法
 tags: 
 - JavaScript
 categories:
 - [项目开发]
 ---
 
-### 数组操作
-#### 查重
+### 1. 数组查重
 ```js
 function checkDuplicates(arr) {
   const o = {};
@@ -25,7 +24,7 @@ function checkDuplicates(arr) {
   return o;
 }
 ```
-#### 去重
+### 2. 数组去重
 ```js
 // 利用Object中key的唯一性来筛选掉重复元素
 function deduplicate(arr) {
@@ -48,7 +47,7 @@ function deduplicate(arr) {
 }
 ```
 
-#### 扁平化
+### 3. 数组扁平化
 多维数组转换成一维数组
 ```js
 // 常规实现
@@ -76,7 +75,7 @@ function flat(arr) {
 }
 ```
 
-#### 对象数组排序
+### 4. 对象数组排序
 ```js
 /**
  * 排序函数
@@ -106,49 +105,7 @@ const obj = [
 ]
 obj.sort(objectArraySort('age'))
 ```
-
-### 防抖
-
-事件持续触发不执行，停止触发指定时间之后才执行一次。
-```js
-/**
- * @fn : 要执行的函数
- * @delay : 执行函数的时间间隔（毫秒）
- */ 
- 
-function debounce(fn, delay) {
-    let timer;
-    return function(...args) {    
-        timer && clearTimeout(timer);
-        timer = setTimeout(() => {
-            fn.apply(this, args);
-        }, delay)
-    }
-}
-```
-
-### 节流
-事件重复触发，不会每次都执行，每间隔一段时间执行一次。
-```js
-/**
- * @fn : 要执行的函数
- * @delay : 每次函数的时间间隔
- */  
-function throttle(fn, delay) {
-    let timer;    // 定时器
- 
-    return function(...args) {
-        if(timer) return;
-        timer = setTimeout(() => {
-            timer = null;
-            fn.apply(this, args);
-        }, delay);
-    }
-}
-```
-[debounce和throttle可视化比较](http://demo.nimius.net/debounce_throttle/)
-
-### 日期格式化
+### 5. 日期格式化
 ```js
 /**
  *
@@ -189,71 +146,73 @@ console.log(dateFormat(new Date(), 'shortDate')); // "1/12/21"
 console.log(dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss')); // "2022-01-12 14:32:13"
 ```
 
-### 深拷贝
-**实现方式一：**
-原理：利用`JSON.stringify`序列化和`JSON.parse`反序列化
-缺点：对象中`undefined`、`function`、`symbol`这三种类型的值会被过滤掉
+### 6. 回到顶部
 ```js
-const obj = {
-  a: '123',
-  b: 234,
-  c: true,
-  d: null,
-  e: function() {console.log('test')},
-  h: new Set([4,3,null]),
-  i: Symbol('fsd'),
-  k: new Map([ ["name", "test"],  ["title", "Author"]  ])
+function backToTop() {
+	let top = document.documentElement.scrollTop || document.body.scrollTop;
+	const timeTop = setInterval(() => {
+		document.body.scrollTop = document.documentElement.scrollTop = top -= 400;
+		if (top <= 0) {
+			clearInterval(timeTop);
+		}
+	}, 10);
 }
-console.log(JSON.stringify(obj)); // {"a":"123","b":234,"c":true,"d":null,"h":{},"k":{}}
-
-const newObj = JSON.parse(JSON.stringify(obj));
 ```
 
-**实现方式二：**
-原理：利用`Object.assign(target, source1, source2)`
-缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
+### 7. 获取url参数
 ```js
-const obj = {
-  a: '123',
-  b: 234,
-  c: true,
-  d: null
+//解析参数
+analysisUrl() {
+	let url = window.location.href
+	var obj = {}
+	var str = url.split('?')[1]
+	var arr = str.split('&')
+	arr.forEach((element) => {
+		var item = element.split('=')
+		var a = item[0]
+		var b = item[1]
+		obj[a] = b
+	})
+	return obj
 }
-
-const newObj = Object.assign({}, obj);
 ```
 
-**实现方式三：**
-原理：利用扩展运算符
-缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
+### 8. 全屏
 ```js
-const obj = {
-  a: '123',
-  b: 234,
-  c: true,
-  d: null
+// 判断是否为全屏
+export function isFullScreen() {
+  return  !!(
+    document.fullscreen || 
+    document.mozFullScreen ||                         
+    document.webkitIsFullScreen ||       
+    document.webkitFullScreen || 
+    document.msFullScreen 
+  );
 }
-
-const newObj = {...obj};
-```
-
-**实现方式四：**
-原理：递归
-```js
-function deepClone(obj) {
-  //判断拷贝的obj是对象还是数组
-  const objClone = Array.isArray(obj) ? [] : {};
-  if (obj && typeof obj === "object") { //obj不能为空，并且是对象或者是数组 因为null也是object
-      for (key in obj) {
-          if (obj.hasOwnProperty(key)) {
-              if (obj[key] && typeof obj[key] === "object") { //obj里面属性值不为空并且还是对象，进行深度拷贝
-                  objClone[key] = deepClone(obj[key]); //递归进行深度的拷贝
-              } else {
-                  objClone[key] = obj[key]; //直接拷贝
-              }
-          }
-      }
+// 全屏/退出全屏操作
+function handleFullScreen() {
+  let element = document.documentElement;
+  // 退出全屏
+  if (isFullScreen()) {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  } else {
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.webkitRequestFullScreen) {
+      element.webkitRequestFullScreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
   }
-  return objClone;
 }
 ```
