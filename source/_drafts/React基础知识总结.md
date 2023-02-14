@@ -51,3 +51,7 @@ Hook 是一些可以让你在函数组件里“钩入” React state 及生命�
 - `useReducer`：管理本地的复杂 state
 - [...](https://react.docschina.org/docs/hooks-reference.html)
 
+### 4. 组件间通信
+- `props` 父组件 <=> 子组件，父组件可以传递普通数据给子组件，也可以传递函数给子组件，子组件调用该方法即可向父组件传递数据
+- `refs` 父组件 <=> 子组件，父组件可以获取子组件实例，从而调用子组件实例上的方法向子组件传递数据，方法返回值可以用于向父组件传递数据
+- `Context` 父组件 => 子孙组件，在`Context.Provider`的所有子组件及后代组件中都可以获取到
