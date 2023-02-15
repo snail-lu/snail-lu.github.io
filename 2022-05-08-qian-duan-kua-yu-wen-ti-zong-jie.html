@@ -325,16 +325,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/React/">
-                                <span class="chip bg-color">React</span>
-                            </a>
-                        
                             <a href="/tags/JavaScript/">
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                             <a href="/tags/%E9%9D%A2%E8%AF%95/">
                                 <span class="chip bg-color">面试</span>
+                            </a>
+                        
+                            <a href="/tags/React/">
+                                <span class="chip bg-color">React</span>
                             </a>
                         
                             <a href="/tags/Vue/">
@@ -380,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    982
+                    988
                 </div>
                 
 
@@ -486,24 +486,24 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>上线阶段<br>利用<code>nginx</code>进行反向代理访问后端服务器。<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># nginx.conf</span>
-http <span class="token punctuation">&#123;</span>
-    server <span class="token punctuation">&#123;</span>
-        listen       <span class="token number">80</span><span class="token punctuation">;</span>
-        server_name  <span class="token operator">&lt;</span>your_server_name<span class="token operator">></span><span class="token punctuation">;</span>
-        root /data/www<span class="token punctuation">;</span>          
+<li>上线阶段<br>利用<code>nginx</code>进行反向代理访问后端服务器。<pre class="line-numbers language-none"><code class="language-none"># nginx.conf
+http &#123;
+    server &#123;
+        listen       80;
+        server_name  &lt;your_server_name&gt;;
+        root &#x2F;data&#x2F;www;          
 
-        location / <span class="token punctuation">&#123;</span>
-            index  index.html<span class="token punctuation">;</span> 
-        <span class="token punctuation">&#125;</span>
+        location &#x2F; &#123;
+            index  index.html; 
+        &#125;
 
-        <span class="token comment"># 反向代理配置</span>
-        location /api <span class="token punctuation">&#123;</span>  
-            proxy_pass <span class="token operator">&lt;</span>target_server<span class="token operator">></span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+        # 反向代理配置
+        location &#x2F;api &#123;  
+            proxy_pass &lt;target_server&gt;;
+        &#125;
 
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
                 
@@ -569,16 +569,16 @@ http <span class="token punctuation">&#123;</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/React/">
-                                    <span class="chip bg-color">React</span>
-                                </a>
-                            
                                 <a href="/tags/JavaScript/">
                                     <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                                 <a href="/tags/%E9%9D%A2%E8%AF%95/">
                                     <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                                <a href="/tags/React/">
+                                    <span class="chip bg-color">React</span>
                                 </a>
                             
                                 <a href="/tags/Vue/">
