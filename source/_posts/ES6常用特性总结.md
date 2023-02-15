@@ -248,3 +248,104 @@ sayHello(); //只能调用sayHello,无法使用sayHi
 ```
 
 ### 8.Set/Map
+#### Set
+`Set`是不包含重复值的有序列表，常用来检查某个值是否存在。  
+##### Set的方法
+- `add()`: 添加值
+- `has()`: 测试值是否存在
+- `delete()`: 删除单个值
+- `clear()`: 清除所有值
+
+```js
+let set = new Set();
+
+set.add(5);
+set.add('5');
+console.log(set.size);  //2 
+console.log(set.has(5)); //true
+
+set.delete(5);
+console.log(set.has(5)); //false
+console.log(set.size);  //1
+
+set.clear();
+console.log(set.size); //0
+```
+
+##### Set上的forEach方法
+与数组上的`forEach`方法类似，接收一个回调函数，回调函数接收三个参数：
+1. Set中下个位置的值
+2. Set中下个位置的值
+3. 目标Set自身
+
+```js
+let set = new Set([1,2,3]);
+set.forEach((value, key, ownerSet) => {
+    console.log(value+", "+key);
+    console.log(ownerSet === set);
+});
+
+// 输出结果
+1, 1
+true
+2, 2 
+true
+3, 3 
+true
+```
+
+##### 利用Set为数组去重
+```js
+function eliminateDuplicates(items){
+    return [...new Set(items)];
+}
+
+let numbers = [1,2,3,3,3,3,4];
+
+let noDuplicates = eliminateDuplicates(numbers);
+console.log(noDuplicates);  // [1,2,3,4]
+```
+#### Map  
+`Map`类型是键值对的`有序列表`，常用作缓存，存储数据以便以后快速检索。`Map`的`键`和`值`都可以是`任意类型`。
+##### Map的方法
+- `set(key,value)`: 给`Map`添加项 
+- `get(key)`: 提取键值对应的值
+- `has(key)`：判断键是否存在于`Map`中
+- `delete(key)`：移除Map中的键以及对应的值
+- `clear()`： 移除Map中所有的键与值
+
+```js
+let map = new Map();
+map.set("name", "Jack");
+map.set("age", 25);
+console.log(map.size); // 2
+console.log(map.has("name"); // true
+console.log(map.get("name")); // "Jack"
+
+map.delete("name");
+console.log(map.size);  // 1
+console.log(map.has("name")); // false
+console.log(map.get("name")); // undefined
+
+map.clear();
+console.log(map.size); //0
+```
+##### Map上的forEach方法
+接收一个能接收三个参数的回调函数：  
+1. Map中下个位置的值
+2. 该值所对应的键
+3. 目标Map本身
+
+```js
+let map = new Map([["name", "Nicholas"], ["age", 20]]);
+map.forEach(function(value, key, ownerMap){
+    console.log(key + ", " + value);
+    console.log(ownerMap === map);
+});
+
+// 输出结果
+name,Nicholas
+true
+age, 20
+true
+```
