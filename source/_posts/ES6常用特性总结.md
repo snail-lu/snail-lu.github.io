@@ -1,88 +1,89 @@
 ---
 title: ES6常用特性总结
 date: 2019-10-30 15:40:00
-summary: ES6常用语法总结及代码示例。
+summary: ES6常用特性总结及对应的代码示例
 tags:
-- ES
+- ES6
 - JavaScript
 categories:
 - [读书笔记]
 ---
-### 1.const、let关键字
-let用来声明一个局部变量，用法类似于var，但是它所声明的变量，只在let声明所在的块级作用域内有效。
+### 1.let/const
+`let` 用来声明一个局部变量，用法类似于 `var`，但是它所声明的变量，只在 `let` 声明所在的块级作用域内有效。
 ```js
 {
     let a = 1;
     var b = 2;
 }
-console.log(b);      //2
-console.log(a);      //ReferenceError: a is not defined
+console.log(b); // 2
+console.log(a); // ReferenceError: a is not defined
 ```
 
-const用来声明一个只读的常量，作用域与let相同（声明所在的块级作用域），一旦定义之后不可以修改，不过如果声明的变量如果是引用类型的，可以修改它的属性。
+`const` 用来声明一个只读的常量，作用域与 `let` 相同（声明所在的块级作用域），一旦定义之后不可以修改，不过如果声明的变量如果是引用类型的，可以修改它的属性。
 ```js
 const PI = 3.14;
-PI = 3.1415926;          //TypeError: invalid assignment to const `PI'
+PI = 3.1415926; // TypeError: invalid assignment to const `PI'
 
-const PERSON = {name: 'Tom'};
+const PERSON = { name: 'Tom' };
 PERSON.name = 'Jack';
-console.log(PERSON.name);        //'Jack'
+console.log(PERSON.name); // 'Jack'
 ```
 
 ### 2.函数
+- 参数的默认值
+```js
+function log(x, y = 'world'){
+    console.log(x, y);
+}
+log('hello');   // "hello","world"
+```
+- `rest` 参数  
+`rest` 参数的形式为`...变量名`, 用于获取函数的多余参数，`rest` 参数是一个数组，可以用于替代 `arguments` 对象。
+```js
+// 普通排序写法，使用arguments
+function sortNumbers(){
+    return Array.prototype.slice.call(arguments).sort();
+}
+
+// 使用rest参数
+const sortNumbers = (...numbers) => numbers.sort();
+```
 - 箭头函数
 ```js
-let sum = (num1,num2) => {return num1 + num2};
-//或
-let sum = (num1,num2) => num1+num2;
+let sum = (num1, num2) => { return num1 + num2 };
+// 或
+let sum = (num1, num2) => num1 + num2;
 ```
-- this在箭头函数中的使用  
-箭头函数体内的this对象，是定义时所在的对象，不是使用时所在的对象。
+- `this` 在箭头函数中的使用  
+箭头函数体内的 `this` 对象，是定义时所在的对象，不是使用时所在的对象。
 ```js
 var user = "Mike";
 let person = {
     user: "Tom",
-    sayHello:function(){
-        setTimeout(function(){
-            console.log("hello",this.user);   //this指向运行时所在的作用域
+    sayHello: function() {
+        setTimeout(function() {
+            console.log(this.user);   // this指向运行时所在的作用域
         },1000);
-        setTimeout(()=>{
-            console.log("hello",this.user)    //this指向定义时的对象
+        setTimeout(() => {
+            console.log(this.user)    // this指向定义时的对象
         },2000)
     }
 };
-person.sayHello();        
-//先后输出“hello,Mike”和“hello,Tom”
-```
-
-- 函数参数的默认值
-```js
-function log(x,y = 'world'){
-    console.log(x,y);
-}
-log('hello');   //hello,world
-```
-- rest参数  
-rest参数（形式为...变量名）用于获取函数的多余参数，rest参数是一个数组对象，可以用于替代arguments对象。
-```js
-//普通排序写法，使用arguments
-function sortNumbers(){
-    return Array.prototype.slice.call(arguments).sort();
-}
-//使用rest参数
-const sortNumbers = (...numbers) => numbers.sort();
+person.sayHello(); 
+// "Mike"
+// "Tom"  
 ```
 
 ### 3.展开操作符
 - 用于函数调用
 ```js
-function sum(x,y,z){
-    return x+y+z;
+function sum(x, y, z){
+    return x + y + z;
 }
-let args = [1,2,3];
-//ES6之前的用法
-sum.apply(null,args);  
-//使用展开操作符：
+let args = [1, 2, 3];
+// ES6之前的用法
+sum.apply(null, args);  
+// 使用展开操作符：
 sum(...args);
 ```
 
@@ -90,16 +91,16 @@ sum(...args);
 ```js
 let arr1 = [1,2,3];
 let arr2 = [4,5,6];
-//es6之前的用法
-let arr3 = arr1.concat(arr2);        //[1,2,3,4,5,6]
-//展开操作符用法
+// es6之前的用法
+let arr3 = arr1.concat(arr2); // [1,2,3,4,5,6]
+// 展开操作符用法
 let arr3 = [...arr1,...arr2];
 ```
 
 - 对象的展开运算符
 ```js
-let student = {name:'Tom',age:14};
-student = {...student,sex:'male'};
+let student = { name:'Tom', age:14 };
+student = { ...student, sex:'male' };
 ```
 
 ### 4.模板字符串
@@ -245,3 +246,5 @@ export function sayHi(){
 import { sayHi as sayHello } from './module1.js';
 sayHello(); //只能调用sayHello,无法使用sayHi
 ```
+
+### 8.Set/Map
