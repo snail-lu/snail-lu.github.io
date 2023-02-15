@@ -107,20 +107,20 @@ student = { ...student, sex:'male' };
 ```js
 let name = 'Mike';
 let str = `My name is ${name}`;
-console.log(str);          //‘My name is Mike’
+console.log(str); // "My name is Mike"
 ```
 
 ### 5.解构语法
 - 解构数组
 ```js
 let arr = ['blue','green','red'];
-let [a,b,c] = arr;        //按照数组序号，一一对应 a='blue',b='green',c='red'
+let [a,b,c] = arr; // 按照数组序号，一一对应 a='blue',b='green',c='red'
 ```
 
 - 解构对象
 ```js
 let person = {name:'Jack',age: 20};
-let {name,age} = person;  //与属性名一一对应 name='Jack',age=20
+let {name,age} = person; // 与属性名一一对应 name='Jack',age=20
 ```
 
 ### 6.类
@@ -133,116 +133,116 @@ class Animal {
     shout(){
         return `My name is ${this.name}, age is ${this.age}`;
     }
-    //静态方法
+    // 静态方法
     static foo(){
         console.log('Here is a static method');
     }
 }
 const cow = new Animal('betty', 2);
-cow.shout();        //My name is betty, age is 2
-Animal.foo();     //Here is a static method
+cow.shout(); // My name is betty, age is 2
+Animal.foo(); // Here is a static method
 
-//派生类
+// 派生类
 class Dog extends Animal{
     constructor(name, age=3,color='black'){
-        //继承父类属性
+        // 继承父类属性
         super(name,age);
         this.color = color;
     }
-    //重写shout方法
+    // 重写shout方法
     shout(){
-        //使用super调用父类方法
+        // 使用super调用父类方法
         return super.shout() + `,color is ${this.color}`;
     }
 }
 const dog = new Dog('Bagong');
-dog.shout(); //My name is Bagong, age is 3, color is black
+dog.shout(); // My name is Bagong, age is 3, color is black
 ```
 
 ### 7.模块
 - 一个模块的导入/导出  
-导出文件module1.js
-
 ```js
+// 导出
+// module1.js
 function func1(){
     console.log("this is func1");
 }
 
-export func1;  //使用export导出这个模块
+export func1; // 使用export导出这个模块
 ```
-导入文件：
 
 ```js
-import { func1 } from './module1.js';     //使用import导入这个模块（假设两个文件在同级目录下）
+// 导入
+import { func1 } from './module1.js'; // 使用import导入这个模块（假设两个文件在同级目录下）
 ```
 
 - 一个模块的多个导出  
-导出文件module1.js
 ```js
-//形式1，逐个导出
-export const PI = 3.14;                   //导出变量
-export function func1(){                  //导出方法
+// module1.js
+// 形式1，逐个导出
+export const PI = 3.14; // 导出变量
+export function func1(){ // 导出方法
     console.log("this is func1");
 }
-export let person = {name: "Nike"};       //导出变量
+export let person = {name: "Nike"}; // 导出变量
 
-//形式2，底部集体导出
+// 形式2，底部集体导出
 const PI = 3.14;                   
 function func1(){                 
     console.log("this is func1");
 }
 let person = {name: "Nike"};
 
-export { PI, func1, person };            //导出的变量或方法都写在这里
+export { PI, func1, person } // 导出的变量或方法都写在这里
 ```
 
-导入文件：
 ```js
-//导入方式1，使用对象解构加载
+// 导入方式1，使用对象解构加载
 import { PI,func1,person } from './module1.js';
 
-//导入方式2，作为一个整体导入
+// 导入方式2，作为一个整体导入
 import * as util from './module1.js';
-console.log(util.PI);                //3.14
+console.log(util.PI); // 3.14
 ```
 
 - 模块的默认导出
-导出文件module1.js
 ```js
-export default class Person{  //默认导出
+// module1.js
+export default class Person{
     ....
 }
 
-export function func1(){ //默认导出的同时，也可以定义其他的非默认导出
+export function func1(){ // 默认导出的同时，也可以定义其他的非默认导出
     ....
 }
 ```
 
-导入文件：
 ```js
-import importedPerson, { func1 } from './module1.js';      //默认导出的模块不需要使用{}包裹,同时可以在导入处自定义名称 
+// 导入
+// 导入默认导出的模块不需要使用{}包裹，同时可以在导入处自定义名称 
+import importedPerson, { func1 } from './module1.js';
 ```
 
 - 导入导出重命名
-导出重命名：
 ```js
-//导出模块文件module1.js
-function sayHi(){
+// module1.js
+function sayHi() {
+    console.log('Hi');
+}
+// 使用as重命名导出
+export { sayHi as sayHello };
+
+// 导入文件时只能通过sayHello导入
+import { sayHello } from './module1.js'; 
+```
+
+```js
+// 导出模块文件module1.js
+export function sayHi() {
     console.log('Hi');
 }
 
-export { sayHi as sayHello}; //使用as重命名导出
-
-//导入文件
-import { sayHello } from './module1.js'; //只能通过sayHello导入
-```
-导入重命名：
-```js
-//导出模块文件module1.js
-export function sayHi(){
-    console.log('Hi');
-
-//导入文件
+// 导入时重命名
 import { sayHi as sayHello } from './module1.js';
 sayHello(); //只能调用sayHello,无法使用sayHi
 ```
