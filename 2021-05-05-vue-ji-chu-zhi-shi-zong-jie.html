@@ -408,7 +408,7 @@
 <ul>
 <li><strong>v-show</strong><br>元素总是会被创建渲染，只是简单地基于 CSS 的 <code>display</code> 属性进行切换。<br>综上，<code>v-if</code> 适用于在运行时很少改变条件，不需要频繁切换条件的场景；<code>v-show</code> 则适用于需要非常频繁切换条件的场景。（微信小程序中的<code>wx:if</code>和<code>wx:hidden</code>与上述类似）</li>
 </ul>
-<h3 id="2-列表渲染中key的作用"><a href="#2-列表渲染中key的作用" class="headerlink" title="2. 列表渲染中key的作用"></a>2. 列表渲染中<code>key</code>的作用</h3><p><code>key</code> 主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes（虚拟节点）。如果不使用 <code>key</code>，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 <code>key</code> 时，它会基于 <code>key</code> 的变化重新排列元素顺序，并且会移除 <code>key</code> 不存在的元素。<br>综上，简单列表的渲染可以不使用<code>key</code>或者用数组的<code>index</code>作为<code>key</code>（效果等同于不带key），这种模式下性能最高，但是并不能准确的更新列表项的状态。一旦你需要保存列表项的状态，那么就需要用使用唯一的key用来准确的定位每一个列表项以及复用其自身的状态。否则就可能会出现错乱的情况（<a target="_blank" rel="noopener" href="https://codesandbox.io/s/vue-demo-lneif5?file=/src/components/TodoList.vue">示例代码</a>）。</p>
+<h3 id="2-列表渲染中key的作用"><a href="#2-列表渲染中key的作用" class="headerlink" title="2. 列表渲染中key的作用"></a>2. 列表渲染中<code>key</code>的作用</h3><p><code>key</code> 主要用在 Vue 的虚拟 DOM 算法，在新旧节点对比时辨识 <code>VNodes</code>（虚拟节点）。如果不使用 <code>key</code>，Vue 会最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素。而使用 <code>key</code> 时，它会基于 <code>key</code> 的变化重新排列元素顺序，并且会移除 <code>key</code> 不存在的元素。<br>综上，简单列表的渲染可以不使用 <code>key</code> 或者用数组的 <code>index</code> 作为<code>key</code>（效果等同于不带key），这种模式下性能最高，但是并不能准确的更新列表项的状态。一旦你需要保存列表项的状态，那么就需要用使用唯一的 <code>key</code> 用来准确的定位每一个列表项以及复用其自身的状态。否则就可能会出现错乱的情况（<a target="_blank" rel="noopener" href="https://codesandbox.io/s/vue-demo-lneif5?file=/src/components/TodoList.vue">示例代码</a>）。</p>
 <h4 id="3-computed-和-watch-的区别及应用场景"><a href="#3-computed-和-watch-的区别及应用场景" class="headerlink" title="3. computed 和 watch 的区别及应用场景"></a>3. <code>computed</code> 和 <code>watch</code> 的区别及应用场景</h4><ul>
 <li><p><strong>computed</strong><br>计算属性，依赖其它属性值，并且 <code>computed</code> 的值有缓存，只有它依赖的属性值发生改变才会重新求值；（源码中通过<code>dirty</code>属性来控制是重新计算还是从缓存中取值）</p>
 </li>
@@ -416,14 +416,14 @@
 </li>
 <li><p><strong>应用场景</strong>  </p>
 <ul>
-<li><p>需要进行数值计算，并且依赖于其它数据，应该使用 <code>computed</code>，因为可以利用 <code>computed</code> 的缓存特性，避免每次获取值时，都要重新计算；</p>
+<li><p>需要在<code>template</code>中书写复杂表达式，并且依赖于其它数据，应该使用 <code>computed</code>，因为可以利用 <code>computed</code> 的缓存特性，避免每次获取值时，都要重新计算；</p>
 </li>
-<li><p>需要在数据变化时执行<code>异步</code>或<code>开销较大的操作</code>，应该使用 <code>watch</code>。因为使用<code>watch</code>选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
-</li>
-</ul>
+<li><p>需要在数据变化时执行<code>异步</code>或<code>开销较大的操作</code>，应该使用 <code>watch</code>。因为使用<code>watch</code>选项允许我们执行异步操作 (比如网络请求)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。</p>
 </li>
 </ul>
-<h3 id="4-单向数据流"><a href="#4-单向数据流" class="headerlink" title="4. 单向数据流"></a>4. 单向数据流</h3><p>从父组件传到子组件的数据，子组件没有权利直接修改，想要修改该数据，只能通过<code>$emit</code>派发一个自定义事件，父组件接收到后，由父组件修改。<br>每次父级组件发生变更时，子组件中所有的 prop 都将会刷新为最新的值。这样会防止从子组件意外改变父级组件的状态，从而导致应用的数据流向难以理解。</p>
+</li>
+</ul>
+<h3 id="4-单向数据流"><a href="#4-单向数据流" class="headerlink" title="4. 单向数据流"></a>4. 单向数据流</h3><p>从父组件传到子组件的数据，子组件没有权利直接修改，想要修改该数据，只能通过<code>$emit</code>派发一个自定义事件，父组件接收到后，由父组件修改。<br>每次父级组件发生变更时，子组件中所有的 <code>prop</code> 都将会刷新为最新的值。这样会防止从子组件意外改变父级组件的状态，从而导致应用的数据流向难以理解。</p>
 <h3 id="5-Vue实例的生命周期钩子"><a href="#5-Vue实例的生命周期钩子" class="headerlink" title="5. Vue实例的生命周期钩子"></a>5. Vue实例的生命周期钩子</h3><table>
 <thead>
 <tr>
@@ -477,7 +477,7 @@
 </tr>
 </tbody></table>
 <p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/09/26/xVvOpR.png" alt="image"></p>
-<h3 id="6-父组件和子组件生命周期钩子执行顺序"><a href="#6-父组件和子组件生命周期钩子执行顺序" class="headerlink" title="6. 父组件和子组件生命周期钩子执行顺序"></a>6. 父组件和子组件生命周期钩子执行顺序</h3><p>可以归类为以下 4 部分：</p>
+<h3 id="6-父组件和子组件生命周期钩子执行顺序"><a href="#6-父组件和子组件生命周期钩子执行顺序" class="headerlink" title="6. 父组件和子组件生命周期钩子执行顺序"></a>6. 父组件和子组件生命周期钩子执行顺序</h3><p>可以归类为以下 4 中场景：</p>
 <ul>
 <li>加载渲染过程<br>父 <code>beforeCreate</code> -&gt; 父 <code>created</code> -&gt; 父 <code>beforeMount</code> -&gt; 子 <code>beforeCreate</code> -&gt; 子 <code>created</code> -&gt; 子 <code>beforeMount</code> -&gt; 子 <code>mounted</code> -&gt; 父 <code>mounted</code></li>
 </ul>
@@ -496,29 +496,29 @@
 <p><a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/YzjRzpr">☆☆代码演示☆☆</a></p>
 <h3 id="7-父组件中监听子组件生命周期钩子"><a href="#7-父组件中监听子组件生命周期钩子" class="headerlink" title="7. 父组件中监听子组件生命周期钩子"></a>7. 父组件中监听子组件生命周期钩子</h3><ul>
 <li><p><code>props/$emit</code></p>
-<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F; Parent.vue
-&lt;Child @mounted&#x3D;&quot;doSomething&quot;&#x2F;&gt;
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// Parent.vue</span>
+<span class="token operator">&lt;</span>Child @mounted<span class="token operator">=</span><span class="token string">"doSomething"</span><span class="token operator">/</span><span class="token operator">></span>
 
-doSomething() &#123;
-  console.log(&#39;子组件mounted了&#39;);
-&#125;,
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'子组件mounted了'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
     
-&#x2F;&#x2F; Child.vue
-mounted() &#123;
-  this.$emit(&quot;mounted&quot;);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token comment">// Child.vue</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">"mounted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p><code>@hook</code></p>
-<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&#x2F;&#x2F;  Parent.vue
-&lt;Child @hook:mounted&#x3D;&quot;doSomething&quot; &gt;&lt;&#x2F;Child&gt;
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//  Parent.vue</span>
+<span class="token operator">&lt;</span>Child @hook<span class="token operator">:</span>mounted<span class="token operator">=</span><span class="token string">"doSomething"</span> <span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Child<span class="token operator">></span>
 
-doSomething() &#123;
-   console.log(&#39;子组件mounted了&#39;);
-&#125;,
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'子组件mounted了'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
     
-&#x2F;&#x2F;  Child.vue
-mounted()&#123;
-   console.log(&#39;子组件触发 mounted 钩子函数 ...&#39;);
-&#125;,  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token comment">//  Child.vue</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'子组件触发 mounted 钩子函数 ...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h3 id="8-组件间的通信方式"><a href="#8-组件间的通信方式" class="headerlink" title="8. 组件间的通信方式"></a>8. 组件间的通信方式</h3><ul>
 <li><code>props/$emit</code> 父子间通信</li>
@@ -1221,7 +1221,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78k</span>&nbsp;字
+                class="white-color">77.9k</span>&nbsp;字
             
             
             
