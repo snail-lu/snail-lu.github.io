@@ -545,17 +545,25 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <h3 id="9-Vue2数据响应式原理"><a href="#9-Vue2数据响应式原理" class="headerlink" title="9. Vue2数据响应式原理"></a>9. Vue2数据响应式原理</h3><p><code>Vue2</code>数据响应式主要利用的就是: <code>数据劫持</code>和<code>发布订阅模式</code>。</p>
 <ul>
 <li><strong>发布订阅模式</strong><br>当发布者数据变化时发布数据，全部订阅者均可以接收到通知。</li>
-<li><strong>数据劫持</strong><br>就是利用JavaScript的访问器属性，即<code>Object.defineProperty()</code>方法，当对对象的属性进行赋值时，<code>Object.defineProperty</code>就可以通过<code>set</code>方法劫持到数据的变化，然后通知发布者(主题对象)去通知所有订阅者，订阅者收到通知后，就会对视图进行更新。  </li>
+<li><strong>数据劫持</strong><br>就是利用JavaScript的访问器属性，即<code>Object.defineProperty()</code>方法，当对对象的属性进行赋值时，<code>Object.defineProperty</code>就可以通过<code>set</code>方法劫持到数据的变化，然后通知发布者去通知所有订阅者，订阅者收到通知后，就会对视图进行更新。  </li>
 </ul>
 <p>Vue2 响应式的实现主要有：</p>
 <ul>
-<li><strong>监听器 Observer</strong><br>对数据对象进行遍历，包括子属性对象的属性，利用 <code>Object.defineProperty()</code> 对属性都加上 <code>setter</code> 和 <code>getter</code>。这样的话，给这个对象的某个属性赋值，就会触发 <code>setter</code>，那么就能监听到了数据变化。</li>
+<li><strong>监听器 Observer</strong><br>对数据对象进行遍历，包括子属性对象的属性，利用 <code>Object.defineProperty()</code> 对属性都加上 <code>setter</code> 和 <code>getter</code>。<code>getter</code>中收集依赖，<code>setter</code>中通知依赖更新。</li>
 <li><strong>依赖管理器 Dep</strong><br>用来收集订阅者 <code>Watcher</code>，对监听器 <code>Observer</code> 和 订阅者 <code>Watcher</code> 进行统一管理。</li>
 <li><strong>订阅者 Watcher</strong><br><code>Watcher</code> 是 <code>Observer</code> 和 <code>Compiler</code> 之间通信的桥梁 ，主要的任务是订阅 <code>Observer</code> 中的属性值变化的消息，当收到属性值变化的消息时，触发编译器 <code>Compiler</code> 中对应的更新函数。</li>
 <li><strong>编译器 Compiler</strong><br>解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新。</li>
 </ul>
 <p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/09/26/xVxS0O.png" alt="image"></p>
-<p>总之就是，在创建 Vue 实例的时候给传入的 <code>data</code>的每个属性使用 <code>Observer</code> 增加<code>getter</code> 和 <code>setter</code>，同时视图编译的时候，对于使用到<code>data</code>中数据的地方进行创建 <code>Watcher</code> ，然后在数据劫持的 <code>getter</code> 中收集 <code>Watcher</code> 到订阅器 <code>Dep</code>，当劫持的数据发生变化的时候，触发<code>setter</code>，<code>setter中</code> 会调用 <code>Dep</code> 来通知所有收集到的 <code>Watcher</code>，<code>Watcher</code> 通知DOM进行更新，从而实现数据的响应式变化。</p>
+<p>总之就是，在创建 Vue 实例的时候给传入的 <code>data</code>的每个属性使用 <code>Observer</code> 增加<code>getter</code> 和 <code>setter</code>，同时视图编译的时候，对于使用到<code>data</code>中数据的地方进行创建 <code>Watcher</code> ，然后在数据劫持的 <code>getter</code> 中收集 <code>Watcher</code> 到订阅器 <code>Dep</code>，当劫持的数据发生变化的时候，触发<code>setter</code>，<code>setter</code> 中会调用 <code>Dep</code> 来通知所有收集到的 <code>Watcher</code>，<code>Watcher</code> 通知DOM进行更新，从而实现数据的响应式变化。</p>
+<blockquote>
+<p>依赖收集的过程就是将响应式数据关联的依赖（也就是使用到该响应式数据的dom节点）给收集起来。</p>
+</blockquote>
+<p><strong>参考文章</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38280242/article/details/128982994">莽村李青都看得懂的Vue响应式原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://tsejx.github.io/vue-guidebook/infrastructure/vue2/reactivity/">响应式原理</a></li>
+</ul>
 <h3 id="10-双向数据绑定原理"><a href="#10-双向数据绑定原理" class="headerlink" title="10. 双向数据绑定原理"></a>10. 双向数据绑定原理</h3><p>表单元素 <code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code> 及 <code>&lt;select&gt;</code> 上可以用 <code>v-model</code> 指令创建双向数据绑定，当进行表单输入或选择的时候，通过<code>v-model</code>绑定的值会同步修改。<br><code>v-model</code> 在内部为不同的输入元素使用不同的 <code>property</code> 并抛出不同的事件：</p>
 <ul>
 <li><code>text</code> 和 <code>textarea</code> 元素使用 <code>value</code> property 和 <code>input</code> 事件；</li>
@@ -1221,7 +1229,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">77.9k</span>&nbsp;字
+                class="white-color">78k</span>&nbsp;字
             
             
             
