@@ -41,3 +41,8 @@ renderTracked | onRenderTracked | 仅在开发模式下可用，当组件渲染�
 renderTriggered | onRenderTriggered | 仅在开发模式下可用，当响应式依赖的变更触发了组件渲染时调用
 serverPrefetch | onServerPrefetch | 仅在服务端渲染时可用，在组件实例在服务器上被渲染之前调用
 ![Vue组件实例的生命周期](https://cn.vuejs.org/assets/lifecycle.16e4c08e.png)
+
+### 3. 响应式原理
+Vue 3 实现响应式，本质上是通过 `Proxy` API 劫持了数据对象的读写：
+- 当我们访问数据时，会触发 `getter` 执行依赖收集；
+- 修改数据时，会触发 `setter` 派发通知。
