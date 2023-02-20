@@ -179,7 +179,7 @@ Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，
 
 
 ### 11. data为何是一个函数而非对象
-因为组件可能被用来创建多个实例。如果data仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 `data` 函数，每次创建一个新实例后，我们能够调用 `data` 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的data独立性。
+因为组件可能被用来创建多个实例。如果 `data` 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 `data` 函数，每次创建一个新实例后，我们能够调用 `data` 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的`data` 独立性。
 
 ### 12. 虚拟DOM
 所谓**虚拟DOM**，就是用一个 `JS` 对象来描述一个 `DOM` 节点。
@@ -210,8 +210,8 @@ Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，
 1. 首先会对新老 `VNode` 的开始和结束位置进行标记：`oldStartIdx`、`oldEndIdx`、`newStartIdx`、`newEndIdx`。
 2. 进入到的 `while` 循环处理中，这里是 `diff` 算法的核心流程，分情况进行了新老节点的比较并移动对应的 `VNode` 节点。`while` 循环的退出条件是直到老节点或者新节点的开始位置大于结束位置。  
 `while` 循环中的处理逻辑，循环过程中首先对新老 `VNode` 节点的头尾进行比较，寻找相同节点，如果有相同节点满足 `sameVnode`（可以复用的相同节点） 则直接进行 `patchVnode` (该方法进行节点复用处理)，并且根据具体情形，移动新老节点的 `VNode` 索引，以便进入下一次循环处理，一共有 `2 * 2 = 4` 种情形。
-   - **情形一**：当新老 `VNode` 节点的 `start` 满足 `sameVNode` 时，直接 `patchVNode` 即可，同时新老 `VNode` 节点的开始索引都加 1。
-   - **情形二**：当新老 `VNode` 节点的 `end` 满足 `sameVNode` 时，同样直接 `patchVNode` 即可，同时新老 `VNode` 节点的结束索引都减 1。
+   - **情形一**：当新老 `VNode` 节点的 `start` 满足 `sameVNode` 时，直接 `patchVNode` 即可，同时新老 `VNode` 节点的`start`索引都加 1。
+   - **情形二**：当新老 `VNode` 节点的 `end` 满足 `sameVNode` 时，同样直接 `patchVNode` 即可，同时新老 `VNode` 节点的 `end` 索引都减 1。
    - **情形三**：当老 `VNode` 节点的 `start` 和新 `VNode` 节点的 `end` 满足 `sameVnode` 时，这说明这次数据更新后 `oldStartVNode` 已经跑到了 `oldEndVNode` 后面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldEndVNode` 的后面，同时老 `VNode` 节点开始索引`加1`，新 `VNode` 节点的结束索引`减1`。
    - **情形四**：当老 `VNode` 节点的 `end` 和新 `VNode` 节点的 `start` 满足 `sameVnode` 时，这说明这次数据更新后 `oldEndVNode` 跑到了 `oldStartVNode` 的前面去了。这时候在 `patchVNode` 后，还需要将当前真实 `dom` 节点移动到 `oldStartVNode` 的前面，同时老 `VNode` 节点结束索引`减1`，新 `VNode` 节点的开始索引`加 1`。  
 
