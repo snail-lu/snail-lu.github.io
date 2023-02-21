@@ -30,6 +30,7 @@ categories:
 - "number"    --- 数值
 - "object"    --- 对象或null
 - "function"  --- 函数
+- "symbol"    --- Symbol
 
 #### instanceof
 检测某个变量是否是某个构造函数的实例。常用的一些JS原生引用类型有：
