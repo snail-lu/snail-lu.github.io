@@ -369,7 +369,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-20
+                    2023-02-21
                 </div>
                 
 
@@ -579,7 +579,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <li><code>Proxy</code>在ie浏览器上存在兼容问题</li>
 </ol>
 <h3 id="11-data为何是一个函数而非对象"><a href="#11-data为何是一个函数而非对象" class="headerlink" title="11. data为何是一个函数而非对象"></a>11. data为何是一个函数而非对象</h3><p>因为组件可能被用来创建多个实例。如果 <code>data</code> 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 <code>data</code> 函数，每次创建一个新实例后，我们能够调用 <code>data</code> 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的<code>data</code> 独立性。</p>
-<h3 id="12-虚拟DOM"><a href="#12-虚拟DOM" class="headerlink" title="12. 虚拟DOM"></a>12. 虚拟DOM</h3><p>所谓<strong>虚拟DOM</strong>，就是用一个 <code>JS</code> 对象来描述一个 <code>DOM</code> 节点。</p>
+<h3 id="12-虚拟DOM和diff算法"><a href="#12-虚拟DOM和diff算法" class="headerlink" title="12. 虚拟DOM和diff算法"></a>12. 虚拟DOM和diff算法</h3><p>所谓<strong>虚拟DOM</strong>，就是用一个 <code>JS</code> 对象来描述一个 <code>DOM</code> 节点。虚拟DOM是通过渲染函数（h函数）生成的。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 示例</span>
 <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"a"</span> id<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>Hello World<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 
