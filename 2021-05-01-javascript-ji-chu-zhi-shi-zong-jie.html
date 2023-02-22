@@ -361,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-21
+                    2023-02-22
                 </div>
                 
 
@@ -393,21 +393,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-作用域和作用域链"><a href="#1-作用域和作用域链" class="headerlink" title="1. 作用域和作用域链"></a>1. 作用域和作用域链</h3><p>JS中存在<code>全局作用域</code>、<code>函数作用域</code>以及<code>块作用域</code>（ES6新增），各个作用域之间相互嵌套组成了一条作用域链。作用域查找始终从运行时所处的最内部作用域开始，沿着作用域链逐级向上进行查找，直到遇见第一个匹配的标识符为止。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 全局作用域</span>
-<span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// foo函数作用域，可以访问全局作用域中的变量</span>
-    <span class="token keyword">const</span> b <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// bar函数作用域，可以访问foo函数作用域及全局作用域中的变量</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token function">bar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10, 20, 30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="1-作用域和作用域链"><a href="#1-作用域和作用域链" class="headerlink" title="1. 作用域和作用域链"></a>1. 作用域和作用域链</h3><p><strong>作用域</strong>：变量和函数的有效访问范围。分为<code>全局作用域</code>、<code>函数作用域</code>和<code>块作用域</code>。<br><strong>作用域链</strong>：当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的<strong>变量对象</strong>构成的链表就叫做<code>作用域链</code>。<br>💡 <a target="_blank" rel="noopener" href="https://tsejx.github.io/javascript-guidebook/core-modules/executable-code-and-execution-contexts/execution/variable-object/">变量对象</a>：JavaScript执行一段可执行代码时，会创建对应的执行上下文，变量对象是与 执行上下文 相关的数据作用域，存储了在上下文中定义的 <code>变量</code> 和 <code>函数声明</code>。</p>
 <h3 id="2-Promise"><a href="#2-Promise" class="headerlink" title="2. Promise"></a>2. Promise</h3><p><strong>Promise是什么</strong><br><code>Promise</code> 是 <code>ES6</code> 新增的语法，是一种异步编程的一种解决方案，<code>Promise</code> 本质上是一个绑定了回调的对象。 <code>Promise</code> 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。<code>Promise</code> 可以看作是一个状态机，它有三种状态：<code>pending</code>，<code>fulfilled</code>，<code>rejected</code>，其中初始状态是 <code>pending</code>，可以通过函数 <code>resolve</code> 把状态变为 <code>fulfilled</code>，或者通过函数 <code>reject</code> 把状态变为 <code>rejected</code>，状态一经改变就不能再次变化。</p>
 <p><strong>常用API</strong><br><code>Promise.all()</code>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。</p>
 <p><code>Promise.race()</code>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。</p>
