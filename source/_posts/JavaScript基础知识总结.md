@@ -28,6 +28,7 @@ categories:
 
 **实现**
 [Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
+[Promise简易实现](https://jsrun.net/XTcKp/)
 
 ### 3. async/await
 `async/await` 是 `Generator`函数的语法糖，作用是**用同步的方式，执行异步操作**。
