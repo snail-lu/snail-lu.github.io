@@ -141,8 +141,7 @@ data[2](); // 2
 [JavaScript之Event Loop](https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html)
 
 ### 10. 深拷贝
-**实现方式一：**
-原理：利用`JSON.stringify`序列化和`JSON.parse`反序列化
+**实现方式一：** `JSON.stringify`序列化和`JSON.parse`反序列化
 缺点：对象中`undefined`、`function`、`symbol`这三种类型的值会被过滤掉
 ```js
 const obj = {
@@ -160,8 +159,7 @@ console.log(JSON.stringify(obj)); // {"a":"123","b":234,"c":true,"d":null,"h":{}
 const newObj = JSON.parse(JSON.stringify(obj));
 ```
 
-**实现方式二：**
-原理：利用`Object.assign(target, source1, source2)`
+**实现方式二：** `Object.assign(target, source1, source2)`
 缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
 ```js
 const obj = {
@@ -174,8 +172,7 @@ const obj = {
 const newObj = Object.assign({}, obj);
 ```
 
-**实现方式三：**
-原理：利用扩展运算符
+**实现方式三：** ES6扩展运算符
 缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
 ```js
 const obj = {
@@ -188,8 +185,7 @@ const obj = {
 const newObj = {...obj};
 ```
 
-**实现方式四：**
-原理：递归
+**实现方式四：** 递归
 ```js
 function deepClone(obj) {
   //判断拷贝的obj是对象还是数组
