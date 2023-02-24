@@ -1220,7 +1220,7 @@ console.log(iterator.next()) // {done: false, value: 3}
 console.log(iterator.next()) // {done: true, value: undefined}
 ```
 
-#### 何为生成器
+#### 生成器
 生成器是能返回一个迭代器的函数。生成器函数由放在`function`关键字之后的一个星号`*`来表示，并能使用新的关键字`yield`。
 > `yield`关键字只能用在生成器内部，用于其他位置会被认为是语法错误。
 ```js
@@ -1384,8 +1384,7 @@ console.log(iterator.next()); // "{ value: 99, done: true }"
 ```
 
 #### 生成器委托
-可以将多个生成器合并成一个生成器来使用，该合并后的生成器创建出来的迭代器从外部来看就是一个单一的迭代器。该迭代器在`next()`调用过程中，
-会委托给合适的生成器。合并后的生成器中，可以
+可以将多个生成器合并成一个生成器来使用，该合并后的生成器创建出来的迭代器从外部来看就是一个单一的迭代器。该迭代器在`next()`调用过程中，会委托给合适的生成器。
 ```js
 function *createNumberIterator() { 
     yield 1; 

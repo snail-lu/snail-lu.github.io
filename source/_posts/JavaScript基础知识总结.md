@@ -31,7 +31,28 @@ categories:
 [Promise简易实现](https://jsrun.net/XTcKp/)
 
 ### 3. async/await
-`async/await` 是 `Generator`函数的语法糖，作用是**用同步的方式，执行异步操作**。
+`async/await` 是 [Generator](https://snaillu.gitee.io/2021-12-19-shen-ru-li-jie-es6-du-shu-bi-ji.html#toc-heading-51) 函数的语法糖，作用是**用同步的方式，执行异步操作**，最常见的用法就是用同步的写法来替代`promise.then()`的嵌套问题。
+```js
+// 后续异步请求都依赖于前一个请求的结果
+function fn() {
+    request().then(res1 => {
+        request(res1).then(res2 => {
+            request(res2).then(res3 => {
+                // ...
+            })
+        })
+    })
+}
+
+
+// 替代写法
+async function fn() {
+    const res1 = await request()
+    const res2 = await request(res1);
+    const res3 = await request(res2);
+    // ...
+}
+```
 `async` 函数的实现原理，就是将 `Generator` 函数和自动执行器，包装在一个函数里。
 **实现**
 ```js
@@ -381,3 +402,8 @@ console.log(student1); //  {"name":"Mike","age":20}
     1. 确定要添加事件元素的父级元素；
     2. 给父元素定义事件，监听子元素的冒泡事件；
     3. 使用 event.target 来定位触发事件冒泡的子元素。
+
+
+### 19. Generator（生成器）
+
+### 20. Iterator（迭代器）
