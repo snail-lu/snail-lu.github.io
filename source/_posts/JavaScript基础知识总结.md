@@ -61,7 +61,6 @@ async function fn(args) {
 }
 
 // 等同于
-
 function fn(args) {
     // spawn是自动执行器函数，自动调用generator的next方法
     return spawn(function* () {
@@ -71,6 +70,7 @@ function fn(args) {
 
 // spawn函数实现
 function spawn(genF) {
+    // async函数最终返回的是一个promise
     return new Promise(function(resolve, reject) {
         const iterator = genF();
         function step(nextF) {
@@ -80,10 +80,13 @@ function spawn(genF) {
             } catch(e) {
                 return reject(e);
             }
+            // next.done为true时，说明走到了iterator的最后一步，直接返回结果
             if(next.done) {
                 return resolve(next.value);
             }
+            // next.value有可能是常量或promise，所以这里采用Promise.resolve处理
             Promise.resolve(next.value).then(function(v) {
+                // 递归调用step
                 step(function() { 
                     return iterator.next(v); 
                 });
@@ -93,7 +96,7 @@ function spawn(genF) {
                 });
             });
         }
-        step(function() { return iterator.next(undefined); });
+        step(function() { return iterator.next(); });
     });
 }
 ```
