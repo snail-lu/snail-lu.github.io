@@ -102,13 +102,13 @@ function spawn(genF) {
 ```
 
 ### 4. ES6常用新特性
-[详解](https://snaillu.gitee.io/2019-10-30-es6-chang-yong-te-xing-zong-jie.html)
+💡 [ES6常用特性总结](https://snaillu.gitee.io/2019-10-30-es6-chang-yong-te-xing-zong-jie.html)
 ### 5. 数据类型的判断方法
-[JavaScript数据类型判断](https://snaillu.gitee.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
+💡[JavaScript数据类型判断](https://snaillu.gitee.io/2022-04-24-javascript-shu-ju-lei-xing-pan-duan.html)
 ### 6. 继承
-[JavaScript中的继承](https://snaillu.gitee.io/2022-07-16-javascript-zhong-de-ji-cheng.html)
+💡[JavaScript中的继承](https://snaillu.gitee.io/2022-07-16-javascript-zhong-de-ji-cheng.html)
 ### 7. 原型链
-[JavaScript原型与原型链](https://snaillu.gitee.io/2021-09-30-javascript-yuan-xing-yu-yuan-xing-lian.html)
+💡[JavaScript原型与原型链](https://snaillu.gitee.io/2021-09-30-javascript-yuan-xing-yu-yuan-xing-lian.html)
 
 ### 8. 闭包
 `闭包`是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。
