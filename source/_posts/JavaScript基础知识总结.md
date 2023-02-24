@@ -206,7 +206,7 @@ function deepClone(obj) {
 ```
 ### 11. this指向
 [JavaScript中的this](https://snaillu.gitee.io/2022-05-01-javascript-zhong-de-this.html)
-### 12. 箭头函数和普通函数有什么区别
+### 12. 箭头函数与普通函数的区别
 - 没有`this`、`super`、`arguments`及`new.target`绑定，`this`、`super`、`arguments`及`new.target`的值由所在的、最靠近的非箭头函数来决定；
 - 不能被使用`new`调用；
 - 没有原型；
@@ -214,7 +214,10 @@ function deepClone(obj) {
 - 不允许重复的具名参数，传统的函数中参数可以重名。
 
 ### 13. 防抖与节流
-**防抖**：事件持续触发不执行，停止触发指定时间之后才执行一次。
+#### 防抖
+指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行
+常用使用场景：
+- 按钮多次点击（发送验证码按钮、提交按钮、支付按钮等）
 ```js
 /**
  * @fn : 要执行的函数
@@ -231,7 +234,11 @@ function debounce(fn, delay) {
     }
 }
 ```
-**节流**：事件重复触发，不会每次都执行，每间隔一段时间执行一次。
+#### 节流
+指定时间内，函数多次调用只执行一次
+常用使用场景：
+- 浏览器窗口`resize`、`scroll`事件
+- input输入框输入事件
 ```js
 /**
  * @fn : 要执行的函数
@@ -249,6 +256,7 @@ function throttle(fn, delay) {
     }
 }
 ```
+[DEMO](https://codepen.io/snaillu/pen/oNPLRRp?editors=1111)
 ### 14. instanceof原理
 ```js
 function instance_of(left, right) {
