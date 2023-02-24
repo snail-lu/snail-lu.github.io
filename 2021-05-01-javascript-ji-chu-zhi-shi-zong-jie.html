@@ -368,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    2.9k
                 </div>
                 
 
@@ -501,7 +501,7 @@ data<span class="token punctuation">[</span><span class="token number">0</span><
 data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
 data<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="9-事件循环、微任务、宏任务"><a href="#9-事件循环、微任务、宏任务" class="headerlink" title="9. 事件循环、微任务、宏任务"></a>9. 事件循环、微任务、宏任务</h3><p><a href="https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html">JavaScript之Event Loop</a></p>
-<h3 id="10-深拷贝"><a href="#10-深拷贝" class="headerlink" title="10. 深拷贝"></a>10. 深拷贝</h3><p><strong>实现方式一：</strong><br>原理：利用<code>JSON.stringify</code>序列化和<code>JSON.parse</code>反序列化<br>缺点：对象中<code>undefined</code>、<code>function</code>、<code>symbol</code>这三种类型的值会被过滤掉</p>
+<h3 id="10-深拷贝"><a href="#10-深拷贝" class="headerlink" title="10. 深拷贝"></a>10. 深拷贝</h3><p><strong>实现方式一：</strong> <code>JSON.stringify</code>序列化和<code>JSON.parse</code>反序列化<br>缺点：对象中<code>undefined</code>、<code>function</code>、<code>symbol</code>这三种类型的值会被过滤掉</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
   <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">234</span><span class="token punctuation">,</span>
@@ -516,7 +516,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token keyword">const</span> newObj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>实现方式二：</strong><br>原理：利用<code>Object.assign(target, source1, source2)</code><br>缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
+<p><strong>实现方式二：</strong> <code>Object.assign(target, source1, source2)</code><br>缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
   <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">234</span><span class="token punctuation">,</span>
@@ -526,7 +526,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token keyword">const</span> newObj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>实现方式三：</strong><br>原理：利用扩展运算符<br>缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
+<p><strong>实现方式三：</strong> ES6扩展运算符<br>缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
   <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">234</span><span class="token punctuation">,</span>
@@ -536,7 +536,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token keyword">const</span> newObj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token operator">...</span>obj<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>实现方式四：</strong><br>原理：递归</p>
+<p><strong>实现方式四：</strong> 递归</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token comment">//判断拷贝的obj是对象还是数组</span>
   <span class="token keyword">const</span> objClone <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
