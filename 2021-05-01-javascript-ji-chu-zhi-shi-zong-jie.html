@@ -563,7 +563,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <h3 id="13-防抖与节流"><a href="#13-防抖与节流" class="headerlink" title="13. 防抖与节流"></a>13. 防抖与节流</h3><h4 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h4><p>指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行<br>常用使用场景：</p>
 <ul>
-<li>按钮多次点击（发送验证码按钮、提交按钮、支付按钮等）<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
+<li>按钮多次点击（发送验证码按钮、提交按钮、支付按钮等）</li>
+<li>input输入框输入事件<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
  * @fn : 要执行的函数
  * @delay : 执行函数的时间间隔（毫秒）
  */</span> 
@@ -579,7 +580,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h4>指定时间内，函数多次调用只执行一次<br>常用使用场景：</li>
 <li>浏览器窗口<code>resize</code>、<code>scroll</code>事件</li>
-<li>input输入框输入事件<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
+<li>鼠标移动<code>mousemove</code>事件</li>
+<li>上传进度事件</li>
+<li>文档编辑隔一段时间自动保存<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
  * @fn : 要执行的函数
  * @delay : 每次函数的时间间隔
  */</span>  
@@ -594,7 +597,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/oNPLRRp?editors=1111">DEMO</a><h3 id="14-instanceof原理"><a href="#14-instanceof原理" class="headerlink" title="14. instanceof原理"></a>14. instanceof原理</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">instance_of</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<a target="_blank" rel="noopener" href="https://codepen.io/snaillu/pen/oNPLRRp">在线演示DEMO</a><h3 id="14-instanceof原理"><a href="#14-instanceof原理" class="headerlink" title="14. instanceof原理"></a>14. instanceof原理</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">instance_of</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">const</span> <span class="token constant">RP</span> <span class="token operator">=</span> right<span class="token punctuation">.</span>prototype<span class="token punctuation">;</span> <span class="token comment">// 构造函数的原型</span>
   <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
