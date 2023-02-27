@@ -21,6 +21,7 @@ categories:
 - `Object.is()`
 - `Array.isArray()`
 - `isNaN()`
+- `Object.prototype.toString()`
 
 #### typeof
 对一个值使用`typeof`操作符的返回值（返回值类型为字符串）有以下几种：
@@ -92,4 +93,17 @@ console.log(isNaN(undefined))  // true
 console.log(isNaN({})) // true
 console.log(isNaN([])) // false
 console.log(isNaN(null)) // false
+```
+
+#### Object.prototype.toString()
+```js
+Object.prototype.toString.call(1) // "[object Number]"
+Object.prototype.toString.call('hi') // "[object String]"
+Object.prototype.toString.call({a:'hi'}) // "[object Object]"
+Object.prototype.toString.call([1,'a']) // "[object Array]"
+Object.prototype.toString.call(true) // "[object Boolean]"
+Object.prototype.toString.call(() => {}) // "[object Function]"
+Object.prototype.toString.call(null) // "[object Null]"
+Object.prototype.toString.call(undefined) // "[object Undefined]"
+Object.prototype.toString.call(Symbol(1)) // "[object Symbol]"
 ```
