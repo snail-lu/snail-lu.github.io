@@ -414,6 +414,5 @@ console.log(student1); //  {"name":"Mike","age":20}
     3. 使用 event.target 来定位触发事件冒泡的子元素。
 
 
-### 19. Generator（生成器）
-
-### 20. Iterator（迭代器）
+### 19. Generator（生成器）和 Iterator（迭代器）
+[迭代器和生成器](https://snaillu.gitee.io/2021-12-19-shen-ru-li-jie-es6-du-shu-bi-ji.html#toc-heading-51)
