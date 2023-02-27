@@ -218,6 +218,7 @@ function deepClone(obj) {
 指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行
 常用使用场景：
 - 按钮多次点击（发送验证码按钮、提交按钮、支付按钮等）
+- input输入框输入事件
 ```js
 /**
  * @fn : 要执行的函数
@@ -238,7 +239,9 @@ function debounce(fn, delay) {
 指定时间内，函数多次调用只执行一次
 常用使用场景：
 - 浏览器窗口`resize`、`scroll`事件
-- input输入框输入事件
+- 鼠标移动`mousemove`事件
+- 上传进度事件
+- 文档编辑隔一段时间自动保存
 ```js
 /**
  * @fn : 要执行的函数
@@ -256,7 +259,7 @@ function throttle(fn, delay) {
     }
 }
 ```
-[DEMO](https://codepen.io/snaillu/pen/oNPLRRp?editors=1111)
+[在线演示DEMO](https://codepen.io/snaillu/pen/oNPLRRp)
 ### 14. instanceof原理
 ```js
 function instance_of(left, right) {
