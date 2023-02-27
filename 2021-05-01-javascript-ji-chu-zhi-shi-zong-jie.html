@@ -636,7 +636,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myCall</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// this指向调用myCall方法的函数</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span> 
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error, caller must be a function'</span><span class="token punctuation">)</span> 
     <span class="token punctuation">&#125;</span>
     context <span class="token operator">=</span> context <span class="token operator">||</span> window<span class="token punctuation">;</span>
 
