@@ -310,7 +310,7 @@ function instance_of(left, right) {
 Function.prototype.myCall = function(context) {
     // this指向调用myCall方法的函数
     if (typeof this !== 'function') { 
-        throw new TypeError('Error') 
+        throw new TypeError('Error, caller must be a function') 
     }
     context = context || window;
 
