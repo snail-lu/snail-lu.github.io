@@ -8,7 +8,7 @@ tags:
 categories:
 - [读书笔记]
 ---
-### 1.let/const
+### 1.let && const
 `let` 用来声明一个局部变量，用法类似于 `var`，但是它所声明的变量，只在 `let` 声明所在的块级作用域内有效。
 ```js
 {
@@ -19,7 +19,7 @@ console.log(b); // 2
 console.log(a); // ReferenceError: a is not defined
 ```
 
-`const` 用来声明一个只读的常量，作用域与 `let` 相同（声明所在的块级作用域），一旦定义之后不可以修改，不过如果声明的变量如果是引用类型的，可以修改它的属性。
+`const` 用来声明一个只读的常量，作用域与 `let` 相同（声明所在的块级作用域），一旦定义之后不可以修改。不过如果变量值是对象，可以修改它的属性。
 ```js
 const PI = 3.14;
 PI = 3.1415926; // TypeError: invalid assignment to const `PI'
@@ -31,14 +31,16 @@ console.log(PERSON.name); // 'Jack'
 
 ### 2.函数
 - 参数的默认值
+
 ```js
 function log(x, y = 'world'){
     console.log(x, y);
 }
-log('hello');   // "hello","world"
+log('hello');   // "hello" "world"
 ```
 - `rest` 参数  
 `rest` 参数的形式为`...变量名`, 用于获取函数的多余参数，`rest` 参数是一个数组，可以用于替代 `arguments` 对象。
+
 ```js
 // 普通排序写法，使用arguments
 function sortNumbers(){
@@ -49,6 +51,7 @@ function sortNumbers(){
 const sortNumbers = (...numbers) => numbers.sort();
 ```
 - 箭头函数
+
 ```js
 let sum = (num1, num2) => { return num1 + num2 };
 // 或
@@ -56,6 +59,7 @@ let sum = (num1, num2) => num1 + num2;
 ```
 - `this` 在箭头函数中的使用  
 箭头函数体内的 `this` 对象，是定义时所在的对象，不是使用时所在的对象。
+
 ```js
 var user = "Mike";
 let person = {
@@ -76,6 +80,7 @@ person.sayHello();
 
 ### 3.展开操作符
 - 用于函数调用
+
 ```js
 function sum(x, y, z){
     return x + y + z;
@@ -88,16 +93,20 @@ sum(...args);
 ```
 
 - 用于数组字面量
+
 ```js
 let arr1 = [1,2,3];
 let arr2 = [4,5,6];
+
 // es6之前的用法
 let arr3 = arr1.concat(arr2); // [1,2,3,4,5,6]
+
 // 展开操作符用法
-let arr3 = [...arr1,...arr2];
+let arr4 = [...arr1, ...arr2]; // [1,2,3,4,5,6]
 ```
 
-- 对象的展开运算符
+- 用于对象
+
 ```js
 let student = { name:'Tom', age:14 };
 student = { ...student, sex:'male' };
@@ -112,15 +121,22 @@ console.log(str); // "My name is Mike"
 
 ### 5.解构语法
 - 解构数组
+
 ```js
-let arr = ['blue','green','red'];
-let [a,b,c] = arr; // 按照数组序号，一一对应 a='blue',b='green',c='red'
+let arr = ['blue', 'green', 'red'];
+let [a, b, c] = arr;
+console.log(a); // "blue"
+console.log(b); // "green"
+console.log(c); // "red"
 ```
 
 - 解构对象
+
 ```js
-let person = {name:'Jack',age: 20};
-let {name,age} = person; // 与属性名一一对应 name='Jack',age=20
+let person = { name: 'Jack', age: 20 };
+let { name, age } = person;
+console.log(name); // "Jack"
+console.log(age); // 20
 ```
 
 ### 6.类
@@ -144,9 +160,9 @@ Animal.foo(); // Here is a static method
 
 // 派生类
 class Dog extends Animal{
-    constructor(name, age=3,color='black'){
+    constructor(name, age=3, color='black'){
         // 继承父类属性
-        super(name,age);
+        super(name, age);
         this.color = color;
     }
     // 重写shout方法
@@ -160,45 +176,47 @@ dog.shout(); // My name is Bagong, age is 3, color is black
 ```
 
 ### 7.模块
-- 一个模块的导入/导出  
+- 基础的导入/导出  
+
 ```js
+/* ======================= 模块a.js ======================= */
 // 导出
-// module1.js
-function func1(){
+function func1() {
     console.log("this is func1");
 }
 
-export func1; // 使用export导出这个模块
-```
+export func1;
 
-```js
+
+/* ======================= 模块b.js ======================= */
 // 导入
-import { func1 } from './module1.js'; // 使用import导入这个模块（假设两个文件在同级目录下）
+import { func1 } from './a.js';
 ```
 
-- 一个模块的多个导出  
+- 多个导入/导出  
+
 ```js
-// module1.js
+/* ======================= 模块a.js ======================= */
 // 形式1，逐个导出
 export const PI = 3.14; // 导出变量
-export function func1(){ // 导出方法
+export function func1() { // 导出方法
     console.log("this is func1");
 }
-export let person = {name: "Nike"}; // 导出变量
+export let person = { name: "Nike" }; // 导出变量
 
 // 形式2，底部集体导出
 const PI = 3.14;                   
-function func1(){                 
+function func1() {                 
     console.log("this is func1");
 }
-let person = {name: "Nike"};
+let person = { name: "Nike" };
 
-export { PI, func1, person } // 导出的变量或方法都写在这里
-```
+// 导出的变量或方法都写在{}内
+export { PI, func1, person }
 
-```js
+/* ======================= 模块b.js ======================= */
 // 导入方式1，使用对象解构加载
-import { PI,func1,person } from './module1.js';
+import { PI, func1, person } from './a.js';
 
 // 导入方式2，作为一个整体导入
 import * as util from './module1.js';
@@ -206,48 +224,47 @@ console.log(util.PI); // 3.14
 ```
 
 - 模块的默认导出
+
 ```js
-// module1.js
+/* ======================= 模块a.js ======================= */
+// 默认导出
 export default class Person{
     ....
 }
 
-export function func1(){ // 默认导出的同时，也可以定义其他的非默认导出
+// 默认导出的同时，也可以定义其他的非默认导出
+export function func1() {
     ....
 }
-```
 
-```js
-// 导入
-// 导入默认导出的模块不需要使用{}包裹，同时可以在导入处自定义名称 
-import importedPerson, { func1 } from './module1.js';
+/* ======================= 模块b.js ======================= */
+// 导入默认导出的模块不需要使用{}包裹，导入非默认导出的需要使用{}
+import importedPerson, { func1 } from './a.js';
 ```
 
 - 导入导出重命名
 ```js
-// module1.js
+/* ======================= 导出重命名 ======================= */
 function sayHi() {
     console.log('Hi');
 }
-// 使用as重命名导出
+// 使用as导出重命名
 export { sayHi as sayHello };
 
 // 导入文件时只能通过sayHello导入
-import { sayHello } from './module1.js'; 
-```
+import { sayHello } from './a.js'; 
 
-```js
-// 导出模块文件module1.js
+/* ======================= 导入重命名 ======================= */
 export function sayHi() {
     console.log('Hi');
 }
 
 // 导入时重命名
-import { sayHi as sayHello } from './module1.js';
-sayHello(); //只能调用sayHello,无法使用sayHi
+import { sayHi as sayHello } from './a.js';
+sayHello(); // 只能调用sayHello，无法使用sayHi
 ```
 
-### 8.Set/Map
+### 8.Set && Map
 #### Set
 `Set`是不包含重复值的有序列表，常用来检查某个值是否存在。  
 ##### Set的方法
@@ -344,8 +361,8 @@ map.forEach(function(value, key, ownerMap){
 });
 
 // 输出结果
-name,Nicholas
-true
-age, 20
-true
+// name, Nicholas
+// true
+// age, 20
+// true
 ```
