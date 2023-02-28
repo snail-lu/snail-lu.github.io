@@ -361,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-27
+                    2023-02-28
                 </div>
                 
 
@@ -393,7 +393,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-let-const"><a href="#1-let-const" class="headerlink" title="1.let/const"></a>1.let/const</h3><p><code>let</code> 用来声明一个局部变量，用法类似于 <code>var</code>，但是它所声明的变量，只在 <code>let</code> 声明所在的块级作用域内有效。</p>
+                <h3 id="1-let-amp-amp-const"><a href="#1-let-amp-amp-const" class="headerlink" title="1.let &amp;&amp; const"></a>1.let &amp;&amp; const</h3><p><code>let</code> 用来声明一个局部变量，用法类似于 <code>var</code>，但是它所声明的变量，只在 <code>let</code> 声明所在的块级作用域内有效。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
     <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
@@ -401,7 +401,7 @@
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: a is not defined</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><code>const</code> 用来声明一个只读的常量，作用域与 <code>let</code> 相同（声明所在的块级作用域），一旦定义之后不可以修改，不过如果声明的变量如果是引用类型的，可以修改它的属性。</p>
+<p><code>const</code> 用来声明一个只读的常量，作用域与 <code>let</code> 相同（声明所在的块级作用域），一旦定义之后不可以修改。不过如果变量值是对象，可以修改它的属性。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
 <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.1415926</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: invalid assignment to const `PI'</span>
 
@@ -410,21 +410,32 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">PERSON</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Jack'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="2-函数"><a href="#2-函数" class="headerlink" title="2.函数"></a>2.函数</h3><ul>
-<li>参数的默认值<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<li>参数的默认值</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-<span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// "hello","world"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><code>rest</code> 参数<br><code>rest</code> 参数的形式为<code>...变量名</code>, 用于获取函数的多余参数，<code>rest</code> 参数是一个数组，可以用于替代 <code>arguments</code> 对象。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 普通排序写法，使用arguments</span>
+<span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// "hello" "world"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>rest</code> 参数<br><code>rest</code> 参数的形式为<code>...变量名</code>, 用于获取函数的多余参数，<code>rest</code> 参数是一个数组，可以用于替代 <code>arguments</code> 对象。</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 普通排序写法，使用arguments</span>
 <span class="token keyword">function</span> <span class="token function">sortNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
 <span class="token comment">// 使用rest参数</span>
-<span class="token keyword">const</span> <span class="token function-variable function">sortNumbers</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>numbers</span><span class="token punctuation">)</span> <span class="token operator">=></span> numbers<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>箭头函数<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">sortNumbers</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>numbers</span><span class="token punctuation">)</span> <span class="token operator">=></span> numbers<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>箭头函数</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token comment">// 或</span>
-<span class="token keyword">let</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token operator">=></span> num1 <span class="token operator">+</span> num2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-<li><code>this</code> 在箭头函数中的使用<br>箭头函数体内的 <code>this</code> 对象，是定义时所在的对象，不是使用时所在的对象。<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token string">"Mike"</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token operator">=></span> num1 <span class="token operator">+</span> num2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>this</code> 在箭头函数中的使用<br>箭头函数体内的 <code>this</code> 对象，是定义时所在的对象，不是使用时所在的对象。</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token string">"Mike"</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
     <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token string">"Tom"</span><span class="token punctuation">,</span>
     <span class="token function-variable function">sayHello</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -438,10 +449,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 person<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment">// "Mike"</span>
-<span class="token comment">// "Tom"  </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
+<span class="token comment">// "Tom"  </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="3-展开操作符"><a href="#3-展开操作符" class="headerlink" title="3.展开操作符"></a>3.展开操作符</h3><ul>
-<li><p>用于函数调用</p>
+<li>用于函数调用</li>
+</ul>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> x <span class="token operator">+</span> y <span class="token operator">+</span> z<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
@@ -449,30 +461,47 @@ person<span class="token punctuation">.</span><span class="token function">sayHe
 <span class="token comment">// ES6之前的用法</span>
 <span class="token function">sum</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>  
 <span class="token comment">// 使用展开操作符：</span>
-<span class="token function">sum</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>用于数组字面量</p>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>用于数组字面量</li>
+</ul>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
 <span class="token comment">// es6之前的用法</span>
 <span class="token keyword">let</span> arr3 <span class="token operator">=</span> arr1<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1,2,3,4,5,6]</span>
+
 <span class="token comment">// 展开操作符用法</span>
-<span class="token keyword">let</span> arr3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr1<span class="token punctuation">,</span><span class="token operator">...</span>arr2<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>对象的展开运算符</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> student <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">14</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-student <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token operator">...</span>student<span class="token punctuation">,</span> <span class="token literal-property property">sex</span><span class="token operator">:</span><span class="token string">'male'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<span class="token keyword">let</span> arr4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr1<span class="token punctuation">,</span> <span class="token operator">...</span>arr2<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// [1,2,3,4,5,6]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>用于对象</li>
 </ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> student <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span><span class="token number">14</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+student <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token operator">...</span>student<span class="token punctuation">,</span> <span class="token literal-property property">sex</span><span class="token operator">:</span><span class="token string">'male'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h3 id="4-模板字符串"><a href="#4-模板字符串" class="headerlink" title="4.模板字符串"></a>4.模板字符串</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">'Mike'</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">My name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>name<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "My name is Mike"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="5-解构语法"><a href="#5-解构语法" class="headerlink" title="5.解构语法"></a>5.解构语法</h3><ul>
-<li><p>解构数组</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'blue'</span><span class="token punctuation">,</span><span class="token string">'green'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">;</span> <span class="token comment">// 按照数组序号，一一对应 a='blue',b='green',c='red'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li><p>解构对象</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'Jack'</span><span class="token punctuation">,</span><span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> <span class="token punctuation">&#123;</span>name<span class="token punctuation">,</span>age<span class="token punctuation">&#125;</span> <span class="token operator">=</span> person<span class="token punctuation">;</span> <span class="token comment">// 与属性名一一对应 name='Jack',age=20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>解构数组</li>
 </ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'blue'</span><span class="token punctuation">,</span> <span class="token string">'green'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "blue"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "green"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "red"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>解构对象</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Jack'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">&#123;</span> name<span class="token punctuation">,</span> age <span class="token punctuation">&#125;</span> <span class="token operator">=</span> person<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Jack"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="6-类"><a href="#6-类" class="headerlink" title="6.类"></a>6.类</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">&#123;</span>
     <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span>age</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
@@ -492,9 +521,9 @@ Animal<span class="token punctuation">.</span><span class="token function">foo</
 
 <span class="token comment">// 派生类</span>
 <span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span><span class="token punctuation">&#123;</span>
-    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>color<span class="token operator">=</span><span class="token string">'black'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'black'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token comment">// 继承父类属性</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>color <span class="token operator">=</span> color<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token comment">// 重写shout方法</span>
@@ -507,77 +536,89 @@ Animal<span class="token punctuation">.</span><span class="token function">foo</
 dog<span class="token punctuation">.</span><span class="token function">shout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// My name is Bagong, age is 3, color is black</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="7-模块"><a href="#7-模块" class="headerlink" title="7.模块"></a>7.模块</h3><ul>
-<li>一个模块的导入/导出  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出</span>
-<span class="token comment">// module1.js</span>
-<span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<li>基础的导入/导出  </li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* ======================= 模块a.js ======================= */</span>
+<span class="token comment">// 导出</span>
+<span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"this is func1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">export</span> func1<span class="token punctuation">;</span> <span class="token comment">// 使用export导出这个模块</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导入</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> func1 <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span> <span class="token comment">// 使用import导入这个模块（假设两个文件在同级目录下）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">export</span> func1<span class="token punctuation">;</span>
+
+
+<span class="token comment">/* ======================= 模块b.js ======================= */</span>
+<span class="token comment">// 导入</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> func1 <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./a.js'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>一个模块的多个导出  <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// module1.js</span>
+<li>多个导入/导出  </li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* ======================= 模块a.js ======================= */</span>
 <span class="token comment">// 形式1，逐个导出</span>
 <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span> <span class="token comment">// 导出变量</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 导出方法</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 导出方法</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"this is func1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-<span class="token keyword">export</span> <span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Nike"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 导出变量</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Nike"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 导出变量</span>
 
 <span class="token comment">// 形式2，底部集体导出</span>
 <span class="token keyword">const</span> <span class="token constant">PI</span> <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>                   
-<span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                 
+<span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                 
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"this is func1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Nike"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Nike"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token punctuation">&#123;</span> <span class="token constant">PI</span><span class="token punctuation">,</span> func1<span class="token punctuation">,</span> person <span class="token punctuation">&#125;</span> <span class="token comment">// 导出的变量或方法都写在这里</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导入方式1，使用对象解构加载</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> <span class="token constant">PI</span><span class="token punctuation">,</span>func1<span class="token punctuation">,</span>person <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span>
+<span class="token comment">// 导出的变量或方法都写在&#123;&#125;内</span>
+<span class="token keyword">export</span> <span class="token punctuation">&#123;</span> <span class="token constant">PI</span><span class="token punctuation">,</span> func1<span class="token punctuation">,</span> person <span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* ======================= 模块b.js ======================= */</span>
+<span class="token comment">// 导入方式1，使用对象解构加载</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> <span class="token constant">PI</span><span class="token punctuation">,</span> func1<span class="token punctuation">,</span> person <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./a.js'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 导入方式2，作为一个整体导入</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> util <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>util<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3.14</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>util<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3.14</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>模块的默认导出<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// module1.js</span>
+<li>模块的默认导出</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* ======================= 模块a.js ======================= */</span>
+<span class="token comment">// 默认导出</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">&#123;</span>
     <span class="token operator">...</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 默认导出的同时，也可以定义其他的非默认导出</span>
+<span class="token comment">// 默认导出的同时，也可以定义其他的非默认导出</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token operator">...</span><span class="token punctuation">.</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导入</span>
-<span class="token comment">// 导入默认导出的模块不需要使用&#123;&#125;包裹，同时可以在导入处自定义名称 </span>
-<span class="token keyword">import</span> importedPerson<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> func1 <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* ======================= 模块b.js ======================= */</span>
+<span class="token comment">// 导入默认导出的模块不需要使用&#123;&#125;包裹，导入非默认导出的需要使用&#123;&#125;</span>
+<span class="token keyword">import</span> importedPerson<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> func1 <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./a.js'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>导入导出重命名<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// module1.js</span>
+<li>导入导出重命名<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* ======================= 导出重命名 ======================= */</span>
 <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
-<span class="token comment">// 使用as重命名导出</span>
+<span class="token comment">// 使用as导出重命名</span>
 <span class="token keyword">export</span> <span class="token punctuation">&#123;</span> sayHi <span class="token keyword">as</span> sayHello <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 导入文件时只能通过sayHello导入</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> sayHello <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出模块文件module1.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> sayHello <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./a.js'</span><span class="token punctuation">;</span> 
+
+<span class="token comment">/* ======================= 导入重命名 ======================= */</span>
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
 <span class="token comment">// 导入时重命名</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> sayHi <span class="token keyword">as</span> sayHello <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span>
-<span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//只能调用sayHello,无法使用sayHi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="8-Set-Map"><a href="#8-Set-Map" class="headerlink" title="8.Set/Map"></a>8.Set/Map</h3><h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p><code>Set</code>是不包含重复值的有序列表，常用来检查某个值是否存在。  </p>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> sayHi <span class="token keyword">as</span> sayHello <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./a.js'</span><span class="token punctuation">;</span>
+<span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 只能调用sayHello，无法使用sayHi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="8-Set-amp-amp-Map"><a href="#8-Set-amp-amp-Map" class="headerlink" title="8.Set &amp;&amp; Map"></a>8.Set &amp;&amp; Map</h3><h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p><code>Set</code>是不包含重复值的有序列表，常用来检查某个值是否存在。  </p>
 <h5 id="Set的方法"><a href="#Set的方法" class="headerlink" title="Set的方法"></a>Set的方法</h5><ul>
 <li><code>add()</code>: 添加值</li>
 <li><code>has()</code>: 测试值是否存在</li>
@@ -661,10 +702,10 @@ map<span class="token punctuation">.</span><span class="token function">forEach<
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 输出结果</span>
-name<span class="token punctuation">,</span>Nicholas
-<span class="token boolean">true</span>
-age<span class="token punctuation">,</span> <span class="token number">20</span>
-<span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// name, Nicholas</span>
+<span class="token comment">// true</span>
+<span class="token comment">// age, 20</span>
+<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
