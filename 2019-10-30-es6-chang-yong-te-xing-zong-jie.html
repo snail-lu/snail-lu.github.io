@@ -623,41 +623,41 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code>add()</code>: 添加值</li>
 <li><code>has()</code>: 测试值是否存在</li>
 <li><code>delete()</code>: 删除单个值</li>
-<li><code>clear()</code>: 清除所有值</li>
+<li><code>clear()</code>: 清空所有值</li>
 </ul>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//2 </span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 2 </span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
 
 set<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1</span>
 
 set<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>set<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="Set上的forEach方法"><a href="#Set上的forEach方法" class="headerlink" title="Set上的forEach方法"></a>Set上的forEach方法</h5><p>与数组上的<code>forEach</code>方法类似，接收一个回调函数，回调函数接收三个参数：</p>
 <ol>
 <li>Set中下个位置的值</li>
-<li>Set中下个位置的值</li>
+<li>同上</li>
 <li>目标Set自身</li>
 </ol>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 set<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> key<span class="token punctuation">,</span> ownerSet</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token operator">+</span><span class="token string">", "</span><span class="token operator">+</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ownerSet <span class="token operator">===</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 输出结果</span>
-<span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span>
-<span class="token boolean">true</span>
-<span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span> 
-<span class="token boolean">true</span>
-<span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span> 
-<span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// "1, 1"</span>
+<span class="token comment">// true</span>
+<span class="token comment">// "2, 2" </span>
+<span class="token comment">// true</span>
+<span class="token comment">// "3, 3" </span>
+<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="利用Set为数组去重"><a href="#利用Set为数组去重" class="headerlink" title="利用Set为数组去重"></a>利用Set为数组去重</h5><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">eliminateDuplicates</span><span class="token punctuation">(</span><span class="token parameter">items</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>items<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -667,13 +667,13 @@ set<span class="token punctuation">.</span><span class="token function">forEach<
 
 <span class="token keyword">let</span> noDuplicates <span class="token operator">=</span> <span class="token function">eliminateDuplicates</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>noDuplicates<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// [1,2,3,4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><code>Map</code>类型是键值对的<code>有序列表</code>，常用作缓存，存储数据以便以后快速检索。<code>Map</code>的<code>键</code>和<code>值</code>都可以是<code>任意类型</code>。</p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><code>Map</code>类型是键值对的<code>有序列表</code>，常用作缓存，存储数据以便后续快速检索。<code>Map</code>的<code>键</code>和<code>值</code>都可以是<code>任意类型</code>。</p>
 <h5 id="Map的方法"><a href="#Map的方法" class="headerlink" title="Map的方法"></a>Map的方法</h5><ul>
-<li><code>set(key,value)</code>: 给<code>Map</code>添加项 </li>
+<li><code>set(key, value)</code>: 给<code>Map</code>添加项 </li>
 <li><code>get(key)</code>: 提取键值对应的值</li>
 <li><code>has(key)</code>：判断键是否存在于<code>Map</code>中</li>
 <li><code>delete(key)</code>：移除Map中的键以及对应的值</li>
-<li><code>clear()</code>： 移除Map中所有的键与值</li>
+<li><code>clear()</code>： 清空Map中所有的键与值</li>
 </ul>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"Jack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -689,7 +689,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 map<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="Map上的forEach方法"><a href="#Map上的forEach方法" class="headerlink" title="Map上的forEach方法"></a>Map上的forEach方法</h5><p>接收一个能接收三个参数的回调函数：  </p>
+<h5 id="Map上的forEach方法"><a href="#Map上的forEach方法" class="headerlink" title="Map上的forEach方法"></a>Map上的forEach方法</h5><p>回调函数接收三个参数：  </p>
 <ol>
 <li>Map中下个位置的值</li>
 <li>该值所对应的键</li>
@@ -702,9 +702,9 @@ map<span class="token punctuation">.</span><span class="token function">forEach<
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 输出结果</span>
-<span class="token comment">// name, Nicholas</span>
+<span class="token comment">// "name, Nicholas"</span>
 <span class="token comment">// true</span>
-<span class="token comment">// age, 20</span>
+<span class="token comment">// "age, 20"</span>
 <span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
