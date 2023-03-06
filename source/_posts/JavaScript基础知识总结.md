@@ -12,7 +12,7 @@ categories:
 ### 1. 作用域和作用域链
 **作用域**：变量和函数的有效访问范围。分为`全局作用域`、`函数作用域`和`块作用域`。
 **作用域链**：当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的**变量对象**构成的链表就叫做`作用域链`。
-💡 [变量对象](https://tsejx.github.io/javascript-guidebook/core-modules/executable-code-and-execution-contexts/execution/variable-object/)：JavaScript执行一段可执行代码时，会创建对应的执行上下文，变量对象是与 执行上下文 相关的数据作用域，存储了在上下文中定义的 `变量` 和 `函数声明`。
+💡 [变量对象](https://tsejx.github.io/javascript-guidebook/core-modules/executable-code-and-execution-contexts/execution/variable-object/)：JavaScript执行一段可执行代码时，会创建对应的执行上下文，变量对象是与 执行上下文 相关的数据作用域，存储了在上下文中定义的 `变量` 和 `函数`。
 ### 2. Promise
 **Promise是什么**
 `Promise` 是 `ES6` 新增的语法，是一种异步编程的一种解决方案，`Promise` 本质上是一个绑定了回调的对象。 `Promise` 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。`Promise` 可以看作是一个状态机，它有三种状态：`pending`、`fulfilled`和`rejected`，初始状态是 `pending`，可以通过函数 `resolve()` 把状态变为 `fulfilled`，或者通过函数 `reject()` 把状态变为 `rejected`，状态一经改变就不能再次变化。
