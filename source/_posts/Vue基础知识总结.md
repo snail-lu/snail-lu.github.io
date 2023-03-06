@@ -242,6 +242,7 @@ Vue对数组的7个方法`push`、`pop`、`shift`、`unshift`、`splice`、`sort
   - `v-if` 当值为 `false` 时内部指令不会执行，具有阻断功能，很多情况下使用`v-if`替代`v-show`
   - 合理使用路由懒加载、异步组件
   - 对于一个巨大的对象或数组数据，如果确信该数据不会修改，使用`Object.freeze`冻结数据，该数据不会被vue监听，能大幅提升性能。
+  - 抽离公用代码和公共组件
 - 用户体验
   - `app-skeleton` 骨架屏
   - `PWA` 与 `Service worker`实现离线访问和后台同步
