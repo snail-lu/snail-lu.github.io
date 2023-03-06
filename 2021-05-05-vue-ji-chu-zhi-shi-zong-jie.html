@@ -369,7 +369,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-02
+                    2023-03-06
                 </div>
                 
 
@@ -734,7 +734,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <p>由上，可以总结出vue初始化的流程如下：</p>
 <ol>
 <li>处理组件配置项，合并options后挂载到 <code>vm.$options</code></li>
-<li>调用一些初始化函数: <code>initLifecycle</code> 、<code>initEvents</code>、<code>initRender</code></li>
+<li>调用一些初始化函数: <code>initLifecycle</code>(初始化生命周期) 、<code>initEvents</code>(初始化事件)、<code>initRender</code>(初始化渲染函数)</li>
 <li>触发 <code>beforeCreate</code> 生命周期钩子</li>
 <li>调用另外一些初始化函数: <code>initInjections</code> 、<code>initState</code>、<code>initProvide</code></li>
 <li>触发 <code>created</code> 生命周期钩子</li>
