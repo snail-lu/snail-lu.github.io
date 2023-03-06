@@ -325,7 +325,7 @@ Vue.prototype._init = function (options?: Object) {
 ```
 由上，可以总结出vue初始化的流程如下：
 1. 处理组件配置项，合并options后挂载到 `vm.$options`
-2. 调用一些初始化函数: `initLifecycle` 、`initEvents`、`initRender`
+2. 调用一些初始化函数: `initLifecycle`(初始化生命周期) 、`initEvents`(初始化事件)、`initRender`(初始化渲染函数)
 3. 触发 `beforeCreate` 生命周期钩子
 4. 调用另外一些初始化函数: `initInjections` 、`initState`、`initProvide`
 5. 触发 `created` 生命周期钩子
