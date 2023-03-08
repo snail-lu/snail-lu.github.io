@@ -372,7 +372,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.6k
                 </div>
                 
 
@@ -521,6 +521,17 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">const</span> canvasHeight <span class="token operator">=</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>innerHeight <span class="token operator">*</span> devicePixelRatio<span class="token punctuation">)</span> <span class="token operator">/</span> devicePixelRatio<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 renderer<span class="token punctuation">.</span><span class="token function">setSize</span><span class="token punctuation">(</span>innerWidth<span class="token punctuation">,</span> canvasHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置渲染区域尺寸</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
+<h3 id="6-长列表优化"><a href="#6-长列表优化" class="headerlink" title="6. 长列表优化"></a>6. 长列表优化</h3><ul>
+<li>时间分片（适用于简单dom）<ul>
+<li>按照一定的时间间隔来分批渲染数据，避免数据同时一次性插入过多dom导致页面卡顿，常用的实现是通过<code>requestAnimationFrame</code>和<code>DocumentFragment</code>来间歇性的渲染dom</li>
+</ul>
+</li>
+<li>虚拟列表（适用于复杂dom）<ul>
+<li>只对可见区域进行渲染，对非可见区域中的数据利用等高的占位元素来替代，从而减少页面中的DOM节点数量，以提升渲染速度</li>
+</ul>
+</li>
+</ul>
+<p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903982742110216">「前端进阶」高性能渲染十万条数据(虚拟列表)</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903938894872589">「前端进阶」高性能渲染十万条数据(时间分片)</a></p>
 
                 
             </div>
@@ -961,7 +972,7 @@ renderer<span class="token punctuation">.</span><span class="token function">set
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78.9k</span>&nbsp;字
+                class="white-color">81.7k</span>&nbsp;字
             
             
             

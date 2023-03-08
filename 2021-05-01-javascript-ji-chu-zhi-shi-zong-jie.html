@@ -368,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    3.5k
                 </div>
                 
 
@@ -753,6 +753,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">const</span> newNums2 <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="纯函数的价值"><a href="#纯函数的价值" class="headerlink" title="纯函数的价值"></a>纯函数的价值</h4><p>纯函数非常<strong>靠谱</strong>，执行一个纯函数你不用担心它会干什么坏事，它不会产生不可预料的行为，也不会对外部产生影响。虽然我们的程序不可避免的会产生副作用，比如 HTTP 调用、IO 操作等，但尽可能多的地方使用纯函数将大大提高程序的可读性、可调试性和可测试性，代码重构时也不必担心没注意到的副作用而搞乱了整个应用。<br>纯函数在函数式编程中被大量使用，而且诸如 ReactJS 和 Redux 等优质的库都要求使用纯函数。<br>正确地使用纯函数可以产生更加高质量的代码，并且也是一种更加干净的编码方式。</p>
+<h3 id="21-Ajax、Axios和fetch的区别"><a href="#21-Ajax、Axios和fetch的区别" class="headerlink" title="21. Ajax、Axios和fetch的区别"></a>21. Ajax、Axios和fetch的区别</h3><ul>
+<li><code>Ajax</code>是指一种无需刷新页面即可向服务器请求数据的技术。核心是<code>XMLHttpRequest对象</code>（简称<code>XHR</code>）。  </li>
+<li><code>Axios</code>是通过 <code>Promise</code> 实现 <code>XHR</code> 封装的 <code>JavaScript</code> 库，在浏览器和<code>Node.js</code>环境中都可以运行。  </li>
+<li><code>fetch</code> 是 <code>JavaScript</code> 原生库，是<code>Ajax</code>的替代方案，没有使用XMLHttpRequest对象。只可以在浏览器上使用。</li>
+</ul>
 
                 
             </div>
@@ -1205,7 +1210,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78.9k</span>&nbsp;字
+                class="white-color">81.7k</span>&nbsp;字
             
             
             

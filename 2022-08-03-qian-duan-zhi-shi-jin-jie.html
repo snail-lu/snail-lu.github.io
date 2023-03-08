@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Emmet常用语法总结, Snail-Lu">
+    <meta name="keywords" content="前端知识进阶, Snail-Lu">
     <meta name="description" content="基于hexo搭建的个人博客站点，用于记录日常随笔/笔记/DEMO等，无任何商业用途。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Emmet常用语法总结 | Snail-Lu</title>
+    <title>前端知识进阶 | Snail-Lu</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -204,12 +204,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Emmet常用语法总结</h1>
+                    <h1 class="description center-align post-title">前端知识进阶</h1>
                 </div>
             </div>
         </div>
@@ -325,16 +325,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/Emmet/">
-                                <span class="chip bg-color">Emmet</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -345,8 +337,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                随笔
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                前端进阶
                             </a>
                         
                     </div>
@@ -358,7 +350,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-02
+                    2022-08-03
                 </div>
                 
 
@@ -372,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    655
+                    2.5k
                 </div>
                 
 
@@ -397,129 +389,147 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><blockquote>
-<p>Emmet is a web-developer’s toolkit that can greatly improve your HTML &amp; CSS workflow.</p>
-</blockquote>
-<p><code>VS Code</code>编辑器默认支持<code>Emmet</code>语法。</p>
-<h3 id="一、HTML缩写"><a href="#一、HTML缩写" class="headerlink" title="一、HTML缩写"></a>一、HTML缩写</h3><h4 id="嵌套运算符"><a href="#嵌套运算符" class="headerlink" title="嵌套运算符"></a>嵌套运算符</h4><p>常用嵌套运算符有：<code>&gt;</code>、<code>+</code>、<code>^</code>、<code>*</code>、<code>()</code></p>
-<h5 id="逐级向下生成嵌套的元素：-gt"><a href="#逐级向下生成嵌套的元素：-gt" class="headerlink" title="逐级向下生成嵌套的元素：&gt;"></a>逐级向下生成嵌套的元素：<code>&gt;</code></h5><p>使用示例：  </p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">div>ul>li<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="生成同级相邻的元素："><a href="#生成同级相邻的元素：" class="headerlink" title="生成同级相邻的元素：+"></a>生成同级相邻的元素：<code>+</code></h5><p>使用示例：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">div+p+bq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h5 id="向上一个层级："><a href="#向上一个层级：" class="headerlink" title="向上一个层级：^"></a>向上一个层级：<code>^</code></h5><p>与<code>&gt;</code>作用效果刚好相反，可以连用。使用示例：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">div>p>span+em^p>a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="生成多个重复元素："><a href="#生成多个重复元素：" class="headerlink" title="生成多个重复元素：*"></a>生成多个重复元素：<code>*</code></h5><p>使用示例：</p>
-<pre class="line-numbers language-emmet" data-language="emmet"><code class="language-emmet">ul&gt;li*5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="改变元素的分组结合顺序："><a href="#改变元素的分组结合顺序：" class="headerlink" title="改变元素的分组结合顺序：()"></a>改变元素的分组结合顺序：<code>()</code></h5><p>使用示例：</p>
-<pre class="line-numbers language-emmet" data-language="emmet"><code class="language-emmet">div&gt;(header&gt;ul&gt;li*2&gt;a)+footer&gt;p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="属性运算符"><a href="#属性运算符" class="headerlink" title="属性运算符"></a>属性运算符</h4><h5 id="给元素设置id和class"><a href="#给元素设置id和class" class="headerlink" title="给元素设置id和class"></a>给元素设置id和class</h5><p>使用示例：</p>
-<pre class="line-numbers language-emmet" data-language="emmet"><code class="language-emmet">div#header+div.page+div#footer.class1.class2.class3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>class1 class2 class3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="设置其他属性"><a href="#设置其他属性" class="headerlink" title="设置其他属性"></a>设置其他属性</h5><p>属性值中没有空格的时候可以不用输引号。使用示例：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">input[type=text placeholder=请输入用户名]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">pleceholer</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>请输入用户名<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h5 id="自动编号："><a href="#自动编号：" class="headerlink" title="自动编号：$"></a>自动编号：<code>$</code></h5><p>使用示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 示例1:
-ul&gt;li.item$*5
-
-&#x2F;&#x2F; 示例2：指定最小序号
-ul&gt;li.item$@3*5
-
-&#x2F;&#x2F; 示例3：降序
-ul&gt;li.item$@-*5
-
-&#x2F;&#x2F; 示例4：指定降序最小序号
-ul&gt;li.item$@-3*5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 示例1 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-
-<span class="token comment">&lt;!-- 其他输出结果省略 --></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="元素内插入文本："><a href="#元素内插入文本：" class="headerlink" title="元素内插入文本：{}"></a>元素内插入文本：<code>&#123;&#125;</code></h5><p>使用示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">a&#123;Click me&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>输出为：</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="“Lorem-Ipsum”生成器"><a href="#“Lorem-Ipsum”生成器" class="headerlink" title="“Lorem Ipsum”生成器"></a>“Lorem Ipsum”生成器</h4><p>随机文本填充，使用示例：  </p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 示例1：默认会生成一段30个单词的文本
-lorem
-
-&#x2F;&#x2F; 示例2：指定文本中单词数
-lorem100
-
-&#x2F;&#x2F; 示例3：重复生成
-ul&gt;li&gt;lorem10
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="二、CSS缩写"><a href="#二、CSS缩写" class="headerlink" title="二、CSS缩写"></a>二、CSS缩写</h3><h4 id="属性缩写"><a href="#属性缩写" class="headerlink" title="属性缩写"></a>属性缩写</h4><pre class="line-numbers language-none"><code class="language-none">m10 --&gt; margin: 10px;
-m10-20 --&gt; margin: 10px 20px;
-m-10--20 --&gt; margin: -10px -20px;
-mr10 --&gt; margin-right: 10px;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="常用别名"><a href="#常用别名" class="headerlink" title="常用别名"></a>常用别名</h4><pre class="line-numbers language-none"><code class="language-none">p --&gt; %
-e --&gt; em
-x --&gt; ex
-
-&#x2F;&#x2F; 示例
-w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="色值"><a href="#色值" class="headerlink" title="色值"></a>色值</h4><pre class="line-numbers language-none"><code class="language-none">#1 --&gt; #111111
-#e0 --&gt; #e0e0e0
-#fc0 --&gt; #ffcc00<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="important"><a href="#important" class="headerlink" title="!important"></a>!important</h4><pre class="line-numbers language-none"><code class="language-none">! --&gt; !important<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="参考文档及网站链接"><a href="#参考文档及网站链接" class="headerlink" title="参考文档及网站链接"></a>参考文档及网站链接</h3><p><a target="_blank" rel="noopener" href="https://docs.emmet.io/">Emmet Documentation</a>  </p>
-
+                <h3 id="1-SPA"><a href="#1-SPA" class="headerlink" title="1. SPA"></a>1. SPA</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><code>SPA</code> 即 <code>single page web application</code>，单页Web应用，就是只有一个HTML文件的应用，所有的内容都是在这个页面中通过JS动态更新呈现的。<br>典型编写SPA的前端框架：React、Angular、Vue。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>有良好的交互体验,不会重新加载整个网页, 只是局部更新</li>
+<li>前后端分离开发,前端负责页面呈现和交互, 后端负责数据</li>
+<li>减轻服务器压力,只用处理数据不用处理界面</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>SEO不够友好：只有一个界面, 无法针对不同的内容编写不同的SEO信息</li>
+<li>首次加载速度慢：SPA单页应用通常首次加载页面时就会将相应的HTML、JavaScript、CSS文件全部加载，通常可以通过采取缓存措施以及懒加载即按需加载组件的方式来优化。<h3 id="2-微前端"><a href="#2-微前端" class="headerlink" title="2. 微前端"></a>2. 微前端</h3>一种由独立交付的多个前端应用组成整体的架构风格。具体的，将前端应用分解成一些更小、更简单的能够独立开发、测试、部署的小块，而在用户看来仍然是内聚的单个产品。<br>将庞大的整体拆成可控的小块，并明确它们之间的依赖关系。关键优势在于：  </li>
+<li>代码库更小，更内聚、可维护性更高</li>
+<li>松耦合、自治的团队可扩展性更好</li>
+<li>增量升级，独立部署，重写部分前端功能成为了可能</li>
+</ul>
+<p>实现中的关键问题：  </p>
+<ul>
+<li><p>多个 Bundle 如何集成？<br>微前端架构中一般会有个容器应用（container application）将各子应用集成起来。集成方式分3类：  </p>
+<ul>
+<li>服务端集成：如 SSR 拼装模板</li>
+<li>构建时集成：如 Code Splitting</li>
+<li>运行时集成：如通过 iframe、JS、Web Components 等方式</li>
+</ul>
+</li>
+<li><p>子应用之间怎样隔离影响？</p>
+<ul>
+<li>样式隔离：开发规范（如BEM）、CSS 预处理（如SASS）、模块定义（如CSS Module）、用 JS 来写（CSS-in-JS）、以及shadow DOM特性</li>
+<li>作用域隔离：各种模块定义（如ES Module、AMD、Common Module、UMD）</li>
+</ul>
+</li>
+<li><p>公共资源如何复用？</p>
+<ul>
+<li>比较推荐的模式是开源软件的管理模式：所有人都能补充公共资源，但要有人（或一个团队）负责监管，以保证质量、一致性以及正确性</li>
+</ul>
+</li>
+<li><p>子应用间怎样通信？</p>
+<ul>
+<li>自定义事件</li>
+<li>路由</li>
+<li>props传递数据等</li>
+</ul>
+</li>
+<li><p>如何测试？<br>每个子应用都应该有自己的全套测试方案，特殊之处在于，除单元测试、功能测试外，还要有集成测试：</p>
+<ul>
+<li>集成测试：保证子应用间集成的正确性，比如跨子应用的交互操作</li>
+<li>功能测试：保证页面组装的正确性</li>
+<li>单元测试：保证底层业务逻辑和渲染逻辑的正确性</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-服务端渲染-SSR"><a href="#3-服务端渲染-SSR" class="headerlink" title="3. 服务端渲染 SSR"></a>3. 服务端渲染 SSR</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p><strong>服务端渲染（SSR）</strong>：服务端将HTML文本组装好，并返回给浏览器，这个HTML文本被浏览器解析之后，不需要经过 JavaScript 脚本的执行，即可直接构建出希望的 DOM 树并展示到页面中，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>更快的首屏加载速度：因为浏览器不需要等待数据加载和渲染，因此可以提高用户的首屏体验。</li>
+<li>更好的搜索引擎优化（SEO）：因为搜索引擎可以更容易地爬取完整的HTML内容，因此SSR可以更好地改善网站的SEO。</li>
+<li>更好的用户体验：因为页面的内容在服务器端渲染，因此用户可以更快地看到完整的页面，从而提高用户的使用体验。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>增加服务器的负载：因为服务器需要执行渲染任务，因此可能会增加服务器的负载。</li>
+<li>更复杂的环境技术：因为需要涉及到服务器端代码，因此需要更复杂的技术环境。</li>
+<li>更高的开发复杂度：因为需要在服务器端和客户端同时开发，因此可能会更高的开发复杂度。</li>
+</ul>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ul>
+<li>Vue项目：<a target="_blank" rel="noopener" href="https://www.nuxtjs.cn/guide/installation">Nuxt.js</a>、<a target="_blank" rel="noopener" href="https://v2.ssr.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93-ssr">Vue SSR指南</a></li>
+<li>React项目：<a target="_blank" rel="noopener" href="https://www.nextjs.cn/">Next.js</a></li>
+</ul>
+<h3 id="4-客户端渲染（CSR）"><a href="#4-客户端渲染（CSR）" class="headerlink" title="4. 客户端渲染（CSR）"></a>4. 客户端渲染（CSR）</h3><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h4><p>单页应用中使用最多的渲染方式，我们现在的项目常用使用了react、vue之类的单页应用的框架，这类框架在进行页面渲染时，会到首先对html页面进行解析并构建dom树，等js文件返回后、动态的改变 DOM 树的结构，使得页面成为希望成为的样子，从而完成页面渲染。</p>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>服务器响应速度快</li>
+<li>支持页面交互，适用于单页面应用</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>首页会出现白屏</li>
+<li>页面内容由js生成，SEO不够友好</li>
+</ul>
+<h3 id="5-静态页面生成-SSG"><a href="#5-静态页面生成-SSG" class="headerlink" title="5. 静态页面生成 SSG"></a>5. 静态页面生成 SSG</h3><h4 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h4><p>用于静态页面的渲染方式，构建时生成完整的html页面，无需服务端请求处理，服务器响应快，非常快就可以看到展示的页面。</p>
+<h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>拥有良好的SEO</li>
+<li>HTML已被全部生成好，首屏加载速度快</li>
+</ul>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>适合静态页面，不支持页面交互</li>
+<li>构建过程中没有window，document等，存在库的兼容问题<h3 id="6-Serverless架构"><a href="#6-Serverless架构" class="headerlink" title="6. Serverless架构"></a>6. Serverless架构</h3>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903904224903181">Serverless（无服务）基础知识</a></li>
+</ul>
+<h3 id="7-OAuth2-0"><a href="#7-OAuth2-0" class="headerlink" title="7. OAuth2.0"></a>7. OAuth2.0</h3><p>开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。</p>
+<ul>
+<li>思路<br>OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用户与客户端区分开来。”客户端”登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期。<br>“客户端”登录授权层以后，”服务提供商”根据令牌的权限范围和有效期，向”客户端”开放用户储存的资料。</li>
+<li>运行流程  <ol>
+<li>用户打开客户端以后，客户端要求用户给予授权。</li>
+<li>用户同意给予客户端授权。</li>
+<li>客户端使用上一步获得的授权，向认证服务器申请令牌。</li>
+<li>认证服务器对客户端进行认证以后，确认无误，同意发放令牌。</li>
+<li>客户端使用令牌，向资源服务器申请获取资源。</li>
+<li>资源服务器确认令牌无误，同意向客户端开放资源。</li>
+</ol>
+</li>
+<li>授权模式<ul>
+<li>授权码模式（authorization code）</li>
+<li>简化模式（implicit）</li>
+<li>密码模式（resource owner password credentials）</li>
+<li>客户端模式（client credentials）</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-基于session的认证流程"><a href="#8-基于session的认证流程" class="headerlink" title="8. 基于session的认证流程"></a>8. 基于session的认证流程</h3><ol>
+<li>用户使用用户名和密码登录；</li>
+<li>服务端认证通过后创建一条 session，并生成一个token与之关联，返回响应数据的同时将token保存至客户端 cookie 中；</li>
+<li>客户端再请求时，自动携带cookie中的 token；</li>
+<li>服务端解析 cookie 后根据 token 去查找对应的 session 信息，如果对应 session 存在且合法，则返回正确响应数据；</li>
+<li>服务端若未找到对应 session 信息，则返回错误提示；</li>
+<li>客户端获取错误提示后，指引用户重新登录。</li>
+</ol>
+<h3 id="9-JWT认证流程"><a href="#9-JWT认证流程" class="headerlink" title="9. JWT认证流程"></a>9. JWT认证流程</h3><ol>
+<li>用户使用用户名和密码登录；</li>
+<li>服务端认证通过后，生成 token，返回客户端；</li>
+<li>客户端保存 token，并携带 token，请求服务端资源；</li>
+<li>服务端判断 token 是否过期，若没有过期，则解析 token 获取认证相关信息，认证通过后，将服务器资源返回给客户端；</li>
+<li>服务端若判断 token 已过期，返回 token 过期提示；</li>
+<li>客户端获取 token 过期提示后，指引用户重新登录。</li>
+</ol>
+<h3 id="10-XSS攻击"><a href="#10-XSS攻击" class="headerlink" title="10. XSS攻击"></a>10. XSS攻击</h3><p>💡<a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/09/27/fe-security.html">如何防止XSS攻击？</a></p>
+<h3 id="11-单点登录"><a href="#11-单点登录" class="headerlink" title="11. 单点登录"></a>11. 单点登录</h3><h4 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h4><p>单点登录（SSO，Single Sign On），是在企业内部多个应用系统（如考勤系统、财务系统、人事系统等）场景下，用户只需要登录一次，即可获得访问单点登录系统中其他关联系统和应用软件的权限。<br>同理用户只需注销一次，就可以从多个应用系统退出登录。</p>
+<h4 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h4><ol>
+<li>用户首次访问系统A时，需要进行登录。</li>
+<li>系统A带着用户登录信息重定向给认证系统。</li>
+<li>认证系统验证用户登录信息。</li>
+<li>验证通过后，返回一个token</li>
+<li>认证系统带着token重定向给系统A，得知用户是已登录状态。</li>
+<li>系统A向用户返回请求的资源。</li>
+<li>用户访问系统B时，需要进行登录。</li>
+<li>系统B通过共享的token，得知用户是已登录状态。</li>
+<li>系统B向用户返回请求的资源。</li>
+</ol>
+<h3 id="12-前端权限实现"><a href="#12-前端权限实现" class="headerlink" title="12. 前端权限实现"></a>12. 前端权限实现</h3><h4 id="路由级权限实现"><a href="#路由级权限实现" class="headerlink" title="路由级权限实现"></a>路由级权限实现</h4><ul>
+<li>系统路由初始只有通用路由，如登录，404等，登录之后从后端获取到用户的权限路由，再将这些路由动态添加到系统路由表中</li>
+<li>系统路由初始有完整的页面路由，登录之后从后端获取到用户的权限路，通过路由守卫来拦截用户权限之外的路由</li>
+</ul>
+<h4 id="按钮级权限实现"><a href="#按钮级权限实现" class="headerlink" title="按钮级权限实现"></a>按钮级权限实现</h4><ul>
+<li>使用<code>v-if</code>（过于粗暴，不够优雅）</li>
+<li>封装一个权限组件，用来包裹要控制的按钮。在权限组件内进行权限校验，根据校验结果来决定是否显示插槽内的按钮。</li>
+<li>自定义指令，指令内部接收权限字符，通过函数进行校验，校验未通过时，获取当前指令所在节点的父节点，来删除掉当前节点。</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6982493377350598670">前端权限设计实现——路由级</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6979530577317740551">前端权限设计实现——按钮级</a></p>
+<h3 id="13-RBAC"><a href="#13-RBAC" class="headerlink" title="13. RBAC"></a>13. RBAC</h3><h3 id="14-MVC架构"><a href="#14-MVC架构" class="headerlink" title="14. MVC架构"></a>14. MVC架构</h3><h3 id="15-MVVM架构"><a href="#15-MVVM架构" class="headerlink" title="15. MVVM架构"></a>15. MVVM架构</h3>
                 
             </div>
             <hr/>
@@ -545,7 +555,7 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snaillu.gitee.io/2020-08-02-emmet-chang-yong-yu-fa-zong-jie.html">https://snaillu.gitee.io/2020-08-02-emmet-chang-yong-yu-fa-zong-jie.html</a>
+                    <a href="https://snaillu.gitee.io/2022-08-03-qian-duan-zhi-shi-jin-jie.html">https://snaillu.gitee.io/2022-08-03-qian-duan-zhi-shi-jin-jie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -583,16 +593,8 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/Emmet/">
-                                    <span class="chip bg-color">Emmet</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                         </div>
@@ -640,31 +642,31 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020-09-01-create-react-app-xiang-mu-zhong-css-modules-de-shi-yong.html">
+                <a href="/2022-08-08-vite-ji-chu-zhi-shi-zong-jie.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Create-React-App项目中CSS Modules的使用">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Vite基础知识总结">
                         
-                        <span class="card-title">Create-React-App项目中CSS Modules的使用</span>
+                        <span class="card-title">Vite基础知识总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Create React App项目下如何启用及使用CSS Modules。
+                            Vite构建工具知识总结
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" class="post-category">
-                                    项目开发
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    前端进阶
                                 </a>
                             
                             
@@ -674,16 +676,8 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
-                    <a href="/tags/Create-React-App/">
-                        <span class="chip bg-color">Create React App</span>
-                    </a>
-                    
-                    <a href="/tags/CSS-Modules/">
-                        <span class="chip bg-color">CSS Modules</span>
+                    <a href="/tags/Vite/">
+                        <span class="chip bg-color">Vite</span>
                     </a>
                     
                 </div>
@@ -697,31 +691,31 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020-07-20-npm-chang-yong-ming-ling-zong-jie.html">
+                <a href="/2022-07-16-javascript-zhong-de-ji-cheng.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="npm常用命令总结">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="JavaScript中的继承">
                         
-                        <span class="card-title">npm常用命令总结</span>
+                        <span class="card-title">JavaScript中的继承</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            npm常用命令总结。
+                            JavaScript中的继承知识总结
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    读书笔记
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    前端进阶
                                 </a>
                             
                             
@@ -731,12 +725,12 @@ w100p --&gt; width: 100%;<span aria-hidden="true" class="line-numbers-rows"><spa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Node/">
-                        <span class="chip bg-color">Node</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/npm/">
-                        <span class="chip bg-color">npm</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
