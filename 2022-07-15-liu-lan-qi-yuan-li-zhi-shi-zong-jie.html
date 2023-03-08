@@ -368,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.3k
                 </div>
                 
 
@@ -523,7 +523,32 @@
 <li>根据渲染树来布局（Layout），以计算每个节点的几何信息</li>
 <li>将各个节点绘制（painting）到屏幕上</li>
 </ol>
-<h3 id="6-浏览器缓存机制"><a href="#6-浏览器缓存机制" class="headerlink" title="6. 浏览器缓存机制"></a>6. 浏览器缓存机制</h3><p>浏览器的缓存机制，通常是指我们常说的HTTP缓存机制，主要分为<code>协商缓存</code>与<code>强缓存</code>，缓存机制的运行流程如下：</p>
+<h3 id="6-回流和重绘"><a href="#6-回流和重绘" class="headerlink" title="6. 回流和重绘"></a>6. 回流和重绘</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li><strong>回流(reflow)<strong>：<code>Render Tree</code>中部分或全部元素的几何尺寸发生改变，浏览器重新计算元素的几何属性并调整布局的过程，也称</strong>重排</strong>。</li>
+<li>**重绘(repaint)**：<code>Render tree</code>中的一些元素只发生样式的改变并不影响它在文档流中的位置时，浏览器不需重新计算元素的几何属性、直接为元素绘制新的样式的过程。</li>
+</ul>
+<h4 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h4><p>回流必将引起重绘，重绘不一定会引起回流。</p>
+<h4 id="回流的触发场景"><a href="#回流的触发场景" class="headerlink" title="回流的触发场景"></a>回流的触发场景</h4><ul>
+<li>页面首次渲染</li>
+<li>浏览器的窗口尺寸变化</li>
+<li>元素的位置/尺寸/内容/字体大小发生变化</li>
+<li>添加或删除可见的DOM元素</li>
+<li>查询一些属性或方法<ul>
+<li>clientTop、clientLeft、clientWidth、clientHeight</li>
+<li>offsetTop、offsetLeft、 offsetWidth、offsetHeight</li>
+<li>scrollTop、scrollLeft、scrollWidth、scrollHeight</li>
+<li>scrollIntoView()、scrollIntoViewIfNeeded()、getComputedStyle()、getBoundingClientRect()、scrollTo()</li>
+</ul>
+</li>
+</ul>
+<h4 id="重绘的触发场景"><a href="#重绘的触发场景" class="headerlink" title="重绘的触发场景"></a>重绘的触发场景</h4><ul>
+<li>回流</li>
+<li>一些CSS属性的改变<ul>
+<li>color、border-style、visibility、background、text-decoration、background-image、background-position、background-repeat、outline-color、outline、outline-style、border-radius、outline-width、box-shadow、background-size</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-浏览器缓存机制"><a href="#7-浏览器缓存机制" class="headerlink" title="7. 浏览器缓存机制"></a>7. 浏览器缓存机制</h3><p>浏览器的缓存机制，通常是指我们常说的HTTP缓存机制，主要分为<code>协商缓存</code>与<code>强缓存</code>，缓存机制的运行流程如下：</p>
 <ul>
 <li>浏览器在进行HTTP请求前，会先向缓存中查找该请求结果，根据该缓存结果的缓存标识 <code>Expires</code> 和 <code>Cache-Control</code> 判断是否命中强缓存，是则直接使用该缓存结果，不会发请求到服务器。</li>
 <li>如果没有命中强缓存或强缓存已失效，浏览器会发送一个请求到服务器，通过携带缓存标识<code>Last-Modified / If-Modified-Since</code> 和 <code>Etag / If-None-Match</code> 验证资源是否命中协商缓存，如果命中，服务器会返回304，依然是从缓存中读取资源</li>
@@ -535,7 +560,7 @@
 <li>浏览器读取缓存会优先从内存缓存中读取（from memory cache），其次从硬盘读取（from disk cache）</li>
 <li>控制协商缓存的字段 <code>Etag / If-None-Match</code> 的优先级比 <code>Last-Modified / If-Modified-Since</code> 高</li>
 </ul>
-<h3 id="7-V8垃圾回收机制"><a href="#7-V8垃圾回收机制" class="headerlink" title="7. V8垃圾回收机制"></a>7. V8垃圾回收机制</h3><p>V8采用的是分代式回收, 即将堆分为新生代和老生代两类，新生代中存放的是生存时间短的对象，老生代中存放的生存时间久的对象。V8分别使用两个不同的垃圾回收器来实施垃圾回收。</p>
+<h3 id="8-V8垃圾回收机制"><a href="#8-V8垃圾回收机制" class="headerlink" title="8. V8垃圾回收机制"></a>8. V8垃圾回收机制</h3><p>V8采用的是分代式回收, 即将堆分为新生代和老生代两类，新生代中存放的是生存时间短的对象，老生代中存放的生存时间久的对象。V8分别使用两个不同的垃圾回收器来实施垃圾回收。</p>
 <ul>
 <li>新生代垃圾回收器 - <code>Scavenge</code></li>
 <li>老生代垃圾回收器 - <code>Mark-Sweep</code> &amp; <code>Mark-Compact</code></li>
@@ -994,7 +1019,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78.7k</span>&nbsp;字
+                class="white-color">78.9k</span>&nbsp;字
             
             
             
