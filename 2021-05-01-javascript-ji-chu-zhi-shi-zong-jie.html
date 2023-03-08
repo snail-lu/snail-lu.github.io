@@ -361,14 +361,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-07
+                    2023-03-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.4k
                 </div>
                 
 
@@ -729,18 +729,30 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>目标阶段（Target phase）—— 事件到达目标元素</li>
 <li>冒泡阶段（Bubbling phase）—— 事件从元素上开始冒泡，一直到根元素，document 和 window。</li>
 </ul>
-<ol>
-<li><p>为何使用事件委托？<br>在 JavaScript 中，页面内事件处理程序的个数会直接影响页面的整体性能，因为每个事件处理程序都是对象，对象会占用内存，内存中的对象越多，页面的性能则越差。此外，事件处理程序需要与 DOM 节点进行交互，访问 DOM 的次数越多，引起浏览器重绘和重排的次数也就越多，从而影响页面的性能。</p>
-</li>
-<li><p>事件委托实现原理<br>事件委托是利用事件的<code>冒泡原理</code>来实现的，大致可以分为三个步骤：</p>
-<ol>
-<li>确定要添加事件元素的父级元素；</li>
-<li>给父元素定义事件，监听子元素的冒泡事件；</li>
-<li>使用 event.target 来定位触发事件冒泡的子元素。</li>
-</ol>
-</li>
-</ol>
+<h4 id="为何使用事件委托？"><a href="#为何使用事件委托？" class="headerlink" title="为何使用事件委托？"></a>为何使用事件委托？</h4><p>在 JavaScript 中，页面内事件处理程序的个数会直接影响页面的整体性能，因为每个事件处理程序都是对象，对象会占用内存，内存中的对象越多，页面的性能则越差。此外，事件处理程序需要与 DOM 节点进行交互，访问 DOM 的次数越多，引起浏览器重绘和重排的次数也就越多，从而影响页面的性能。</p>
+<h4 id="事件委托实现原理"><a href="#事件委托实现原理" class="headerlink" title="事件委托实现原理"></a>事件委托实现原理</h4><p>事件委托是利用事件的<code>冒泡原理</code>来实现的，大致可以分为三个步骤：<br>    1. 确定要添加事件元素的父级元素；<br>    2. 给父元素定义事件，监听子元素的冒泡事件；<br>    3. 使用 event.target 来定位触发事件冒泡的子元素。</p>
 <h3 id="19-Generator（生成器）和-Iterator（迭代器）"><a href="#19-Generator（生成器）和-Iterator（迭代器）" class="headerlink" title="19. Generator（生成器）和 Iterator（迭代器）"></a>19. Generator（生成器）和 Iterator（迭代器）</h3><p><a href="https://snaillu.gitee.io/2021-12-19-shen-ru-li-jie-es6-du-shu-bi-ji.html#toc-heading-51">迭代器和生成器</a></p>
+<h3 id="20-纯函数"><a href="#20-纯函数" class="headerlink" title="20. 纯函数"></a>20. 纯函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>一个函数的返回结果只依赖于它的参数，并且在执行过程里面没有副作用，我们就把这个函数叫做<strong>纯函数</strong>。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 纯函数</span>
+<span class="token keyword">function</span> <span class="token function">sum1</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+ <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 非纯函数，因为函数执行过程中改变了message的值，被认定产生了副作用</span>
+<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">'hello'</span>
+<span class="token keyword">function</span> <span class="token function">sum2</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+ message <span class="token operator">=</span> <span class="token string">'hi'</span>
+ <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token comment">// slice是纯函数</span>
+<span class="token keyword">const</span> newNums1 <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token comment">// splice不是纯函数，因为它改改变了原数组的值</span>
+<span class="token keyword">const</span> newNums2 <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="纯函数的价值"><a href="#纯函数的价值" class="headerlink" title="纯函数的价值"></a>纯函数的价值</h4><p>纯函数非常<strong>靠谱</strong>，执行一个纯函数你不用担心它会干什么坏事，它不会产生不可预料的行为，也不会对外部产生影响。虽然我们的程序不可避免的会产生副作用，比如 HTTP 调用、IO 操作等，但尽可能多的地方使用纯函数将大大提高程序的可读性、可调试性和可测试性，代码重构时也不必担心没注意到的副作用而搞乱了整个应用。<br>纯函数在函数式编程中被大量使用，而且诸如 ReactJS 和 Redux 等优质的库都要求使用纯函数。<br>正确地使用纯函数可以产生更加高质量的代码，并且也是一种更加干净的编码方式。</p>
 
                 
             </div>
@@ -1193,7 +1205,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">78.3k</span>&nbsp;字
+                class="white-color">78.7k</span>&nbsp;字
             
             
             
