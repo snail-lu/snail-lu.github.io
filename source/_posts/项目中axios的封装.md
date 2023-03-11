@@ -110,7 +110,7 @@ const urls = {
 }
 
 // 登出
-export function getUserList(params={}) {
+export function logout(params={}) {
     return request({
         method: 'get',
         url: urls.logout,
@@ -152,7 +152,7 @@ export function downloadFile(params) {
 ```
 
 ### 组件
-```js
+```vue
 <template>
     <div>用户模块</div>
 </template>
@@ -171,7 +171,7 @@ export default {
     },
     methods: {
         // 获取用户列表
-        async function getUserList() {
+        async getUserList() {
             const controller = new AbortController();
 
             // 3秒后自动取消请求
@@ -187,7 +187,7 @@ export default {
         },
 
         // 登出
-        async function logout() {
+        async logout() {
             try {
                 const response = await logout();
                 console.log(response);
@@ -229,7 +229,7 @@ export default {
             } catch(error) {
                 console.log(error)
             }
-        },
+        }
     }
 }
 </script>

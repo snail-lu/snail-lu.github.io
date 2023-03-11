@@ -32,7 +32,7 @@ HTML、XHTML、HTML5之间的联系
 ​- `XHTML`是`HTML`规范版本；
 - `HTML5`是`HTML`、`XHTML`以及`HTML DOM`的新标准。
 
-### 元素分类
+### 2. 元素分类
 - 行内元素： `a`, `b`, `span`, `img`, `input`, `select`, `strong`;
 - 块级元素： `div`, `ul`, `li`, `dl`, `dt`, `dd`, `h1-5`, `p`等；
 - 空元素： `<br>`, `<hr>`, `<img>`, `<link>`, `<meta>`;
