@@ -364,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    788
+                    844
                 </div>
                 
 
@@ -486,7 +486,7 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
 <span class="token punctuation">&#125;</span>
 
 <span class="token comment">// 登出</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getUserList</span><span class="token punctuation">(</span><span class="token parameter">params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token parameter">params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
         <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
         <span class="token literal-property property">url</span><span class="token operator">:</span> urls<span class="token punctuation">.</span>logout<span class="token punctuation">,</span>
@@ -526,86 +526,86 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>template<span class="token operator">></span>
-    <span class="token operator">&lt;</span>div<span class="token operator">></span>用户模块<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+    &lt;div&gt;用户模块&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
 
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> logout<span class="token punctuation">,</span> getUserList<span class="token punctuation">,</span> uploadFile<span class="token punctuation">,</span> downloadFile <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/apis/user'</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'UserList'</span><span class="token punctuation">,</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-            <span class="token literal-property property">pageInfo</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token literal-property property">pageNo</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-                <span class="token literal-property property">pageSize</span><span class="token operator">:</span> <span class="token number">10</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 获取用户列表</span>
-        <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getUserList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AbortController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+&lt;script&gt;
+import &#123; logout, getUserList, uploadFile, downloadFile &#125; from &#39;@&#x2F;apis&#x2F;user&#39;
+export default &#123;
+    name: &#39;UserList&#39;,
+    data() &#123;
+        return &#123;
+            pageInfo: &#123;
+                pageNo: 1,
+                pageSize: 10
+            &#125;
+        &#125;
+    &#125;,
+    methods: &#123;
+        &#x2F;&#x2F; 获取用户列表
+        async getUserList() &#123;
+            const controller &#x3D; new AbortController();
 
-            <span class="token comment">// 3秒后自动取消请求</span>
-            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-                controller<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getUserList</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pageInfo<span class="token punctuation">,</span> controller<span class="token punctuation">.</span>signal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            &#x2F;&#x2F; 3秒后自动取消请求
+            setTimeout(() &#x3D;&gt; &#123;
+                controller.abort();
+            &#125;, 3000);
+            try &#123;
+                const response &#x3D; await getUserList(this.pageInfo, controller.signal);
+                console.log(response);
+            &#125; catch (error) &#123;
+                console.error(error);
+            &#125;
+        &#125;,
 
-        <span class="token comment">// 登出</span>
-        <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        &#x2F;&#x2F; 登出
+        async logout() &#123;
+            try &#123;
+                const response &#x3D; await logout();
+                console.log(response);
+            &#125; catch (error) &#123;
+                console.error(error);
+            &#125;
+        &#125;,
 
-        <span class="token comment">// 上传</span>
-        <span class="token keyword">async</span> <span class="token function">upload</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 需要使用 FormData的格式上传文件</span>
-            <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> file<span class="token punctuation">.</span>file<span class="token punctuation">)</span>
+        &#x2F;&#x2F; 上传
+        async upload(file) &#123;
+            &#x2F;&#x2F; 需要使用 FormData的格式上传文件
+            const formData &#x3D; new FormData()
+            formData.append(&#39;file&#39;, file.file)
 
-            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>   
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            try &#123;
+                const response &#x3D; await uploadFile(formData)
+            &#125; catch (error) &#123;
+                console.error(error);
+            &#125;   
+        &#125;,
 
-        <span class="token comment">// 下载</span>
-        <span class="token keyword">async</span> <span class="token function">download</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">downLoadFile</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">let</span> <span class="token constant">URL</span> <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token constant">URL</span> <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitURL<span class="token punctuation">;</span>
-                <span class="token keyword">const</span> blobUrl <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">const</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                a<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'none'</span><span class="token punctuation">;</span>
-                a<span class="token punctuation">.</span>href <span class="token operator">=</span> blobUrl<span class="token punctuation">;</span>
-                a<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'download'</span><span class="token punctuation">,</span> <span class="token function">decodeURI</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">文件</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">.xlsx</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span>download <span class="token operator">==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    a<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'target'</span><span class="token punctuation">,</span> <span class="token string">'_blank'</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span>
-                document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                a<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                window<span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">revokeObjectURL</span><span class="token punctuation">(</span>blobUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        &#x2F;&#x2F; 下载
+        async download() &#123;
+            try &#123;
+                let res &#x3D; await downLoadFile(&#123; id: 1 &#125;);
+                let URL &#x3D; window.URL || window.webkitURL;
+                const blobUrl &#x3D; URL.createObjectURL(res);
+                const a &#x3D; document.createElement(&#39;a&#39;);
+                a.style.display &#x3D; &#39;none&#39;;
+                a.href &#x3D; blobUrl;
+                a.setAttribute(&#39;download&#39;, decodeURI(&#96;文件$&#123;new Date().getTime()&#125;.xlsx&#96;));
+                if (a.download &#x3D;&#x3D; &#39;undefined&#39;) &#123;
+                    a.setAttribute(&#39;target&#39;, &#39;_blank&#39;)
+                &#125;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+            &#125; catch(error) &#123;
+                console.log(error)
+            &#125;
+        &#125;
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1041,7 +1041,7 @@ service<span class="token punctuation">.</span>interceptors<span class="token pu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">81.7k</span>&nbsp;字
+                class="white-color">81.8k</span>&nbsp;字
             
             
             
