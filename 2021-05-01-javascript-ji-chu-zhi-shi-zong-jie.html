@@ -516,7 +516,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token keyword">const</span> newObj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>实现方式二：</strong> <code>Object.assign(target, source1, source2)</code><br>缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
+<p><strong>实现方式二：</strong> <code>Object.assign(target, source1, source2)</code><br>缺点：无法对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
   <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">234</span><span class="token punctuation">,</span>
@@ -538,15 +538,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <p><strong>实现方式四：</strong> 递归</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">//判断拷贝的obj是对象还是数组</span>
+  <span class="token comment">// 判断拷贝的obj是对象还是数组</span>
   <span class="token keyword">const</span> objClone <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//obj不能为空，并且是对象或者是数组 因为null也是object</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// obj不能为空，并且是对象或者是数组，因为null也是object</span>
       <span class="token keyword">for</span> <span class="token punctuation">(</span>key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
           <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//obj里面属性值不为空并且还是对象，进行深度拷贝</span>
-                  objClone<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//递归进行深度的拷贝</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// obj里面属性值不为空并且还是对象，进行深度拷贝</span>
+                  objClone<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 递归进行深度的拷贝</span>
               <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                  objClone<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//直接拷贝</span>
+                  objClone<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 直接拷贝</span>
               <span class="token punctuation">&#125;</span>
           <span class="token punctuation">&#125;</span>
       <span class="token punctuation">&#125;</span>
@@ -630,7 +630,43 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code>NaN</code> 与任何值都不相等，包括它自己</li>
 <li>两个操作数都是对象，如果两个操作数指向同一个对象，则为<code>true</code>，否则为<code>false</code></li>
 </ul>
-<p>特殊情况比较结果：<br>|表达式|值|<br>|—|—|<br>|null == undefined|true|<br>|NaN == NaN|false|<br>|false == 0|true|<br>|true == 1|true|<br>|true == 2|false|<br>|undefined == 0|false|<br>|null == 0|false|</p>
+<p>特殊情况比较结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">null == undefined</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">NaN == NaN</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">false == 0</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">true == 1</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="center">true == 2</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">undefined == 0</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="center">null == 0</td>
+<td align="center">false</td>
+</tr>
+</tbody></table>
 <h3 id="16-call、bind、apply原理"><a href="#16-call、bind、apply原理" class="headerlink" title="16. call、bind、apply原理"></a>16. call、bind、apply原理</h3><blockquote>
 <p>MDN:<br>call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。</p>
 </blockquote>
