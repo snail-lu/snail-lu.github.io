@@ -160,7 +160,7 @@ const newObj = JSON.parse(JSON.stringify(obj));
 ```
 
 **实现方式二：** `Object.assign(target, source1, source2)`
-缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
+缺点：无法对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
 ```js
 const obj = {
   a: '123',
@@ -188,15 +188,15 @@ const newObj = {...obj};
 **实现方式四：** 递归
 ```js
 function deepClone(obj) {
-  //判断拷贝的obj是对象还是数组
+  // 判断拷贝的obj是对象还是数组
   const objClone = Array.isArray(obj) ? [] : {};
-  if (obj && typeof obj === "object") { //obj不能为空，并且是对象或者是数组 因为null也是object
+  if (obj && typeof obj === "object") { // obj不能为空，并且是对象或者是数组，因为null也是object
       for (key in obj) {
           if (obj.hasOwnProperty(key)) {
-              if (obj[key] && typeof obj[key] === "object") { //obj里面属性值不为空并且还是对象，进行深度拷贝
-                  objClone[key] = deepClone(obj[key]); //递归进行深度的拷贝
+              if (obj[key] && typeof obj[key] === "object") { // obj里面属性值不为空并且还是对象，进行深度拷贝
+                  objClone[key] = deepClone(obj[key]); // 递归进行深度的拷贝
               } else {
-                  objClone[key] = obj[key]; //直接拷贝
+                  objClone[key] = obj[key]; // 直接拷贝
               }
           }
       }
@@ -291,15 +291,16 @@ function instance_of(left, right) {
 - 两个操作数都是对象，如果两个操作数指向同一个对象，则为`true`，否则为`false`
 
 特殊情况比较结果：
-|表达式|值|
-|---|---|
-|null == undefined|true|
-|NaN == NaN|false|
-|false == 0|true|
-|true == 1|true|
-|true == 2|false|
-|undefined == 0|false|
-|null == 0|false|
+
+| 表达式 | 值 |
+| :---: | :---: |
+| null == undefined | true |
+| NaN == NaN | false |
+| false == 0 | true |
+| true == 1 | true |
+| true == 2 | false |
+| undefined == 0 | false |
+| null == 0 | false |
 ### 16. call、bind、apply原理
 > MDN:
 > call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。
