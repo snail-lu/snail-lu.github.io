@@ -365,7 +365,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-11
+                    2023-03-12
                 </div>
                 
 
@@ -400,7 +400,7 @@
                 <h3 id="一、事件循环"><a href="#一、事件循环" class="headerlink" title="一、事件循环"></a>一、事件循环</h3><p>JS中的任务分为<code>同步任务</code>和<code>异步任务</code>。 </p>
 <p>同步任务都在主线程（JS引擎线程）上依次执行，会形成一个<code>执行栈</code>。</p>
 <p>异步任务由浏览器渲染进程中的相应线程（比如定时器线程和异步网络请求线程）管理，当异步任务有了运行结果，事件触发线程就会将异步任务的事件回调放到<code>任务队列</code>之中。</p>
-<p>一旦主线程<code>执行栈</code>中的所有同步任务执行完毕，主线程就会读取<code>任务队列</code>中的任务添加到<code>执行栈</code>中 ，继续开始执行，执行完毕后，就会再去任务队列中读取，这中循环往复的执行机制就是<code>事件循环</code>。</p>
+<p>一旦主线程<code>执行栈</code>中的所有同步任务执行完毕，主线程就会读取<code>任务队列</code>中的任务添加到<code>执行栈</code>中 ，继续开始执行，执行完毕后，就会再去任务队列中读取，这种循环往复的执行机制就是<code>事件循环</code>。</p>
 <p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/02/14/pSTDebT.png"></p>
 <p>示例：</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">setTimeoutCallBack</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
