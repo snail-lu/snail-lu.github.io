@@ -14,10 +14,10 @@ categories:
 **作用域链**：当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的**变量对象**构成的链表就叫做`作用域链`。
 💡 [变量对象](https://tsejx.github.io/javascript-guidebook/core-modules/executable-code-and-execution-contexts/execution/variable-object/)：JavaScript执行一段可执行代码时，会创建对应的执行上下文，变量对象是与 执行上下文 相关的数据作用域，存储了在上下文中定义的 `变量` 和 `函数`。
 ### 2. Promise
-**Promise是什么**
+#### 基本概念
 `Promise` 是 `ES6` 新增的语法，是一种异步编程的一种解决方案，`Promise` 本质上是一个绑定了回调的对象。 `Promise` 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。`Promise` 可以看作是一个状态机，它有三种状态：`pending`、`fulfilled`和`rejected`，初始状态是 `pending`，可以通过函数 `resolve()` 把状态变为 `fulfilled`，或者通过函数 `reject()` 把状态变为 `rejected`，状态一经改变就不能再次变化。
 
-**常用API**
+#### 常用API
 - **Promise.all()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。
 
 - **Promise.race()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。
@@ -26,9 +26,14 @@ categories:
 
 - **Promise.allSettled()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。当可迭代对象中的所有Promise都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。
 
-**实现**
-[Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
-[Promise简易实现](https://jsrun.net/XTcKp/)
+#### 实现原理
+💡[Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
+💡[Promise简易实现](https://jsrun.net/XTcKp/)
+
+#### promise取消实现
+- 借助Promise.reject()，在封装promise的时候，对外暴露一下promise中的reject方法
+- 借助Promise.race()的特性，将一个辅助promise的reject暴露出来，调用辅助promise的reject即可让Promise.race()提前结束执行
+💡[如何取消一个正在执行的Promise](https://www.jianshu.com/p/8555a2c757ec)
 
 ### 3. async/await
 `async/await` 是 [Generator](https://snaillu.gitee.io/2021-12-19-shen-ru-li-jie-es6-du-shu-bi-ji.html#toc-heading-51) 函数的语法糖，作用是**用同步的方式，执行异步操作**，最常见的用法就是用同步的写法来替代`promise.then()`的嵌套问题。
