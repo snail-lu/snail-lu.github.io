@@ -18,13 +18,13 @@ categories:
 `Promise` 是 `ES6` 新增的语法，是一种异步编程的解决方案，`Promise` 本质上是一个绑定了回调的对象。 `Promise` 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。`Promise` 可以看作是一个状态机，它有三种状态：`pending`、`fulfilled`和`rejected`，初始状态是 `pending`，可以通过函数 `resolve()` 把状态变为 `fulfilled`，或者通过函数 `reject()` 把状态变为 `rejected`，状态一经改变就不能再次变化。
 
 #### 常用API
-- **Promise.all()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。
+- **Promise.all()**: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例。只有受监视的所有Promise实例都完成，返回的Promise实例才会完成，只要有一个被拒绝，返回的Promise实例就会被立即拒绝。
 
-- **Promise.race()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。
+- **Promise.race()**: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例，只要有一个被解决（完成或拒绝），返回的Promise实例就会被立即解决（完成或拒绝）。
 
-- **Promise.any()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被完成，返回的Promise就会变成完成状态，如果所有的promise都被拒绝，返回的promise就会变成拒绝状态。
+- **Promise.any()**: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例，只要有一个被完成，返回的Promise实例就会变成完成状态，如果所有的promise实例都被拒绝，返回的promise实例就会变成拒绝状态。
 
-- **Promise.allSettled()**: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。当可迭代对象中的所有Promise都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。
+- **Promise.allSettled()**: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例。当所有Promise实例都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。
 
 #### 实现原理
 💡[Promise实现原理](https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html)
