@@ -396,13 +396,13 @@
                 <h3 id="1-作用域和作用域链"><a href="#1-作用域和作用域链" class="headerlink" title="1. 作用域和作用域链"></a>1. 作用域和作用域链</h3><p><strong>作用域</strong>：变量和函数的有效访问范围。分为<code>全局作用域</code>、<code>函数作用域</code>和<code>块作用域</code>。<br><strong>作用域链</strong>：当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的<strong>变量对象</strong>构成的链表就叫做<code>作用域链</code>。<br>💡 <a target="_blank" rel="noopener" href="https://tsejx.github.io/javascript-guidebook/core-modules/executable-code-and-execution-contexts/execution/variable-object/">变量对象</a>：JavaScript执行一段可执行代码时，会创建对应的执行上下文，变量对象是与 执行上下文 相关的数据作用域，存储了在上下文中定义的 <code>变量</code> 和 <code>函数</code>。</p>
 <h3 id="2-Promise"><a href="#2-Promise" class="headerlink" title="2. Promise"></a>2. Promise</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p><code>Promise</code> 是 <code>ES6</code> 新增的语法，是一种异步编程的解决方案，<code>Promise</code> 本质上是一个绑定了回调的对象。 <code>Promise</code> 在一定程度上解决了回调函数的书写结构问题，解决了回调地狱的问题。<code>Promise</code> 可以看作是一个状态机，它有三种状态：<code>pending</code>、<code>fulfilled</code>和<code>rejected</code>，初始状态是 <code>pending</code>，可以通过函数 <code>resolve()</code> 把状态变为 <code>fulfilled</code>，或者通过函数 <code>reject()</code> 把状态变为 <code>rejected</code>，状态一经改变就不能再次变化。</p>
 <h4 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h4><ul>
-<li><p><strong>Promise.all()</strong>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。只有当可迭代对象中的所有Promise都完成，返回的Promise才会完成，只要有一个被拒绝，返回的Promise就会被立即拒绝。</p>
+<li><p><strong>Promise.all()</strong>: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例。只有受监视的所有Promise实例都完成，返回的Promise实例才会完成，只要有一个被拒绝，返回的Promise实例就会被立即拒绝。</p>
 </li>
-<li><p><strong>Promise.race()</strong>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被解决（完成或拒绝），返回的Promise就会被立即解决。</p>
+<li><p><strong>Promise.race()</strong>: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例，只要有一个被解决（完成或拒绝），返回的Promise实例就会被立即解决（完成或拒绝）。</p>
 </li>
-<li><p><strong>Promise.any()</strong>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise，只要有一个被完成，返回的Promise就会变成完成状态，如果所有的promise都被拒绝，返回的promise就会变成拒绝状态。</p>
+<li><p><strong>Promise.any()</strong>: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例，只要有一个被完成，返回的Promise实例就会变成完成状态，如果所有的promise实例都被拒绝，返回的promise实例就会变成拒绝状态。</p>
 </li>
-<li><p><strong>Promise.allSettled()</strong>: 接受含多个受监视Promise的可迭代对象作为唯一参数，返回一个Promise。当可迭代对象中的所有Promise都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。</p>
+<li><p><strong>Promise.allSettled()</strong>: 接受多个Promise实例组成的数组作为唯一参数，返回一个Promise实例。当所有Promise实例都解决时，返回的Promise会被完成，完成的结果是一个包含所有promise结果的对象数组。</p>
 </li>
 </ul>
 <h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>💡<a target="_blank" rel="noopener" href="https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html">Promise实现原理</a><br>💡<a target="_blank" rel="noopener" href="https://jsrun.net/XTcKp/">Promise简易实现</a></p>
