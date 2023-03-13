@@ -33,6 +33,7 @@ categories:
 #### promise取消实现
 - 借助Promise.reject()，在封装promise的时候，对外暴露一下promise中的reject方法
 - 借助Promise.race()的特性，将一个辅助promise的reject暴露出来，调用辅助promise的reject即可让Promise.race()提前结束执行
+
 💡[如何取消一个正在执行的Promise](https://www.jianshu.com/p/8555a2c757ec)
 
 ### 3. async/await
