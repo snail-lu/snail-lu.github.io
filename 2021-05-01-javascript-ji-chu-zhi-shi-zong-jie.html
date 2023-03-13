@@ -408,8 +408,9 @@
 <h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>💡<a target="_blank" rel="noopener" href="https://snail-lu.github.io/2022-04-25-promise-shi-xian-yuan-li.html">Promise实现原理</a><br>💡<a target="_blank" rel="noopener" href="https://jsrun.net/XTcKp/">Promise简易实现</a></p>
 <h4 id="promise取消实现"><a href="#promise取消实现" class="headerlink" title="promise取消实现"></a>promise取消实现</h4><ul>
 <li>借助Promise.reject()，在封装promise的时候，对外暴露一下promise中的reject方法</li>
-<li>借助Promise.race()的特性，将一个辅助promise的reject暴露出来，调用辅助promise的reject即可让Promise.race()提前结束执行<br>💡<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8555a2c757ec">如何取消一个正在执行的Promise</a></li>
+<li>借助Promise.race()的特性，将一个辅助promise的reject暴露出来，调用辅助promise的reject即可让Promise.race()提前结束执行</li>
 </ul>
+<p>💡<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8555a2c757ec">如何取消一个正在执行的Promise</a></p>
 <h3 id="3-async-await"><a href="#3-async-await" class="headerlink" title="3. async/await"></a>3. async/await</h3><p><code>async/await</code> 是 <a href="https://snaillu.gitee.io/2021-12-19-shen-ru-li-jie-es6-du-shu-bi-ji.html#toc-heading-51">Generator</a> 函数的语法糖，作用是<strong>用同步的方式，执行异步操作</strong>，最常见的用法就是用同步的写法来替代<code>promise.then()</code>的嵌套问题。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 后续异步请求都依赖于前一个请求的结果</span>
 <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
