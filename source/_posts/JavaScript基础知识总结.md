@@ -211,7 +211,7 @@ function deepClone(obj) {
 }
 ```
 ### 11. this指向
-[JavaScript中的this](https://snaillu.gitee.io/2022-05-01-javascript-zhong-de-this.html)
+[JavaScript中的this](https://snaillu.gitee.io/2023-02-07-javascript-zhong-de-this.html)
 ### 12. 箭头函数与普通函数的区别
 - 没有`this`、`super`、`arguments`及`new.target`绑定，`this`、`super`、`arguments`及`new.target`的值由所在的、最靠近的非箭头函数来决定；
 - 不能被使用`new`调用；
