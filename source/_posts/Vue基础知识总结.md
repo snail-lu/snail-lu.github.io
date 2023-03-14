@@ -167,7 +167,7 @@ Vue2 响应式的实现主要有：
 
 - `text` 和 `textarea` 元素使用 `value` property 和 `input` 事件；
 - `checkbox` 和 `radio` 使用 `checked` property 和 `change` 事件；
-- `select` 字段将 `value` 作为 prop 并将 `change` 作为事件。
+- `select` 将 `value` 作为 prop 并将 `change` 作为事件。
 
 ### 10. Vue3的响应式和Vue2的区别
 Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，而是通过`Proxy`代理实现数据的变化监听。

@@ -46,3 +46,7 @@ serverPrefetch | onServerPrefetch | 仅在服务端渲染时可用，在组件�
 Vue 3 实现响应式，本质上是通过 `Proxy` API 劫持了数据对象的读写：
 - 当我们访问数据时，会触发 `getter` 执行依赖收集；
 - 修改数据时，会触发 `setter` 派发通知。
+
+### 4. proxy代理数组的时候，Vue3是如何解决push会触发两次的get和set的问题
+proxy代理的数组，在使用push时会触发了两次get和两次set，这和push的实现原理有关：push操作除了增加数组的数据项之外，也会引发数组本身其他相关属性的改变。
+重复触发set可能会导致重复派发更新。
