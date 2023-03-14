@@ -139,7 +139,7 @@ EventBus.$on("aMsg", (msg) => {
 - **发布订阅模式**  
 当发布者数据变化时发布数据，全部订阅者均可以接收到通知。
 - **数据劫持**  
-就是利用JavaScript的访问器属性，即`Object.defineProperty()`方法，当对对象的属性进行赋值时，`Object.defineProperty`就可以通过`set`方法劫持到数据的变化，然后通知发布者去通知所有订阅者，订阅者收到通知后，就会对视图进行更新。  
+利用`Object.defineProperty()`设置对象属性的`setter`和`getter`函数。在访问对象属性的时候都会触发`getter`去收集依赖。在修改对象的属性时会触发`setter`去发布通知，订阅者收到通知后，就会对视图进行更新。  
 
 Vue2 响应式的实现主要有：
 - **监听器 Observer**

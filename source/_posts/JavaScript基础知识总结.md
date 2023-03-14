@@ -455,9 +455,9 @@ const newNums2 = nums.splice(1, 3);
 
 
 ### 21. Ajax、Axios和fetch的区别
-- `Ajax`是指一种无需刷新页面即可向服务器请求数据的技术。核心是`XMLHttpRequest对象`（简称`XHR`）。  
+- `Ajax`是指一种无需刷新页面即可向服务器请求数据的技术。核心是`XMLHttpRequest`对象。  
 - `Axios`是通过 `Promise` 实现 `XHR` 封装的 `JavaScript` 库，在浏览器和`Node.js`环境中都可以运行。  
-- `fetch` 是 `JavaScript` 原生库，是`Ajax`的替代方案，没有使用XMLHttpRequest对象。只可以在浏览器上使用。
+- `fetch` 是`JavaScript`提供的原生API，是`Ajax`的替代方案，没有使用`XMLHttpRequest`对象。只可以在浏览器上使用。
 
 
 ### 22. 常用的设计模式
