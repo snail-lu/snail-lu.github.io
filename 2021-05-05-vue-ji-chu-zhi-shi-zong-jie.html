@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.2k
+                    5.1k
                 </div>
                 
 
@@ -546,7 +546,7 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <h3 id="9-Vue2数据响应式原理"><a href="#9-Vue2数据响应式原理" class="headerlink" title="9. Vue2数据响应式原理"></a>9. Vue2数据响应式原理</h3><p><code>Vue2</code>数据响应式主要利用的就是: <code>数据劫持</code>和<code>发布订阅模式</code>。</p>
 <ul>
 <li><strong>发布订阅模式</strong><br>当发布者数据变化时发布数据，全部订阅者均可以接收到通知。</li>
-<li><strong>数据劫持</strong><br>就是利用JavaScript的访问器属性，即<code>Object.defineProperty()</code>方法，当对对象的属性进行赋值时，<code>Object.defineProperty</code>就可以通过<code>set</code>方法劫持到数据的变化，然后通知发布者去通知所有订阅者，订阅者收到通知后，就会对视图进行更新。  </li>
+<li><strong>数据劫持</strong><br>利用<code>Object.defineProperty()</code>设置对象属性的<code>setter</code>和<code>getter</code>函数。在访问对象属性的时候都会触发<code>getter</code>去收集依赖。在修改对象的属性时会触发<code>setter</code>去发布通知，订阅者收到通知后，就会对视图进行更新。  </li>
 </ul>
 <p>Vue2 响应式的实现主要有：</p>
 <ul>
