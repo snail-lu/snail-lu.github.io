@@ -369,7 +369,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-13
+                    2023-03-14
                 </div>
                 
 
@@ -406,8 +406,9 @@
 </ul>
 <p><strong>“真正”</strong>的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。简单的说，<code>v-if</code>为<code>false</code>时，对应的 DOM 元素不会被创建。</p>
 <ul>
-<li><strong>v-show</strong><br>元素总是会被创建渲染，只是简单地基于 CSS 的 <code>display</code> 属性进行切换。<br>综上，<code>v-if</code> 适用于在运行时很少改变条件，不需要频繁切换条件的场景；<code>v-show</code> 则适用于需要非常频繁切换条件的场景。（微信小程序中的<code>wx:if</code>和<code>wx:hidden</code>与上述类似）</li>
+<li><strong>v-show</strong><br>元素总是会被创建渲染，只是简单地基于 CSS 的 <code>display</code> 属性进行切换。</li>
 </ul>
+<p>综上，<code>v-if</code> 适用于在运行时很少改变条件，不需要频繁切换条件的场景；<code>v-show</code> 则适用于需要非常频繁切换条件的场景。（微信小程序中的<code>wx:if</code>和<code>wx:hidden</code>与上述类似）</p>
 <h3 id="2-列表渲染中key的作用"><a href="#2-列表渲染中key的作用" class="headerlink" title="2. 列表渲染中key的作用"></a>2. 列表渲染中<code>key</code>的作用</h3><p><code>key</code> 主要用在 Vue 的虚拟 DOM 算法，在新旧节点对比时辨识 <code>VNodes</code>（虚拟节点）。如果不使用 <code>key</code>，Vue 会最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素。而使用 <code>key</code> 时，它会基于 <code>key</code> 的变化重新排列元素顺序，并且会移除 <code>key</code> 不存在的元素。<br>综上，简单列表的渲染可以不使用 <code>key</code> 或者用数组的 <code>index</code> 作为<code>key</code>（效果等同于不带key），这种模式下性能最高，但是并不能准确的更新列表项的状态。一旦你需要保存列表项的状态，那么就需要用使用唯一的 <code>key</code> 用来准确的定位每一个列表项以及复用其自身的状态。否则就可能会出现错乱的情况（<a target="_blank" rel="noopener" href="https://codesandbox.io/s/vue-demo-lneif5?file=/src/components/TodoList.vue">示例代码</a>）。</p>
 <h4 id="3-computed-和-watch-的区别及应用场景"><a href="#3-computed-和-watch-的区别及应用场景" class="headerlink" title="3. computed 和 watch 的区别及应用场景"></a>3. <code>computed</code> 和 <code>watch</code> 的区别及应用场景</h4><ul>
 <li><p><strong>computed</strong><br>计算属性，依赖其它属性值，并且 <code>computed</code> 的值有缓存，只有它依赖的属性值发生改变才会重新求值；（源码中通过<code>dirty</code>属性来控制是重新计算还是从缓存中取值）</p>
