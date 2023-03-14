@@ -372,7 +372,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.9k
                 </div>
                 
 
@@ -397,9 +397,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、事件循环"><a href="#一、事件循环" class="headerlink" title="一、事件循环"></a>一、事件循环</h3><p>JS中的任务分为<code>同步任务</code>和<code>异步任务</code>。 </p>
-<p>同步任务都在主线程（JS引擎线程）上依次执行，会形成一个<code>执行栈</code>。</p>
-<p>异步任务由浏览器渲染进程中的相应线程（比如定时器线程和异步网络请求线程）管理，当异步任务有了运行结果，事件触发线程就会将异步任务的事件回调放到<code>任务队列</code>之中。</p>
+                <h3 id="一、事件循环机制"><a href="#一、事件循环机制" class="headerlink" title="一、事件循环机制"></a>一、事件循环机制</h3><ol>
+<li>JS引擎逐行扫描JS代码，遇到<code>同步任务</code>会将其添加到JS引擎线程的<code>执行栈</code>中。</li>
+<li>遇到异步任务，交由浏览器渲染进程中的相应线程（比如<code>setTimeout</code>交给<code>定时器线程</code>，<code>http</code>请求交给<code>异步网络请求线程</code>）管理，当异步任务有了运行结果，事件触发线程就会将异步任务的事件回调依次放进<code>任务队列</code>的末尾。该线程维护一个<code>微任务队列</code>和一个<code>宏任务队列</code>。</li>
+<li><code>执行栈</code>中的同步任务执行完之后，JS引擎会从宏任务队列队首取一个宏任务，和微任务队列中到执行栈里，直到微任务队列为空。</li>
+</ol>
+<ul>
+<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
+<li>微任务执行完成，GUI线程开始渲染工作</li>
+<li>渲染完毕后，JS线程继续接管，开始下一个宏任务，依次循环</li>
+</ul>
 <p>一旦主线程<code>执行栈</code>中的所有同步任务执行完毕，主线程就会读取<code>任务队列</code>中的任务添加到<code>执行栈</code>中 ，继续开始执行，执行完毕后，就会再去任务队列中读取，这种循环往复的执行机制就是<code>事件循环</code>。</p>
 <p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/02/14/pSTDebT.png"></p>
 <p>示例：</p>
@@ -1112,7 +1119,7 @@ setTimeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html">https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html</a>
+                    <a href="https://snaillu.gitee.io/2021-12-14-javascript-zhi-shi-jian-xun-huan.html">https://snaillu.gitee.io/2021-12-14-javascript-zhi-shi-jian-xun-huan.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1534,7 +1541,7 @@ setTimeout<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86.6k</span>&nbsp;字
+                class="white-color">87k</span>&nbsp;字
             
             
             

@@ -368,7 +368,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.2k
                 </div>
                 
 
@@ -504,7 +504,14 @@ data<span class="token punctuation">[</span><span class="token number">2</span><
 data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
 data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
 data<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="9-事件循环、微任务、宏任务"><a href="#9-事件循环、微任务、宏任务" class="headerlink" title="9. 事件循环、微任务、宏任务"></a>9. 事件循环、微任务、宏任务</h3><p><a href="https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html">JavaScript之Event Loop</a></p>
+<h3 id="9-事件循环机制"><a href="#9-事件循环机制" class="headerlink" title="9. 事件循环机制"></a>9. 事件循环机制</h3><ol>
+<li>JS引擎逐行扫描JS代码，遇到<code>同步任务</code>会将其添加到JS引擎线程的<code>执行栈</code>中。</li>
+<li>遇到异步任务，交由浏览器渲染进程中的相应线程（比如<code>setTimeout</code>交给<code>定时器线程</code>，<code>http</code>请求交给<code>异步网络请求线程</code>）管理，当异步任务有了运行结果，事件触发线程就会将异步任务的事件回调依次放进<code>任务队列</code>的末尾。该线程维护一个<code>微任务队列</code>和一个<code>宏任务队列</code>。</li>
+<li><code>执行栈</code>中的任务执行完之后，JS引擎会从宏任务队列队首取一个宏任务到执行栈中开始执行；</li>
+<li>宏任务执行完毕后，JS引擎会依次从当前微任务队列中取出微任务到执行栈中执行；</li>
+<li>当前微任务队列为空，回到3，如此循环执行</li>
+</ol>
+<p>💡<a href="https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html">JavaScript之事件循环</a></p>
 <h3 id="10-深拷贝"><a href="#10-深拷贝" class="headerlink" title="10. 深拷贝"></a>10. 深拷贝</h3><p><strong>实现方式一：</strong> <code>JSON.stringify</code>序列化和<code>JSON.parse</code>反序列化<br>缺点：对象中<code>undefined</code>、<code>function</code>、<code>symbol</code>这三种类型的值会被过滤掉</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
@@ -1266,7 +1273,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86.6k</span>&nbsp;字
+                class="white-color">87k</span>&nbsp;字
             
             
             
