@@ -364,7 +364,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.8k
                 </div>
                 
 
@@ -529,7 +529,19 @@
 <li>自定义指令，指令内部接收权限字符，通过函数进行校验，校验未通过时，获取当前指令所在节点的父节点，来删除掉当前节点。</li>
 </ul>
 <h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6982493377350598670">前端权限设计实现——路由级</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6979530577317740551">前端权限设计实现——按钮级</a></p>
-<h3 id="13-RBAC"><a href="#13-RBAC" class="headerlink" title="13. RBAC"></a>13. RBAC</h3><h3 id="14-MVC、MVP-和-MVVM"><a href="#14-MVC、MVP-和-MVVM" class="headerlink" title="14. MVC、MVP 和 MVVM"></a>14. MVC、MVP 和 MVVM</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ul>
+<h3 id="13-RBAC模型"><a href="#13-RBAC模型" class="headerlink" title="13. RBAC模型"></a>13. RBAC模型</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><p><code>RBAC</code> 是 <code>Role-Based Access Control</code> 的缩写，即基于角色的权限访问控制，是一种基于组织中用户的角色来调节控制对计算机或网络资源的访问的方法。<br>三者关系如下：<br><code>用户</code> &lt;——-&gt; <code>角色</code> &lt;——&gt; <code>权限</code></p>
+<ul>
+<li>用户和角色可以是多对一或多对多的关系</li>
+<li>某一角色拥有对应的权限</li>
+</ul>
+<h4 id="模型类型"><a href="#模型类型" class="headerlink" title="模型类型"></a>模型类型</h4><ul>
+<li>RBAC0模型</li>
+<li>RBAC1模型：增加了子角色，引入了继承概念，即子角色可以继承父角色的所有权限。</li>
+<li>RBAC2模型：增加了对角色的一些限制：角色互斥、基数约束、先决条件角色等。</li>
+<li>RBAC3模型：综合了RBAC0、RBAC1和RBAC2的所有特点，既有角色分层又有约束的一种模型。</li>
+</ul>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903905931821063">到底什么是RBAC权限模型？！</a></p>
+<h3 id="14-MVC、MVP-和-MVVM"><a href="#14-MVC、MVP-和-MVVM" class="headerlink" title="14. MVC、MVP 和 MVVM"></a>14. MVC、MVP 和 MVVM</h3><h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h4><ul>
 <li>Model：模型，负责保存应用数据，与后端数据进行同步</li>
 <li>View：视图，负责视图展示，将 Model 中的数据可视化出来</li>
 <li>Controller：控制器，负责业务逻辑，根据用户行为对 Model 数据进行修改</li>
@@ -559,8 +571,8 @@
 <li>原生渲染： React Native、Weex</li>
 <li>混合渲染： 微信小程序</li>
 </ul>
-<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p>💡<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f7e0ae5d4c3f">hybrid 开发</a></p>
-<h3 id="16-WebSocket"><a href="#16-WebSocket" class="headerlink" title="16. WebSocket"></a>16. WebSocket</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><p>WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
+<h4 id="参考文档-1"><a href="#参考文档-1" class="headerlink" title="参考文档"></a>参考文档</h4><p>💡<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f7e0ae5d4c3f">hybrid 开发</a></p>
+<h3 id="16-WebSocket"><a href="#16-WebSocket" class="headerlink" title="16. WebSocket"></a>16. WebSocket</h3><h4 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a>概念</h4><p>WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
 <h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
 <li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
 <li>与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
@@ -1016,7 +1028,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">88.1k</span>&nbsp;字
+                class="white-color">88.3k</span>&nbsp;字
             
             
             
