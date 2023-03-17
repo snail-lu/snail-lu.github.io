@@ -365,7 +365,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-16
+                    2023-03-17
                 </div>
                 
 
@@ -416,7 +416,7 @@
 <li>确认号为<code>Ack=y+1</code>，表示收到服务器端序号<code>Seq</code>，并将其值加1作为自己的确认号Ack的值；<br>随后客户端进入<strong>ESTABLISHED</strong>阶段。</li>
 </ul>
 </li>
-<li>服务器收到来自客户端的<strong>确认收到服务器数</strong>的TCP报文之后，明确了从服务器到客户端的数据传输是正常的，结束<strong>SYN-RECEIVED</strong>阶段，进入<strong>ESTABLISHED</strong>阶段。<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/16/v0NFsA.gif"></li>
+<li>服务器收到来自客户端的<strong>确认收到服务器</strong>的TCP报文之后，明确了从服务器到客户端的数据传输是正常的，结束<strong>SYN-RECEIVED</strong>阶段，进入<strong>ESTABLISHED</strong>阶段。<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/16/v0NFsA.gif"></li>
 </ol>
 <p><strong>为什么是三次？</strong> 三次是保证双方互相明确对方能收能发的最低值。</p>
 <h3 id="2-TCP-的“四次挥手”"><a href="#2-TCP-的“四次挥手”" class="headerlink" title="2. TCP 的“四次挥手”"></a>2. TCP 的“四次挥手”</h3><p><strong>四次挥手</strong>即TCP连接的释放(解除)。连接的释放必须是一方主动释放，另一方被动释放。<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2022/08/16/v0NKzQ.png"><br><strong>四次挥手</strong>的过程：</p>
@@ -425,7 +425,7 @@
 </ol>
 <ul>
 <li>标记位为<code>FIN</code>，表示<strong>请求释放连接</strong></li>
-<li>序号为<code>Seq=U</code><br>随后客户端进入<strong>FIN-WAIT-1`</strong> 阶段，即半关闭阶段。并且停止在客户端到服务器端方向上发送数据，但是客户端仍然能接收从服务器端传输过来的数据。</li>
+<li>序号为<code>Seq=U</code><br>随后客户端进入<strong>FIN-WAIT-1</strong> 阶段，即半关闭阶段。并且停止在客户端到服务器端方向上发送数据，但是客户端仍然能接收从服务器端传输过来的数据。</li>
 </ul>
 <ol start="2">
 <li>服务器端接收到从客户端发出的TCP报文之后，确认了客户端想要释放连接，随后服务器端结束 <strong>ESTABLISHED</strong> 阶段，进入 <strong>CLOSE-WAIT</strong> 阶段（半关闭状态）并返回一段TCP报文，其中：</li>
@@ -458,31 +458,29 @@
 <li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
 <li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
 <li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
-<li>GET请求在URL中传送的参数是有长度限制的，而POST么有。</li>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST没有。</li>
 <li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
 <li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
 <li>GET参数通过URL传递，POST放在Request body中。  </li>
 </ul>
-<p>补充：</p>
+<p>💡补充：</p>
 <ul>
 <li>更多的区别是语义上的区别：<code>GET</code>用于获取指定的资源，<code>POST</code>用于创建/更新某个资源</li>
 <li>POST产生两个TCP数据包，浏览器先发送header，服务器响应<code>100 continue</code>，浏览器再发送data，服务器响应200 ok(返回数据)</li>
 </ul>
-<p><strong>注：并不是所有的浏览器都发送个TCP数据包</strong>。</p>
-<h3 id="4-常见的HTTP请求头和响应头"><a href="#4-常见的HTTP请求头和响应头" class="headerlink" title="4. 常见的HTTP请求头和响应头"></a>4. 常见的HTTP请求头和响应头</h3><ul>
-<li><strong>请求头</strong><ul>
-<li><code>Accept</code>: 浏览器能够处理的内容类型</li>
-<li><code>Accept-Charset</code>: 浏览器能够显示的字符集</li>
-<li><code>Accept-Encoding</code>：浏览器能够处理的压缩编码</li>
-<li><code>Accept-Language</code>：浏览器当前设置的语言</li>
-<li><code>Connection</code>：浏览器与服务器之间连接的类型</li>
+<p><strong>注：并不是所有的浏览器都发送两个TCP数据包</strong>。</p>
+<h3 id="4-常见的HTTP请求头和响应头"><a href="#4-常见的HTTP请求头和响应头" class="headerlink" title="4. 常见的HTTP请求头和响应头"></a>4. 常见的HTTP请求头和响应头</h3><h4 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h4><ul>
+<li><code>Accept</code>: 浏览器能够接受的内容类型</li>
+<li><code>Accept-Charset</code>: 浏览器能够接受的字符编码集</li>
+<li><code>Accept-Encoding</code>：浏览器能够处理的内容压缩编码类型</li>
+<li><code>Accept-Language</code>：浏览器可接受的语言</li>
+<li><code>Connection</code>：是否建立长连接（keep-alive/close）</li>
 <li><code>Cookie</code>：当前页面设置的任何Cookie</li>
-<li><code>Host</code>：发出请求的页面所在的域</li>
+<li><code>Host</code>：请求的服务器的域名和端口号</li>
 <li><code>Referer</code>：发出请求的页面的URL</li>
 <li><code>User-Agent</code>：浏览器的用户代理字符串</li>
 </ul>
-</li>
-<li><strong>响应头</strong><ul>
+<h4 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h4><ul>
 <li><code>Date</code>：表示消息发送的时间，时间的描述格式由rfc822定义</li>
 <li><code>server</code>: 服务器名称</li>
 <li><code>Connection</code>：浏览器与服务器之间连接的类型</li>
@@ -492,8 +490,6 @@
 <li><code>multipart/form-data</code>：该种方式也是一个常见的 POST 提交方式，通常表单上传文件时使用该种方式。</li>
 <li><code>application/json</code>：服务器消息主体是序列化后的 JSON 字符串。</li>
 <li><code>text/xml</code>：该种方式主要用来提交 XML 格式的数据。</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
