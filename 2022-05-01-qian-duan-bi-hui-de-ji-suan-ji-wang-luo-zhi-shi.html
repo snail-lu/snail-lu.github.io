@@ -534,9 +534,11 @@
 </li>
 <li><strong>无连接</strong>：浏览器每次请求都需要建立tcp连接<ul>
 <li><strong>无法复用连接</strong>：每次发送请求，都需要进行一次tcp连接（ 即3次握手4次挥手），使得网络的利用率非常低</li>
-<li><strong>队头阻塞</strong>：在前一个请求响应到达之后下一个请求才能发送，如果前一个阻塞，后面的请求也给阻塞的<h4 id="Http-1-1"><a href="#Http-1-1" class="headerlink" title="Http 1.1"></a>Http 1.1</h4></li>
+<li><strong>队头阻塞</strong>：在前一个请求响应到达之后下一个请求才能发送，如果前一个阻塞，后面的请求也会阻塞的</li>
 </ul>
 </li>
+</ul>
+<h4 id="Http-1-1"><a href="#Http-1-1" class="headerlink" title="Http 1.1"></a>Http 1.1</h4><ul>
 <li><strong>长连接（keep-alive）</strong>：新增 <code>Connection</code> 字段，可以设置<code>keep-alive</code> 值保持连接不断开</li>
 <li><strong>管道化</strong>：基于上面长连接的基础，管道化可以不等第一个请求响应继续发送后面的请求，但响应的顺序还是按照请求的顺序返回</li>
 <li><strong>缓存处理</strong>：新增字段 <code>cache-control</code></li>
