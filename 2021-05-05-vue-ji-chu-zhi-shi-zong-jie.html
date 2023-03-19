@@ -369,14 +369,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-18
+                    2023-03-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.6k
                 </div>
                 
 
@@ -642,7 +642,6 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <li><code>v-if</code> 当值为 <code>false</code> 时内部指令不会执行，具有阻断功能，很多情况下使用<code>v-if</code>替代<code>v-show</code></li>
 <li>合理使用路由懒加载、异步组件</li>
 <li>对于一个巨大的对象或数组数据，如果确信该数据不会修改，使用<code>Object.freeze</code>冻结数据，该数据不会被vue监听，能大幅提升性能。</li>
-<li>抽离公用代码和公共组件</li>
 </ul>
 </li>
 <li>用户体验<ul>
@@ -792,6 +791,18 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
 <li><code>vnode</code>：Vue 编译生成的虚拟节点。。</li>
 <li><code>oldVnode</code>：上一个虚拟节点，仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。</li>
 </ul>
+<h3 id="19-keep-alive"><a href="#19-keep-alive" class="headerlink" title="19. keep-alive"></a>19. keep-alive</h3><p><code>keep-alive</code>可以实现组件的缓存，当组件切换时不会对当前组件进行卸载，常用的两个属性<code>include</code>、<code>exclude</code>，2个生命周期<code>activated</code>、<code>deactivated</code></p>
+<h3 id="20-异步组件"><a href="#20-异步组件" class="headerlink" title="20. 异步组件"></a>20. 异步组件</h3><p>如果组件功能多，打包出来的体积会变大，我们可以采用异步组件的方式来加载组件。主要依赖import()这个语法，可以实现文件的分割加载。</p>
+<h3 id="21-作用域插槽"><a href="#21-作用域插槽" class="headerlink" title="21. 作用域插槽"></a>21. 作用域插槽</h3><p>插槽：</p>
+<ul>
+<li>创建组件虚拟节点时，会将组件的儿子的虚拟节点保存起来。当初始化组件时，通过插槽属性将儿子进行分类<code>&#123;a:[vnode],b[vnode]&#125;</code>。</li>
+<li>渲染组件时，会拿对应的slot属性的节点进行替换操作。（插槽的作用域为父组件）</li>
+</ul>
+<p>作用域插槽：</p>
+<ul>
+<li>作用域插槽在解析的时候，不会作为组件的孩子节点。会解析成函数，当子组件渲染时，会调用此函数进行渲染。（插槽的作用域为子组件）</li>
+</ul>
+<h3 id="22-watch中的deep-true的实现"><a href="#22-watch中的deep-true的实现" class="headerlink" title="22. watch中的deep:true的实现"></a>22. <code>watch</code>中的<code>deep:true</code>的实现</h3><p>当指定了watch中的deep属性为true时，如果当前监控值是数组类型，会对对象中的每一项进行求值，此时会将当前的watcher存入到对应属性的依赖中，这样数组中对象发生变化时也会通知数据更新。</p>
 <h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p>💡<a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/custom-directive.html">Vue自定义指令</a></p>
 
                 
@@ -1245,7 +1256,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">88.3k</span>&nbsp;字
+                class="white-color">90.4k</span>&nbsp;字
             
             
             
