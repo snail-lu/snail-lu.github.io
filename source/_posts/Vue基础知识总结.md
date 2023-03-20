@@ -22,7 +22,7 @@ categories:
 `key` 主要用在 Vue 的虚拟 DOM 算法，在新旧节点对比时辨识 `VNodes`（虚拟节点）。如果不使用 `key`，Vue 会最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素。而使用 `key` 时，它会基于 `key` 的变化重新排列元素顺序，并且会移除 `key` 不存在的元素。
 综上，简单列表的渲染可以不使用 `key` 或者用数组的 `index` 作为`key`（效果等同于不带key），这种模式下性能最高，但是并不能准确的更新列表项的状态。一旦你需要保存列表项的状态，那么就需要用使用唯一的 `key` 用来准确的定位每一个列表项以及复用其自身的状态。否则就可能会出现错乱的情况（[示例代码](https://codesandbox.io/s/vue-demo-lneif5?file=/src/components/TodoList.vue)）。
 
-#### 3. `computed` 和 `watch` 的区别及应用场景
+### 3. `computed` 和 `watch` 的区别及应用场景
 - **computed**
 计算属性，依赖其它属性值，并且 `computed` 的值有缓存，只有它依赖的属性值发生改变才会重新求值；（源码中通过`dirty`属性来控制是重新计算还是从缓存中取值）
 - **watch**
@@ -56,7 +56,7 @@ errorCaptured | 2.5.0+ 新增，在捕获一个来自后代组件的错误时被
 ![image](https://s1.ax1x.com/2022/09/26/xVvOpR.png)
 
 ### 6. 父组件和子组件生命周期钩子执行顺序
-可以归类为以下 4 中场景：
+可以归类为以下 5 中场景：
 
 - 加载渲染过程  
 父 `beforeCreate` -> 父 `created` -> 父 `beforeMount` -> 子 `beforeCreate` -> 子 `created` -> 子 `beforeMount` -> 子 `mounted` -> 父 `mounted`
