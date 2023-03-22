@@ -127,5 +127,6 @@ search:
 # image lazyload
 lazyload:
   enable: true 
-  onlypost: true  # 是否只对文章的图片做懒加载
+  onlypost: false  # 是否只对文章的图片做懒加载
   loadingImg: /medias/loading.gif # eg ./images/loading.gif
+  preloadRatio: 2 # 在多少倍的可见区域时触发图片请求
