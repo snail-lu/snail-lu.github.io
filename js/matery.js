@@ -106,6 +106,11 @@ $(function () {
             subHtmlSelectorRelative: true
         });
 
+        // 修复lightgallery图片在懒加载后预览一直显示loading图的问题
+        $(document).find('img[data-original]').each(function(){
+            $(this).parent().attr("data-src", $(this).attr("data-original"));
+        });
+
         // progress bar init
         const progressElement = window.document.querySelector('.progress-bar');
         if (progressElement) {
