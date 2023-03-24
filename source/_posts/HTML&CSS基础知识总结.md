@@ -96,6 +96,14 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
 - `src`：全称`source`，它通常用于`img`、`video`、`audio`、`script`元素，通过 `src` 指向请求外部资源的来源地址，指向的内容会嵌入到文档中当前标签所在位置，在请求`src`资源时，它会将资源下载并应用到文档内，比如说：`js`脚本、`img`图片、`frame`等元素。当浏览器解析到该元素时，会暂停其它资源下载，直到将该资源加载、编译、执行完毕。这也是为什么将`js`脚本放在底部而不是头部的原因。
 - `href`：全称`hyper reference`，意味着超链接，指向网络资源，当浏览器识别到它指向的⽂件时，就会并⾏下载资源，不会停⽌对当前⽂档的处理，通常用于`a`、`link`元素。
 
+#### 8. script标签上的 defer 和 async 的区别
+- `<script src="main.js"></script>`
+  不带`defer`和 `async`，浏览器读取到该标签就会立即加载并执行相应的脚本，会阻塞后续页面文档的解析
+- `<script async src="main.js"></script>`
+  带`async`属性，异步脚本，即页面文档的解析与js脚本的加载是并行进行的，但是js脚本的执行依然会阻塞页面的解析。多个异步脚本的执行顺序与书写顺序不一定一致。
+- `<script defer src="main.js"></script>`
+  带`defer`属性，延迟脚本，即读取到该标签时，会去异步加载该脚本，不会阻塞页面文档的解析，脚本会被延迟到整个页面解析完成之后、`DOMContentLoaded`事件触发之前执行。多个延迟脚本，理论上是按照顺序执行的，但是现实中不一定。
+
 ### 二、CSS基础
 #### 1. 盒模型
 盒模型中均包含元素内容`content`、内边距`padding`、边框`border`及外边距`margin`四部分
@@ -107,8 +115,26 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
   - 通过`box-sizing: border-box;`来使用IE盒模型
 
 #### 2. 布局
-- `flex`布局是一维布局，适合做局部布局，比如导航栏
-- `grid`布局是二维布局，适合做整个页面的规划
+**`flex`布局**
+弹性布局，由父级容器、子元素构成，通过设置主轴和交叉轴来控制子元素的排序方式。这种布局方式是一维布局，适合做局部布局，比如导航栏
+父级容器属性：
+- `flex-direction`:  row | row-reverse | column | column-reverse;  子元素排列方向
+- `flex-wrap`：nowrap | wrap | wrap-reverse;  是否允许换行
+- `flex-flow`：  <'flex-direction'>  || <'flex-wrap'> ; `flex-direction`和`flex-wrap`的简写形式，默认值为`row nowrap`
+- `justify-content`: flex-start | flex-end | center | space-between | space-around;  子元素在主轴上的对齐方式。
+- `align-items`:  flex-start | flex-end | center | baseline | stretch;  子元素在交叉轴上的对齐方式。
+- `align-content`:  flex-start | flex-end | center | space-between | space-around | stretch; 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+
+子元素属性：
+- `order`: 子元素的排列顺序。数值越小，排列越靠前，默认为`0`
+- `flex-grow`: 子元素的放大比例，默认为`0`
+- `flex-shrink`: 子元素的缩小比例，默认为`1`，空间不足时会缩小该元素，设为`0`禁止缩小
+- `flex-basis`: 子元素在主轴方向上的初始大小。
+- `flex`: `flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为 `0 1 auto`
+- `align-self`: 允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`。
+
+**`grid`布局**
+网格布局， 将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。网格是一组相交的水平线和垂直线，它定义了网格的列和行。我们可以将网格元素放置在与这些行和列相关的位置上。这种布局方式是二维布局，适合做整个页面的规划。
 
 #### 3. 选择器
 **优先级：**
