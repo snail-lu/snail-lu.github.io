@@ -365,14 +365,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-23
+                    2023-03-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    3.3k
                 </div>
                 
 
@@ -467,6 +467,11 @@
 <li><code>src</code>：全称<code>source</code>，它通常用于<code>img</code>、<code>video</code>、<code>audio</code>、<code>script</code>元素，通过 <code>src</code> 指向请求外部资源的来源地址，指向的内容会嵌入到文档中当前标签所在位置，在请求<code>src</code>资源时，它会将资源下载并应用到文档内，比如说：<code>js</code>脚本、<code>img</code>图片、<code>frame</code>等元素。当浏览器解析到该元素时，会暂停其它资源下载，直到将该资源加载、编译、执行完毕。这也是为什么将<code>js</code>脚本放在底部而不是头部的原因。</li>
 <li><code>href</code>：全称<code>hyper reference</code>，意味着超链接，指向网络资源，当浏览器识别到它指向的⽂件时，就会并⾏下载资源，不会停⽌对当前⽂档的处理，通常用于<code>a</code>、<code>link</code>元素。</li>
 </ul>
+<h4 id="8-script标签上的-defer-和-async-的区别"><a href="#8-script标签上的-defer-和-async-的区别" class="headerlink" title="8. script标签上的 defer 和 async 的区别"></a>8. script标签上的 defer 和 async 的区别</h4><ul>
+<li><code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>不带<code>defer</code>和 <code>async</code>，浏览器读取到该标签就会立即加载并执行相应的脚本，会阻塞后续页面文档的解析</li>
+<li><code>&lt;script async src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>带<code>async</code>属性，异步脚本，即页面文档的解析与js脚本的加载是并行进行的，但是js脚本的执行依然会阻塞页面的解析。多个异步脚本的执行顺序与书写顺序不一定一致。</li>
+<li><code>&lt;script defer src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br>带<code>defer</code>属性，延迟脚本，即读取到该标签时，会去异步加载该脚本，不会阻塞页面文档的解析，脚本会被延迟到整个页面解析完成之后、<code>DOMContentLoaded</code>事件触发之前执行。多个延迟脚本，理论上是按照顺序执行的，但是现实中不一定。</li>
+</ul>
 <h3 id="二、CSS基础"><a href="#二、CSS基础" class="headerlink" title="二、CSS基础"></a>二、CSS基础</h3><h4 id="1-盒模型"><a href="#1-盒模型" class="headerlink" title="1. 盒模型"></a>1. 盒模型</h4><p>盒模型中均包含元素内容<code>content</code>、内边距<code>padding</code>、边框<code>border</code>及外边距<code>margin</code>四部分</p>
 <ul>
 <li><strong>标准盒模型</strong>: <ul>
@@ -480,10 +485,25 @@
 </ul>
 </li>
 </ul>
-<h4 id="2-布局"><a href="#2-布局" class="headerlink" title="2. 布局"></a>2. 布局</h4><ul>
-<li><code>flex</code>布局是一维布局，适合做局部布局，比如导航栏</li>
-<li><code>grid</code>布局是二维布局，适合做整个页面的规划</li>
+<h4 id="2-布局"><a href="#2-布局" class="headerlink" title="2. 布局"></a>2. 布局</h4><p><strong><code>flex</code>布局</strong><br>弹性布局，由父级容器、子元素构成，通过设置主轴和交叉轴来控制子元素的排序方式。这种布局方式是一维布局，适合做局部布局，比如导航栏<br>父级容器属性：</p>
+<ul>
+<li><code>flex-direction</code>:  row | row-reverse | column | column-reverse;  子元素排列方向</li>
+<li><code>flex-wrap</code>：nowrap | wrap | wrap-reverse;  是否允许换行</li>
+<li><code>flex-flow</code>：  &lt;’flex-direction’&gt;  || &lt;’flex-wrap’&gt; ; <code>flex-direction</code>和<code>flex-wrap</code>的简写形式，默认值为<code>row nowrap</code></li>
+<li><code>justify-content</code>: flex-start | flex-end | center | space-between | space-around;  子元素在主轴上的对齐方式。</li>
+<li><code>align-items</code>:  flex-start | flex-end | center | baseline | stretch;  子元素在交叉轴上的对齐方式。</li>
+<li><code>align-content</code>:  flex-start | flex-end | center | space-between | space-around | stretch; 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</li>
 </ul>
+<p>子元素属性：</p>
+<ul>
+<li><code>order</code>: 子元素的排列顺序。数值越小，排列越靠前，默认为<code>0</code></li>
+<li><code>flex-grow</code>: 子元素的放大比例，默认为<code>0</code></li>
+<li><code>flex-shrink</code>: 子元素的缩小比例，默认为<code>1</code>，空间不足时会缩小该元素，设为<code>0</code>禁止缩小</li>
+<li><code>flex-basis</code>: 子元素在主轴方向上的初始大小。</li>
+<li><code>flex</code>: <code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为 <code>0 1 auto</code></li>
+<li><code>align-self</code>: 允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</li>
+</ul>
+<p><strong><code>grid</code>布局</strong><br>网格布局， 将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。网格是一组相交的水平线和垂直线，它定义了网格的列和行。我们可以将网格元素放置在与这些行和列相关的位置上。这种布局方式是二维布局，适合做整个页面的规划。</p>
 <h4 id="3-选择器"><a href="#3-选择器" class="headerlink" title="3. 选择器"></a>3. 选择器</h4><p><strong>优先级：</strong></p>
 <ol>
 <li><code>!important</code>会覆盖页面内任何位置的元素样式</li>
@@ -1031,7 +1051,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">95.7k</span>&nbsp;字
+                class="white-color">96.4k</span>&nbsp;字
             
             
             
