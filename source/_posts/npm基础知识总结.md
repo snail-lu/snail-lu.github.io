@@ -1,7 +1,7 @@
 ---
-title: npm常用命令总结
+title: npm基础知识总结
 date: 2020-07-20 21:25:17
-summary: npm常用命令总结。
+summary: npm基础知识总结
 tags:
 - npm
 - Node
@@ -9,12 +9,13 @@ categories:
 - [读书笔记]
 ---
 
-### 查看npm版本  
+### 1. 常用命令
+#### 查看npm版本  
 ``` bash
 npm -v
 ```
 
-### 查看帮助
+#### 查看帮助
 ``` bash
 # 显示npm的所有命令
 npm help
@@ -26,13 +27,13 @@ npm -l
 npm <command> -h
 ```
 
-### 更新npm
+#### 更新npm
 
 ```bash
 npm install npm@latest -g
 ```
 
-### 创建包描述文件
+####创建包描述文件
 
 ``` bash
 npm init 
@@ -41,7 +42,7 @@ npm init
 npm init --yes/-y
 ```
 
-### 安装包
+#### 安装包
 
 ``` bash
 # 安装当前package.json文件中所列的依赖包
@@ -64,7 +65,7 @@ npm install <package_name>@<version>
 
 ```
 
-### 卸载包
+#### 卸载包
 
 ``` bash
 # 从node_modules目录下删除指定的包（不会修改package.json）
@@ -78,7 +79,7 @@ npm uninstall -g <package_name>
 
 ```
 
-### 更新包
+#### 更新包
 
 ``` bash
 # 更新生产环境依赖包
@@ -91,7 +92,7 @@ npm update <package_name> --save-dev
 npm update <package_name> -g
 ```  
 
-### 镜像地址
+#### 镜像地址
 
 ```bash
 # 查看当前镜像地址
@@ -102,7 +103,7 @@ npm config set registry https:#registry.npm.taobao.org/
 
 ```
 
-### 发布npm包
+#### 发布npm包
 
 ``` bash
 # 创建用户（或者直接去官网注册）
@@ -124,7 +125,7 @@ npm version <newversion>
 npm publish
 ```
 
-### npm脚本
+#### npm脚本
 
 在`package.json`中`scripts`字段中可以自定义npm脚本命令
 
@@ -145,8 +146,13 @@ npm run build
 npm run
 ```
 
+### 2. 底层实现
+#### 运行`npm run xxx`的时候发生了什么
+- `npm` 会先在当前目录的 `node_modules/.bin` 查找要执行的程序，如果找到则运行；
+- 没有找到则从全局的 `node_modules/.bin` 中查找，`npm i -g xxx`就是安装到到全局目录；
+- 如果全局目录还是没找到，那么就从 `path` 环境变量中查找有没有其他同名的可执行程序。
 
-### 参考文档：  
+### 参考文档  
 
 [1. npm Docs](https:#docs.npmjs.com/cli/v6/commands)  
 [2. npm中文文档](https:#www.npmjs.cn/)
