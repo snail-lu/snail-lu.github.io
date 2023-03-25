@@ -489,3 +489,7 @@ const newNums2 = nums.splice(1, 3);
 - 耦合关系上看
   - 观察者和被观察者是松耦合的关系，两个主体存在直接交互
   - 发布者和订阅者则完全不存在耦合，两个主体是借助第三方主体来进行间接交互
+
+
+### 24. JS的模块化规范
+📕[JavaScript模块化规范总结](https://snaillu.gitee.io/2022-12-29-javascript-mo-kuai-hua-gui-fan-zong-jie.html)
