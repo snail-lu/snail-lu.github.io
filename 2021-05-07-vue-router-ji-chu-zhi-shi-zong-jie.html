@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    873
+                    930
                 </div>
                 
 
@@ -434,7 +434,7 @@
 <li><code>router</code> 是 <code>VueRouter</code> 的实例，是一个全局路由对象，包含了路由跳转的方法、钩子函数等。</li>
 <li><code>route</code> 是一个当前正在跳转的路由对象，每一个路由都会有一个<code>route</code>对象，是一个局部对象，包含<code>path</code>,<code>params</code>,<code>hash</code>,<code>query</code>,<code>fullPath</code>,<code>matched</code>,<code>name</code>等路由信息参数。</li>
 </ul>
-<h3 id="4-路由模式"><a href="#4-路由模式" class="headerlink" title="4. 路由模式"></a>4. 路由模式</h3><h4 id="Hash模式"><a href="#Hash模式" class="headerlink" title="Hash模式"></a>Hash模式</h4><p><code>Hash</code> 模式是一种把前端路由的路径用 <code>#</code> 拼接在真实 <code>url</code> 后面的模式。当 <code>#</code> 后面的路径发生变化时，浏览器并不会重新发起请求，而是会触发 <code>onhashchange</code> 事件。</p>
+<h3 id="4-路由模式"><a href="#4-路由模式" class="headerlink" title="4. 路由模式"></a>4. 路由模式</h3><h4 id="Hash模式"><a href="#Hash模式" class="headerlink" title="Hash模式"></a>Hash模式</h4><p><code>Hash</code> 模式是一种把前端路由的路径用 <code>#</code> 拼接在真实 <code>url</code> 后面的模式。当 <code>#</code> 后面的路径发生变化时，浏览器并不会重新发起请求，而是会触发 <code>onhashchange</code> 事件，<code>Vue Router</code>中的Hash模式就是通过监听<code>onhashchange</code>事件来实现的。</p>
 <p><strong>特点：</strong></p>
 <ul>
 <li>hash变化会触发网页跳转，即浏览器的前进和后退。</li>
@@ -442,7 +442,7 @@
 <li>hash 通过 window.onhashchange 的方式，来监听 hash 的改变，借此实现无刷新跳转的功能。</li>
 <li>hash 永远不会提交到 server 端（可以理解为只在前端自生自灭）。</li>
 </ul>
-<h4 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h4><p><code>history</code> API 是 HTML5 提供的新特性，允许开发者直接更改前端路由，即更新浏览器 URL 地址而不重新发起请求。</p>
+<h4 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h4><p><code>history</code> API 是 HTML5 提供的新特性，允许开发者直接更改前端路由。</p>
 <p><code>history</code>对象的属性和方法：</p>
 <ul>
 <li><code>length</code>: 表示历史记录中元素的数量</li>
@@ -460,7 +460,7 @@
 <li>可以额外设置 title 属性，以便后续使用。</li>
 <li>通过 pushState 、 replaceState 来实现无刷新跳转的功能。</li>
 </ul>
-<p>💡<code>history</code>模式会存在刷新报404的问题，需要服务器端配置来解决。</p>
+<p>💡<code>history</code>模式会存在刷新报404的问题，这是因为我们的应用是单页应用，刷新的时候会向服务器发送请求，而该路径一般是无对应的文档资源的，所以会报404，需要服务器端配置返回同一个<code>index.html</code>来解决。</p>
 <h3 id="5-动态路由实现权限控制"><a href="#5-动态路由实现权限控制" class="headerlink" title="5. 动态路由实现权限控制"></a>5. 动态路由实现权限控制</h3><p>1.通过 <code>router.beforeEach()</code>进行权限校验，获取角色可访问的路由数据。<br>2.通过 <code>vue-router</code> 的 <code>addRoute()</code> 来动态增加路由。</p>
 
                 
@@ -910,7 +910,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">97.8k</span>&nbsp;字
+                class="white-color">97.9k</span>&nbsp;字
             
             
             
