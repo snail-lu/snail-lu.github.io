@@ -20,23 +20,23 @@ function bubbleSort (arr) {
         return arr
     }
     // 总共进行arr.length - 1轮排序
-    for (let i = 0, max = arr.length-1; i < max; i++) {
+    for (let i = 0, max = arr.length - 1; i < max; i++) {
         // 排序完成标志位，
         // 当没有相邻数据交换时证明排序完成，反之，则证明排序尚未完全结束
         let done = true;
 
         // 每轮的两两比较只需要进行到 max-i 即可，因为max-i后面的数据都是之前排好的
         for (let j = 0; j < max - i; j++) {
-        // 这里是升序排序
-        if (arr[j] > arr[j + 1]) {
-            [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
-            done = false;
-        }
+            // 这里是升序排序
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+                done = false;
+            }
         }
 
         // 排序完成，提前终止，减少不必要的循环
         if (done) {
-        break;
+            break;
         }
     }
     return arr;
@@ -68,9 +68,9 @@ function quickSort(arr) {
     // 遍历元素进行数据分组
     for (let i = 0; i < arr.length; i++){
         if (arr[i] < pivot) {
-        left.push(arr[i]);
+            left.push(arr[i]);
         } else {
-        right.push(arr[i]);
+            right.push(arr[i]);
         }
     }
 

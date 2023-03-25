@@ -38,7 +38,7 @@ categories:
 
 #### 2. 元素分类
 - 块级元素
-  `div`, `ul`, `li`, `dl`, `dt`, `dd`, `h1`~`h5`, `p`等；
+  `div`, `ul`, `li`, `dl`, `dt`, `dd`, `h1` ~ `h5`, `p`等；
 - 行内元素（内联元素）
   `a`, `b`, `span`, `img`, `input`, `select`, `strong`, `button`等
 
@@ -52,13 +52,13 @@ HTML标签的语义化，就是用正确的标签做正确的事情，给某块�
 - 便于团体的开发和维护: 语义化使代码更具有可读性，让其他开发人员更加理解你的html结构，减少差异化。遵循 W3C 标准的团队都遵循这个标准。
 
 **常见的语义化标签：**
-- header
-- nav
-- main
-- footer
-- article
-- section
-- aside
+- header：页面或者文章的头部
+- main：文档正文的主体部分
+- footer：页面或文章的尾部
+- aside：侧边栏
+- nav：导航
+- article：页面中的独立部分，如文章、帖子等内容
+- section：文档中一个通用独立章节
 
 #### 4. DOCTYPE
 `Doctype` 是 `HTML` 的文档类型声明，通过它可以告诉浏览器，使用哪一个 `HTML` 版本标准解析文档。
