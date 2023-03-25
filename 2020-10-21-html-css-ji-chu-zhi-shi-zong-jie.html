@@ -549,8 +549,9 @@
 <ul>
 <li>该元素并不脱离文档流，仍然保留元素原本在文档流中的位置。</li>
 <li>当元素在容器中被滚动超过指定的偏移值时，元素在容器内固定在指定位置。即如果你设置了<code>top: 50px</code>，那么在<code>sticky</code>元素到达距离相对定位的元素顶部<code>50px</code>的位置时固定，不再向上移动。</li>
-<li>元素固定的相对偏移是相对于离它最近的具有滚动框的祖先元素，如果祖先元素都不可以滚动，那么是相对于<code>viewport</code>来计算元素的偏移量<h4 id="5-BFC"><a href="#5-BFC" class="headerlink" title="5. BFC"></a>5. BFC</h4><code>BFC</code> 是 <code>Block Formatting context</code>：块级格式化上下文。具有 <code>BFC</code> 特性的元素可以看作是隔离了的独立容器，拥有不影响外界且不被外界所影响的布局规则。</li>
+<li>元素固定的相对偏移是相对于离它最近的具有滚动框的祖先元素，如果祖先元素都不可以滚动，那么是相对于<code>viewport</code>来计算元素的偏移量</li>
 </ul>
+<h4 id="5-BFC"><a href="#5-BFC" class="headerlink" title="5. BFC"></a>5. BFC</h4><p><code>BFC</code> 是 <code>Block Formatting context</code>：块级格式化上下文。具有 <code>BFC</code> 特性的元素可以看作是隔离了的独立容器，拥有不影响外界且不被外界所影响的布局规则。</p>
 <p><strong>布局规则：</strong></p>
 <ul>
 <li><strong>包含内部浮动</strong><br>  开启了BFC的元素在计算高度时，浮动的元素也包含在内，即父元素会被浮动的子元素撑开。</li>
