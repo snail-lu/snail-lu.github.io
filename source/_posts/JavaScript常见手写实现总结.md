@@ -351,6 +351,8 @@ function spawn(genF) {
     });
 }
 ```
+
+#### 用setTimeout来实现setInterval
 ### 3. 工具方法
 #### 防抖
 指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行
