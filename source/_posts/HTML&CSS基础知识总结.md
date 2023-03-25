@@ -116,14 +116,14 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
 
 #### 2. 布局
 **`flex`布局**
-弹性布局，由父级容器、子元素构成，通过设置主轴和交叉轴来控制子元素的排序方式。这种布局方式是一维布局，适合做局部布局，比如导航栏
+弹性布局，由父级容器、子元素（也称项目）构成，通过设置主轴和交叉轴来控制子元素的排序方式。这种布局方式是一维布局，适合做局部布局，比如导航栏
 父级容器属性：
-- `flex-direction`:  row | row-reverse | column | column-reverse;  子元素排列方向
-- `flex-wrap`：nowrap | wrap | wrap-reverse;  是否允许换行
-- `flex-flow`：  <'flex-direction'>  || <'flex-wrap'> ; `flex-direction`和`flex-wrap`的简写形式，默认值为`row nowrap`
-- `justify-content`: flex-start | flex-end | center | space-between | space-around;  子元素在主轴上的对齐方式。
-- `align-items`:  flex-start | flex-end | center | baseline | stretch;  子元素在交叉轴上的对齐方式。
-- `align-content`:  flex-start | flex-end | center | space-between | space-around | stretch; 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+- `flex-direction`: row | row-reverse | column | column-reverse;  设置主轴的方向；
+- `flex-wrap`: nowrap | wrap | wrap-reverse;  换行方式
+- `flex-flow`: <'flex-direction'> <'flex-wrap'>；`flex-direction`和`flex-wrap`的简写形式，默认值为`row nowrap`
+- `justify-content`: flex-start | flex-end | center | space-between | space-around;  子元素在主轴上的对齐方式；
+- `align-items`: flex-start | flex-end | center | baseline | stretch;  子元素在交叉轴上的对齐方式。
+- `align-content`: flex-start | flex-end | center | space-between | space-around | stretch; 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
 
 子元素属性：
 - `order`: 子元素的排列顺序。数值越小，排列越靠前，默认为`0`
@@ -135,6 +135,27 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
 
 **`grid`布局**
 网格布局， 将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。网格是一组相交的水平线和垂直线，它定义了网格的列和行。我们可以将网格元素放置在与这些行和列相关的位置上。这种布局方式是二维布局，适合做整个页面的规划。
+
+父级容器属性：
+- `grid-template-columns`: 设置列宽
+- `grid-template-rows`: 设置行高
+- `grid-row-gap`：设置行之间的间距
+- `grid-column-gap`: 设置列之间的间距
+- `grid-gap`: <'grid-row-gap'> <'grid-column-gap'>, 行间距和列间距的缩写
+- `align-items`: 设置单元格内容的垂直位置
+- `justify-items`: 设置单元格内容的水平位置
+- `justify-content`: 设置内容区域在容器里面的水平位置
+- `align-content`: 设置内容区域在容器里面的垂直位置
+- ...
+
+项目属性：
+- `justify-self`: 设置单元格内容的水平位置
+- `align-self`: 设置单元格内容的垂直位置
+- `grid-column-start`: 项目左边框所在的垂直网格线
+- `grid-column-end`: 项目右边框所在的垂直网格线
+- `grid-column`: 上面两个属性的简写
+- `grid-row-start`: 项目上边框所在的水平网格线
+- `grid-row-end`: 项目下边框所在的水平网格线
 
 #### 3. 选择器
 **优先级：**
@@ -153,6 +174,13 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
 - fixed
 - sticky
 
+##### sticky
+在屏幕范围（viewport）时该元素的位置并不受到定位影响（设置的`top`、`left`等属性无效），当该元素的位置将要移出偏移范围时，定位又会变成`fixed`，根据设置的`left`、`top`等属性成固定位置的效果。
+
+特点：
+- 该元素并不脱离文档流，仍然保留元素原本在文档流中的位置。
+- 当元素在容器中被滚动超过指定的偏移值时，元素在容器内固定在指定位置。即如果你设置了`top: 50px`，那么在`sticky`元素到达距离相对定位的元素顶部`50px`的位置时固定，不再向上移动。
+- 元素固定的相对偏移是相对于离它最近的具有滚动框的祖先元素，如果祖先元素都不可以滚动，那么是相对于`viewport`来计算元素的偏移量
 #### 5. BFC
 `BFC` 是 `Block Formatting context`：块级格式化上下文。具有 `BFC` 特性的元素可以看作是隔离了的独立容器，拥有不影响外界且不被外界所影响的布局规则。
 
@@ -239,4 +267,29 @@ TDK，即·`title`、`description`、`keywords`这三个标签，`title`表示�
 
 📕[一文读懂 CSS 单位](https://www.51cto.com/article/719354.html)
 
-#### 11. 可以继承的样式
+#### 11. transition 和 animation
+##### transition 过渡动画
+- transition-property：指定过渡的 CSS 属性
+- transition-duration：指定过渡所需的完成时间
+- transition-timing-function：指定过渡函数
+- transition-delay：指定过渡的延迟时间
+
+##### animation 关键帧动画
+- animation-name：指定要绑定到选择器的关键帧的名称
+- animation-duration：动画指定需要多少秒或毫秒完成
+- animation-timing-function：设置动画将如何完成一个周期
+- animation-delay：设置动画在启动前的延迟间隔
+- animation-iteration-count：定义动画的播放次数
+- animation-direction：指定是否应该轮流反向播放动画
+- animation-fill-mode：规定当动画不播放时（当动画完成时，或当动画- 有一个延迟未开始播放时），要应用到元素的样式
+- animation-play-state：指定动画是否正在运行或已暂停
+
+#### 12. 可继承的属性
+- 字体相关属性：`font`、`font-family`、`font-size`、`font-style`、`font-variant`、`font-weight`
+- 文字相关属性：`line-height`、`text-align`、`text-indent`、`text-transform`、`color`、`letter-spancing`、`word-spacing`、`direction`
+- 可见性属性：`visibility`
+- 表格相关属性：`border-collapse`、`border-spacing`、`empty-cell` 
+- 列表相关属性：`list-style-type`、`list-style-image`、`list-style-position`、`list-style`
+- 光标属性：`cursor`
+
+
