@@ -12,26 +12,28 @@ categories:
 
 ### 一、HTML基础
 #### 1. HTML、XML、XHTML 的区别
+概念：
 - `HTML`：超文本标记语言，是语法较为松散的、不严格的`Web`语言，主要用于显示数据；
 - `XML`：可扩展标记语言，主要用于传输和存储数据，可扩展，可以自定义标签；
 - `XHTML`：可扩展超文本标记语言，基于`XML`，作用与`HTML`类似，但语法更严格。
 
-XHTML与HTML的区别：
-​- `XHTML`标签名必须小写；
-- `XHTML`元素必须被关闭；
+`XHTML` 与 `HTML` 的区别：
+- `XHTML`标签名必须小写；
+- `XHTML`元素必须有结束标签；
 - `XHTML`元素必须被正确的嵌套；
-- `XHTML`元素必须要有根元素。
-​
-XHTML与HTML5的区别：
-​- `HTML5`新增了`canvas`绘画元素；
+- `XHTML`元素必须要有根元素
+
+
+`XHTML` 与 `HTML5` 的区别：
+- `HTML5`新增了`canvas`绘画元素；
 - `HTML5`新增了用于绘媒介回放的`video`和`audio`元素；
 - 更具语义化的标签，便于浏览器识别；
 - 对本地离线存储有更好的支持；
 - `MathML`，`SVG`等，可以更好的`render`；
-- 添加了新的表单控件：`calendar`、`date`、`time`、`email`等。
-​
-HTML、XHTML、HTML5之间的联系：
-​- `XHTML`是`HTML`规范版本；
+- 添加了新的表单控件：`calendar`、`date`、`time`、`email`等
+ 
+`HTML`、`XHTML`、`HTML5` 之间的联系：
+- `XHTML`是`HTML`规范版本；
 - `HTML5`是`HTML`、`XHTML`以及`HTML DOM`的新标准。
 
 #### 2. 元素分类
