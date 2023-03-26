@@ -372,7 +372,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
@@ -421,7 +421,16 @@
 <li>小程序利用获取到的<code>prepay_id</code>等参数，调用<code>wx.wx.requestPayment()</code>拉起支付；</li>
 <li>用户支付成功后，服务端可接收到微信的支付回调信息，进而修改订单的支付状态。<br><img src="/medias/loading.gif" data-original="https://pay.weixin.qq.com/wiki/doc/apiv3/assets/img/pay/wechatpay/6_2.png" alt="小程序支付开发流程"></li>
 </ol>
-<h3 id="4-小程序的底层原理"><a href="#4-小程序的底层原理" class="headerlink" title="4. 小程序的底层原理"></a>4. 小程序的底层原理</h3><p>小程序框架系统分为两部分：<code>逻辑层（App Service）</code> 和 <code>视图层（View）</code>。 <code>WXML</code> 模板和 <code>WXSS</code> 样式工作在渲染层，<code>JS</code> 脚本工作在逻辑层。</p>
+<h3 id="4-手机号授权流程"><a href="#4-手机号授权流程" class="headerlink" title="4. 手机号授权流程"></a>4. 手机号授权流程</h3><h4 id="旧流程"><a href="#旧流程" class="headerlink" title="旧流程"></a>旧流程</h4><ol>
+<li>调用<code>wx.login()</code>获取<code>code</code>，发送给后端，后端根据<code>code</code>得到<code>session_key</code>;</li>
+<li>将 <code>button</code> 组件 <code>open-type</code> 的值设置为 <code>getPhoneNumber</code>，当用户点击并同意之后，可以通过 <code>bindgetphonenumber</code> 事件回调获取到微信服务器返回的加密数据， 发送给后端；</li>
+<li>后端结合 <code>session_key</code> 以及 <code>app_id</code> 进行解密获取手机号。</li>
+</ol>
+<h4 id="新流程"><a href="#新流程" class="headerlink" title="新流程"></a>新流程</h4><ol>
+<li>将 <code>button</code> 组件 <code>open-type</code> 的值设置为 <code>getPhoneNumber</code>，当用户点击并同意之后，可以通过 <code>bindgetphonenumber</code> 事件回调获取到动态令牌<code>code</code>，然后把code传到后端；</li>
+<li>后端调用微信后台提供的 <code>phonenumber.getPhoneNumber</code> 接口，消费<code>code</code> 来换取用户手机号。每个<code>code</code>有效期为5分钟，且只能消费一次。</li>
+</ol>
+<h3 id="5-小程序的底层原理"><a href="#5-小程序的底层原理" class="headerlink" title="5. 小程序的底层原理"></a>5. 小程序的底层原理</h3><p>小程序框架系统分为两部分：<code>逻辑层（App Service）</code> 和 <code>视图层（View）</code>。 <code>WXML</code> 模板和 <code>WXSS</code> 样式工作在渲染层，<code>JS</code> 脚本工作在逻辑层。</p>
 <h4 id="通信模型"><a href="#通信模型" class="headerlink" title="通信模型"></a>通信模型</h4><p>小程序的渲染层和逻辑层分别由2个线程管理：渲染层的界面使用了 <code>WebView</code> 进行渲染；逻辑层采用 <code>JsCore</code> 线程运行JS脚本。一个小程序存在多个界面，所以渲染层存在多个<code>WebView</code> 线程，这两个线程的通信会经由 <code>Native</code>（微信客户端）做中转，逻辑层发送网络请求也经由 <code>Native</code> 转发，<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/03/19/ppY0f2V.png" alt="渲染层和逻辑层通信模型"></p>
 <h4 id="小程序与客户端通信原理"><a href="#小程序与客户端通信原理" class="headerlink" title="小程序与客户端通信原理"></a>小程序与客户端通信原理</h4><ul>
 <li>视图层组件<br>内置组件中有部分组件是利用到客户端原生提供的能力。既然需要客户端原生提供的能力，那就会涉及到视图层与客户端的交互通信。这层通信机制在 <code>iOS</code> 和安卓系统的实现方式并不一样，<code>iOS</code> 是利用了 <code>WKWebView</code> 的提供 <code>messageHandlers</code> 特性，而在安卓则是往 <code>WebView</code> 的 <code>window</code> 对象注入一个原生方法，最终会封装成 <code>WeiXinJSBridge</code> 这样一个兼容层，主要提供了调用（invoke）和监听（on）这两种方法。</li>
@@ -429,7 +438,7 @@
 </ul>
 <h4 id="数据驱动原理"><a href="#数据驱动原理" class="headerlink" title="数据驱动原理"></a>数据驱动原理</h4><p>在渲染层，宿主环境会把WXML转化成对应的JS对象，在逻辑层发生数据变更的时候，需要通过宿主环境提供的<code>setData</code>方法把数据从逻辑层传递到渲染层，再经过对比前后差异，把差异应用在原来的Dom树上，渲染出正确的UI界面。<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/03/19/ppY0ob4.png" alt="逻辑层传递数据到渲染层"></p>
 <h4 id="事件触发原理"><a href="#事件触发原理" class="headerlink" title="事件触发原理"></a>事件触发原理</h4><p><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/03/19/ppYc0Fe.png" alt="渲染层产生用户交互事件传递给逻辑层"></p>
-<h3 id="5-小程序性能优化"><a href="#5-小程序性能优化" class="headerlink" title="5. 小程序性能优化"></a>5. 小程序性能优化</h3><h4 id="启动性能优化"><a href="#启动性能优化" class="headerlink" title="启动性能优化"></a>启动性能优化</h4><ul>
+<h3 id="6-小程序性能优化"><a href="#6-小程序性能优化" class="headerlink" title="6. 小程序性能优化"></a>6. 小程序性能优化</h3><h4 id="启动性能优化"><a href="#启动性能优化" class="headerlink" title="启动性能优化"></a>启动性能优化</h4><ul>
 <li>首次加载<br>小程序启动时，微信会为小程序展示一个固定的启动界面，界面内包含小程序的图标、名称和加载提示图标。此时，微信会在背后完成几项工作：<code>下载小程序代码包</code>、<code>加载小程序代码包</code>、<code>初始化小程序首页</code>。下载到的小程序代码包不是小程序的源代码，而是编译、压缩、打包之后的代码包。</li>
 <li>加载顺序<br>预加载（JS引擎/WebView初始化、公共库注入）—&gt; 小程序启动（代码包下载、业务代码注入、渲染首屏）</li>
 </ul>
@@ -911,7 +920,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">98.7k</span>&nbsp;字
+                class="white-color">98.8k</span>&nbsp;字
             
             
             
