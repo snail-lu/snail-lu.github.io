@@ -21,8 +21,8 @@ categories:
 - 浏览器收到更新通知后，会使用上一次的 `hash` 值向 `WDS` 发起 `hash.hot-update.json` 请求来获取更改内容（文件列表、下一次更新的`hash`），之后浏览器再借助这些信息继续向 `WDS` 发起 `hash值.hot-update.js` 请求获取增量更新的内容。拿到需要更新的内容后，`HotModuleReplacementPlugin` 将更新后的代码进行替换，并局部刷新浏览器。
 
 ### 3. loader和plugin区别
-- `loader` 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，如css文件、图片等。loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，最终返回一个新的文件内容。
-- `plugin` 是插件，本质就是一个类，针对的是webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，执行广泛的任务，比如打包优化、文件管理、环境注入等。
+- `loader` 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，如css文件、图片等。loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，将文件转换为适合webpack模块系统处理的格式。Loader的配置项有`test`、`include`、`exclude`、`use`等属性。
+- `plugin` 是插件，用来增强webpack的功能，本质就是一个类（或构造函数），针对的是webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，当特定的事件发生时，执行相应的操作，比如生成html文件、提取css、压缩js代码等。Plugin额配置选项包括插件的实例化参数和插件的应用范围等。
 
 ### 4. 常用的loader和plugin
 **loader**:
@@ -36,13 +36,15 @@ categories:
 - `file-loader`：将代码中引入的文件生成到输出目录，并且在JS代码里返回该文件的地址
 
 **plugin**: 
-- `clean-webpack-plugin`：打包前移除上次打包的文件
-- `html-webpack-plugin`：生成一个根HTML文件，自动引入webpack打包出的bundle
+- `clean-webpack-plugin`：打包前清除旧的打包文件
+- `html-webpack-plugin`：生成HTML文件，自动引入webpack打包出的bundle
 - `copy-webpack-plugin`：复制文件，一般用于将`public`目录的内容复制到输出目录
 - `mini-css-extract-plugin`: css文件提取到单独的文件，而非使用`style-loader`插入到html代码中
-- `optimize-css-assets-webpack-plugin`：压缩css文件
+- `optimize-css-assets-webpack-plugin`：压缩css代码
+- `terser-webpack-plugin`：压缩js代码
 - `webpack-bundle-analyzer`：打包体积分析
 - `speed-measure-webpack-plugin`：打包速度分析
+- `webpack-dev-server`：开发环境自动打包并实时预览、自动刷新浏览器
 
 ### 5. 如何优化打包结果
 - `压缩代码`：使用`UglifyJsPlugin`压缩js代码，`CssMinimizerWebpackPlugin`压缩css代码，`HtmlWebpackPlugin`压缩HTML代码等
