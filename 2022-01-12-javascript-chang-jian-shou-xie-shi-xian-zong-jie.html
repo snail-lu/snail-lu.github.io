@@ -357,14 +357,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-25
+                    2023-03-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.4k
                 </div>
                 
 
@@ -688,7 +688,38 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="用setTimeout来实现setInterval"><a href="#用setTimeout来实现setInterval" class="headerlink" title="用setTimeout来实现setInterval"></a>用setTimeout来实现setInterval</h4><h3 id="3-工具方法"><a href="#3-工具方法" class="headerlink" title="3. 工具方法"></a>3. 工具方法</h3><h4 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h4><p>指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行</p>
+<h4 id="用setTimeout来实现setInterval"><a href="#用setTimeout来实现setInterval" class="headerlink" title="用setTimeout来实现setInterval"></a>用setTimeout来实现setInterval</h4><p><strong>setInterval机制:</strong></p>
+<ul>
+<li>延时一段时间后，将任务push到任务队列中排队执行；</li>
+<li>在每次把任务 push 到任务队列前，都要进行一下判断(看上次的任务是否仍在队列中，如果有则不添加，没有则添加)。</li>
+</ul>
+<p>基于该原理，会导致两个问题：</p>
+<ul>
+<li>前一任务结束到当前任务开始的时间间隔与设置的<code>delay</code>值不符。</li>
+<li>可能出现某些任务被跳过的情况</li>
+</ul>
+<p><strong>setTimeout机制：</strong><br><code>setTimeout</code> 不管上次异步任务是否完成，它都会将当前异步任务推入队列（很容易理解，setTimeout本身就是一次调用一次执行），<code>setTimeout</code> 保证调用的时间间隔是一致的，<code>setInterval</code> 的设定的间隔时间包括了执行回调的时间。</p>
+<p><strong>简易实现：</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">mySetInterval</span><span class="token punctuation">(</span><span class="token parameter">cb<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    mySetInterval<span class="token punctuation">.</span>timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token function">cb</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">mySetInterval</span><span class="token punctuation">(</span>cb<span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+mySetInterval<span class="token punctuation">.</span><span class="token function-variable function">clear</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>mySetInterval<span class="token punctuation">.</span>timer<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 测试</span>
+<span class="token function">mySetInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'我进入了循环'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    mySetInterval<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-工具方法"><a href="#3-工具方法" class="headerlink" title="3. 工具方法"></a>3. 工具方法</h3><h4 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h4><p>指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/**
  * @fn : 要执行的函数
  * @delay : 执行函数的时间间隔（毫秒）
@@ -1397,7 +1428,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">97.9k</span>&nbsp;字
+                class="white-color">98.4k</span>&nbsp;字
             
             
             

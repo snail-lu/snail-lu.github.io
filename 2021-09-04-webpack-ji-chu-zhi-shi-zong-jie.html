@@ -357,14 +357,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-25
+                    2023-03-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.5k
                 </div>
                 
 
@@ -401,8 +401,8 @@
 <li>浏览器收到更新通知后，会使用上一次的 <code>hash</code> 值向 <code>WDS</code> 发起 <code>hash.hot-update.json</code> 请求来获取更改内容（文件列表、下一次更新的<code>hash</code>），之后浏览器再借助这些信息继续向 <code>WDS</code> 发起 <code>hash值.hot-update.js</code> 请求获取增量更新的内容。拿到需要更新的内容后，<code>HotModuleReplacementPlugin</code> 将更新后的代码进行替换，并局部刷新浏览器。</li>
 </ul>
 <h3 id="3-loader和plugin区别"><a href="#3-loader和plugin区别" class="headerlink" title="3. loader和plugin区别"></a>3. loader和plugin区别</h3><ul>
-<li><code>loader</code> 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，如css文件、图片等。loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，最终返回一个新的文件内容。</li>
-<li><code>plugin</code> 是插件，本质就是一个类，针对的是webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，执行广泛的任务，比如打包优化、文件管理、环境注入等。</li>
+<li><code>loader</code> 是文件加载器，帮助 webpack 处理那些非 JavaScript 文件，如css文件、图片等。loader 其实就是一个 function，接收一个参数 source，就是当前的文件内容，直接对文件进行一些处理，将文件转换为适合webpack模块系统处理的格式。Loader的配置项有<code>test</code>、<code>include</code>、<code>exclude</code>、<code>use</code>等属性。</li>
+<li><code>plugin</code> 是插件，用来增强webpack的功能，本质就是一个类（或构造函数），针对的是webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack执行流程中的生命周期中的事件，当特定的事件发生时，执行相应的操作，比如生成html文件、提取css、压缩js代码等。Plugin额配置选项包括插件的实例化参数和插件的应用范围等。</li>
 </ul>
 <h3 id="4-常用的loader和plugin"><a href="#4-常用的loader和plugin" class="headerlink" title="4. 常用的loader和plugin"></a>4. 常用的loader和plugin</h3><p><strong>loader</strong>:</p>
 <ul>
@@ -417,13 +417,15 @@
 </ul>
 <p><strong>plugin</strong>: </p>
 <ul>
-<li><code>clean-webpack-plugin</code>：打包前移除上次打包的文件</li>
-<li><code>html-webpack-plugin</code>：生成一个根HTML文件，自动引入webpack打包出的bundle</li>
+<li><code>clean-webpack-plugin</code>：打包前清除旧的打包文件</li>
+<li><code>html-webpack-plugin</code>：生成HTML文件，自动引入webpack打包出的bundle</li>
 <li><code>copy-webpack-plugin</code>：复制文件，一般用于将<code>public</code>目录的内容复制到输出目录</li>
 <li><code>mini-css-extract-plugin</code>: css文件提取到单独的文件，而非使用<code>style-loader</code>插入到html代码中</li>
-<li><code>optimize-css-assets-webpack-plugin</code>：压缩css文件</li>
+<li><code>optimize-css-assets-webpack-plugin</code>：压缩css代码</li>
+<li><code>terser-webpack-plugin</code>：压缩js代码</li>
 <li><code>webpack-bundle-analyzer</code>：打包体积分析</li>
 <li><code>speed-measure-webpack-plugin</code>：打包速度分析</li>
+<li><code>webpack-dev-server</code>：开发环境自动打包并实时预览、自动刷新浏览器</li>
 </ul>
 <h3 id="5-如何优化打包结果"><a href="#5-如何优化打包结果" class="headerlink" title="5. 如何优化打包结果"></a>5. 如何优化打包结果</h3><ul>
 <li><code>压缩代码</code>：使用<code>UglifyJsPlugin</code>压缩js代码，<code>CssMinimizerWebpackPlugin</code>压缩css代码，<code>HtmlWebpackPlugin</code>压缩HTML代码等</li>
@@ -973,7 +975,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">97.9k</span>&nbsp;字
+                class="white-color">98.4k</span>&nbsp;字
             
             
             
