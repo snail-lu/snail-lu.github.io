@@ -74,3 +74,18 @@ categories:
 ### 5. 动态路由实现权限控制 
 1.通过 `router.beforeEach()`进行权限校验，获取角色可访问的路由数据。
 2.通过 `vue-router` 的 `addRoute()` 来动态增加路由。
+
+### 6. 组件中监听路由参数的变化
+- `watch`
+```js
+// composition API写法
+watch(() => route.query, (newValue) => {
+  // ...
+})
+```
+- `beforeRouteUpdate`
+```js
+beforeRouteUpdate (to, from, next) {
+    // 这里监听
+},
+```
