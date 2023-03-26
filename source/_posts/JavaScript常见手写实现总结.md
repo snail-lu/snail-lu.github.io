@@ -353,6 +353,39 @@ function spawn(genF) {
 ```
 
 #### 用setTimeout来实现setInterval
+**setInterval机制:**
+- 延时一段时间后，将任务push到任务队列中排队执行；
+- 在每次把任务 push 到任务队列前，都要进行一下判断(看上次的任务是否仍在队列中，如果有则不添加，没有则添加)。
+
+基于该原理，会导致两个问题：
+- 前一任务结束到当前任务开始的时间间隔与设置的`delay`值不符。
+- 可能出现某些任务被跳过的情况
+
+**setTimeout机制：**
+`setTimeout` 不管上次异步任务是否完成，它都会将当前异步任务推入队列（很容易理解，setTimeout本身就是一次调用一次执行），`setTimeout` 保证调用的时间间隔是一致的，`setInterval` 的设定的间隔时间包括了执行回调的时间。
+
+**简易实现：**
+```js
+function mySetInterval(cb, delay) {
+    mySetInterval.timer = setTimeout(() => {
+        cb()
+        mySetInterval(cb, delay)
+    }, delay)
+}
+
+mySetInterval.clear = function() {
+    clearTimeout(mySetInterval.timer)
+}
+
+// 测试
+mySetInterval(() => {
+    console.log('我进入了循环')
+}, 1000)
+
+setTimeout(() => {
+    mySetInterval.clear()
+}, 5000)
+```
 ### 3. 工具方法
 #### 防抖
 指定时间内函数多次调用都会被重置，只会在最后一次触发结束后延时执行
