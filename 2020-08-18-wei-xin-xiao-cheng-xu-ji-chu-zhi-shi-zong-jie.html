@@ -430,7 +430,7 @@
 <li>将 <code>button</code> 组件 <code>open-type</code> 的值设置为 <code>getPhoneNumber</code>，当用户点击并同意之后，可以通过 <code>bindgetphonenumber</code> 事件回调获取到动态令牌<code>code</code>，然后把code传到后端；</li>
 <li>后端调用微信后台提供的 <code>phonenumber.getPhoneNumber</code> 接口，消费<code>code</code> 来换取用户手机号。每个<code>code</code>有效期为5分钟，且只能消费一次。</li>
 </ol>
-<h3 id="5-小程序的底层原理"><a href="#5-小程序的底层原理" class="headerlink" title="5. 小程序的底层原理"></a>5. 小程序的底层原理</h3><p>小程序框架系统分为两部分：<code>逻辑层（App Service）</code> 和 <code>视图层（View）</code>。 <code>WXML</code> 模板和 <code>WXSS</code> 样式工作在渲染层，<code>JS</code> 脚本工作在逻辑层。</p>
+<h3 id="5-小程序的底层原理"><a href="#5-小程序的底层原理" class="headerlink" title="5. 小程序的底层原理"></a>5. 小程序的底层原理</h3><p>小程序的运行环境分为两部分：<code>逻辑层</code> 和 <code>渲染层</code>。 <code>WXML</code> 模板和 <code>WXSS</code> 样式工作在渲染层，<code>JS</code> 脚本工作在逻辑层。</p>
 <h4 id="通信模型"><a href="#通信模型" class="headerlink" title="通信模型"></a>通信模型</h4><p>小程序的渲染层和逻辑层分别由2个线程管理：渲染层的界面使用了 <code>WebView</code> 进行渲染；逻辑层采用 <code>JsCore</code> 线程运行JS脚本。一个小程序存在多个界面，所以渲染层存在多个<code>WebView</code> 线程，这两个线程的通信会经由 <code>Native</code>（微信客户端）做中转，逻辑层发送网络请求也经由 <code>Native</code> 转发，<br><img src="/medias/loading.gif" data-original="https://s1.ax1x.com/2023/03/19/ppY0f2V.png" alt="渲染层和逻辑层通信模型"></p>
 <h4 id="小程序与客户端通信原理"><a href="#小程序与客户端通信原理" class="headerlink" title="小程序与客户端通信原理"></a>小程序与客户端通信原理</h4><ul>
 <li>视图层组件<br>内置组件中有部分组件是利用到客户端原生提供的能力。既然需要客户端原生提供的能力，那就会涉及到视图层与客户端的交互通信。这层通信机制在 <code>iOS</code> 和安卓系统的实现方式并不一样，<code>iOS</code> 是利用了 <code>WKWebView</code> 的提供 <code>messageHandlers</code> 特性，而在安卓则是往 <code>WebView</code> 的 <code>window</code> 对象注入一个原生方法，最终会封装成 <code>WeiXinJSBridge</code> 这样一个兼容层，主要提供了调用（invoke）和监听（on）这两种方法。</li>
