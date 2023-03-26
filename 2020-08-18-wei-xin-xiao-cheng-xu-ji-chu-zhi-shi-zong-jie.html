@@ -469,7 +469,7 @@
 <li><strong>避免不当的使用onPageScroll</strong><br>每一次事件监听都是一次视图到逻辑的通信过程，所以只在必要的时候监听pageSrcoll。同时避免在<code>onPageScroll</code>中执行复杂的逻辑及多次调用<code>setData</code>。</li>
 <li><strong>控制 WXML 节点数量和层级</strong><br>一个太大的 WXML 节点树会增加内存的使用，样式重排时间也会更长，影响体验。一个页面 WXML 节点数量应少于 1000 个，节点树深度少于 30 层，子节点数不大于 60 个。</li>
 <li><strong>避免在 onHide/onUnload 执行耗时操作</strong><br>页面切换时，会先调用前一个页面的 onHide 或 onUnload 生命周期，然后再进行新页面的创建和渲染。如果 onHide 和 onUnload 执行过久，可能导致页面切换的延迟。若必须要进行部分复杂逻辑，可以考虑用 setTimeout 延迟进行。</li>
-<li><strong>及时解绑事件监听及清理定时器</strong><br>事件监听结束后，应及时解绑监听器，比如摇一摇，定位等；尅发「秒杀倒计时」等功能时，可能会使用 setInterval 设置定时器，页面或组件销毁前，需要调用 clearInterval 方法取消定时器。</li>
+<li><strong>及时解绑事件监听及清理定时器</strong><br>事件监听结束后，应及时解绑监听器，比如摇一摇，定位等；开发「秒杀倒计时」等功能时，可能会使用 setInterval 设置定时器，页面或组件销毁前，需要调用 clearInterval 方法取消定时器。</li>
 </ul>
 <h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips/start.html">微信开放文档–性能与体验</a></p>
 
