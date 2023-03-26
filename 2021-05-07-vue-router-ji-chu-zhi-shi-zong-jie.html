@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    930
+                    964
                 </div>
                 
 
@@ -462,6 +462,15 @@
 </ul>
 <p>💡<code>history</code>模式会存在刷新报404的问题，这是因为我们的应用是单页应用，刷新的时候会向服务器发送请求，而该路径一般是无对应的文档资源的，所以会报404，需要服务器端配置返回同一个<code>index.html</code>来解决。</p>
 <h3 id="5-动态路由实现权限控制"><a href="#5-动态路由实现权限控制" class="headerlink" title="5. 动态路由实现权限控制"></a>5. 动态路由实现权限控制</h3><p>1.通过 <code>router.beforeEach()</code>进行权限校验，获取角色可访问的路由数据。<br>2.通过 <code>vue-router</code> 的 <code>addRoute()</code> 来动态增加路由。</p>
+<h3 id="6-组件中监听路由参数的变化"><a href="#6-组件中监听路由参数的变化" class="headerlink" title="6. 组件中监听路由参数的变化"></a>6. 组件中监听路由参数的变化</h3><ul>
+<li><code>watch</code><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// composition API写法</span>
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> route<span class="token punctuation">.</span>query<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">newValue</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><code>beforeRouteUpdate</code><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">beforeRouteUpdate</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 这里监听</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 
                 
             </div>
@@ -910,7 +919,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">98.4k</span>&nbsp;字
+                class="white-color">98.5k</span>&nbsp;字
             
             
             
