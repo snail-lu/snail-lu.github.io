@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.9k
+                    6k
                 </div>
                 
 
@@ -624,6 +624,11 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <p>Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p>
 </blockquote>
 <p><code>$nextTick</code>的实现本质上就是将某个任务依次尝试使用<code>Promise.then</code>、<code>MutationObserver</code>和<code>setImmediate</code>、<code>setTimeout</code>进行处理，前两个方法会将任务放到微任务队列，后两个方法会将任务放到宏任务队列，无论是微任务还是宏任务，该任务都是在DOM更新之后执行的，这样就实现了DOM更新之后再去执行特定任务。</p>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li>在<code>created</code>中取获取某一个dom元素的尺寸或内容，因为<code>created</code>中dom还没有被挂载，这时候是获取不到dom元素的，所以需要使用<code>nextTick</code></li>
+<li>更新了某一个响应式数据，需要等该数据更新到视图上之后再执行某项dom操作，这时也需要使用<code>nextTick</code></li>
+</ul>
 <h3 id="14-数组和对象的变化检测"><a href="#14-数组和对象的变化检测" class="headerlink" title="14. 数组和对象的变化检测"></a>14. 数组和对象的变化检测</h3><p>Vue对数组的7个方法<code>push</code>、<code>pop</code>、<code>shift</code>、<code>unshift</code>、<code>splice</code>、<code>sort</code>、<code>reverse</code>实现了响应式，对对象已有属性也是实现了响应式的。但是由于 Vue 会在初始化实例时对 <code>property</code> 执行 <code>getter/setter</code> 转化，所以 <code>property</code> 必须在 <code>data</code> 对象上存在才能让 <code>Vue</code> 将它转换为响应式的。这导致了以下情况：</p>
 <ul>
 <li>Vue 无法检测对象属性的添加或移除。</li>
@@ -1267,7 +1272,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">98.5k</span>&nbsp;字
+                class="white-color">98.7k</span>&nbsp;字
             
             
             
