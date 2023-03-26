@@ -152,7 +152,54 @@ data[2](); // 2
 
 💡[JavaScript之事件循环](https://snaillu.gitee.io/2021-12-14-javascript-zhi-event-loop.html)
 
-### 10. 深拷贝
+### 10. 浅拷贝和深拷贝
+#### 浅拷贝
+拷贝时，只是拷贝了基本类型的值，而引用类型的值，复制的是引用类型的值的地址，该值指向同一个内存地址，会互相影响。
+
+**实现方式一：** `Object.assign(target, source1, source2)`
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null
+}
+
+const newObj = Object.assign({}, obj);
+```
+
+**实现方式二：** ES6扩展运算符
+```js
+const obj = {
+  a: '123',
+  b: 234,
+  c: true,
+  d: null
+}
+
+const newObj = {...obj};
+```
+
+**实现方式三：** 递归
+```js
+function shallowClone(obj) {
+  // 判断拷贝的obj是对象还是数组
+  const objClone = Array.isArray(obj) ? [] : {};
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            objClone[key] = obj[key]; // 直接拷贝
+        }
+    }
+    return objClone;
+}
+```
+
+**实现方式四：数组**
+- Array.concat()
+- Array.slice()
+
+#### 深拷贝
+拷贝后的对象与原来的对象是完全隔离，即使是引用类型的属性，也不会相互影响。
 **实现方式一：** `JSON.stringify`序列化和`JSON.parse`反序列化
 缺点：对象中`undefined`、`function`、`symbol`这三种类型的值会被过滤掉
 ```js
@@ -171,49 +218,23 @@ console.log(JSON.stringify(obj)); // {"a":"123","b":234,"c":true,"d":null,"h":{}
 const newObj = JSON.parse(JSON.stringify(obj));
 ```
 
-**实现方式二：** `Object.assign(target, source1, source2)`
-缺点：无法对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
-```js
-const obj = {
-  a: '123',
-  b: 234,
-  c: true,
-  d: null
-}
-
-const newObj = Object.assign({}, obj);
-```
-
-**实现方式三：** ES6扩展运算符
-缺点：无对对象里面嵌套的对象进行深拷贝，相当于只是对一层引用对象进行深拷贝
-```js
-const obj = {
-  a: '123',
-  b: 234,
-  c: true,
-  d: null
-}
-
-const newObj = {...obj};
-```
-
-**实现方式四：** 递归
+**实现方式二：** 递归
 ```js
 function deepClone(obj) {
   // 判断拷贝的obj是对象还是数组
   const objClone = Array.isArray(obj) ? [] : {};
-  if (obj && typeof obj === "object") { // obj不能为空，并且是对象或者是数组，因为null也是object
-      for (key in obj) {
-          if (obj.hasOwnProperty(key)) {
-              if (obj[key] && typeof obj[key] === "object") { // obj里面属性值不为空并且还是对象，进行深度拷贝
-                  objClone[key] = deepClone(obj[key]); // 递归进行深度的拷贝
-              } else {
-                  objClone[key] = obj[key]; // 直接拷贝
-              }
-          }
-      }
-  }
-  return objClone;
+    if (obj && typeof obj === "object") { // obj不能为空，并且是对象或者是数组，因为null也是object
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                if (obj[key] && typeof obj[key] === "object") { // obj里面属性值不为空并且还是对象，进行深度拷贝
+                    objClone[key] = deepClone(obj[key]); // 递归进行深度的拷贝
+                } else {
+                    objClone[key] = obj[key]; // 直接拷贝
+                }
+            }
+        }
+    }
+    return objClone;
 }
 ```
 ### 11. this指向

@@ -226,6 +226,11 @@ Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，
 
 `$nextTick`的实现本质上就是将某个任务依次尝试使用`Promise.then`、`MutationObserver`和`setImmediate`、`setTimeout`进行处理，前两个方法会将任务放到微任务队列，后两个方法会将任务放到宏任务队列，无论是微任务还是宏任务，该任务都是在DOM更新之后执行的，这样就实现了DOM更新之后再去执行特定任务。
 
+**使用场景：**
+- 在`created`中取获取某一个dom元素的尺寸或内容，因为`created`中dom还没有被挂载，这时候是获取不到dom元素的，所以需要使用`nextTick`
+- 更新了某一个响应式数据，需要等该数据更新到视图上之后再执行某项dom操作，这时也需要使用`nextTick`
+
+
 ### 14. 数组和对象的变化检测
 Vue对数组的7个方法`push`、`pop`、`shift`、`unshift`、`splice`、`sort`、`reverse`实现了响应式，对对象已有属性也是实现了响应式的。但是由于 Vue 会在初始化实例时对 `property` 执行 `getter/setter` 转化，所以 `property` 必须在 `data` 对象上存在才能让 `Vue` 将它转换为响应式的。这导致了以下情况：
 - Vue 无法检测对象属性的添加或移除。
