@@ -477,8 +477,9 @@
 </ul>
 <h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ul>
 <li>适合静态页面，不支持页面交互</li>
-<li>构建过程中没有window，document等，存在库的兼容问题<h3 id="6-Serverless架构"><a href="#6-Serverless架构" class="headerlink" title="6. Serverless架构"></a>6. Serverless架构</h3>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903904224903181">Serverless（无服务）基础知识</a></li>
+<li>构建过程中没有window，document等，存在库的兼容问题</li>
 </ul>
+<h3 id="6-Serverless架构"><a href="#6-Serverless架构" class="headerlink" title="6. Serverless架构"></a>6. Serverless架构</h3><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903904224903181">Serverless（无服务）基础知识</a></p>
 <h3 id="7-OAuth2-0"><a href="#7-OAuth2-0" class="headerlink" title="7. OAuth2.0"></a>7. OAuth2.0</h3><p>开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。</p>
 <ul>
 <li>思路<br>OAuth在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用户与客户端区分开来。”客户端”登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期。<br>“客户端”登录授权层以后，”服务提供商”根据令牌的权限范围和有效期，向”客户端”开放用户储存的资料。</li>
