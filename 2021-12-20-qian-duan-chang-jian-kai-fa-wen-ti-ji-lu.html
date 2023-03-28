@@ -372,14 +372,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -533,6 +533,19 @@ renderer<span class="token punctuation">.</span><span class="token function">set
 </ul>
 <p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903982742110216">「前端进阶」高性能渲染十万条数据(虚拟列表)</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903938894872589">「前端进阶」高性能渲染十万条数据(时间分片)</a></p>
 <h3 id="7-Vue兼容IE8及以下版本的策略"><a href="#7-Vue兼容IE8及以下版本的策略" class="headerlink" title="7. Vue兼容IE8及以下版本的策略"></a>7. Vue兼容IE8及以下版本的策略</h3><p>目前看来确实无法兼容，可以使用司徒正美的<a target="_blank" rel="noopener" href="https://github.com/RubyLouvre/avalon">avalon.js</a>, 兼容到IE6</p>
+<h3 id="8-不同浏览器的兼容性问题解决"><a href="#8-不同浏览器的兼容性问题解决" class="headerlink" title="8. 不同浏览器的兼容性问题解决"></a>8. 不同浏览器的兼容性问题解决</h3><h4 id="CSS兼容"><a href="#CSS兼容" class="headerlink" title="CSS兼容"></a>CSS兼容</h4><ul>
+<li>使用<code>reset.css</code>重置样式表或<code>Normalize.css</code>，统一各浏览器的基础样式，比如<code>margin</code>、<code>padding</code>、<code>font-size</code>等</li>
+<li>使用<code>PostCss</code>插件<code>autoprefixer</code>，自动补全css浏览器前缀，解决部分浏览器中css属性不一致的问题。</li>
+</ul>
+<h4 id="js兼容"><a href="#js兼容" class="headerlink" title="js兼容"></a>js兼容</h4><ul>
+<li>事件监听绑定和移除的兼容问题（绑定：<code>addEventListener</code>和IE：<code>attachEvent</code>，移除：<code>removeEventListener</code>和IE：<code>detachchEvent</code>），要先判断再使用</li>
+<li>事件对象的兼容问题（event），IE8及以下浏览器中，将event放在了window.event属性下，所以要使用<code>event || window.event</code></li>
+<li>键盘的键值码，<code>keyCode</code>和IE的<code>which</code></li>
+<li>阻止事件的默认行为的兼容问题，<code>preventDefault</code>和IE的<code>returnValue</code></li>
+<li>阻止事件冒泡的兼容问题，<code>stopPropagation</code>和IE的<code>cancelBubble</code></li>
+<li><code>new Date()</code>构造函数使用，<code>2019-12-09</code>是有问题的，要转换为<code>2019/12/09</code></li>
+<li><code>document.documentElement</code>兼容，要使用<code>document.documentElement || document.body</code></li>
+</ul>
 
                 
             </div>
@@ -973,7 +986,7 @@ renderer<span class="token punctuation">.</span><span class="token function">set
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">100k</span>&nbsp;字
+                class="white-color">100.2k</span>&nbsp;字
             
             
             
