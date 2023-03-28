@@ -172,10 +172,10 @@ Vue2 响应式的实现主要有：
 ### 10. Vue3的响应式和Vue2的区别
 Vue3的响应式不再通过`Object.defineProperty()`来对数据进行劫持，而是通过`Proxy`代理实现数据的变化监听。
 主要区别：
-1. `Proxy`是对整个对象的代理，而`Object.defineProperty`只能代理某个属性。
+1. `Proxy`是对整个对象的代理（只代理了对象的最外层属性），而`Object.defineProperty`只能代理某个属性。
 2. 对象上新增属性，`Proxy`可以监听到，`Object.defineProperty`不能。
 3. 数组新增元素，`Proxy`可以监听到，`Object.defineProperty`不能。
-4. 若对象内部属性要全部递归代理，`Proxy`可以只在调用的时候递归，而`Object.definePropery`需要一次完成所有递归，性能比Proxy差。
+4. 若对象内部属性要全部递归代理，`Proxy`可以只在调用的时候递归（即用到了哪个属性，再去代理，没用到的属性，不会代理），而`Object.definePropery`需要一次完成所有属性的递归，性能比`Proxy`差。
 5. `Proxy`在ie浏览器上存在兼容问题
 
 
