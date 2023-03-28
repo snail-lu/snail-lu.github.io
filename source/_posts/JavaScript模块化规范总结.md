@@ -13,7 +13,7 @@ categories:
 |:---|:---|:---|:---|
 | 1 | CommonJS  | 服务器端 | - |
 | 2 | AMD | 浏览器端 | require.js、curl.js |
-| 3 | CMD | 服务器端 | sea.js | 
+| 3 | CMD | 浏览器端 | sea.js | 
 | 4 | UMD | 浏览器端和服务器端 |
 | 5 | ES6 Module | 浏览器端和服务器端 |
 
@@ -53,7 +53,7 @@ require(['module1'], function(module1) {
 ```
 
 ### 4. CMD
-**CMD** 的全称是`Common Module Definition`，意思是“**同步模块定义**”，属于`CommonJS`的一种规范。使用CMD规范进行开发的时候需要引入第三方的库函数`Sea.js`。
+**CMD** 的全称是`Common Module Definition`，意思是“**通用模块定义**”，属于`CommonJS`的一种规范。使用CMD规范进行开发的时候需要引入第三方的库函数`Sea.js`。
 
 #### 基本用法
 ```js
@@ -120,3 +120,4 @@ import { PI, func1, person } from './module1.js';
 
 ### 参考文档
 [【深度全面】前端JavaScript模块化规范进化论](https://segmentfault.com/a/1190000023711059)
+[CommonJS、AMD、CMD、ES6模块化区别详细总结](https://blog.csdn.net/weixin_45709829/article/details/124138115)
