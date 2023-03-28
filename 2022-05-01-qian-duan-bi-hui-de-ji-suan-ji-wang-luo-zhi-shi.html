@@ -542,7 +542,9 @@
 <li><strong>长连接（keep-alive）</strong>：新增 <code>Connection</code> 字段，可以设置<code>keep-alive</code> 值保持连接不断开</li>
 <li><strong>管道化</strong>：基于上面长连接的基础，管道化可以不等第一个请求响应继续发送后面的请求，但响应的顺序还是按照请求的顺序返回</li>
 <li><strong>缓存处理</strong>：新增字段 <code>cache-control</code></li>
-<li><strong>文件断点续传</strong><h4 id="Http-2-0"><a href="#Http-2-0" class="headerlink" title="Http 2.0"></a>Http 2.0</h4></li>
+<li><strong>文件断点续传</strong></li>
+</ul>
+<h4 id="Http-2-0"><a href="#Http-2-0" class="headerlink" title="Http 2.0"></a>Http 2.0</h4><ul>
 <li><strong>二进制分帧</strong>：将所有传输的信息分割为更小的消息和帧，并对它们采用二进制格式的编码</li>
 <li><strong>header头部压缩</strong>：使用HAPCK算法对header数据进行压缩，使数据体积变小，传输更快</li>
 <li><strong>服务器推送</strong>：服务器可以额外的向客户端推送资源，而无需客户端明确的请求</li>
