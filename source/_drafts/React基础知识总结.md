@@ -41,18 +41,18 @@ categories:
 
 ### 3. `Hooks`
 #### 什么是 Hook?
-`Hook` 是一些可以让你在函数组件里“**钩入**” React state 及生命周期等特性的函数。`Hook` 不能在 `class` 组件中使用 —— 这使得你不使用 `class` 也能使用 React。
+`Hook` 是一些可以让你在函数组件里“**钩入**” React state 及生命周期等特性的函数。`Hook` 不能在 `class` 组件中使用 —— 这使得你不使用 `class` 也能使用 `React`。
 
 #### 实现原理
-每个 `useXxx` 的 hook 都有 **创建阶段**（`mountXxx`） 和 **更新阶段**（`updateXxx`） 两个阶段。在创建阶段，函数组件会将内部用到的所有的 hook 通过环状单向链表的形式，保存在组件对应 fiber 节点的 `memoizedState` 属性上。每个 hook 内部都有自己的状态和依赖维护着。在更新阶段，会按照链表顺序依次执行更新函数。
+每个 `useXxx` 的 `hook` 都有 **创建阶段**（`mountXxx`） 和 **更新阶段**（`updateXxx`） 两个阶段。在创建阶段，函数组件会将内部用到的所有的 `hook` 通过环状单向链表的形式，保存在组件对应 `fiber` 节点的 `memoizedState` 属性上。每个 `hook` 内部都有自己的状态和依赖维护着。在更新阶段，会按照链表顺序依次执行更新函数。
 
 #### 为什么不能在循环、条件或嵌套函数中调用Hook
-> 类似问题：为什么不能改变 hook 的执行顺序
-一个函数组件中的多个 Hook 是以链表的结构进行保存的，只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 进行关联， 在循环、条件或嵌套函数中，有可能会导致hook的调用顺序发生改变，会发生状态错乱的问题。
+💡类似问题：为什么不能改变 hook 的执行顺序
+一个函数组件中的多个 `Hook` 是以链表的结构进行保存的，只要 `Hook` 的调用顺序在多次渲染之间保持一致，`React` 就能正确地将内部 `state` 和对应的 `Hook` 进行关联， 在循环、条件或嵌套函数中，有可能会导致`hook`的调用顺序发生改变，会发生状态错乱的问题。
 
 #### 内置Hook
 - `useState`：创建一个state及对应的更新函数
-- `useEffect`：操作副作用（数据获取、订阅或者手动修改过 DOM等）
+- `useEffect`：操作副作用（数据获取、订阅或者手动修改过 DOM等），类似于componentDidMount 和 componentDidUpdate生命周期钩子
 - `useContext`：订阅 React 的 Context
 - `useReducer`：管理本地的复杂 state
 - [...](https://react.docschina.org/docs/hooks-reference.html)
@@ -83,6 +83,10 @@ categories:
 ### 6. 虚拟DOM
 虚拟 `DOM` 也就是常说的虚拟节点，它是真实`DOM`的`js`对象表示。
 频繁的操作真实`DOM` ，或大量造成页面的重绘和回流，十分消耗性能。有了虚拟 `DOM`，可以利用 js 实现的`DOM Diff` 算法进行新旧虚拟 `DOM` 的比较，从而更高效快速地确定了被更改的`DOM`，避免了没有必要的 `DOM` 操作，从而提高性能。
+大致工作流程：
+- 当数据发生变化，比如setState时，会引起组件重新渲染，整个UI都会以virtual dom的形式重新渲染
+- 然后收集差异也就是diff新的virtual dom和老的virtual dom的差异
+- 最后把差异队列里的差异，比如增加节点、删除节点、移动节点更新到真实的DOM上
 
 ### 7. Diff 算法
 把树形结构按照层级分解，只比较同级元素，给列表结构的每个单元添加唯一的 key 值，方便比较。
@@ -138,3 +142,24 @@ React16的事件绑定在`document`上， React17以后事件绑定在`container
 - React所有的事件绑定在container上(react17以后),而不是绑定在DOM元素上（作用：减少内存开销，所有的事件处理都在container上，其他节点没有绑定事件）
 - React自身实现了一套冒泡机制，不能通过`return false`阻止冒泡
 - React通过`SytheticEvent`实现了事件合成
+
+### 15. 函数组件和class组件的区别
+#### class组件
+特点：
+- 有组件实例
+- 有生命周期
+- 有 state 和 setState
+  
+缺点：
+- 大型组件很难拆分和重构，变得难以测试
+- 相同业务逻辑分散到各个方法中，可能会变得混乱
+- 复用逻辑可能变得复杂，如 HOC 、Render Props
+
+#### 函数组件
+特点：
+- 没有组件实例
+- 没有生命周期
+- 没有 state 和 setState，只能接收 props
+- 函数组件是一个纯函数，执行完即销毁，无法存储 state
+
+`React` 中更提倡函数式编程，因为函数更灵活，更易拆分，但函数组件太简单，所以出现了`hook`，`hook`就是用来增强函数组件功能的。
