@@ -376,14 +376,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.1k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    23 分
                 </div>
                 
 
@@ -620,6 +620,9 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 <li><p>当 <code>while</code> 循环结束后，根据新老节点的数目不同，做相应的节点添加或者删除。若新节点数目大于老节点则需要把多出来的节点创建出来加入到真实 <code>dom</code> 中，反之若老节点数目大于新节点则需要把多出来的老节点从真实 <code>dom</code> 中删除。至此整个 diff 过程就已经全部完成了。</p>
 </li>
 </ol>
+<ul>
+<li><strong>流程（语言精简版）</strong><br>首先，我们拿到新旧节点的数组，然后初始化四个指针，分别指向新旧节点的开始位置和结束位置，进行两两对比，若是 新的开始节点和旧开始节点相同，则都向后面移动，若是结尾节点相匹配，则都前移指针。若是旧开始节点和新的结束节点相匹配，则会将旧开始节点移动到旧结束节点的后面。若是新开始节点和旧结尾节点匹配上了，则会将旧的结束节点移动到旧的开始节点前。若是上述节点都没配有匹配上，则会进行一个兜底逻辑的判断，判断开始节点是否在旧节点中，若是存在则复用，若是不存在则创建。最终跳出循环，进行节点的删除或者新增，若是旧的开始节点小于旧的结束节点，则会删除之间的节点，反之则是新增新的开始节点到新的结束节点。</li>
+</ul>
 <h3 id="13-nextTick原理"><a href="#13-nextTick原理" class="headerlink" title="13. $nextTick原理"></a>13. <code>$nextTick</code>原理</h3><blockquote>
 <p>Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p>
 </blockquote>
@@ -1272,7 +1275,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">100.2k</span>&nbsp;字
+                class="white-color">100.5k</span>&nbsp;字
             
             
             
