@@ -376,7 +376,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6k
+                    6.1k
                 </div>
                 
 
@@ -573,10 +573,10 @@ EventBus<span class="token punctuation">.</span><span class="token function">$on
 </ul>
 <h3 id="10-Vue3的响应式和Vue2的区别"><a href="#10-Vue3的响应式和Vue2的区别" class="headerlink" title="10. Vue3的响应式和Vue2的区别"></a>10. Vue3的响应式和Vue2的区别</h3><p>Vue3的响应式不再通过<code>Object.defineProperty()</code>来对数据进行劫持，而是通过<code>Proxy</code>代理实现数据的变化监听。<br>主要区别：</p>
 <ol>
-<li><code>Proxy</code>是对整个对象的代理，而<code>Object.defineProperty</code>只能代理某个属性。</li>
+<li><code>Proxy</code>是对整个对象的代理（只代理了对象的最外层属性），而<code>Object.defineProperty</code>只能代理某个属性。</li>
 <li>对象上新增属性，<code>Proxy</code>可以监听到，<code>Object.defineProperty</code>不能。</li>
 <li>数组新增元素，<code>Proxy</code>可以监听到，<code>Object.defineProperty</code>不能。</li>
-<li>若对象内部属性要全部递归代理，<code>Proxy</code>可以只在调用的时候递归，而<code>Object.definePropery</code>需要一次完成所有递归，性能比Proxy差。</li>
+<li>若对象内部属性要全部递归代理，<code>Proxy</code>可以只在调用的时候递归（即用到了哪个属性，再去代理，没用到的属性，不会代理），而<code>Object.definePropery</code>需要一次完成所有属性的递归，性能比<code>Proxy</code>差。</li>
 <li><code>Proxy</code>在ie浏览器上存在兼容问题</li>
 </ol>
 <h3 id="11-data为何是一个函数而非对象"><a href="#11-data为何是一个函数而非对象" class="headerlink" title="11. data为何是一个函数而非对象"></a>11. data为何是一个函数而非对象</h3><p>因为组件可能被用来创建多个实例。如果 <code>data</code> 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 <code>data</code> 函数，每次创建一个新实例后，我们能够调用 <code>data</code> 函数，从而返回初始数据的一个全新副本数据对象，这样就保证了每个组件的<code>data</code> 独立性。</p>
@@ -1272,7 +1272,7 @@ Vue<span class="token punctuation">.</span><span class="token function">directiv
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">99.9k</span>&nbsp;字
+                class="white-color">100.2k</span>&nbsp;字
             
             
             
