@@ -59,3 +59,8 @@ Host *github.com
 
 ```
 按下`ESC`，输入`:wq`，（保存并退出）即可。
+
+### 撤销新仓库的首次commit
+```bash
+git update-ref -d HEAD
+```
