@@ -357,21 +357,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-05-05
+                    2024-03-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -389,15 +389,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-SPA"><a href="#1-SPA" class="headerlink" title="1. SPA"></a>1. SPA</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><code>SPA</code> 即 <code>single page web application</code>，单页Web应用，就是只有一个HTML文件的应用，所有的内容都是在这个页面中通过JS动态更新呈现的。<br>典型编写SPA的前端框架：React、Angular、Vue。</p>
+                <h3 id="1-SPA"><a href="#1-SPA" class="headerlink" title="1. SPA"></a>1. SPA</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><code>SPA</code> 即 <code>single page web application</code>，单页Web应用，就是只有一个<code>HTML</code>文件的应用，所有的内容都是在这个页面中通过 <code>javascript</code>动态更新呈现的。<br>典型编写SPA的前端框架：<code>React</code>、<code>Angular</code>、<code>Vue</code>。</p>
 <h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>有良好的交互体验,不会重新加载整个网页, 只是局部更新</li>
-<li>前后端分离开发,前端负责页面呈现和交互, 后端负责数据</li>
-<li>减轻服务器压力,只用处理数据不用处理界面</li>
+<li>更快的用户体验：加载初始页面后，可以在用户与应用程序交互时动态地更新页面内容，而无需重新加载整个页面</li>
+<li>更接近原生应用的体验：可以通过使用类似于原生应用的路由和状态管理技术，提供更接近原生应用的用户体验，包括流畅的页面转场、数据缓存和离线访问等特性</li>
+<li>减轻服务器压力：初始加载后可以通过AJAX等技术从服务器获取数据，并在客户端动态更新页面，因此可以减少服务器的负载</li>
 </ul>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>SEO不够友好：只有一个界面, 无法针对不同的内容编写不同的SEO信息</li>
-<li>首次加载速度慢：SPA单页应用通常首次加载页面时就会将相应的HTML、JavaScript、CSS文件全部加载，通常可以通过采取缓存措施以及懒加载即按需加载组件的方式来优化。</li>
+<li><code>SEO</code>不够友好：只有一个界面，无法针对不同的内容编写不同的<code>SEO</code>信息</li>
+<li>首页加载速度慢：<code>SPA</code>单页应用通常首次加载页面时就会将相应的<code>HTML</code>、<code>javascript</code>、<code>CSS</code>文件全部加载，通常可以通过采取缓存措施以及懒加载即按需加载组件的方式来优化。</li>
+</ul>
+<h4 id="首页加载优化策略"><a href="#首页加载优化策略" class="headerlink" title="首页加载优化策略"></a>首页加载优化策略</h4><ul>
+<li>代码分割（Code Splitting）<br>将代码分割成多个小块，并按需加载。</li>
+<li>图片优化<br>对于首屏需要加载的图片，可以进行压缩和优化，减小图片文件的大小</li>
+<li>懒加载（Lazy Loading）<br>对于非首屏需要加载的组件、图片或其他资源，可以使用懒加载，待需要用到时再加载</li>
+<li>CDN加速<br>将静态资源缓存到离用户更近的CDN节点</li>
 </ul>
 <h3 id="2-微前端"><a href="#2-微前端" class="headerlink" title="2. 微前端"></a>2. 微前端</h3><p>一种由独立交付的多个前端应用组成整体的架构风格。具体的，将前端应用分解成一些更小、更简单的能够独立开发、测试、部署的小块，而在用户看来仍然是内聚的单个产品。<br>将庞大的整体拆成可控的小块，并明确它们之间的依赖关系。关键优势在于：  </p>
 <ul>
@@ -407,7 +413,7 @@
 </ul>
 <p>实现中的关键问题：  </p>
 <ul>
-<li><p>多个 Bundle 如何集成？<br>微前端架构中一般会有个容器应用（container application）将各子应用集成起来。集成方式分3类：  </p>
+<li><p>多个 <code>Bundle</code> 如何集成？<br>微前端架构中一般会有个容器应用（<code>Container Application</code>）将各子应用集成起来。集成方式分3类：  </p>
 <ul>
 <li>服务端集成：如 SSR 拼装模板</li>
 <li>构建时集成：如 Code Splitting</li>
@@ -1029,7 +1035,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021-2023</span>
+                <span id="year">2021-2024</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">Snail-Lu</a>
@@ -1038,7 +1044,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">100.6k</span>&nbsp;字
+                class="white-color">100.8k</span>&nbsp;字
             
             
             
