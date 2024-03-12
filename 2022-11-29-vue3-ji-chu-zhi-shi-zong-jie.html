@@ -369,14 +369,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-11
+                    2024-03-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    895
+                    884
                 </div>
                 
 
@@ -497,7 +497,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="3-响应式原理"><a href="#3-响应式原理" class="headerlink" title="3. 响应式原理"></a>3. 响应式原理</h3><p>Vue 3 实现响应式，本质上是通过 <code>Proxy</code> API 劫持了数据对象的读写：</p>
+<h3 id="3-响应式原理"><a href="#3-响应式原理" class="headerlink" title="3. 响应式原理"></a>3. 响应式原理</h3><p>通过 <code>Proxy</code> API 劫持了数据对象的读写：</p>
 <ul>
 <li>当我们访问数据时，会触发 <code>getter</code> 执行依赖收集；</li>
 <li>修改数据时，会触发 <code>setter</code> 派发通知。</li>
