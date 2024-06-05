@@ -364,14 +364,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    16 分
                 </div>
                 
 
@@ -514,7 +514,11 @@
 <li>服务端若未找到对应 session 信息，则返回错误提示；</li>
 <li>客户端获取错误提示后，指引用户重新登录。</li>
 </ol>
-<h3 id="9-JWT认证流程"><a href="#9-JWT认证流程" class="headerlink" title="9. JWT认证流程"></a>9. JWT认证流程</h3><ol>
+<p>这种模式最大的问题是，没有分布式架构，无法支持横向扩展。如果使用一个服务器，该模式完全没有问题。但是，如果它是服务器群集或面向服务的跨域体系结构的话，则需要一个统一的session数据库来保存会话数据实现共享，这样负载均衡下的每个服务器才可以正确的验证用户身份。</p>
+<h3 id="9-JWT（JSON-Web-Token）"><a href="#9-JWT（JSON-Web-Token）" class="headerlink" title="9. JWT（JSON Web Token）"></a>9. JWT（JSON Web Token）</h3><p>目前最流行的跨域身份验证解决方案，与session认证最大的区别就是服务器端根本不保存会话数据，即服务器变为无状态，使其更容易扩展。</p>
+<p>用法：<br>客户端接收服务器返回的JWT，将其存储在<code>Cookie</code>或<code>localStorage</code>中。<br>此后，客户端将在与服务器交互中都会带<code>JWT</code>。如果将它存储在<code>Cookie</code>中，就可以自动发送，但是不会跨域，因此一般是将它放入HTTP请求的<code>Header Authorization</code>字段中。<br>当跨域时，也可以将<code>JWT</code>放置于<code>POST</code>请求的数据主体中。</p>
+<p>认证流程：</p>
+<ol>
 <li>用户使用用户名和密码登录；</li>
 <li>服务端认证通过后，生成 token，返回客户端；</li>
 <li>客户端保存 token，并携带 token，请求服务端资源；</li>
@@ -522,6 +526,16 @@
 <li>服务端若判断 token 已过期，返回 token 过期提示；</li>
 <li>客户端获取 token 过期提示后，指引用户重新登录。</li>
 </ol>
+<p>存在的问题：</p>
+<ol>
+<li>JWT默认不加密，但可以加密。生成原始令牌后，可以使用改令牌再次对其进行加密。</li>
+<li>当JWT未加密方法是，一些私密数据无法通过JWT传输。</li>
+<li>JWT不仅可用于认证，还可用于信息交换。善用JWT有助于减少服务器请求数据库的次数。</li>
+<li>JWT的最大缺点是服务器不保存会话状态，所以在使用期间不可能取消令牌或更改令牌的权限。也就是说，一旦JWT签发，在有效期内将会一直有效。</li>
+<li>JWT本身包含认证信息，因此一旦信息泄露，任何人都可以获得令牌的所有权限。为了减少盗用，JWT的有效期不宜设置太长。对于某些重要操作，用户在使用时应该每次都进行进行身份验证。</li>
+<li>为了减少盗用和窃取，JWT不建议使用HTTP协议来传输代码，而是使用加密的HTTPS协议进行传输。</li>
+</ol>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p>💡<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d1644e281250">JWT全面解读、详细使用步骤</a></p>
 <h3 id="10-XSS攻击"><a href="#10-XSS攻击" class="headerlink" title="10. XSS攻击"></a>10. XSS攻击</h3><p>💡<a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/09/27/fe-security.html">如何防止XSS攻击？</a></p>
 <h3 id="11-单点登录"><a href="#11-单点登录" class="headerlink" title="11. 单点登录"></a>11. 单点登录</h3><h4 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h4><p>单点登录（SSO，Single Sign On），是在企业内部多个应用系统（如考勤系统、财务系统、人事系统等）场景下，用户只需要登录一次，即可获得访问单点登录系统中其他关联系统和应用软件的权限。<br>同理用户只需注销一次，就可以从多个应用系统退出登录。</p>
 <h4 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h4><ol>
@@ -544,7 +558,7 @@
 <li>封装一个权限组件，用来包裹要控制的按钮。在权限组件内进行权限校验，根据校验结果来决定是否显示插槽内的按钮。</li>
 <li>自定义指令，指令内部接收权限字符，通过函数进行校验，校验未通过时，获取当前指令所在节点的父节点，来删除掉当前节点。</li>
 </ul>
-<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6982493377350598670">前端权限设计实现——路由级</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6979530577317740551">前端权限设计实现——按钮级</a></p>
+<h4 id="参考文章-1"><a href="#参考文章-1" class="headerlink" title="参考文章"></a>参考文章</h4><p>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6982493377350598670">前端权限设计实现——路由级</a><br>💡<a target="_blank" rel="noopener" href="https://juejin.cn/post/6979530577317740551">前端权限设计实现——按钮级</a></p>
 <h3 id="13-RBAC模型"><a href="#13-RBAC模型" class="headerlink" title="13. RBAC模型"></a>13. RBAC模型</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><p><code>RBAC</code> 是 <code>Role-Based Access Control</code> 的缩写，即基于角色的权限访问控制，是一种基于组织中用户的角色来调节控制对计算机或网络资源的访问的方法。<br>三者关系如下：<br><code>用户</code> &lt;——-&gt; <code>角色</code> &lt;——&gt; <code>权限</code></p>
 <ul>
 <li>用户和角色可以是多对一或多对多的关系</li>
@@ -1044,7 +1058,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">100.8k</span>&nbsp;字
+                class="white-color">101.3k</span>&nbsp;字
             
             
             
