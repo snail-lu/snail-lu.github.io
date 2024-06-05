@@ -26,7 +26,7 @@ categories:
 
 `XHTML` 与 `HTML5` 的区别：
 - `HTML5`新增了`canvas`绘画元素；
-- `HTML5`新增了用于绘媒介回放的`video`和`audio`元素；
+- `HTML5`新增了用于媒介回放的`video`和`audio`元素；
 - 更具语义化的标签，便于浏览器识别；
 - 对本地离线存储有更好的支持；
 - `MathML`，`SVG`等，可以更好的`render`；
