@@ -1,6 +1,12 @@
 ---
 title: npm、yarn及pnpm
+date: 2023-09-15 09:51:43
+summary: npm、yarn及pnpm特点及区别总结
 tags:
+- Node.js
+- Npm
+categories:
+- [前端进阶]
 ---
 
 ### npm
